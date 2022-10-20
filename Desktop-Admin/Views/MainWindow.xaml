@@ -1,0 +1,25 @@
+﻿<Window x:Class="Desktop_Admin.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="1024" Width="1440">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="109"/>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid Name="ToolBar" Grid.Row="0" Background="{DynamicResource TopBrush}">
+            <DockPanel  >
+            <TextBlock DockPanel.Dock="Left" HorizontalAlignment="Left" IsEnabled="False" Margin="136 25 0 0" Width="309" TextWrapping="Wrap" Style="{StaticResource Top}" Text="Автоматизация процесса питания в школах"/>
+            <Button DockPanel.Dock="Right" Style="{StaticResource TransparentButton}" HorizontalAlignment="Right" Height="40" Width="40" Margin="0,0,65,0">
+                 <ContentControl  Content="{StaticResource HomeIcon}"/>
+            </Button>
+            <Button DockPanel.Dock="Right" Style="{StaticResource TransparentButton}" HorizontalAlignment="Right" Height="40" Width="40" Margin="0,0,25,0">
+                <ContentControl  Content="{StaticResource BellIcon}"/>
+            </Button>
+            </DockPanel>
+        </Grid>
+    </Grid>
+</Window>
