@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using Desktop_Canteen.Views;
 
 namespace Desktop_Canteen
 {
@@ -11,13 +12,7 @@ namespace Desktop_Canteen
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        public void ToOrderingIngredientsButtonClick(object sender, RoutedEventArgs e)
-        {
-            var window = new OrderingIngredientsWindow();
-            Visibility = Visibility.Hidden;
-            window.Show();
+            MainFrame.Content = new MenuPage();
         }
     }
 }
