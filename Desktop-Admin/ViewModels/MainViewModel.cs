@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using Desktop_Admin.Models;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using WPFLibrary.JsonModels;
 
 namespace Desktop_Admin.ViewModels;
 
@@ -18,6 +19,7 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
         set
         {
             selectedItem = value;
+            WPFLibrary.ApiServer.Load<Dish>("Dish/1");
             OnPropertyChanged("SelectedClass");
         }
     }  
