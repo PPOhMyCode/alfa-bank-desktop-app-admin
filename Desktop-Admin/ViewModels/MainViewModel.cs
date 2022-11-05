@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using Desktop_Admin.Models;
@@ -19,7 +20,6 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
         set
         {
             selectedItem = value;
-            WPFLibrary.ApiServer.Load<Dish>("Dish/1");
             OnPropertyChanged("SelectedClass");
         }
     }  

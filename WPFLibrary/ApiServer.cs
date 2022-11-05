@@ -8,19 +8,17 @@ namespace WPFLibrary;
 
 public class ApiServer
 {
-    public static void Load<JModel>(string req) where JModel : BaseModel
+    public static void Get<JModel>(string req)
     {
         string url = "https://localhost:5001/";
         var client = new RestClient(url);
-        System.Console.WriteLine(typeof(JModel).ToString());
         var request = new RestRequest(req);
         var response = client.Execute(request);
 
-        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        if (response.StatusCode == HttpStatusCode.OK)
         {
             string rawResponse = response.Content;
             var result = JsonConvert.DeserializeObject<JModel>(response.Content);
-            System.Console.WriteLine(result);
         }
     }
 }
