@@ -8,7 +8,7 @@ namespace WPFLibrary;
 
 public class ApiServer
 {
-    public static void Get<JModel>(string req)
+    public static JModel Get<JModel>(string req)
     {
         string url = "https://localhost:5001/";
         var client = new RestClient(url);
@@ -19,6 +19,9 @@ public class ApiServer
         {
             string rawResponse = response.Content;
             var result = JsonConvert.DeserializeObject<JModel>(response.Content);
+            return result;
         }
+
+        return default;
     }
 }
