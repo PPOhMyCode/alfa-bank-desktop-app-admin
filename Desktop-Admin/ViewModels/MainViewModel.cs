@@ -6,6 +6,7 @@ using Desktop_Admin.Models;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using WPFLibrary.JsonModels;
+using WPFLibrary.Models;
 
 namespace Desktop_Admin.ViewModels;
 

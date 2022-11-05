@@ -52,6 +52,16 @@
                 </Grid.ColumnDefinitions>
                 
             </Grid>
+            <ListBox Name="Dishes">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>      
+                        <WrapPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <TextBlock FontWeight="Bold" TextDecorations="Underline" Text="Все блюда" />
+            </ListBox>
         </Grid>
+        
     </Grid>
+    
 </Page>
