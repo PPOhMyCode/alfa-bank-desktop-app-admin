@@ -1,0 +1,45 @@
+﻿<Page x:Class="Desktop_Canteen.Views.ChildrensPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:Desktop_Canteen.Views"
+      mc:Ignorable="d"
+      Title="ChildrensPage" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*" />
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.5*" />
+        </Grid.RowDefinitions>
+        <Grid>
+            <DockPanel >
+                <Button Width="100" Style="{StaticResource Transparent}"/>
+                <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Меню"
+                        Click="ToMenuButtonClick"/>
+                <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Все блюда" 
+                        Click="ToAllDishesButtonClick"/>
+                <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Заказ продуктов"
+                        Click="ToOrderingIngredientsButtonClick"/>
+                <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Расписание"
+                        Click="ToScheduleButtonClick"/>
+                <Button Padding="10" Style="{StaticResource SelectedMainMenuButton}" Content="Школьники" />
+                
+                <Button DockPanel.Dock="Right" Style="{StaticResource Transparent}" HorizontalAlignment="Right"
+                        Height="40" Width="40" Margin="0,0,10,0">
+                    <materialDesign:PackIcon Kind="AccountCircle"/>
+                </Button>
+                
+                <Button DockPanel.Dock="Right" Style="{StaticResource Transparent}" HorizontalAlignment="Right"
+                        Height="30" Width="30" Margin="0,0,0,0">
+                    <ContentControl Content="{StaticResource BellIcon}" />
+                </Button>
+            </DockPanel>
+        </Grid>
+        
+        <Grid Row="1">
+            
+        </Grid>
+    </Grid>
+</Page>

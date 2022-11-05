@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desktop-Admin", "Desktop-Ad
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFLibrary", "WPFLibrary\WPFLibrary.csproj", "{28F2290C-CAC0-4F0D-BDF9-12A89B08DFE5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desktop-Canteen", "Desktop-Canteen\Desktop-Canteen.csproj", "{E666AD2A-5E2A-4386-973F-9DB8985ECAFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{28F2290C-CAC0-4F0D-BDF9-12A89B08DFE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28F2290C-CAC0-4F0D-BDF9-12A89B08DFE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28F2290C-CAC0-4F0D-BDF9-12A89B08DFE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E666AD2A-5E2A-4386-973F-9DB8985ECAFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E666AD2A-5E2A-4386-973F-9DB8985ECAFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E666AD2A-5E2A-4386-973F-9DB8985ECAFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E666AD2A-5E2A-4386-973F-9DB8985ECAFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

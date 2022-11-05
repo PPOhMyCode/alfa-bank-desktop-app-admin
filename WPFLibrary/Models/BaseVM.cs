@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Desktop_Admin.Models;
+namespace WPFLibrary.Models;
 
 public class BaseVM : INotifyPropertyChanged
 {
