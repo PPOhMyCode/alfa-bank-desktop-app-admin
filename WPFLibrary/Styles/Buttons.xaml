@@ -42,7 +42,7 @@
 
     <Style x:Key="TransparentButton" TargetType="Button">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="FontFamily" Value="{StaticResource BaseFont}" />
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}" />
         <Setter Property="FontSize" Value="{StaticResource Regular}" />
         <Setter Property="Foreground" Value="Transparent" />
         <Setter Property="FontWeight" Value="DemiBold" />
@@ -89,6 +89,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="Foreground" Value="{StaticResource DarkGrayBrush}"/>
         <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Bold}"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -156,5 +157,4 @@
             </Setter.Value>
         </Setter>
     </Style> 
-
 </ResourceDictionary>
