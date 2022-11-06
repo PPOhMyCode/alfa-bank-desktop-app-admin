@@ -3,7 +3,7 @@
 
     <Style x:Key="BaseButton" TargetType="Button">
         <Setter Property="Background" Value="{StaticResource MediumBaseBrush}" />
-        <Setter Property="FontFamily" Value="{StaticResource BaseFont}" />
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}" />
         <Setter Property="FontSize" Value="{StaticResource Regular}" />
         <Setter Property="Foreground" Value="Black" />
         <Setter Property="FontWeight" Value="DemiBold" />
@@ -42,7 +42,7 @@
 
     <Style x:Key="TransparentButton" TargetType="Button">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="FontFamily" Value="{StaticResource BaseFont}" />
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}" />
         <Setter Property="FontSize" Value="{StaticResource Regular}" />
         <Setter Property="Foreground" Value="Transparent" />
         <Setter Property="FontWeight" Value="DemiBold" />
@@ -78,5 +78,84 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    
+    <Style x:Key="Transparent" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    </Style>
+    
+    <Style x:Key="MainMenuButton" TargetType="Button">
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="{StaticResource DarkGrayBrush}"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Bold}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        Name="brd"
+                        Background="Transparent"
+                        CornerRadius="0">
+                        <ContentPresenter
+                            Margin="5"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefaulted" Value="True">
+                            <Setter Property="Background" Value="Transparent" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{StaticResource UltraDarkGreenBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Foreground" Value="{StaticResource DarkGreenBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="{StaticResource UltraLightGreenBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="SelectedMainMenuButton" TargetType="Button">
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="{StaticResource DarkGreenBrush}"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        Name="brd"
+                        Background="Transparent"
+                        CornerRadius="0">
+                        <ContentPresenter
+                            Margin="5"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefaulted" Value="True">
+                            <Setter Property="Background" Value="Transparent" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{StaticResource UltraDarkGreenBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Foreground" Value="{StaticResource DarkGreenBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="{StaticResource UltraLightGreenBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style> 
+    
 </ResourceDictionary>
