@@ -16,7 +16,9 @@
             </Grid.RowDefinitions>
             <Grid>
                 <DockPanel>
-                    <Button Width="100" Style="{StaticResource Transparent}" />
+                    <Button Width="100" Style="{StaticResource Transparent}" >
+                        <Image Source=""/>
+                    </Button>
                     <Button Padding="10" Style="{StaticResource SelectedMainMenuButton}" Content="Меню" />
                     <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Все блюда"
                             Click="ToAllDishesButtonClick"/>

@@ -4,92 +4,118 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Desktop_Canteen.Views"
+      xmlns:domain="http://materialdesigninxaml.net/winfx/xaml"
+      xmlns:viewModels="clr-namespace:Desktop_Canteen.ViewModels"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:desktopCanteen="clr-namespace:Desktop_Canteen"
       mc:Ignorable="d"
       Title="OrderingIngredientsPage" Height="450" Width="800">
+    <Page.DataContext>
+        <viewModels:OrderingIngredientsVM />
+    </Page.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*" />
-            <RowDefinition Height="0.4*"/>
-            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="0.25*" />
+            <RowDefinition Height="0.65*" />
         </Grid.RowDefinitions>
         <Grid>
-            <DockPanel >
-                <Button Width="100" Style="{StaticResource Transparent}"/>
+            <DockPanel>
+                <Button Width="100" Style="{StaticResource Transparent}" />
                 <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Меню"
-                        Click="ToMenuButtonClick"/>
-                <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Все блюда" 
-                        Click="ToAllDishesButtonClick"/>
-                <Button Padding="10" Style="{StaticResource SelectedMainMenuButton}" Content="Заказ продуктов"/>
-                <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Расписание" 
-                        Click="ToScheduleButtonClick"/>
+                        Click="ToMenuButtonClick" />
+                <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Все блюда"
+                        Click="ToAllDishesButtonClick" />
+                <Button Padding="10" Style="{StaticResource SelectedMainMenuButton}" Content="Заказ продуктов" />
+                <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Расписание"
+                        Click="ToScheduleButtonClick" />
                 <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Школьники"
-                        Click="ToChildrensButtonClick"/>
-                
+                        Click="ToChildrensButtonClick" />
+
                 <Button DockPanel.Dock="Right" Style="{StaticResource Transparent}" HorizontalAlignment="Right"
                         Height="40" Width="40" Margin="0,0,10,0">
-                    <materialDesign:PackIcon Kind="AccountCircle"/>
+                    <materialDesign:PackIcon Kind="AccountCircle" />
                 </Button>
-                
+
                 <Button DockPanel.Dock="Right" Style="{StaticResource Transparent}" HorizontalAlignment="Right"
                         Height="30" Width="30" Margin="0,0,0,0">
                     <ContentControl Content="{StaticResource BellIcon}" />
                 </Button>
             </DockPanel>
         </Grid>
-        
+
         <Grid Row="1">
             <Grid Margin="20, 10">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="0.15*"/>
-                    <RowDefinition Height="0.20*"/>
-                    <RowDefinition Height="0.25*"/>
-                    <RowDefinition Height="0.45*"/>
+                    <RowDefinition Height="0.2*" />
+                    <RowDefinition Height="0.3*" />
+                    <RowDefinition Height="0.5*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.5*"/>
-                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="0.5*" />
                 </Grid.ColumnDefinitions>
                 <Grid>
                     <Button Style="{StaticResource Transparent}" Content="Сентябрь" HorizontalAlignment="Left"
-                            Foreground="{StaticResource GreenBrush}" FontWeight="Bold"/>
+                            Foreground="{StaticResource GreenBrush}" FontWeight="Bold" />
                 </Grid>
                 <Grid Row="1">
                     <StackPanel Orientation="Horizontal" Margin="0, 10, 0, 0">
-                        <TextBlock Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="26" Foreground="{StaticResource GreenBrush}"/>
-                        <TextBlock Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="27" Foreground="{StaticResource GreenBrush}"/>
-                        <TextBlock Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="28" Foreground="{StaticResource GreenBrush}"/>
-                        <TextBlock Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="29" Foreground="{StaticResource GreenBrush}"/>
-                        <TextBlock Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="30" Foreground="{StaticResource GreenBrush}"/>
+                        <TextBlock Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="26"
+                                   Foreground="{StaticResource GreenBrush}" />
+                        <TextBlock Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="27"
+                                   Foreground="{StaticResource GreenBrush}" />
+                        <TextBlock Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="28"
+                                   Foreground="{StaticResource GreenBrush}" />
+                        <TextBlock Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="29"
+                                   Foreground="{StaticResource GreenBrush}" />
+                        <TextBlock Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="30"
+                                   Foreground="{StaticResource GreenBrush}" />
                     </StackPanel>
                 </Grid>
                 <Grid Row="2" Margin="0">
-                   <StackPanel Orientation="Horizontal">
-                       <Button Style="{StaticResource Transparent}" HorizontalAlignment="Right"
-                               Height="35" Width="35" Margin="0, 0">
-                           <materialDesign:PackIcon Kind="CircleOutline" Height="30" Width="30" Foreground="{StaticResource GreenBrush}"/>
-                       </Button>
-                       <Button Style="{StaticResource Transparent}" HorizontalAlignment="Right"
-                               Height="35" Width="35" Margin="0, 0">
-                           <materialDesign:PackIcon Kind="CircleOutline" Height="30" Width="30" Foreground="{StaticResource GreenBrush}"/>
-                       </Button>
-                       <Button Style="{StaticResource Transparent}" HorizontalAlignment="Right"
-                               Height="35" Width="35" Margin="0, 0">
-                           <materialDesign:PackIcon Kind="CircleOutline" Height="30" Width="30" Foreground="{StaticResource GreenBrush}"/>
-                       </Button>
-                       <Button Style="{StaticResource Transparent}" HorizontalAlignment="Right"
-                               Height="35" Width="35" Margin="0, 0">
-                           <materialDesign:PackIcon Kind="CircleOutline" Height="30" Width="30" Foreground="{StaticResource GreenBrush}"/>
-                       </Button>
-                       <Button Style="{StaticResource Transparent}" HorizontalAlignment="Right"
-                               Height="35" Width="35" Margin="0, 0">
-                           <materialDesign:PackIcon Kind="CircleOutline" Height="30" Width="30" Foreground="{StaticResource GreenBrush}"/>
-                       </Button>
-                       
-                   </StackPanel> 
+                    <StackPanel Orientation="Horizontal">
+                        <Button Style="{StaticResource Transparent}" HorizontalAlignment="Right"
+                                Height="35" Width="35" Margin="0, 0">
+                            <materialDesign:PackIcon Kind="CircleOutline" Height="30" Width="30"
+                                                     Foreground="{StaticResource GreenBrush}" />
+                        </Button>
+                        <Button Style="{StaticResource Transparent}" HorizontalAlignment="Right"
+                                Height="35" Width="35" Margin="0, 0">
+                            <materialDesign:PackIcon Kind="CircleOutline" Height="30" Width="30"
+                                                     Foreground="{StaticResource GreenBrush}" />
+                        </Button>
+                        <Button Style="{StaticResource Transparent}" HorizontalAlignment="Right"
+                                Height="35" Width="35" Margin="0, 0">
+                            <materialDesign:PackIcon Kind="CircleOutline" Height="30" Width="30"
+                                                     Foreground="{StaticResource GreenBrush}" />
+                        </Button>
+                        <Button Style="{StaticResource Transparent}" HorizontalAlignment="Right"
+                                Height="35" Width="35" Margin="0, 0">
+                            <materialDesign:PackIcon Kind="CircleOutline" Height="30" Width="30"
+                                                     Foreground="{StaticResource GreenBrush}" />
+                        </Button>
+                        <Button Style="{StaticResource Transparent}" HorizontalAlignment="Right"
+                                Height="35" Width="35" Margin="0, 0">
+                            <materialDesign:PackIcon Kind="CircleOutline" Height="30" Width="30"
+                                                     Foreground="{StaticResource GreenBrush}" />
+                        </Button>
+
+                    </StackPanel>
                 </Grid>
-                
+
             </Grid>
+        </Grid>
+        <Grid Row="2">
+            <ScrollViewer>
+                <DataGrid Background="Transparent"
+                          Foreground="{StaticResource DarkGrayBrush}"
+                          GridLinesVisibility="None"
+                          CanUserAddRows="False"
+                          ItemsSource="{Binding SummaryOrderViews}"
+                          SelectionMode="Extended"
+                          SelectionUnit="Cell" />
+            </ScrollViewer>
         </Grid>
     </Grid>
 </Page>
