@@ -2,8 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style x:Key="BaseButton" TargetType="Button">
-        <Setter Property="Background" Value="{StaticResource MediumBaseBrush}" />
-        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}" />
+        <Setter Property="Background" Value="{StaticResource GreenBrush}" />
+        <Setter Property="FontFamily" Value="{StaticResource BaseFont}" />
         <Setter Property="FontSize" Value="{StaticResource Regular}" />
         <Setter Property="Foreground" Value="Black" />
         <Setter Property="FontWeight" Value="DemiBold" />
@@ -23,16 +23,16 @@
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsDefaulted" Value="true">
-                            <Setter Property="Background" Value="{StaticResource MediumBaseBrush}" />
+                            <Setter Property="Background" Value="{StaticResource GreenBrush}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Background" Value="{StaticResource LightBaseBrush}" />
+                            <Setter Property="Background" Value="{StaticResource LightGreenBrush}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="Background" Value="{StaticResource UltraLightBaseBrush}" />
+                            <Setter Property="Background" Value="{StaticResource UltraLightGreenBrush}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" Value="{StaticResource DarkBrush}" />
+                            <Setter Property="Background" Value="{StaticResource DarkGreenBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -62,16 +62,16 @@
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsDefaulted" Value="true">
-                            <Setter Property="Background" Value="{StaticResource MediumBaseBrush}" />
+                            <Setter Property="Background" Value="{StaticResource GreenBrush}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Background" Value="{StaticResource LightBaseBrush}" />
+                            <Setter Property="Background" Value="{StaticResource LightGreenBrush}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="Background" Value="{StaticResource UltraLightBaseBrush}" />
+                            <Setter Property="Background" Value="{StaticResource UltraLightGreenBrush}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" Value="{StaticResource DarkBrush}" />
+                            <Setter Property="Background" Value="{StaticResource DarkGreenBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -157,5 +157,4 @@
             </Setter.Value>
         </Setter>
     </Style> 
-    
 </ResourceDictionary>
