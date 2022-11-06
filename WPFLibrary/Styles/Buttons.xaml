@@ -91,6 +91,7 @@
         <Setter Property="FontWeight" Value="DemiBold"/>
         <Setter Property="FontFamily" Value="{StaticResource Montserrat-Bold}"/>
         <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Margin" Value="10, 7, 10, 0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -126,7 +127,9 @@
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="Foreground" Value="{StaticResource DarkGreenBrush}"/>
         <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Bold}"/>
         <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Margin" Value="10, 7, 10, 0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -156,5 +159,5 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style> 
+    </Style>
 </ResourceDictionary>
