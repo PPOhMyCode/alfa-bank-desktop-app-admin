@@ -27,4 +27,24 @@
     <SolidColorBrush x:Key="TopBrush" Color="#D2D2D2" />
     <Color x:Key="TopColor">#D2D2D2</Color>
 
+    <SolidColorBrush x:Key="BackgroundBrush" Color="#F8FFF5"/>
+    <Color x:Key="BackgroundColor">#F8FFF5</Color>
+    
+    <SolidColorBrush x:Key="UltraLightGreenBrush" Color="#D1EDD6"/>
+    <Color x:Key="UltraLightGreenColor">#D1EDD6</Color>
+
+    <SolidColorBrush x:Key="LightGreenBrush" Color="#BCE3C2"/>
+    <Color x:Key="LightGreenColor">#BCE3C2</Color>
+    
+    <SolidColorBrush x:Key="GreenBrush" Color="#A7D7AF"/>
+    <Color x:Key="GreenColor">#A7D7AF</Color>
+   
+    <SolidColorBrush x:Key="DarkGreenBrush" Color="#85AB8B"/>
+    <Color x:Key="DarkGreenColor">#85AB8B</Color>
+    
+    <SolidColorBrush x:Key="UltraDarkGreenBrush" Color="#53835B"/>
+    <Color x:Key="UltraDarkGreenColor">#53835B</Color>
+    
+    <SolidColorBrush x:Key="DarkGrayBrush" Color="#504E4E"/>
+    <Color x:Key="DarkGreyColor">#504E4E</Color>
 </ResourceDictionary>
