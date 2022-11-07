@@ -23,7 +23,6 @@
     <!-- -->
     <!-- <SolidColorBrush x:Key="TopBrush" Color="#D2D2D2" /> -->
     <!-- <Color x:Key="TopColor">#D2D2D2</Color> -->
-    
     <SolidColorBrush x:Key="BackgroundBrush" Color="#F8FFF5"/>
     <Color x:Key="BackgroundColor">#F8FFF5</Color>
     

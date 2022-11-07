@@ -4,7 +4,6 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Desktop_Canteen.Views"
-      xmlns:domain="http://materialdesigninxaml.net/winfx/xaml"
       xmlns:viewModels="clr-namespace:Desktop_Canteen.ViewModels"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:desktopCanteen="clr-namespace:Desktop_Canteen"
@@ -21,7 +20,11 @@
         </Grid.RowDefinitions>
         <Grid>
             <DockPanel>
-                <Button Width="100" Style="{StaticResource Transparent}" />
+                <Button Width="120" Style="{StaticResource Transparent}">
+                    <Viewbox>
+                        <Image Source="/Resources/AppIcon.png" Stretch="Uniform"/>
+                    </Viewbox>
+                </Button>
                 <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Меню"
                         Click="ToMenuButtonClick" />
                 <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Все блюда"
@@ -108,14 +111,56 @@
         </Grid>
         <Grid Row="2">
             <ScrollViewer>
-                <DataGrid Background="Transparent"
-                          Foreground="{StaticResource DarkGrayBrush}"
-                          GridLinesVisibility="None"
-                          CanUserAddRows="False"
-                          ItemsSource="{Binding SummaryOrderViews}"
-                          SelectionMode="Extended"
-                          SelectionUnit="Cell" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.8*" />
+                        <ColumnDefinition Width="0.2*" />
+                    </Grid.ColumnDefinitions>
+
+
+                    <DataGrid x:Name="DataGrid"
+                              Background="Transparent"
+                              Foreground="{StaticResource DarkGrayBrush}"
+                              GridLinesVisibility="None"
+                              CanUserAddRows="False"
+                              CanUserReorderColumns="False"
+                              ItemsSource="{Binding DishOrders}"
+                              AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Название" Width="0.25*" Binding="{Binding Dish.Name}" />
+                            <DataGridTextColumn Header="Заявки" Width="0.25*" Binding="{Binding Count}" />
+                            <DataGridTemplateColumn Header="Продукты" Width="0.25*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ListView ItemsSource="{Binding Ingredients}">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding Name}" />
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Значение" Width="0.25*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ListView ItemsSource="{Binding Values}">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding }" />
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </Grid>
             </ScrollViewer>
         </Grid>
+
     </Grid>
 </Page>

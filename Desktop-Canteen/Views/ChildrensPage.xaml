@@ -14,17 +14,21 @@
             <RowDefinition Height="0.5*" />
         </Grid.RowDefinitions>
         <Grid>
-            <DockPanel >
-                <Button Width="100" Style="{StaticResource Transparent}"/>
-                <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Меню"
+            <DockPanel Margin="10, 0">
+                <Button Width="120" Style="{StaticResource Transparent}">
+                    <Viewbox>
+                        <Image Source="/Resources/AppIcon.png" Stretch="Uniform"/>
+                    </Viewbox>
+                </Button>
+                <Button Style="{StaticResource MainMenuButton}" Content="Меню"
                         Click="ToMenuButtonClick"/>
-                <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Все блюда" 
+                <Button Style="{StaticResource MainMenuButton}" Content="Все блюда" 
                         Click="ToAllDishesButtonClick"/>
-                <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Заказ продуктов"
+                <Button Style="{StaticResource MainMenuButton}" Content="Заказ продуктов"
                         Click="ToOrderingIngredientsButtonClick"/>
-                <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Расписание"
+                <Button Style="{StaticResource MainMenuButton}" Content="Расписание"
                         Click="ToScheduleButtonClick"/>
-                <Button Padding="10" Style="{StaticResource SelectedMainMenuButton}" Content="Школьники" />
+                <Button Style="{StaticResource SelectedMainMenuButton}" Content="Школьники" />
                 
                 <Button DockPanel.Dock="Right" Style="{StaticResource Transparent}" HorizontalAlignment="Right"
                         Height="40" Width="40" Margin="0,0,10,0">

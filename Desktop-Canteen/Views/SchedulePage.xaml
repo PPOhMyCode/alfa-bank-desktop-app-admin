@@ -15,7 +15,11 @@
         </Grid.RowDefinitions>
         <Grid>
             <DockPanel >
-                <Button Width="100" Style="{StaticResource Transparent}"/>
+                <Button Width="120" Style="{StaticResource Transparent}">
+                    <Viewbox>
+                        <Image Source="/Resources/AppIcon.png" Stretch="Uniform"/>
+                    </Viewbox>
+                </Button>
                 <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Меню"
                         Click="ToMenuButtonClick"/>
                 <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Все блюда"
