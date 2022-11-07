@@ -29,12 +29,6 @@
     
     <SolidColorBrush x:Key="UltraLightGreenBrush" Color="#D1EDD6"/>
     <Color x:Key="UltraLightGreenColor">#D1EDD6</Color>
-
-    <SolidColorBrush x:Key="BackgroundBrush" Color="#F8FFF5"/>
-    <Color x:Key="BackgroundColor">#F8FFF5</Color>
-    
-    <SolidColorBrush x:Key="UltraLightGreenBrush" Color="#D1EDD6"/>
-    <Color x:Key="UltraLightGreenColor">#D1EDD6</Color> 
     
     <SolidColorBrush x:Key="LightGreenBrush" Color="#BCE3C2"/>
     <Color x:Key="LightGreenColor">#BCE3C2</Color>

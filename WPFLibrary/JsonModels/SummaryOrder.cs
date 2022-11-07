@@ -22,3 +22,10 @@ public class SummaryOrderView: BaseModel
     public DishView Dish  { get; set; }
     public ChildrenInfo Children { get; set; }
 }
+
+public class SummaryOrderDateIngrediets
+{
+    public DateTime Date { get; set; }
+    public int Count { get; set; }
+    public  DishIngredientView DishIngredientView { get; set; }
+}

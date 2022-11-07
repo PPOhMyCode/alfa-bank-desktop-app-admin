@@ -24,6 +24,6 @@ public class IngredientView:BaseModel
 
 public class IngredientCount
 {
-    public IngredientView Ingredient { get; set; }
+    public Ingredient Ingredient { get; set; }
     public double Count { set; get; }
 }

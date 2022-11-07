@@ -9,20 +9,13 @@ namespace Desktop_Canteen.ViewModels;
 
 public class OrderingIngredientsVM : BaseVM
 {
-    public ObservableCollection<SummaryOrderView> SummaryOrderViews { get; set; }
+    public ObservableCollection<DishIngredientView> SummaryOrderViews { get; set; }
     
-
+    public ObservableCollection<SummaryOrderDateIngrediets> ListOrders { get; set; }
     public OrderingIngredientsVM()
     {
-        SummaryOrderViews = new ObservableCollection<SummaryOrderView>(ApiServer.Get<List<SummaryOrderView>>("SummaryOrderView"));
-        // Заглушка, не суди строго
-        // SummaryOrderViews = new ObservableCollection<SummaryOrderView>();
-        // var s = new SummaryOrderView();
-        // s.Date = DateTime.Today;
-        // s.Dish = new DishView
-        // {
-        //     Name = "Каша"
-        // };
-        // SummaryOrderViews.Add(s);
+        
+        SummaryOrderViews = new ObservableCollection<DishIngredientView>(ApiServer.Get<List<DishIngredientView>>("Orders/Date/11-28-2022/Ingredients"));
+    
     }
 }
