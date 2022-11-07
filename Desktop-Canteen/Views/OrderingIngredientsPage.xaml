@@ -113,7 +113,8 @@
             <ScrollViewer>
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.8*" />
+                        <ColumnDefinition Width="0.6*" />
+                        <ColumnDefinition Width="0.2*" />
                         <ColumnDefinition Width="0.2*" />
                     </Grid.ColumnDefinitions>
 
@@ -124,28 +125,55 @@
                               GridLinesVisibility="None"
                               CanUserAddRows="False"
                               CanUserReorderColumns="False"
-                              ItemsSource="{Binding DishOrders}"
+                              ItemsSource="{Binding SummaryOrderViews}"
                               AutoGenerateColumns="False">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Название" Width="0.25*" Binding="{Binding Dish.Name}" />
-                            <DataGridTextColumn Header="Заявки" Width="0.25*" Binding="{Binding Count}" />
+                            <DataGridTextColumn Header="Название" Width="0.25*" Binding="{Binding  Dish.Name}" />
+                            <DataGridTextColumn Header="Заявки" Width="0.25*" Binding="{Binding CountOrders}" />
                             <DataGridTemplateColumn Header="Продукты" Width="0.25*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <ListView ItemsSource="{Binding Ingredients}">
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
-                                                    <TextBlock Text="{Binding Name}" />
+                                                    <TextBlock Text="{Binding Ingredient.Name}" />
                                                 </DataTemplate>
                                             </ListView.ItemTemplate>
                                         </ListView>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="Значение" Width="0.25*">
+                            <!-- <DataGridTemplateColumn Header="Значение" Width="0.25*"> -->
+                            <!--     <DataGridTemplateColumn.CellTemplate> -->
+                            <!--         <DataTemplate> -->
+                            <!--             <ListView ItemsSource="{Binding }"> -->
+                            <!--                 <ListView.ItemTemplate> -->
+                            <!--                     <DataTemplate> -->
+                            <!--                         <TextBlock Text="{Binding }" /> -->
+                            <!--                     </DataTemplate> -->
+                            <!--                 </ListView.ItemTemplate> -->
+                            <!--             </ListView> -->
+                            <!--         </DataTemplate> -->
+                            <!--     </DataGridTemplateColumn.CellTemplate> -->
+                            <!-- </DataGridTemplateColumn> -->
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    
+                    <DataGrid Grid.Column="1"
+                              Background="Transparent"
+                              Foreground="{StaticResource DarkGrayBrush}"
+                              GridLinesVisibility="None"
+                              CanUserAddRows="False"
+                              CanUserReorderColumns="False"
+                              ItemsSource="{Binding Values}"
+                              AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <!-- <DataGridTextColumn Header="Значение" Binding="{Binding }" /> -->
+                            
+                            <DataGridTemplateColumn Header="Значение">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <ListView ItemsSource="{Binding Values}">
+                                        <ListView ItemsSource="{Binding }">
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding }" />
