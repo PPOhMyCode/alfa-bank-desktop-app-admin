@@ -1,17 +1,18 @@
-﻿using System.Collections.Generic;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using WPFLibrary;
-using WPFLibrary.JsonModels;
 
 namespace Desktop_Canteen.Views;
 
-public partial class AllDishesPage : Page
+public partial class AddNewDishPage : Page
 {
-    
-    public AllDishesPage()
+    public AddNewDishPage()
     {
         InitializeComponent();
+    }
+    
+    public void ToAllDishesButtonClick(object sender, RoutedEventArgs e)
+    {
+        NavigationService?.Navigate(new AllDishesPage());
     }
     
     public void ToOrderingIngredientsButtonClick(object sender, RoutedEventArgs e)
@@ -31,10 +32,5 @@ public partial class AllDishesPage : Page
     public void ToChildrensButtonClick(object sender, RoutedEventArgs e)
     {
         NavigationService?.Navigate(new ChildrensPage());
-    }
-    
-    public void ToAddNewDishButtonClick(object sender, RoutedEventArgs e)
-    {
-        NavigationService?.Navigate(new AddNewDishPage());
     }
 }

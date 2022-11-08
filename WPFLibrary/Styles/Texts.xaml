@@ -15,4 +15,11 @@
         <Setter Property="FontWeight" Value="Light" />
         <Setter Property="Foreground" Value="Black" />
     </Style>
+    
+    <Style x:Key="DefaultText" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="Montserrat-Bold"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="Foreground" Value="{StaticResource DarkGrayBrush}"/>
+        <Setter Property="FontSize" Value="15"/>
+    </Style>
 </ResourceDictionary>

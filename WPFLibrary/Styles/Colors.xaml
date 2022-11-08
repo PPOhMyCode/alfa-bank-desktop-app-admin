@@ -35,6 +35,9 @@
     <SolidColorBrush x:Key="GreenBrush" Color="#A7D7AF"/>
     <Color x:Key="GreenColor">#A7D7AF</Color>
    
+    <SolidColorBrush x:Key="MediumGreenBrush" Color="#98C19F"/>
+    <Color x:Key="MediumGreenColor">#98C19F</Color>
+    
     <SolidColorBrush x:Key="DarkGreenBrush" Color="#85AB8B"/>
     <Color x:Key="DarkGreenColor">#85AB8B</Color>
     

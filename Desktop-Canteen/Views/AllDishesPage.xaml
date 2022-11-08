@@ -15,8 +15,8 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*" />
-            <RowDefinition Height="0.7*" />
             <RowDefinition Height="0.2*" />
+            <RowDefinition Height="0.7*" />
         </Grid.RowDefinitions>
         <Grid>
             <DockPanel>
@@ -46,8 +46,11 @@
                 </Button>
             </DockPanel>
         </Grid>
-
         <Grid Row="1">
+            <Button Style="{StaticResource DefaultButton}" Width="200" Height="50" HorizontalAlignment="Right"
+                    Content="Добавить блюдо" Click="ToAddNewDishButtonClick"/>
+        </Grid>
+        <Grid Row="2">
             <ListBox ItemsSource="{Binding Dishes}">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
