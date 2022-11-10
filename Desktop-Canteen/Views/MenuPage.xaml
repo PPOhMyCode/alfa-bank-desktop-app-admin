@@ -63,11 +63,11 @@
                         <StackPanel Orientation="Horizontal" Margin="0, 10, 0, 0">
                             <TextBlock Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="26"
                                        Foreground="{StaticResource GreenBrush}" />
-                            <TextBlock Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="27"
+                            <TextBlock Width="45" FontWeight="DemiBold" TextAlignment="Center" Text="27"
                                        Foreground="{StaticResource GreenBrush}" />
                             <TextBlock Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="28"
                                        Foreground="{StaticResource GreenBrush}" />
-                            <TextBlock Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="29"
+                            <TextBlock Width="45" FontWeight="DemiBold" TextAlignment="Center" Text="29"
                                        Foreground="{StaticResource GreenBrush}" />
                             <TextBlock Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="30"
                                        Foreground="{StaticResource GreenBrush}" />
@@ -75,32 +75,16 @@
                     </Grid>
                     <Grid Row="2" Margin="0">
                         <StackPanel Orientation="Horizontal">
-                            <Button Style="{StaticResource Transparent}" HorizontalAlignment="Right"
-                                    Height="35" Width="35" Margin="0, 0">
-                                <md:PackIcon Kind="CircleOutline" Height="30" Width="30"
-                                             Foreground="{StaticResource GreenBrush}" />
-                            </Button>
-                            <Button Style="{StaticResource Transparent}" HorizontalAlignment="Right"
-                                    Height="35" Width="35" Margin="0, 0">
-                                <md:PackIcon Kind="CircleOutline" Height="30" Width="30"
-                                             Foreground="{StaticResource GreenBrush}" />
-                            </Button>
-                            <Button Style="{StaticResource Transparent}" HorizontalAlignment="Right"
-                                    Height="35" Width="35" Margin="0, 0">
-                                <md:PackIcon Kind="CircleOutline" Height="30" Width="30"
-                                             Foreground="{StaticResource GreenBrush}" />
-                            </Button>
-                            <Button Style="{StaticResource Transparent}" HorizontalAlignment="Right"
-                                    Height="35" Width="35" Margin="0, 0">
-                                <md:PackIcon Kind="CircleOutline" Height="30" Width="30"
-                                             Foreground="{StaticResource GreenBrush}" />
-                            </Button>
-                            <Button Style="{StaticResource Transparent}" HorizontalAlignment="Right"
-                                    Height="35" Width="35" Margin="0, 0">
-                                <md:PackIcon Kind="CircleOutline" Height="30" Width="30"
-                                             Foreground="{StaticResource GreenBrush}" />
-                            </Button>
-
+                            <Button Style="{StaticResource CircleButton}" Content="ПН"
+                                    Margin="0, 0, 5, 0"/>
+                            <Button Style="{StaticResource CircleButton}" Content="ВТ"
+                                    Margin="0, 0, 5, 0"/>
+                            <Button Style="{StaticResource CircleButton}" Content="СР"
+                                    Margin="0, 0, 5, 0"/>
+                            <Button Style="{StaticResource CircleButton}" Content="ЧТ"
+                                    Margin="0, 0, 5, 0"/>
+                            <Button Style="{StaticResource CircleButton}" Content="ПТ"
+                                    Margin="0"/>
                         </StackPanel>
                     </Grid>
                     <Grid Row="2" RowSpan="1" Column="1">

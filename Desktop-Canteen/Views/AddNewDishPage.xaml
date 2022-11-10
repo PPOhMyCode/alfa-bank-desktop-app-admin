@@ -76,7 +76,7 @@
                     <TextBlock Style="{StaticResource DefaultText}" Text="Продукты:" VerticalAlignment="Center"/>
                     <ComboBox Margin="10,0,0,0" Padding="5" Text="" Width="300"
                              d:LayoutOverrides="Height" Background="Transparent" BorderBrush="{StaticResource MediumGreenBrush}" BorderThickness="1.5"
-                             ToolTip="Введите цену" />
+                             ToolTip="Выберите продукт и граммовку" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0, 5, 20, 0" Height="25" HorizontalAlignment="Center">
                     <Button Style="{StaticResource BaseButton}" Height="20" Width="20" Content="+" Foreground="{StaticResource DarkGrayBrush}" FontSize="10"/>

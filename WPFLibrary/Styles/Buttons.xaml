@@ -192,4 +192,44 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
+    <Style x:Key="SelectedCircleButton" TargetType="Button">
+        <Setter Property="Foreground" Value="{StaticResource GreenBrush}"/>
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="Width" Value="35"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Ellipse Fill="{StaticResource CircleButtonBackgroundBrush}" 
+                                 Stroke="{StaticResource GreenBrush}"
+                                 StrokeThickness="1"/>
+                        <Label Content="{TemplateBinding Content}" HorizontalAlignment="Center"
+                                  VerticalAlignment="Center" Foreground="{StaticResource GreenBrush}"
+                                  FontWeight="DemiBold"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="CircleButton" TargetType="Button">
+        <Setter Property="Foreground" Value="{StaticResource LightTextBrush}"/>
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="Width" Value="35"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Ellipse Fill="{StaticResource GreenBrush}" 
+                                 Stroke="{StaticResource GreenBrush}"
+                                 StrokeThickness="1"/>
+                        <Label Content="{TemplateBinding Content}" HorizontalAlignment="Center"
+                               VerticalAlignment="Center" Foreground="{StaticResource LightTextBrush}"
+                               FontWeight="DemiBold"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
