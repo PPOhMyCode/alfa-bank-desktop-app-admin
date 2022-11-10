@@ -12,7 +12,7 @@ public class ApiServer
     {
         string url = "https://localhost:5001/";
         var client = new RestClient(url);
-        var request = new RestRequest(req);
+        var request = new RestRequest(req, Method.Get);
         var response = client.Execute(request);
 
         if (response.StatusCode == HttpStatusCode.OK)
@@ -23,5 +23,22 @@ public class ApiServer
         }
 
         return default;
+    }
+    
+    public static void Post<JModel>(JModel model,string req)
+    {
+        string url = "https://localhost:5001/";
+        var client = new RestClient(url);
+        var request = new RestRequest(req, Method.Post);
+        request.AddHeader("Accept", "*/*");
+        request.AddHeader("Content-Type", "application/json");
+        var body = JsonConvert.SerializeObject(model);
+        request.AddJsonBody(body, "application/json");
+        RestResponse response = client.Execute(request);
+        if (response.StatusCode == HttpStatusCode.OK)
+        {
+            var output = response.Content;
+            System.Console.WriteLine(output);
+        }
     }
 }
