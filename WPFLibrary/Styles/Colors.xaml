@@ -26,6 +26,12 @@
     <SolidColorBrush x:Key="BackgroundBrush" Color="#F8FFF5"/>
     <Color x:Key="BackgroundColor">#F8FFF5</Color>
     
+    <SolidColorBrush x:Key="BorderBrush" Color="#EAF3E5"/>
+    <Color x:Key="BorderColor">#EAF3E5</Color>
+    
+    <SolidColorBrush x:Key="Ultra2LightGreenBrush" Color="#FAFFF8"/>
+    <Color x:Key="Ultra2LightGreenColor">#FAFFF8</Color>
+    
     <SolidColorBrush x:Key="UltraLightGreenBrush" Color="#D1EDD6"/>
     <Color x:Key="UltraLightGreenColor">#D1EDD6</Color>
     
@@ -46,4 +52,10 @@
     
     <SolidColorBrush x:Key="DarkGrayBrush" Color="#504E4E"/>
     <Color x:Key="DarkGreyColor">#504E4E</Color>
+    
+    <SolidColorBrush x:Key="LightTextBrush" Color="#FFFFFF"/>
+    <Color x:Key="LightTextColor">#FFFFFF</Color>
+    
+    <SolidColorBrush x:Key="CircleButtonBackgroundBrush" Color="#FBFFF9"/>
+    <Color x:Key="CircleButtonBackgroundColor">#FBFFF9</Color>
 </ResourceDictionary>
