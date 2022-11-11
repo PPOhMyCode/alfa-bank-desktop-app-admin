@@ -26,6 +26,9 @@
     <SolidColorBrush x:Key="BackgroundBrush" Color="#F8FFF5"/>
     <Color x:Key="BackgroundColor">#F8FFF5</Color>
     
+    <SolidColorBrush x:Key="LightBackgroundBrush" Color="#FFFFFF"/>
+    <Color x:Key="LightBackgroundColor">#FFFFFF</Color>
+    
     <SolidColorBrush x:Key="BorderBrush" Color="#EAF3E5"/>
     <Color x:Key="BorderColor">#EAF3E5</Color>
     

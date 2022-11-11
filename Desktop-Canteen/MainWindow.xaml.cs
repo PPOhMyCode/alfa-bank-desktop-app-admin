@@ -12,7 +12,7 @@ namespace Desktop_Canteen
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Content = new MenuPage();
+            MainFrame.Content = new AuthorizationPage();
         }
     }
 }
