@@ -14,6 +14,14 @@
                 <RowDefinition Height="0.4*" />
                 <RowDefinition Height="0.5*" />
             </Grid.RowDefinitions>
+            <Rectangle Grid.RowSpan="3">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="{StaticResource BackgroundColor}" Offset="0"/>
+                        <GradientStop Color="{StaticResource LightBackgroundColor}" Offset="0.5"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
             <Grid>
                 <DockPanel>
                     <Button Width="120" Style="{StaticResource Transparent}">
