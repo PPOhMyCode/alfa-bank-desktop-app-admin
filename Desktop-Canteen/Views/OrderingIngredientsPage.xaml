@@ -116,11 +116,8 @@
                               CanUserReorderColumns="False"
                               ItemsSource="{Binding SummaryOrderViews}"
                               AutoGenerateColumns="False">
-                        <DataGrid.ColumnHeaderStyle>
-                            <HorizontalAlignment>Center</HorizontalAlignment>
-                        </DataGrid.ColumnHeaderStyle>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Название" Width="0.25*" Binding="{Binding  Dish.Name}" />
+                            <DataGridTextColumn Header="Название" Width="0.25*" Binding="{Binding  SystemDish.Name}" />
                             <DataGridTextColumn Header="Заявки" Width="0.25*" Binding="{Binding CountOrders}" />
                             <DataGridTemplateColumn Header="Продукты" Width="0.25*">
                                 <DataGridTemplateColumn.CellTemplate>

@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using Desktop_Canteen.ViewModels;
 
 namespace Desktop_Canteen.Views;
 
@@ -7,7 +9,9 @@ public partial class AddNewDishPage : Page
 {
     public AddNewDishPage()
     {
+        
         InitializeComponent();
+        DataContext  = new AddNewDishVM();
     }
     
     public void ToAllDishesButtonClick(object sender, RoutedEventArgs e)
