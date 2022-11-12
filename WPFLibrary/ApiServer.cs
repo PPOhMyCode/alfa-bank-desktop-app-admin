@@ -25,7 +25,7 @@ public class ApiServer
         return default;
     }
     
-    public static void Post<JModel>(JModel model,string req)
+    public static RestResponse Post<JModel>(JModel model,string req)
     {
         string url = "https://localhost:5001/";
         var client = new RestClient(url);
@@ -40,5 +40,7 @@ public class ApiServer
             var output = response.Content;
             System.Console.WriteLine(output);
         }
+
+        return response;
     }
 }

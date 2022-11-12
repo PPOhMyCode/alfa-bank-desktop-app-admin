@@ -13,6 +13,12 @@ public class User: BaseModel
     public int RoleId { set; get; }
 }
 
+public class UserAutorization
+{
+    public string Login { set; get; }
+    public string Password { set; get; }
+}
+
 public class UserView:BaseModel
 {
     public  string FirstName { set; get; }
