@@ -25,6 +25,21 @@ public class ApiServer
         return default;
     }
     
+    public static RestResponse Delete(string req)
+    {
+        string url = "https://localhost:5001/";
+        var client = new RestClient(url);
+        var request = new RestRequest(req, Method.Delete);
+        var response = client.Execute(request);
+
+        if (response.StatusCode == HttpStatusCode.OK)
+        {
+            string rawResponse = response.Content;
+        }
+
+        return response;
+    }
+    
     public static RestResponse Post<JModel>(JModel model,string req)
     {
         string url = "https://localhost:5001/";
