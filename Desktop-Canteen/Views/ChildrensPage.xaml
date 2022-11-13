@@ -6,7 +6,7 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:Desktop_Canteen.Views"
       mc:Ignorable="d"
-      Title="ChildrensPage" Height="450" Width="800">
+      Title="ChildrensPage" Height="1024" Width="1440">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*" />
@@ -22,8 +22,8 @@
             </Rectangle.Fill>
         </Rectangle>
         <Grid>
-            <DockPanel Margin="10, 0">
-                <Button Width="120" Style="{StaticResource Transparent}">
+            <DockPanel Margin="30, 0">
+                <Button Width="180" Margin="0, 0, 10, 0" Style="{StaticResource Transparent}">
                     <Viewbox>
                         <Image Source="/Resources/AppIcon.png" Stretch="Uniform"/>
                     </Viewbox>
@@ -39,13 +39,13 @@
                 <Button Style="{StaticResource SelectedMainMenuButton}" Content="Школьники" />
                 
                 <Button DockPanel.Dock="Right" Style="{StaticResource Transparent}" HorizontalAlignment="Right"
-                        Height="40" Width="40" Margin="0,0,10,0">
-                    <materialDesign:PackIcon Kind="AccountCircle"/>
+                        Height="60" Width="60" Margin="0,0,10,0">
+                    <materialDesign:PackIcon Kind="Circle" Height="60" Width="60"/>
                 </Button>
                 
                 <Button DockPanel.Dock="Right" Style="{StaticResource Transparent}" HorizontalAlignment="Right"
-                        Height="30" Width="30" Margin="0,0,0,0">
-                    <ContentControl Content="{StaticResource BellIcon}" />
+                        Height="60" Width="60" Margin="0,0,15,0">
+                    <materialDesign:PackIcon Kind="BellOutline" Height="30" Width="30"/>
                 </Button>
             </DockPanel>
         </Grid>

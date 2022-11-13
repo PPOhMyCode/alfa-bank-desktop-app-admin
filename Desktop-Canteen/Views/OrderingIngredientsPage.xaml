@@ -8,7 +8,7 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:desktopCanteen="clr-namespace:Desktop_Canteen"
       mc:Ignorable="d"
-      Title="OrderingIngredientsPage" Height="450" Width="800">
+      Title="OrderingIngredientsPage" Height="1024" Width="1440">
     <Page.DataContext>
         <viewModels:OrderingIngredientsVM />
     </Page.DataContext>
@@ -27,8 +27,8 @@
             </Rectangle.Fill>
         </Rectangle>
         <Grid>
-            <DockPanel>
-                <Button Width="120" Style="{StaticResource Transparent}">
+            <DockPanel Margin="30, 0">
+                <Button Width="180" Margin="0, 0, 10, 0" Style="{StaticResource Transparent}">
                     <Viewbox>
                         <Image Source="/Resources/AppIcon.png" Stretch="Uniform"/>
                     </Viewbox>
@@ -44,13 +44,13 @@
                         Click="ToChildrensButtonClick" />
 
                 <Button DockPanel.Dock="Right" Style="{StaticResource Transparent}" HorizontalAlignment="Right"
-                        Height="40" Width="40" Margin="0,0,10,0">
-                    <materialDesign:PackIcon Kind="AccountCircle" />
+                        Height="60" Width="60" Margin="0,0,10,0">
+                    <materialDesign:PackIcon Kind="Circle" Height="60" Width="60"/>
                 </Button>
-
+                
                 <Button DockPanel.Dock="Right" Style="{StaticResource Transparent}" HorizontalAlignment="Right"
-                        Height="30" Width="30" Margin="0,0,0,0">
-                    <ContentControl Content="{StaticResource BellIcon}" />
+                        Height="60" Width="60" Margin="0,0,15,0">
+                    <materialDesign:PackIcon Kind="BellOutline" Height="30" Width="30"/>
                 </Button>
             </DockPanel>
         </Grid>
@@ -123,14 +123,17 @@
                               CanUserAddRows="False"
                               CanUserReorderColumns="False"
                               ItemsSource="{Binding SummaryOrderViews}"
-                              AutoGenerateColumns="False">
+                              AutoGenerateColumns="False" 
+                              CanUserDeleteRows="False"
+                              IsReadOnly="True">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Название" Width="0.25*" Binding="{Binding  SystemDish.Name}" />
+                            <DataGridTextColumn Header="Название" Width="0.25*" Binding="{Binding  SystemDish.Name}"/>
                             <DataGridTextColumn Header="Заявки" Width="0.25*" Binding="{Binding CountOrders}" />
                             <DataGridTemplateColumn Header="Продукты" Width="0.25*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <ListView ItemsSource="{Binding Ingredients}">
+                                        <ListView ItemsSource="{Binding Ingredients}"
+                                                  IsEnabled="False">
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding Ingredient.Name}" />
@@ -163,14 +166,14 @@
                               CanUserAddRows="False"
                               CanUserReorderColumns="False"
                               ItemsSource="{Binding Values}"
-                              AutoGenerateColumns="False">
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True">
                         <DataGrid.Columns>
-                            <!-- <DataGridTextColumn Header="Значение" Binding="{Binding }" /> -->
-                            
                             <DataGridTemplateColumn Header="Значение">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <ListView ItemsSource="{Binding }">
+                                        <ListView ItemsSource="{Binding }" IsEnabled="False"
+                                                  >
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding }" />

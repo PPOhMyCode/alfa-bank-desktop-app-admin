@@ -89,9 +89,10 @@
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="Foreground" Value="{StaticResource DarkGrayBrush}"/>
         <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="FontSize" Value="19"/>
         <Setter Property="FontFamily" Value="{StaticResource Montserrat-Bold}"/>
         <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="Margin" Value="10, 7, 10, 0"/>
+        <Setter Property="Margin" Value="15, 7, 15, 0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -127,9 +128,10 @@
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="Foreground" Value="{StaticResource DarkGreenBrush}"/>
         <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="FontSize" Value="19"/>
         <Setter Property="FontFamily" Value="{StaticResource Montserrat-Bold}"/>
         <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="Margin" Value="10, 7, 10, 0"/>
+        <Setter Property="Margin" Value="15, 7, 15, 0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -206,7 +208,7 @@
                                  StrokeThickness="1"/>
                         <Label Content="{TemplateBinding Content}" HorizontalAlignment="Center"
                                   VerticalAlignment="Center" Foreground="{StaticResource GreenBrush}"
-                                  FontWeight="DemiBold"/>
+                                  FontWeight="DemiBold" FontSize="19"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -226,7 +228,7 @@
                                  StrokeThickness="1"/>
                         <Label Content="{TemplateBinding Content}" HorizontalAlignment="Center"
                                VerticalAlignment="Center" Foreground="{StaticResource LightTextBrush}"
-                               FontWeight="DemiBold"/>
+                               FontWeight="DemiBold" FontSize="19"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
