@@ -59,6 +59,7 @@
         <Setter Property="BorderBrush" Value="{StaticResource MediumGreenBrush}" />
         <Setter Property="BorderThickness" Value="1.5" />
         <Setter Property="Padding" Value="1" />
+        <Setter Property="FontSize" Value="19"/>
         <Setter Property="AllowDrop" Value="true" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Template">

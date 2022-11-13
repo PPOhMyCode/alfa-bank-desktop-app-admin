@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Desktop_Canteen.Views"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d"
-      Title="SchedulePage" Height="1024" Width="1440">
+      Title="SchedulePage">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*" />

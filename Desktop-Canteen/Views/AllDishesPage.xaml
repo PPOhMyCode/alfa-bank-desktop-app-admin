@@ -7,7 +7,7 @@
       xmlns:viewModels="clr-namespace:Desktop_Canteen.ViewModels"
       xmlns:local="clr-namespace:Desktop_Canteen.Views"
       mc:Ignorable="d"
-      Title="AllDishesPage" Height="1024" Width="1440">
+      Title="AllDishesPage">
     <Page.DataContext>
         <viewModels:AllDishesPage />
     </Page.DataContext>

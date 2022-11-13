@@ -64,4 +64,7 @@
     
     <SolidColorBrush x:Key="CircleButtonBackgroundBrush" Color="#FBFFF9"/>
     <Color x:Key="CircleButtonBackgroundColor">#FBFFF9</Color>
+    
+    <SolidColorBrush x:Key="ComboBoxItemBackgroundBrush" Color="#E7F6E9"/>
+    <Color x:Key="ComboBoxItemBackgroundColor">#E7F6E9</Color>
 </ResourceDictionary>

@@ -7,12 +7,12 @@
       xmlns:viewModels="clr-namespace:Desktop_Canteen.ViewModels"
       xmlns:local="clr-namespace:Desktop_Canteen.Views"
       mc:Ignorable="d"
-      Title="AuthorizationPage" Margin="0" Height="1024" Width="1440">
+      Title="AuthorizationPage" Margin="0">
     <Page.DataContext>
         <viewModels:AuthorizationVM />
     </Page.DataContext>
     <Grid>
-        <Rectangle Height="1024" Width="1440">
+        <Rectangle >
             <Rectangle.Fill>
                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                     <GradientStop Color="{StaticResource BackgroundColor}" Offset="0"/>
