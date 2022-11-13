@@ -27,3 +27,9 @@ public class IngredientCount
     public Ingredient Ingredient { get; set; }
     public double Count { set; get; }
 }
+
+public class IngredientCountInput
+{
+    public int IngredientId { get; set; }
+    public double Count { set; get; }
+}

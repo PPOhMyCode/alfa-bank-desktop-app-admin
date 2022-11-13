@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using Desktop_Admin.Models;
+using DevExpress.Mvvm.Native;
 using RestSharp;
 using WPFLibrary;
 using WPFLibrary.JsonModels;
@@ -13,8 +15,11 @@ public class MenuVM: BaseVM
 {
     public DateTime Date;
     public int TypeMeal;
-    public ObservableCollection<Dish> Dishes { get; set; }
-    public ObservableCollection<MenuView> Menu { get; set; }
+    private ObservableCollection<Dish> Dishes { get; set; }
+    private ObservableCollection<MenuView> Menu { get; set; }
+    
+    public ObservableCollection<Dish> DishInMenu { get; set; }
+    public ObservableCollection<Dish> DishCanAddToMenu { get; set; }
     public RelayCommand GetMenuDateCommand { protected set; get; }
     public RelayCommand AddMenuDateCommand { protected set; get; }
 
@@ -37,27 +42,31 @@ public class MenuVM: BaseVM
             DishId = (int) param,
             TypeMealId = (int) TypeMeal
         };
-        ApiServer.Post(menu, "Menu");
+        var responce = ApiServer.Post(menu, "Menu");
+        GetMenu();
     }
     /// <summary>
     /// Get menu for Date
     /// </summary>
     /// <param name="param">null</param>
-    public void GetMenu(object param)
+    public void GetMenu(object param = null)
     {
         Menu.Clear();
+        DishInMenu.Clear();
         var menuDate = ApiServer.Get<List<Menu>>("Menu/Date"+Date.Date);
         //var  = new ObservableCollection<Menu>(ApiServer.Get<List<Menu>>("Menu"));
         foreach (var a in menuDate)
         {
+            var dish = ApiServer.Get<Dish>("Dish/" + a.DishId);
             Menu.Add(new MenuView()
             {
                 Date = a.Date,
-                Dish = ApiServer.Get<Dish>("Dish/"+a.DishId),
+                Dish = dish,
                 TypeMeal = ApiServer.Get<TypeMeal>("TypeMeal/"+a.TypeMealId),
                 Id = a.Id
             });
+            DishInMenu.Add(dish);
         }
-
+        DishCanAddToMenu = Dishes.Where(x=>!DishInMenu.Contains(x)).ToObservableCollection();
     }
 }

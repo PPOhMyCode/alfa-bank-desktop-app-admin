@@ -64,8 +64,8 @@ public class AddNewDishVM : BaseVM
 
     #endregion
     
+    public List<IngredientCountInput> InputIngredients { get; set; }
     public ObservableCollection<Ingredient> Ingredients { get; set; }
-
     public RelayCommand AddCommand { protected set; get; }
     public AddNewDishVM()
     {

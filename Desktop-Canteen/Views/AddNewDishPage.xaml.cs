@@ -2,16 +2,19 @@
 using System.Windows.Controls;
 using System.Windows.Data;
 using Desktop_Canteen.ViewModels;
+using WPFLibrary.JsonModels;
 
 namespace Desktop_Canteen.Views;
 
 public partial class AddNewDishPage : Page
 {
+    public AddNewDishVM _AddNewDishVm;
     public AddNewDishPage()
     {
         
         InitializeComponent();
-        DataContext  = new AddNewDishVM();
+        _AddNewDishVm = new AddNewDishVM();
+        DataContext  = _AddNewDishVm;
     }
     
     public void ToAllDishesButtonClick(object sender, RoutedEventArgs e)
