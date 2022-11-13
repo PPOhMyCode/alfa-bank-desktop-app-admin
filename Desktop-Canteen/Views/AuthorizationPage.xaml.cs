@@ -17,7 +17,14 @@ public partial class AuthorizationPage : Page
     public void EnterButtonClick(object sender, RoutedEventArgs e)
     {
         //проверка логина и пароля
-        if(_authorizationVm.ValidAuthorization())
+        if (_authorizationVm.ValidAuthorization())
+        {
+            ErrorAuthorizationBlock.Visibility = Visibility.Hidden;
             NavigationService?.Navigate(new MenuPage());
+        }
+        else
+        {
+            ErrorAuthorizationBlock.Visibility = Visibility.Visible;
+        }
     }
 }

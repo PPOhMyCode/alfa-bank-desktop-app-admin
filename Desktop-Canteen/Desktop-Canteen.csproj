@@ -20,4 +20,11 @@
       <PackageReference Include="PropertyChanged.Fody" Version="4.0.5" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Resources\AppIconBig.png" />
+      <Resource Include="Resources\AppIconBig.png" />
+      <None Remove="Resources\AppIcon.png" />
+      <Resource Include="Resources\AppIcon.png" />
+    </ItemGroup>
+
 </Project>

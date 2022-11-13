@@ -59,6 +59,9 @@
     <SolidColorBrush x:Key="LightTextBrush" Color="#FFFFFF"/>
     <Color x:Key="LightTextColor">#FFFFFF</Color>
     
+    <SolidColorBrush x:Key="ErrorTextBrush" Color="#D75757"/>
+    <Color x:Key="ErrorTextColor">#D75757</Color>
+    
     <SolidColorBrush x:Key="CircleButtonBackgroundBrush" Color="#FBFFF9"/>
     <Color x:Key="CircleButtonBackgroundColor">#FBFFF9</Color>
 </ResourceDictionary>
