@@ -55,7 +55,8 @@
             </DockPanel>
         </Grid>
         <Grid Row="1">
-            <Button  Width="200" Height="50" HorizontalAlignment="Right"
+            <Button Style="{StaticResource BaseButton}" Margin="10, 15, 20, 15"
+                Width="200" Height="50" HorizontalAlignment="Right"
                     Content="Добавить блюдо" Click="ToAddNewDishButtonClick"/>
         </Grid>
         <Grid Row="2">
