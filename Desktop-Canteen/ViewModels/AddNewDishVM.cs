@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -68,7 +69,7 @@ public class AddNewDishVM : BaseVM
     #endregion
     
     public StackPanel IngredientsStackPanel { get; set; }
-    
+    private List<Ingredient> SelectedIngredients { get; set; }
     public Button AddNewIngredientButton { get; set; }
     
     private Ingredient _prevSelectedItem;
@@ -89,7 +90,6 @@ public class AddNewDishVM : BaseVM
             // {
             //     AddNewIngredientButton.IsEnabled = true;
             // }
-            Ingredients.Add(_selectedItem);
             OnPropertyChanged("SelectedIngredient");
         }
     }
@@ -102,6 +102,7 @@ public class AddNewDishVM : BaseVM
     public AddNewDishVM()
     {
         Ingredients = new ObservableCollection<Ingredient>(ApiServer.Get<List<Ingredient>>("Ingredients"));
+        SelectedIngredients = new List<Ingredient>();
         _dishView = new DishView();
         this.AddCommand = new RelayCommand(ExecuteAddDish);
         this.AddIngredientCommand = new RelayCommand(AddSelectedIngredient);
@@ -112,9 +113,14 @@ public class AddNewDishVM : BaseVM
 
     private void DeleteIngredient(object param)
     {
-        var stack = (Grid) param;
-        var parent = (StackPanel) stack.Parent;
-        parent.Children.Remove(stack);
+        var grid = (Grid) param;
+        var parent = (StackPanel) grid.Parent;
+        parent.Children.Remove(grid);
+        var nameIngredient = ((TextBlock) grid.Children[0]).Text;
+        var ingredient = SelectedIngredients.FirstOrDefault(x => x.Name == nameIngredient);
+        Ingredients.Add(ingredient);
+        SelectedIngredients.Remove(ingredient);
+        
     }
 
     public void AddSelectedIngredient(object param)
@@ -195,7 +201,8 @@ public class AddNewDishVM : BaseVM
         
         ingredientRow.Margin = new Thickness(0, 5, 0, 15);
         IngredientsStackPanel.Children.Add(ingredientRow);
-        
+        SelectedIngredients.Add(_selectedItem);
+        Ingredients.Remove(_selectedItem);
     }
     
     public void ExecuteAddDish(object param)
