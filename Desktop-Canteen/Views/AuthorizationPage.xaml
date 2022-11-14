@@ -71,7 +71,7 @@
                 <TextBlock Grid.ColumnSpan="2" Grid.Row="1" Height="4" Background="{StaticResource GreenBrush}"
                            VerticalAlignment="Bottom" Margin="0, 0, 0, -1"/>
             </Grid>
-            <TextBlock Name="ErrorAuthorizationBlock" Margin="0, 25, 0, 0" Height="20" Text="Введен неверный логин или пароль"
+            <TextBlock Name="ErrorAuthorizationBlock" Margin="0, 25, 0, 0" Height="20" Text="{Binding AutorizationError}"
                        HorizontalAlignment="Center" Visibility="Hidden"
                        Style="{StaticResource ErrorText}"/>
             <Button Margin="0, 40, 0, 10" Style="{StaticResource BaseButton}" Width="220" Height="50" 

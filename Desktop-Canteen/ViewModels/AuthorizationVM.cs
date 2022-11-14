@@ -13,6 +13,17 @@ namespace Desktop_Canteen.ViewModels;
 public class AuthorizationVM : BaseVM
 {
     public UserAutorization UserAutorization { get; set; }
+    private string autorizationError { get; set; }
+    
+    public string AutorizationError
+    {
+        get { return autorizationError; }
+        set
+        {
+            autorizationError = value;
+            OnPropertyChanged("AutorizationError");
+        }
+    }
 
     #region UserData
 
@@ -53,7 +64,7 @@ public class AuthorizationVM : BaseVM
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            AutorizationError = response.Content;
             return false;
         }
     }

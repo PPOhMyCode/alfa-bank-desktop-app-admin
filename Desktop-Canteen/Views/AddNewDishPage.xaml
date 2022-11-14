@@ -116,7 +116,7 @@
                                       BorderBrush="{StaticResource MediumGreenBrush}"
                                       SelectedItem="{Binding SelectedIngredient}"
                                       Background="{StaticResource LightBackgroundBrush}"
-                                      ToolTip="Выберите продукт и граммовку" />
+                                      ToolTip="Выберите продукт и граммовку"/>
                             <Button Name="AddNewIngredientButton" Style="{StaticResource CircleButton}" Content="+"
                                     Foreground="{StaticResource DarkGrayBrush}" IsEnabled="False"
                                     Command="{Binding AddIngredientCommand}"
@@ -136,7 +136,7 @@
                                 Content="Загрузить" FontSize="19" Foreground="{StaticResource DarkGrayBrush}" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0, 20, 0, 0" Height="60">
-                        <Button Click="ToAllDishesButtonClick" Style="{StaticResource BaseButton}" Height="60"
+                        <Button Command="{Binding AddCommand}" Style="{StaticResource BaseButton}" Height="60"
                                 Width="200"
                                 Content="Сохранить" FontSize="25" Foreground="{StaticResource DarkGrayBrush}" />
                     </StackPanel>
