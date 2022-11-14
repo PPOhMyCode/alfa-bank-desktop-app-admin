@@ -97,6 +97,7 @@ public class AddNewDishVM : BaseVM
     public List<IngredientCountInput> InputIngredients { get; set; }
     public ObservableCollection<Ingredient> Ingredients { get; set; }
     public RelayCommand AddCommand { protected set; get; }
+    public RelayCommand DeleteIngredientCommand { protected set; get; }
     public RelayCommand AddIngredientCommand { protected set; get; }
     public AddNewDishVM()
     {
@@ -104,8 +105,16 @@ public class AddNewDishVM : BaseVM
         _dishView = new DishView();
         this.AddCommand = new RelayCommand(ExecuteAddDish);
         this.AddIngredientCommand = new RelayCommand(AddSelectedIngredient);
+        this.DeleteIngredientCommand = new RelayCommand(DeleteIngredient);
         _selectedItem = null;
         _prevSelectedItem = null;
+    }
+
+    private void DeleteIngredient(object param)
+    {
+        var stack = (Grid) param;
+        var parent = (StackPanel) stack.Parent;
+        parent.Children.Remove(stack);
     }
 
     public void AddSelectedIngredient(object param)
@@ -175,7 +184,9 @@ public class AddNewDishVM : BaseVM
             Width = 40,
             Height = 40,
             HorizontalAlignment = HorizontalAlignment.Right,
-            VerticalAlignment = VerticalAlignment.Center
+            VerticalAlignment = VerticalAlignment.Center,
+            Command = DeleteIngredientCommand,
+            CommandParameter = ingredientRow
         };
         Grid.SetColumn(xButton, 3);
         Grid.SetRow(xButton, 0);
