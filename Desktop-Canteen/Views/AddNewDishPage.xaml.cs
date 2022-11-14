@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
@@ -18,6 +19,20 @@ public partial class AddNewDishPage : Page
         DataContext  = _AddNewDishVm;
         _AddNewDishVm.IngredientsStackPanel = this.Ingredients;
         _AddNewDishVm.AddNewIngredientButton = this.AddNewIngredientButton;
+    }
+    
+    public void SaveClick(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            _AddNewDishVm.ExecuteAddDish();
+            NavigationService?.Navigate(new AllDishesPage());
+        }
+        catch (Exception exception)
+        {
+            Console.WriteLine(exception);
+            throw;
+        }
     }
 
     public void ToAllDishesButtonClick(object sender, RoutedEventArgs e)

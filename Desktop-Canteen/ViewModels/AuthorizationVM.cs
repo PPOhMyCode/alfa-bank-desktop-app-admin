@@ -46,6 +46,15 @@ public class AuthorizationVM : BaseVM
     {
         var response = ApiServer.Post(UserAutorization, "Autorization");
         //TODO: Переделать по нормальному 
-        return response.Content[1..^1] != "No people with this login" && response.Content[1..^1] != "Password is wrong";
+        try
+        {
+            var user = JsonConvert.DeserializeObject<UserDataView>(response.Content);
+            return true;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return false;
+        }
     }
 }

@@ -207,10 +207,10 @@ public class AddNewDishVM : BaseVM
         Ingredients.Remove(_selectedItem);
     }
     
-    public void ExecuteAddDish(object param)
+    public void ExecuteAddDish(object param=null)
     {
          //TODO: Сделать проверку заполнености поле ввода
-         ApiServer.Post(_dishView, "Dish");
+         
          var ingredientCount = IngredientsStackPanel.Children.Count;
          for (int i = 1; i < ingredientCount; i++)
          {
@@ -220,9 +220,10 @@ public class AddNewDishVM : BaseVM
              InputIngredients.Add(new IngredientCountInput()
              {
                  IngredientId = ingredient.Id,
-                 Count = count
+                 Count = count/ingredient.Quantity
              });
          }
+         ApiServer.Post(_dishView, "Dish");
          var dish = ApiServer.Get<List<Dish>>("Dish").FirstOrDefault(x => x.Name == _dishView.Name);
          ApiServer.Post(InputIngredients, "Dish/" + dish.Id + "/ingredients");
     }
