@@ -72,13 +72,17 @@
                             <TextBlock Style="{StaticResource DefaultText}" FontSize="20"
                                        Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="26"
                                        Foreground="{StaticResource GreenBrush}" />
-                            <TextBlock Width="45" FontWeight="DemiBold" TextAlignment="Center" Text="27"
+                            <TextBlock Style="{StaticResource DefaultText}" FontSize="20"
+                                       Width="45" FontWeight="DemiBold" TextAlignment="Center" Text="27"
                                        Foreground="{StaticResource GreenBrush}" />
-                            <TextBlock Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="28"
+                            <TextBlock Style="{StaticResource DefaultText}" FontSize="20"
+                                       Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="28"
                                        Foreground="{StaticResource GreenBrush}" />
-                            <TextBlock Width="45" FontWeight="DemiBold" TextAlignment="Center" Text="29"
+                            <TextBlock Style="{StaticResource DefaultText}" FontSize="20"
+                                       Width="45" FontWeight="DemiBold" TextAlignment="Center" Text="29"
                                        Foreground="{StaticResource GreenBrush}" />
-                            <TextBlock Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="30"
+                            <TextBlock Style="{StaticResource DefaultText}" FontSize="20"
+                                       Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="30"
                                        Foreground="{StaticResource GreenBrush}" />
                         </StackPanel>
                     </Grid>

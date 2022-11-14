@@ -127,6 +127,9 @@ public class AddNewDishVM : BaseVM
 
     public void AddSelectedIngredient(object param)
     {
+        if (_selectedItem == null)
+            return;
+        
         var ingredientRow = new Grid();
         ingredientRow.Height = 40;
         ingredientRow.Width = 460;
