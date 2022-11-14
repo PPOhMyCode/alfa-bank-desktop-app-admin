@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -102,6 +103,7 @@ public class AddNewDishVM : BaseVM
     public AddNewDishVM()
     {
         Ingredients = new ObservableCollection<Ingredient>(ApiServer.Get<List<Ingredient>>("Ingredients"));
+        InputIngredients = new List<IngredientCountInput>();
         SelectedIngredients = new List<Ingredient>();
         _dishView = new DishView();
         this.AddCommand = new RelayCommand(ExecuteAddDish);
@@ -209,5 +211,19 @@ public class AddNewDishVM : BaseVM
     {
          //TODO: Сделать проверку заполнености поле ввода
          ApiServer.Post(_dishView, "Dish");
+         var ingredientCount = IngredientsStackPanel.Children.Count;
+         for (int i = 1; i < ingredientCount; i++)
+         {
+             var grid = (Grid)IngredientsStackPanel.Children[i];
+             var ingredient = SelectedIngredients.FirstOrDefault(x => x.Name == ((TextBlock) grid.Children[0]).Text);
+             var count = Convert.ToDouble(((TextBox)grid.Children[1]).Text);
+             InputIngredients.Add(new IngredientCountInput()
+             {
+                 IngredientId = ingredient.Id,
+                 Count = count
+             });
+         }
+         var dish = ApiServer.Get<List<Dish>>("Dish").FirstOrDefault(x => x.Name == _dishView.Name);
+         ApiServer.Post(InputIngredients, "Dish/" + dish.Id + "/ingredients");
     }
 }

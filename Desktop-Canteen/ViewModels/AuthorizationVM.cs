@@ -3,6 +3,7 @@ using System.Net;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using Desktop_Canteen.Views;
+using Newtonsoft.Json;
 using WPFLibrary;
 using WPFLibrary.JsonModels;
 using WPFLibrary.Models;
@@ -44,6 +45,7 @@ public class AuthorizationVM : BaseVM
     public bool ValidAuthorization()
     {
         var response = ApiServer.Post(UserAutorization, "Autorization");
-        return response.StatusCode == HttpStatusCode.OK;
+        //TODO: Переделать по нормальному 
+        return response.Content[1..^1] != "No people with this login" && response.Content[1..^1] != "Password is wrong";
     }
 }
