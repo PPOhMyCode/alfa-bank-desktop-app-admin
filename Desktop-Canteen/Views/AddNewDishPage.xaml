@@ -113,7 +113,7 @@
                                       DisplayMemberPath="Name"
                                       d:LayoutOverrides="Height"
                                       BorderThickness="1.5"
-                                      BorderBrush="{StaticResource MediumGreenBrush}"
+                                      BorderBrush="{StaticResource GreenBrush}"
                                       SelectedItem="{Binding SelectedIngredient}"
                                       Background="{StaticResource LightBackgroundBrush}"
                                       ToolTip="Выберите продукт и граммовку"/>

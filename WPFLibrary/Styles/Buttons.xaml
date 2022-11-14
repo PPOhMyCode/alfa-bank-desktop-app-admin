@@ -3,7 +3,7 @@
 
     <Style x:Key="BaseButton" TargetType="Button">
         <Setter Property="Background" Value="{StaticResource GreenBrush}" />
-        <Setter Property="FontFamily" Value="{StaticResource BaseFont}" />
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}" />
         <Setter Property="FontSize" Value="{StaticResource Regular}" />
         <Setter Property="Foreground" Value="Black" />
         <Setter Property="FontWeight" Value="DemiBold" />
@@ -217,9 +217,9 @@
     </Style>
     
     <Style x:Key="SelectedCircleButton" TargetType="Button">
-        <Setter Property="Foreground" Value="{StaticResource GreenBrush}"/>
-        <Setter Property="Height" Value="35"/>
-        <Setter Property="Width" Value="35"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -229,28 +229,140 @@
                                  StrokeThickness="1"/>
                         <Label Content="{TemplateBinding Content}" HorizontalAlignment="Center"
                                   VerticalAlignment="Center" Foreground="{StaticResource GreenBrush}"
-                                  FontWeight="DemiBold" FontSize="19"/>
+                                  FontWeight="DemiBold" FontSize="19" Padding="5"/>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefaulted" Value="True">
+                            <Setter Property="Background" Value="{StaticResource GreenBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{StaticResource UltraDarkGreenBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Foreground" Value="{StaticResource DarkGreenBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="{StaticResource UltraLightGreenBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
     
     <Style x:Key="CircleButton" TargetType="Button">
-        <Setter Property="Foreground" Value="{StaticResource LightTextBrush}"/>
-        <Setter Property="Height" Value="35"/>
-        <Setter Property="Width" Value="35"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid>
-                        <Ellipse Fill="{StaticResource GreenBrush}" 
+                        <Ellipse x:Name="Ellipse" 
+                                 Fill="{StaticResource GreenBrush}" 
                                  Stroke="{StaticResource GreenBrush}"
                                  StrokeThickness="1"/>
-                        <Label Content="{TemplateBinding Content}" HorizontalAlignment="Center"
+                        <Label x:Name="Label" 
+                               Content="{TemplateBinding Content}" HorizontalAlignment="Center"
                                VerticalAlignment="Center" Foreground="{StaticResource LightTextBrush}"
-                               FontWeight="DemiBold" FontSize="19"/>
+                               FontWeight="DemiBold" FontSize="19" Padding="5"/>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefaulted" Value="True">
+                            <Setter Property="Fill" TargetName="Ellipse" Value="{StaticResource GreenBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" TargetName="Label" Value="{StaticResource UltraDarkGreenBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Foreground" TargetName="Label" Value="{StaticResource DarkGreenBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" TargetName="Label" Value="{StaticResource UltraLightGreenBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="TypeMealButton" TargetType="Button">
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="{StaticResource LightTextBrush}"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="Background" Value="{StaticResource GreenBrush}"/>
+        <Setter Property="FontSize" Value="17"/>
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Bold}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        Name="brd"
+                        BorderBrush="{StaticResource MediumGreenBrush}"
+                        Background="{StaticResource GreenBrush}"
+                        CornerRadius="45"
+                        BorderThickness="2">
+                        <ContentPresenter
+                            Margin="0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefaulted" Value="True">
+                            <Setter Property="Background" Value="{StaticResource GreenBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{StaticResource UltraDarkGreenBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Foreground" Value="{StaticResource DarkGreenBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="{StaticResource UltraLightGreenBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="SelectedTypeMealButton" TargetType="Button">
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="{StaticResource GreenBrush}"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="Background" Value="{StaticResource CircleButtonBackgroundBrush}"/>
+        <Setter Property="FontSize" Value="17"/>
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Bold}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        Name="brd"
+                        BorderBrush="{StaticResource GreenBrush}"
+                        Background="{StaticResource CircleButtonBackgroundBrush}"
+                        CornerRadius="45"
+                        BorderThickness="2">
+                        <ContentPresenter
+                            Margin="0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefaulted" Value="True">
+                            <Setter Property="Background" Value="{StaticResource GreenBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{StaticResource UltraDarkGreenBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Foreground" Value="{StaticResource DarkGreenBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="{StaticResource UltraLightGreenBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
