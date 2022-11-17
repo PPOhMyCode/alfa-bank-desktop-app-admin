@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using Desktop_Canteen.ViewModels;
 
 namespace Desktop_Canteen.Views
 {
@@ -9,6 +10,7 @@ namespace Desktop_Canteen.Views
         public MenuPage()
         {
             InitializeComponent();
+            DataContext = new MenuVM();
         }
     
         public void ToOrderingIngredientsButtonClick(object sender, RoutedEventArgs e)

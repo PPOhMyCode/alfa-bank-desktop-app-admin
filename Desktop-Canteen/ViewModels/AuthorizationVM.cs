@@ -60,7 +60,9 @@ public class AuthorizationVM : BaseVM
         try
         {
             var user = JsonConvert.DeserializeObject<UserDataView>(response.Content);
-            return true;
+            if (user.Id == 0)
+                AutorizationError = "Null Data";
+            return user.Id != 0;
         }
         catch (Exception e)
         {

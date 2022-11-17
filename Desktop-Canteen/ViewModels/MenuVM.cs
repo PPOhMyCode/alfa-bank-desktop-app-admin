@@ -15,7 +15,7 @@ public class MenuVM: BaseVM
 {
     public DateTime Date;
     public int TypeMeal;
-    private ObservableCollection<Dish> Dishes { get; set; }
+    private ObservableCollection<Dish> AllDishes { get; set; }
     private ObservableCollection<MenuView> Menu { get; set; }
     
     public ObservableCollection<Dish> DishInMenu { get; set; }
@@ -25,9 +25,14 @@ public class MenuVM: BaseVM
 
     public MenuVM()
     {
-        Dishes = new ObservableCollection<Dish>(ApiServer.Get<List<Dish>>("Dish"));
+        AllDishes = new ObservableCollection<Dish>(ApiServer.Get<List<Dish>>("Dish"));
+        Menu = new ObservableCollection<MenuView>();
+        DishInMenu = new ObservableCollection<Dish>();
+        DishCanAddToMenu = new ObservableCollection<Dish>();
         GetMenuDateCommand = new RelayCommand(GetMenu);
         AddMenuDateCommand = new RelayCommand(AddDishToMenu);
+        Date = DateTime.Today.Date;
+        GetMenu();
     }
     
     /// <summary>
@@ -53,20 +58,24 @@ public class MenuVM: BaseVM
     {
         Menu.Clear();
         DishInMenu.Clear();
-        var menuDate = ApiServer.Get<List<Menu>>("Menu/Date"+Date.Date);
+        var b = Date.ToString("MM-dd-yyyy");
+        var menuDate = ApiServer.Get<List<Menu>>("Menu/Date/"+Date.ToString("MM-dd-yyyy"));
         //var  = new ObservableCollection<Menu>(ApiServer.Get<List<Menu>>("Menu"));
-        foreach (var a in menuDate)
+        if (menuDate != null)
         {
-            var dish = ApiServer.Get<Dish>("Dish/" + a.DishId);
-            Menu.Add(new MenuView()
+            foreach (var a in menuDate)
             {
-                Date = a.Date,
-                Dish = dish,
-                TypeMeal = ApiServer.Get<TypeMeal>("TypeMeal/"+a.TypeMealId),
-                Id = a.Id
-            });
-            DishInMenu.Add(dish);
+                var dish = ApiServer.Get<Dish>("Dish/" + a.DishId);
+                Menu.Add(new MenuView()
+                {
+                    Date = a.Date,
+                    Dish = dish,
+                    TypeMeal = ApiServer.Get<TypeMeal>("TypeMeal/"+a.TypeMealId),
+                    Id = a.Id
+                });
+                DishInMenu.Add(dish);
+            }
         }
-        DishCanAddToMenu = Dishes.Where(x=>!DishInMenu.Contains(x)).ToObservableCollection();
+        DishCanAddToMenu = AllDishes.Where(x=>!DishInMenu.Contains(x)).ToObservableCollection();
     }
 }
