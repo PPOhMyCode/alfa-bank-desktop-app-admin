@@ -7,6 +7,7 @@
       xmlns:local="clr-namespace:Desktop_Canteen.Views"
       mc:Ignorable="d"
       Title="ChildrensPage">
+    <ScrollViewer>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*" />
@@ -22,7 +23,7 @@
             </Rectangle.Fill>
         </Rectangle>
         <Grid>
-            <DockPanel Margin="30, 0">
+            <DockPanel Margin="30, 20, 30 , 0">
                 <Button Width="180" Margin="0, 0, 10, 0" Style="{StaticResource Transparent}">
                     <Viewbox>
                         <Image Source="/Resources/AppIcon.png" Stretch="Uniform"/>
@@ -54,4 +55,5 @@
             
         </Grid>
     </Grid>
+    </ScrollViewer>
 </Page>

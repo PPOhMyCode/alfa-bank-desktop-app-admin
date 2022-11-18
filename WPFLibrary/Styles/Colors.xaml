@@ -56,15 +56,30 @@
     <SolidColorBrush x:Key="DarkGrayBrush" Color="#504E4E"/>
     <Color x:Key="DarkGreyColor">#504E4E</Color>
     
-    <SolidColorBrush x:Key="LightTextBrush" Color="#FFFFFF"/>
-    <Color x:Key="LightTextColor">#FFFFFF</Color>
+    <SolidColorBrush x:Key="LightTextBrush" Color="#FBFFF9"/>
+    <Color x:Key="LightTextColor">#FBFFF9</Color>
     
     <SolidColorBrush x:Key="ErrorTextBrush" Color="#D75757"/>
     <Color x:Key="ErrorTextColor">#D75757</Color>
+    
+    <SolidColorBrush x:Key="TrashIconBrush" Color="#D41B1B"/>
+    <Color x:Key="TrashIconColor">#D41B1B</Color>
+    
+    <SolidColorBrush x:Key="IsMouseOverTrashIconBrush" Color="#970808"/>
+    <Color x:Key="IsMouseOverTrashIconColor">#970808</Color>
+    
+    <SolidColorBrush x:Key="IsDisableTrashIconBrush" Color="#585858"/>
+    <Color x:Key="IsDisableTrashIconColor">#585858</Color>
     
     <SolidColorBrush x:Key="CircleButtonBackgroundBrush" Color="#FBFFF9"/>
     <Color x:Key="CircleButtonBackgroundColor">#FBFFF9</Color>
     
     <SolidColorBrush x:Key="ComboBoxItemBackgroundBrush" Color="#E7F6E9"/>
     <Color x:Key="ComboBoxItemBackgroundColor">#E7F6E9</Color>
+    
+    <SolidColorBrush x:Key="IsMouthOverDeleteCircleBackgroundBrush" Color="#FFD0D0"/>
+    <Color x:Key="IsMouthOverDeleteCircleBackgroundColor">#FFD0D0</Color>
+    
+    <SolidColorBrush x:Key="IsDisableDeleteCircleBackgroundBrush" Color="#C1C1C1"/>
+    <Color x:Key="IsDisableDeleteCircleBackgroundColor">#C1C1C1</Color>
 </ResourceDictionary>

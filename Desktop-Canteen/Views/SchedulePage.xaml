@@ -7,51 +7,53 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d"
       Title="SchedulePage">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0.1*" />
-            <RowDefinition Height="0.4*"/>
-            <RowDefinition Height="0.5*" />
-        </Grid.RowDefinitions>
-        <Rectangle Grid.RowSpan="3">
-            <Rectangle.Fill>
-                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                    <GradientStop Color="{StaticResource BackgroundColor}" Offset="0"/>
-                    <GradientStop Color="{StaticResource LightBackgroundColor}" Offset="0.5"/>
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
+    <ScrollViewer>
         <Grid>
-            <DockPanel Margin="30, 0">
-                <Button Width="180" Margin="0, 0, 10, 0" Style="{StaticResource Transparent}">
-                    <Viewbox>
-                        <Image Source="/Resources/AppIcon.png" Stretch="Uniform"/>
-                    </Viewbox>
-                </Button>
-                <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Меню"
-                        Click="ToMenuButtonClick"/>
-                <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Все блюда"
-                        Click="ToAllDishesButtonClick"/>
-                <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Заказ продуктов"
-                        Click="ToOrderingIngredientsButtonClick"/>
-                <Button Padding="10" Style="{StaticResource SelectedMainMenuButton}" Content="Расписание"/>
-                <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Школьники" 
-                        Click="ToChildrensButtonClick"/>
-                
-                <Button DockPanel.Dock="Right" Style="{StaticResource Transparent}" HorizontalAlignment="Right"
-                        Height="60" Width="60" Margin="0,0,10,0">
-                    <materialDesign:PackIcon Kind="Circle" Height="60" Width="60"/>
-                </Button>
-                
-                <Button DockPanel.Dock="Right" Style="{StaticResource Transparent}" HorizontalAlignment="Right"
-                        Height="60" Width="60" Margin="0,0,15,0">
-                    <materialDesign:PackIcon Kind="BellOutline" Height="30" Width="30"/>
-                </Button>
-            </DockPanel>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*" />
+                <RowDefinition Height="0.4*" />
+                <RowDefinition Height="0.5*" />
+            </Grid.RowDefinitions>
+            <Rectangle Grid.RowSpan="3">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="{StaticResource BackgroundColor}" Offset="0" />
+                        <GradientStop Color="{StaticResource LightBackgroundColor}" Offset="0.5" />
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Grid>
+                <DockPanel Margin="30, 20, 30 , 0">
+                    <Button Width="180" Margin="0, 0, 10, 0" Style="{StaticResource Transparent}">
+                        <Viewbox>
+                            <Image Source="/Resources/AppIcon.png" Stretch="Uniform" />
+                        </Viewbox>
+                    </Button>
+                    <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Меню"
+                            Click="ToMenuButtonClick" />
+                    <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Все блюда"
+                            Click="ToAllDishesButtonClick" />
+                    <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Заказ продуктов"
+                            Click="ToOrderingIngredientsButtonClick" />
+                    <Button Padding="10" Style="{StaticResource SelectedMainMenuButton}" Content="Расписание" />
+                    <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Школьники"
+                            Click="ToChildrensButtonClick" />
+
+                    <Button DockPanel.Dock="Right" Style="{StaticResource Transparent}" HorizontalAlignment="Right"
+                            Height="60" Width="60" Margin="0,0,10,0">
+                        <materialDesign:PackIcon Kind="Circle" Height="60" Width="60" />
+                    </Button>
+
+                    <Button DockPanel.Dock="Right" Style="{StaticResource Transparent}" HorizontalAlignment="Right"
+                            Height="60" Width="60" Margin="0,0,15,0">
+                        <materialDesign:PackIcon Kind="BellOutline" Height="30" Width="30" />
+                    </Button>
+                </DockPanel>
+            </Grid>
+
+            <Grid Row="1">
+
+            </Grid>
         </Grid>
-        
-        <Grid Row="1">
-            
-        </Grid>
-    </Grid>
+    </ScrollViewer>
 </Page>
