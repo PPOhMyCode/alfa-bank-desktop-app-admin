@@ -28,4 +28,17 @@ public partial class OrderingIngredientsPage : Page
     {
         NavigationService?.Navigate(new ChildrensPage());
     }
+    
+    public void ChangeStyleCircleButton(object sender, RoutedEventArgs e)
+    {
+        var isSelected = (sender as Button).Style.Equals(Application.Current.TryFindResource("SelectedCircleButton") as Style);
+        if (isSelected)
+        {
+            (sender as Button).Style = Application.Current.TryFindResource("CircleButton") as Style;
+        }
+        else
+        {
+            (sender as Button).Style = Application.Current.TryFindResource("SelectedCircleButton") as Style;
+        }
+    }
 }

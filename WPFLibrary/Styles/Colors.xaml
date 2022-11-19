@@ -56,6 +56,9 @@
     <SolidColorBrush x:Key="DarkGrayBrush" Color="#504E4E"/>
     <Color x:Key="DarkGreyColor">#504E4E</Color>
     
+    <SolidColorBrush x:Key="GrayBrush" Color="#535151"/>
+    <Color x:Key="GreyColor">#535151</Color>
+    
     <SolidColorBrush x:Key="LightTextBrush" Color="#FBFFF9"/>
     <Color x:Key="LightTextColor">#FBFFF9</Color>
     
