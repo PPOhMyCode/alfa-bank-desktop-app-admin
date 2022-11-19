@@ -56,70 +56,135 @@
                 </DockPanel>
             </Grid>
 
-            <Grid Row="1">
-                <Grid Margin="20, 10">
+            <Grid VerticalAlignment="Top" Row="1" Height="130" Margin="10, 0">
+                <Grid Margin="20, 10,10, 0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="0.2*" />
-                        <RowDefinition Height="0.3*" />
-                        <RowDefinition Height="0.5*" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="25" />
+                        <RowDefinition Height="60" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.5*" />
-                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="0.08*" />
+                        <ColumnDefinition Width="0.08*" />
+                        <ColumnDefinition Width="0.08*" />
+                        <ColumnDefinition Width="0.08*" />
+                        <ColumnDefinition Width="0.08*" />
+                        <ColumnDefinition Width="0.6*" />
                     </Grid.ColumnDefinitions>
-                    <Grid>
-                        <Button Style="{StaticResource Transparent}" Content="Сентябрь" HorizontalAlignment="Left"
-                                Foreground="{StaticResource GreenBrush}" FontWeight="Bold" />
-                    </Grid>
-                    <Grid Row="1">
-                        <StackPanel Orientation="Horizontal" Margin="0, 10, 0, 0">
-                            <TextBlock Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="26"
-                                       Foreground="{StaticResource GreenBrush}" />
-                            <TextBlock Width="45" FontWeight="DemiBold" TextAlignment="Center" Text="27"
-                                       Foreground="{StaticResource GreenBrush}" />
-                            <TextBlock Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="28"
-                                       Foreground="{StaticResource GreenBrush}" />
-                            <TextBlock Width="45" FontWeight="DemiBold" TextAlignment="Center" Text="29"
-                                       Foreground="{StaticResource GreenBrush}" />
-                            <TextBlock Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="30"
-                                       Foreground="{StaticResource GreenBrush}" />
-                        </StackPanel>
-                    </Grid>
-                    <Grid Row="2" Margin="0">
-                        <StackPanel Orientation="Horizontal">
-                            <Button Style="{StaticResource CircleButton}" Content="ПН"
-                                    Margin="0, 0, 5, 0" />
-                            <Button Style="{StaticResource CircleButton}" Content="ВТ"
-                                    Margin="0, 0, 5, 0" />
-                            <Button Style="{StaticResource CircleButton}" Content="СР"
-                                    Margin="0, 0, 5, 0" />
-                            <Button Style="{StaticResource CircleButton}" Content="ЧТ"
-                                    Margin="0, 0, 5, 0" />
-                            <Button Style="{StaticResource CircleButton}" Content="ПТ"
-                                    Margin="0" />
-                        </StackPanel>
-                    </Grid>
+                    <TextBlock Grid.ColumnSpan="2" Style="{StaticResource DefaultText}"
+                               Text="Сентябрь" HorizontalAlignment="Left" Margin="0, 0, 0, 10"
+                               Foreground="{StaticResource GrayBrush}" FontWeight="Normal" />
+
+                    <Viewbox Grid.Row="0" Grid.Column="1" Margin="0, 0, 0, 0" HorizontalAlignment="Right"
+                             Height="30" Width="30" VerticalAlignment="Top">
+                        <materialDesign:PackIcon Kind="CalendarMonth" Foreground="{StaticResource DarkGreenBrush}" />
+                    </Viewbox>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource DefaultText}"
+                               Width="35" TextAlignment="Center" Text="26" Margin="2, 0, 0, 0"
+                               Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
+                    <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource DefaultText}"
+                               Width="35" TextAlignment="Center" Text="27" Margin="2, 0, 0, 0"
+                               Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
+                    <TextBlock Grid.Row="1" Grid.Column="2" Style="{StaticResource DefaultText}"
+                               Width="35" TextAlignment="Center" Text="28" Margin="2, 0, 0, 0"
+                               Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
+                    <TextBlock Grid.Row="1" Grid.Column="3" Style="{StaticResource DefaultText}"
+                               Width="35" TextAlignment="Center" Text="29" Margin="2, 0, 0, 0"
+                               Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
+                    <TextBlock Grid.Row="1" Grid.Column="4" Style="{StaticResource DefaultText}"
+                               Width="35" TextAlignment="Center" Text="30" Margin="2, 0, 0, 0"
+                               Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
+
+                    <TextBlock Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4"
+                               Background="{StaticResource GreenBrush}"
+                               Height="3" Margin="0" VerticalAlignment="Center" Opacity="0.3" />
+
+                    <Button Grid.Column="0" Grid.Row="2" Style="{StaticResource CircleButton}" Content="ПН"
+                            Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
+                    <Button Grid.Column="1" Grid.Row="2" Style="{StaticResource CircleButton}" Content="ВТ"
+                            Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
+                    <Button Grid.Column="2" Grid.Row="2" Style="{StaticResource CircleButton}" Content="СР"
+                            Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
+                    <Button Grid.Column="3" Grid.Row="2" Style="{StaticResource CircleButton}" Content="ЧТ"
+                            Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
+                    <Button Grid.Column="4" Grid.Row="2" Style="{StaticResource CircleButton}" Content="ПТ"
+                            Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
 
                 </Grid>
             </Grid>
+
+            <!-- <Grid Row="1"> -->
+
+            <!-- <Grid Margin="20, 10"> -->
+            <!--     <Grid.RowDefinitions> -->
+            <!--         <RowDefinition Height="0.2*" /> -->
+            <!--         <RowDefinition Height="0.3*" /> -->
+            <!--         <RowDefinition Height="0.5*" /> -->
+            <!--     </Grid.RowDefinitions> -->
+            <!--     <Grid.ColumnDefinitions> -->
+            <!--         <ColumnDefinition Width="0.5*" /> -->
+            <!--         <ColumnDefinition Width="0.5*" /> -->
+            <!--     </Grid.ColumnDefinitions> -->
+            <!--     <Grid> -->
+            <!--         <Button Style="{StaticResource Transparent}" Content="Сентябрь" HorizontalAlignment="Left" -->
+            <!--                 Foreground="{StaticResource GreenBrush}" FontWeight="Bold" /> -->
+            <!--     </Grid> -->
+            <!--     <Grid Row="1"> -->
+            <!--         <StackPanel Orientation="Horizontal" Margin="0, 10, 0, 0"> -->
+            <!--             <TextBlock Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="26" -->
+            <!--                        Foreground="{StaticResource GreenBrush}" /> -->
+            <!--             <TextBlock Width="45" FontWeight="DemiBold" TextAlignment="Center" Text="27" -->
+            <!--                        Foreground="{StaticResource GreenBrush}" /> -->
+            <!--             <TextBlock Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="28" -->
+            <!--                        Foreground="{StaticResource GreenBrush}" /> -->
+            <!--             <TextBlock Width="45" FontWeight="DemiBold" TextAlignment="Center" Text="29" -->
+            <!--                        Foreground="{StaticResource GreenBrush}" /> -->
+            <!--             <TextBlock Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="30" -->
+            <!--                        Foreground="{StaticResource GreenBrush}" /> -->
+            <!--         </StackPanel> -->
+            <!--     </Grid> -->
+            <!--     <Grid Row="2" Margin="0"> -->
+            <!--         <StackPanel Orientation="Horizontal"> -->
+            <!--             <Button Style="{StaticResource CircleButton}" Content="ПН" -->
+            <!--                     Margin="0, 0, 5, 0" /> -->
+            <!--             <Button Style="{StaticResource CircleButton}" Content="ВТ" -->
+            <!--                     Margin="0, 0, 5, 0" /> -->
+            <!--             <Button Style="{StaticResource CircleButton}" Content="СР" -->
+            <!--                     Margin="0, 0, 5, 0" /> -->
+            <!--             <Button Style="{StaticResource CircleButton}" Content="ЧТ" -->
+            <!--                     Margin="0, 0, 5, 0" /> -->
+            <!--             <Button Style="{StaticResource CircleButton}" Content="ПТ" -->
+            <!--                     Margin="0" /> -->
+            <!--         </StackPanel> -->
+            <!--     </Grid> -->
+            <!-- -->
+            <!-- </Grid> -->
+            <!-- </Grid> -->
             <Grid Row="2">
                 <ScrollViewer>
-                    <Grid>
+                    <Grid Margin="25, 5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="0.6*" />
                             <ColumnDefinition Width="0.2*" />
                             <ColumnDefinition Width="0.2*" />
                         </Grid.ColumnDefinitions>
 
-                        <Frame Height="30" Grid.ColumnSpan="2"
-                               Margin="5"
-                               Background="{StaticResource Ultra2LightGreenBrush}"
-                               VerticalAlignment="Top" HorizontalAlignment="Stretch"
-                               BorderBrush="{StaticResource BorderBrush}"
-                               BorderThickness="1" />
+                        <Border Grid.ColumnSpan="2"
+                                VerticalAlignment="Top"
+                                BorderBrush="{StaticResource BorderBrush}"
+                                BorderThickness="2" Height="57" CornerRadius="10">
+                            <Rectangle Margin="1"
+                                       Fill="{StaticResource Ultra2LightGreenBrush}"
+                                       RadiusX="10" RadiusY="10">
+                            </Rectangle>
+                        </Border>
+
+
                         <DataGrid x:Name="DataGrid"
                                   Background="Transparent"
                                   Foreground="{StaticResource DarkGrayBrush}"
+                                  FontSize="20"
                                   GridLinesVisibility="None"
                                   CanUserAddRows="False"
                                   CanUserReorderColumns="False"
