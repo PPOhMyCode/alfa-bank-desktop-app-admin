@@ -57,6 +57,8 @@ public class MenuVM: BaseVM
     /// <param name="param">DishId</param>
     public void DeleteDishToMenu(object param)
     {
+        ApiServer.Delete("Menu/"+param);
+        GetMenu();
     }
     
     /// <summary>

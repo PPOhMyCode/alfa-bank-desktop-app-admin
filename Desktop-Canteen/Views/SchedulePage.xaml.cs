@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using Desktop_Canteen.ViewModels;
 
 namespace Desktop_Canteen.Views;
 
@@ -8,6 +9,7 @@ public partial class SchedulePage : Page
     public SchedulePage()
     {
         InitializeComponent();
+        DataContext = new ScheduleVM();
     }
     
     public void ToOrderingIngredientsButtonClick(object sender, RoutedEventArgs e)

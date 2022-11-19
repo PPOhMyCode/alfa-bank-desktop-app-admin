@@ -241,7 +241,7 @@
                                         <DataTemplate>
                                             <ListView ItemsSource="{Binding }" IsEnabled="False">
                                                 <ListView.ItemTemplate>
-                                                    <DataTemplate>
+                                                    <DataTemplate >
                                                         <TextBlock Text="{Binding }" />
                                                     </DataTemplate>
                                                 </ListView.ItemTemplate>
