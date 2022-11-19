@@ -165,12 +165,14 @@
                 <ScrollViewer>
                     <Grid Margin="25, 5">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.6*" />
+                            <ColumnDefinition Width="0.2*" />
+                            <ColumnDefinition Width="0.2*" />
+                            <ColumnDefinition Width="0.2*" />
                             <ColumnDefinition Width="0.2*" />
                             <ColumnDefinition Width="0.2*" />
                         </Grid.ColumnDefinitions>
 
-                        <Border Grid.ColumnSpan="2"
+                        <Border Grid.ColumnSpan="4"
                                 VerticalAlignment="Top"
                                 BorderBrush="{StaticResource BorderBrush}"
                                 BorderThickness="2" Height="57" CornerRadius="10">
@@ -181,26 +183,93 @@
                         </Border>
 
 
-                        <DataGrid x:Name="DataGrid"
+                        <DataGrid Grid.ColumnSpan="3"
+                                  Margin="0, 5, 0, 0 "
                                   Background="Transparent"
                                   Foreground="{StaticResource DarkGrayBrush}"
-                                  FontSize="20"
+                                  FontSize="23"
+                                  FontWeight="SemiBold"
                                   GridLinesVisibility="None"
                                   CanUserAddRows="False"
                                   CanUserReorderColumns="False"
                                   ItemsSource="{Binding SummaryOrderViews}"
                                   AutoGenerateColumns="False"
                                   CanUserDeleteRows="False"
-                                  IsReadOnly="True">
+                                  IsReadOnly="True" HorizontalContentAlignment="Center">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Название" Width="0.25*"
-                                                    Binding="{Binding  SystemDish.Name}" />
-                                <DataGridTextColumn Header="Заявки" Width="0.25*" Binding="{Binding CountOrders}" />
-                                <DataGridTemplateColumn Header="Продукты" Width="0.25*">
+                                <DataGridTemplateColumn Header="Название" Width="0.25*">
+                                    <DataGridTemplateColumn.HeaderStyle>
+                                        <Style TargetType="DataGridColumnHeader">
+                                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            <Setter Property="Background" Value="Transparent"/>
+                                            <Setter Property="Margin" Value="0, 5, 0, 20"/>
+                                        </Style>
+                                    </DataGridTemplateColumn.HeaderStyle>
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <ListView ItemsSource="{Binding Ingredients}"
-                                                      IsEnabled="False">
+                                            <TextBlock Text="{Binding SystemDish.Name}"
+                                                       FontWeight="Regular"
+                                                       FontSize="20"
+                                                       Foreground="{StaticResource DarkGrayBrush}"
+                                                       Margin="0, 10"
+                                                       HorizontalAlignment="Center"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                
+                                <DataGridTemplateColumn Header="Заявки" Width="0.25*">
+                                    <DataGridTemplateColumn.HeaderStyle>
+                                        <Style TargetType="DataGridColumnHeader">
+                                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            <Setter Property="Background" Value="Transparent"/>
+                                            <Setter Property="Margin" Value="0, 5, 0, 20"/>
+                                        </Style>
+                                    </DataGridTemplateColumn.HeaderStyle>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding CountOrders}"
+                                                       FontWeight="Regular"
+                                                       FontSize="20"
+                                                       Foreground="{StaticResource DarkGrayBrush}"
+                                                       Margin="0, 10"
+                                                       HorizontalAlignment="Center"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                
+                                <DataGridTemplateColumn Header="Продукты" Width="0.25*">
+                                    <DataGridTemplateColumn.HeaderStyle>
+                                        <Style TargetType="DataGridColumnHeader">
+                                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            <Setter Property="Background" Value="Transparent"/>
+                                            <Setter Property="Margin" Value="0, 5, 0, 20"/>
+                                        </Style>
+                                    </DataGridTemplateColumn.HeaderStyle>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <ListView ItemsSource="{Binding Ingredients}">
+                                                <ListView.ItemContainerStyle>
+                                                    <Style TargetType="{x:Type ListViewItem}">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="IsEnabled" Value="False"/>
+                                                        <Setter Property="FontSize" Value="20"/>
+                                                        <Setter Property="FontWeight" Value="Regular"/>
+                                                        <Setter Property="Margin" Value="0, 10"/>
+                                                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                                        <Setter Property="Template">
+                                                            <Setter.Value>
+                                                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                                                    <ContentPresenter HorizontalAlignment="Center"/>
+                                                                    <ControlTemplate.Triggers>
+                                                                        <Trigger Property="IsEnabled" Value="False">
+                                                                            <Setter Property="Foreground" Value="{StaticResource DarkGrayBrush}"/>
+                                                                        </Trigger>
+                                                                    </ControlTemplate.Triggers>
+                                                                </ControlTemplate>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                    </Style>
+                                                </ListView.ItemContainerStyle>
                                                 <ListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <TextBlock Text="{Binding Ingredient.Name}" />
@@ -210,23 +279,12 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <!-- <DataGridTemplateColumn Header="Значение" Width="0.25*"> -->
-                                <!--     <DataGridTemplateColumn.CellTemplate> -->
-                                <!--         <DataTemplate> -->
-                                <!--             <ListView ItemsSource="{Binding }"> -->
-                                <!--                 <ListView.ItemTemplate> -->
-                                <!--                     <DataTemplate> -->
-                                <!--                         <TextBlock Text="{Binding }" /> -->
-                                <!--                     </DataTemplate> -->
-                                <!--                 </ListView.ItemTemplate> -->
-                                <!--             </ListView> -->
-                                <!--         </DataTemplate> -->
-                                <!--     </DataGridTemplateColumn.CellTemplate> -->
-                                <!-- </DataGridTemplateColumn> -->
                             </DataGrid.Columns>
                         </DataGrid>
-
-                        <DataGrid Grid.Column="1"
+                        
+                        
+                        <DataGrid Grid.Column="3"
+                                  Margin="0, 5, 0, 0"
                                   Background="Transparent"
                                   Foreground="{StaticResource DarkGrayBrush}"
                                   GridLinesVisibility="None"
@@ -234,12 +292,44 @@
                                   CanUserReorderColumns="False"
                                   ItemsSource="{Binding Values}"
                                   AutoGenerateColumns="False"
-                                  IsReadOnly="True">
+                                  FontSize="23"
+                                  FontWeight="SemiBold"
+                                  IsReadOnly="True"
+                                  HorizontalAlignment="Center">
                             <DataGrid.Columns>
                                 <DataGridTemplateColumn Header="Значение">
+                                    <DataGridTemplateColumn.HeaderStyle>
+                                        <Style TargetType="DataGridColumnHeader">
+                                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            <Setter Property="Background" Value="Transparent"/>
+                                            <Setter Property="Margin" Value="0, 5, 0, 20"/>
+                                        </Style>
+                                    </DataGridTemplateColumn.HeaderStyle>
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <ListView ItemsSource="{Binding }" IsEnabled="False">
+                                            <ListView ItemsSource="{Binding }">
+                                                <ListView.ItemContainerStyle>
+                                                    <Style TargetType="{x:Type ListViewItem}">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="IsEnabled" Value="False"/>
+                                                        <Setter Property="FontSize" Value="20"/>
+                                                        <Setter Property="FontWeight" Value="Regular"/>
+                                                        <Setter Property="Margin" Value="0, 10"/>
+                                                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                                        <Setter Property="Template">
+                                                            <Setter.Value>
+                                                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                                                    <ContentPresenter HorizontalAlignment="Center"/>
+                                                                    <ControlTemplate.Triggers>
+                                                                        <Trigger Property="IsEnabled" Value="False">
+                                                                            <Setter Property="Foreground" Value="{StaticResource DarkGrayBrush}"/>
+                                                                        </Trigger>
+                                                                    </ControlTemplate.Triggers>
+                                                                </ControlTemplate>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                    </Style>
+                                                </ListView.ItemContainerStyle>
                                                 <ListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <TextBlock Text="{Binding }" />
