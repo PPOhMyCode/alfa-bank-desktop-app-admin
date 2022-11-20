@@ -39,12 +39,12 @@
                         Click="ToScheduleButtonClick"/>
                 <Button Style="{StaticResource SelectedMainMenuButton}" Content="Школьники" />
                 
-                <Button DockPanel.Dock="Right" Style="{StaticResource Transparent}" HorizontalAlignment="Right"
-                        Height="60" Width="60" Margin="0,0,10,0">
+                <Button DockPanel.Dock="Right" Style="{StaticResource DefaultTransparentButton}" HorizontalAlignment="Right"
+                        Height="70" Width="70" Margin="0,0,10,0">
                     <materialDesign:PackIcon Kind="Circle" Height="60" Width="60"/>
                 </Button>
                 
-                <Button DockPanel.Dock="Right" Style="{StaticResource Transparent}" HorizontalAlignment="Right"
+                <Button DockPanel.Dock="Right" Style="{StaticResource DefaultTransparentButton}" HorizontalAlignment="Right"
                         Height="60" Width="60" Margin="0,0,15,0">
                     <materialDesign:PackIcon Kind="BellOutline" Height="30" Width="30"/>
                 </Button>

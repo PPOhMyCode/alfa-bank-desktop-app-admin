@@ -88,4 +88,7 @@
     
     <SolidColorBrush x:Key="LightPlusCircleButtonBackgroundBrush" Color="#E8F8DF"/>
     <Color x:Key="LightPlusCircleButtonBackgroundColor">#E8F8DF</Color>
+    
+    <SolidColorBrush x:Key="CalendarBackgroundBrush" Color="#E5F3E7"/>
+    <Color x:Key="CalendarBackgroundColor">#E5F3E7</Color>
 </ResourceDictionary>

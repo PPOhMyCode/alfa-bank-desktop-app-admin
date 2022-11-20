@@ -38,7 +38,7 @@ public partial class MenuSetup : Page
     {
         //save
         
-        NavigationService?.Navigate(new MenuPage());
+        NavigationService?.Navigate(new MakeMenuPage());
     }
     
 }

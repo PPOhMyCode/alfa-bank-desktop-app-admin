@@ -1,14 +1,13 @@
-﻿using System.IO;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using Desktop_Canteen.ViewModels;
 
-namespace Desktop_Canteen.Views
+namespace Desktop_Canteen.Views;
+
+public partial class MakeMenuPage : Page
 {
-    public partial class MenuPage : Page
-    {
-        private MakeMenuVM _makeMenuVm;
-        public MenuPage()
+    private MakeMenuVM _makeMenuVm;
+        public MakeMenuPage()
         {
             InitializeComponent();
             _makeMenuVm = new MakeMenuVM();
@@ -17,7 +16,7 @@ namespace Desktop_Canteen.Views
 
         }
     
-        public void ToMenuButtonClick(object sender, RoutedEventArgs e)
+        public void ToMenuPage(object sender, RoutedEventArgs e)
         {
             NavigationService?.Navigate(new MenuPage());
         }
@@ -75,9 +74,8 @@ namespace Desktop_Canteen.Views
             }
         }
         
-        public void ToMakeMenuPage(object sender, RoutedEventArgs e)
+        public void ToMenuSetupPage(object sender, RoutedEventArgs e)
         {
-            NavigationService?.Navigate(new MakeMenuPage());
+            NavigationService?.Navigate(new MenuSetup());
         }
-    }
 }
