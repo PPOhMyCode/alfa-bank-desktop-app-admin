@@ -313,6 +313,8 @@
                                             </StackPanel>
 
                                             <Button Grid.Row="5" Grid.Column="3" x:Name="DeleteDishFromMenu"
+                                                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.DeleteMenuDateCommand}"
+                                                    CommandParameter="{Binding Id}"
                                                     Style="{StaticResource CircleDeleteDishButton}"
                                                     Grid.ColumnSpan="3" Margin="0" Height="50" Width="50">
                                             </Button>
@@ -322,7 +324,7 @@
                             </ItemsControl>
 
 
-                            <ItemsControl ItemsSource="{Binding DishCanAddToMenu}"
+                            <ItemsControl Name="CanAddItems" ItemsSource="{Binding DishCanAddToMenu}"
                                           Margin="0, 0, 0, 200">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
@@ -424,6 +426,8 @@
                                             </StackPanel>
 
                                             <Button Grid.Row="5" Grid.Column="3" x:Name="AddDishToMenuButton"
+                                                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.AddMenuDateCommand}"
+                                                    CommandParameter="{Binding Id}"
                                                     Style="{StaticResource CircleAddToMenuDishButton}"
                                                     Grid.ColumnSpan="3" Margin="0" Height="50" Width="50">
                                             </Button>

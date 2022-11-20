@@ -25,6 +25,7 @@ public class MenuVM: BaseVM
     public ObservableCollection<Dish> DishCanAddToMenu { get; set; }
     public RelayCommand GetMenuDateCommand { protected set; get; }
     public RelayCommand AddMenuDateCommand { protected set; get; }
+    public RelayCommand DeleteMenuDateCommand { protected set; get; }
 
     public MenuVM()
     {
@@ -32,8 +33,9 @@ public class MenuVM: BaseVM
         Menu = new ObservableCollection<MenuView>();
         DishInMenu = new ObservableCollection<Dish>();
         DishCanAddToMenu = new ObservableCollection<Dish>();
-        GetMenuDateCommand = new RelayCommand(GetMenu);
-        AddMenuDateCommand = new RelayCommand(AddDishToMenu);
+        this.GetMenuDateCommand = new RelayCommand(GetMenu);
+        this.AddMenuDateCommand = new RelayCommand(AddDishToMenu);
+        this.DeleteMenuDateCommand = new RelayCommand(DeleteDishToMenu);
         Date = DateTime.Today.Date;
         GetMenu();
         
@@ -50,7 +52,8 @@ public class MenuVM: BaseVM
         {
             Date = (DateTime) Date,
             DishId = (int) param,
-            TypeMealId = (int) TypeMeal
+            //TypeMealId = (int) TypeMeal
+            TypeMealId = 1
         };
         var responce = ApiServer.Post(menu, "Menu");
         GetMenu();
@@ -62,7 +65,8 @@ public class MenuVM: BaseVM
     /// <param name="param">DishId</param>
     public void DeleteDishToMenu(object param)
     {
-        ApiServer.Delete("Menu/"+param);
+        var id = Menu.FirstOrDefault(x => x.Dish.Id == (int)param).Id;
+        ApiServer.Delete("Menu/"+id);
         GetMenu();
     }
     
@@ -74,6 +78,7 @@ public class MenuVM: BaseVM
     {
         Menu.Clear();
         DishInMenu.Clear();
+        DishCanAddToMenu.Clear();
         var b = Date.ToString("MM-dd-yyyy");
         var menuDate = ApiServer.Get<List<Menu>>("Menu/Date/"+Date.ToString("MM-dd-yyyy"));
         //var  = new ObservableCollection<Menu>(ApiServer.Get<List<Menu>>("Menu"));
@@ -92,6 +97,7 @@ public class MenuVM: BaseVM
                 DishInMenu.Add(dish);
             }
         }
-        DishCanAddToMenu = AllDishes.Where(x=>!DishInMenu.Contains(x)).ToObservableCollection();
+        var valuesToExclude = DishInMenu.Select(x => x.Id).ToArray();
+        DishCanAddToMenu = AllDishes.Where(x => !valuesToExclude.Contains(x.Id)).ToObservableCollection();
     }
 }
