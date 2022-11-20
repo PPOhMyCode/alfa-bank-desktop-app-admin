@@ -17,19 +17,24 @@ public class OrderingIngredientsVM : BaseVM
     public OrderingIngredientsVM()
     {
         SelectedDate = "11-28-2022";
-        SummaryOrderViews = new ObservableCollection<DishIngredientView>(ApiServer.Get<List<DishIngredientView>>("Orders/Date/"+ SelectedDate +"/Ingredients"));
+        var data = ApiServer.Get<List<DishIngredientView>>("Orders/Date/" + SelectedDate + "/Ingredients");
+        SummaryOrderViews = new ObservableCollection<DishIngredientView>();
 
         Values = new List<List<string>>();
-        foreach (var summaryOrderView in SummaryOrderViews)
+        if (data != null)
         {
-            var countOrders = summaryOrderView.CountOrders;
-            var resultList = new List<string>();
-            foreach (var ingredientCount in summaryOrderView.Ingredients)
+            SummaryOrderViews= new ObservableCollection<DishIngredientView>(data);
+            foreach (var summaryOrderView in SummaryOrderViews)
             {
-                resultList.Add((ingredientCount.Count * ingredientCount.Ingredient.Quantity * countOrders).ToString() + " " +
-                          ingredientCount.Ingredient.Measure);
+                var countOrders = summaryOrderView.CountOrders;
+                var resultList = new List<string>();
+                foreach (var ingredientCount in summaryOrderView.Ingredients)
+                {
+                    resultList.Add((ingredientCount.Count * ingredientCount.Ingredient.Quantity * countOrders).ToString() + " " +
+                                   ingredientCount.Ingredient.Measure);
+                }
+                Values.Add(resultList);
             }
-            Values.Add(resultList);
         }
     }
 }

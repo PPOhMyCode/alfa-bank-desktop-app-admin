@@ -331,7 +331,7 @@
                                                     </Style>
                                                 </ListView.ItemContainerStyle>
                                                 <ListView.ItemTemplate>
-                                                    <DataTemplate>
+                                                    <DataTemplate >
                                                         <TextBlock Text="{Binding }" />
                                                     </DataTemplate>
                                                 </ListView.ItemTemplate>

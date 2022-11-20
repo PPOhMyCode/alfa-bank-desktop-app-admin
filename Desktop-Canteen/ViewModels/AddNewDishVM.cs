@@ -14,7 +14,7 @@ namespace Desktop_Canteen.ViewModels;
 
 public class AddNewDishVM : BaseVM
 {
-    private DishView _dishView;
+    private DishInput _dishView;
 
     #region DishData
     public string Name
@@ -105,7 +105,7 @@ public class AddNewDishVM : BaseVM
         Ingredients = new ObservableCollection<Ingredient>(ApiServer.Get<List<Ingredient>>("Ingredients"));
         InputIngredients = new List<IngredientCountInput>();
         SelectedIngredients = new List<Ingredient>();
-        _dishView = new DishView();
+        _dishView = new DishInput();
         this.AddCommand = new RelayCommand(ExecuteAddDish);
         this.AddIngredientCommand = new RelayCommand(AddSelectedIngredient);
         this.DeleteIngredientCommand = new RelayCommand(DeleteIngredient);

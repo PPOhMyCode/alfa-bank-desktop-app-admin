@@ -55,6 +55,17 @@ public class MenuVM: BaseVM
         var responce = ApiServer.Post(menu, "Menu");
         GetMenu();
     }
+    
+    /// <summary>
+    /// Delete Dish from Menu for day and Type
+    /// </summary>
+    /// <param name="param">DishId</param>
+    public void DeleteDishToMenu(object param)
+    {
+        ApiServer.Delete("Menu/"+param);
+        GetMenu();
+    }
+    
     /// <summary>
     /// Get menu for Date
     /// </summary>

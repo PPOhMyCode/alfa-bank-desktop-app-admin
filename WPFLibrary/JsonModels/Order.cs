@@ -14,7 +14,7 @@ public class Order: BaseModel
 public class OrderView
 {
     public ChildrenView Children { get; set; }
-    public DishView Dish  { get; set; }
+    public Dish Dish  { get; set; }
     public string TypeMeal { get; set; }
     public string StatusOrder  { get; set; }
 }
