@@ -85,4 +85,7 @@
     
     <SolidColorBrush x:Key="IsDisableDeleteCircleBackgroundBrush" Color="#C1C1C1"/>
     <Color x:Key="IsDisableDeleteCircleBackgroundColor">#C1C1C1</Color>
+    
+    <SolidColorBrush x:Key="LightPlusCircleButtonBackgroundBrush" Color="#E8F8DF"/>
+    <Color x:Key="LightPlusCircleButtonBackgroundColor">#E8F8DF</Color>
 </ResourceDictionary>

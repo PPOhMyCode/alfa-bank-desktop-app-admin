@@ -7,10 +7,14 @@ namespace Desktop_Canteen.Views
 {
     public partial class MenuPage : Page
     {
+        private MenuVM _menuVm;
         public MenuPage()
         {
             InitializeComponent();
-            DataContext = new MenuVM();
+            _menuVm = new MenuVM();
+            DataContext = _menuVm;
+            _menuVm.PlugTextBlock = this.Plug;
+
         }
     
         public void ToOrderingIngredientsButtonClick(object sender, RoutedEventArgs e)
@@ -64,6 +68,11 @@ namespace Desktop_Canteen.Views
             {
                 (sender as Button).Style = Application.Current.TryFindResource("SelectedCircleButton") as Style;
             }
+        }
+        
+        public void ToMenuSetupPage(object sender, RoutedEventArgs e)
+        {
+            NavigationService?.Navigate(new MenuSetup());
         }
     }
 }

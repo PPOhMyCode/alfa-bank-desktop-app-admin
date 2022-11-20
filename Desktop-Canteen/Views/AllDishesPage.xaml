@@ -55,9 +55,25 @@
                 </DockPanel>
             </Grid>
             <Grid Row="1">
-                <Button Style="{StaticResource BaseButton}" Margin="10, 15, 20, 15"
-                        Width="200" Height="50" HorizontalAlignment="Right"
-                        Content="Добавить блюдо" Click="ToAddNewDishButtonClick" />
+                <Grid Width="350" HorizontalAlignment="Right">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.7*"/>
+                        <ColumnDefinition Width="0.3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.ColumnSpan="2" Style="{StaticResource BaseButton}" Margin="10, 15, 20, 15"
+                            Width="300" Height="50" HorizontalAlignment="Right" FontSize="22"
+                            Click="ToAddNewDishButtonClick"/>
+                    <TextBlock Style="{StaticResource SmallDefaultText}" 
+                               Text="Добавить блюдо" HorizontalAlignment="Right" Margin="10, 0"
+                               VerticalAlignment="Center"/>
+                    <Ellipse Grid.Column="1" Margin="20, 0"
+                             Height="35" Width="35" Fill="{StaticResource LightPlusCircleButtonBackgroundBrush}" 
+                             HorizontalAlignment="Left"/>
+                    <materialDesign:PackIcon Kind="Plus" VerticalAlignment="Center"
+                                             Grid.Column="1" Margin="22, 0"
+                                             Height="30" Width="30" Foreground="{StaticResource DarkGrayBrush}"/>
+                    
+                </Grid>
             </Grid>
             <Grid Row="2">
                 <ItemsControl ItemsSource="{Binding Dishes}"
@@ -65,7 +81,6 @@
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel Orientation="Horizontal" />
-
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>

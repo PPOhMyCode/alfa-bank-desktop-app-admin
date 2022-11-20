@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Controls;
 using Desktop_Admin.Models;
 using DevExpress.Mvvm.Native;
 using RestSharp;
 using WPFLibrary;
 using WPFLibrary.JsonModels;
 using WPFLibrary.Models;
+using Menu = WPFLibrary.JsonModels.Menu;
 
 namespace Desktop_Canteen.ViewModels;
 
@@ -15,6 +17,7 @@ public class MenuVM: BaseVM
 {
     public DateTime Date;
     public int TypeMeal;
+    public TextBlock PlugTextBlock;
     private ObservableCollection<Dish> AllDishes { get; set; }
     private ObservableCollection<MenuView> Menu { get; set; }
     
@@ -33,6 +36,8 @@ public class MenuVM: BaseVM
         AddMenuDateCommand = new RelayCommand(AddDishToMenu);
         Date = DateTime.Today.Date;
         GetMenu();
+        
+        //если даты четверти не выбраны, то листы с блюдами заполнять пока не надо, а PlugTextBlock.Visability = Visible
     }
     
     /// <summary>

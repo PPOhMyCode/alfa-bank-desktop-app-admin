@@ -4,15 +4,19 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Desktop_Canteen.Views"
+      xmlns:viewModels="clr-namespace:Desktop_Canteen.ViewModels"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d"
       Title="MenuPage">
+    <Page.DataContext>
+        <viewModels:MenuVM />
+    </Page.DataContext>
     <ScrollViewer>
         <Grid>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="95" />
-                    <RowDefinition Height="130" />
+                    <RowDefinition Height="215" />
                     <RowDefinition Height="200" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
@@ -53,71 +57,98 @@
                     </DockPanel>
                 </Grid>
 
-                <Grid VerticalAlignment="Top" Row="1" Height="130" Margin="10, 0">
-                    <Grid Margin="20, 10,10, 0">
+                <Grid VerticalAlignment="Top" Row="1" Height="215" Margin="10, 0">
+                    <Grid Margin="40, 30,30, 0">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="40" />
                             <RowDefinition Height="25" />
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="40" />
                             <RowDefinition Height="60" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.08*" />
-                            <ColumnDefinition Width="0.08*" />
-                            <ColumnDefinition Width="0.08*" />
-                            <ColumnDefinition Width="0.08*" />
-                            <ColumnDefinition Width="0.08*" />
+                            <ColumnDefinition Width="0.05*" />
+                            <ColumnDefinition Width="0.05*" />
+                            <ColumnDefinition Width="0.05*" />
+                            <ColumnDefinition Width="0.05*" />
+                            <ColumnDefinition Width="0.05*" />
                             <ColumnDefinition Width="0.6*" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.ColumnSpan="2" Style="{StaticResource DefaultText}"
-                                   Text="Сентябрь" HorizontalAlignment="Left" Margin="0, 0, 0, 10"
-                                   Foreground="{StaticResource GrayBrush}" FontWeight="Normal"  />
 
-                        <Viewbox Grid.Row="0" Grid.Column="1" Margin="0, 0, 0, 0" HorizontalAlignment="Right"
-                                 Height="30" Width="30" VerticalAlignment="Top">
-                            <materialDesign:PackIcon Kind="CalendarMonth" Foreground="{StaticResource DarkGreenBrush}" />
-                        </Viewbox>
+                        <TextBlock Grid.Row="0" Grid.ColumnSpan="5" Style="{StaticResource Medium23Text}"
+                                   TextAlignment="Center" Text="1 неделя"
+                                   Margin="2, 0, 0, 0" HorizontalAlignment="Left" />
 
-                        <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource DefaultText}"
-                                   Width="35" TextAlignment="Center" Text="26" Margin="2, 0, 0, 0"
-                                   Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource DefaultText}"
-                                   Width="35" TextAlignment="Center" Text="27" Margin="2, 0, 0, 0"
-                                   Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="1" Grid.Column="2" Style="{StaticResource DefaultText}"
-                                   Width="35" TextAlignment="Center" Text="28" Margin="2, 0, 0, 0"
-                                   Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="1" Grid.Column="3" Style="{StaticResource DefaultText}"
-                                   Width="35" TextAlignment="Center" Text="29" Margin="2, 0, 0, 0"
-                                   Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="1" Grid.Column="4" Style="{StaticResource DefaultText}"
-                                   Width="35" TextAlignment="Center" Text="30" Margin="2, 0, 0, 0"
-                                   Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
-
-                        <TextBlock Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4"
+                        <TextBlock Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4"
                                    Background="{StaticResource GreenBrush}"
                                    Height="3" Margin="0" VerticalAlignment="Center" Opacity="0.3" />
 
-                        <Button Grid.Column="0" Grid.Row="2" Style="{StaticResource CircleButton}" Content="ПН"
+                        <Button Grid.Column="0" Grid.Row="1" Style="{StaticResource CircleButton}" Content="ПН"
                                 Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
-                        <Button Grid.Column="1" Grid.Row="2" Style="{StaticResource CircleButton}" Content="ВТ"
+                        <Button Grid.Column="1" Grid.Row="1" Style="{StaticResource CircleButton}" Content="ВТ"
                                 Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
-                        <Button Grid.Column="2" Grid.Row="2" Style="{StaticResource CircleButton}" Content="СР"
+                        <Button Grid.Column="2" Grid.Row="1" Style="{StaticResource CircleButton}" Content="СР"
                                 Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
-                        <Button Grid.Column="3" Grid.Row="2" Style="{StaticResource CircleButton}" Content="ЧТ"
+                        <Button Grid.Column="3" Grid.Row="1" Style="{StaticResource CircleButton}" Content="ЧТ"
                                 Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
-                        <Button Grid.Column="4" Grid.Row="2" Style="{StaticResource CircleButton}" Content="ПТ"
+                        <Button Grid.Column="4" Grid.Row="1" Style="{StaticResource CircleButton}" Content="ПТ"
                                 Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
 
+                        <TextBlock Grid.Row="2" Grid.ColumnSpan="5" Style="{StaticResource Medium23Text}"
+                                   TextAlignment="Center" Text="2 неделя"
+                                   Margin="2, 15, 0, 0" HorizontalAlignment="Left" />
 
-                        <Grid Row="1" RowSpan="2" Column="5" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                            <TextBox Margin="5,0,5,10" Width="500" Height="50" Text="" TextWrapping="Wrap"
-                                     d:LayoutOverrides="Height"
-                                     Style="{DynamicResource TextBoxWithDescriptionInCanteenApp}"
-                                     ToolTip="Поиск блюд" Padding="20" />
+                        <TextBlock Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="4"
+                                   Background="{StaticResource GreenBrush}"
+                                   Height="3" Margin="0" VerticalAlignment="Center" Opacity="0.3" />
+
+                        <Button Grid.Column="0" Grid.Row="3" Style="{StaticResource CircleButton}" Content="ПН"
+                                Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
+                        <Button Grid.Column="1" Grid.Row="3" Style="{StaticResource CircleButton}" Content="ВТ"
+                                Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
+                        <Button Grid.Column="2" Grid.Row="3" Style="{StaticResource CircleButton}" Content="СР"
+                                Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
+                        <Button Grid.Column="3" Grid.Row="3" Style="{StaticResource CircleButton}" Content="ЧТ"
+                                Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
+                        <Button Grid.Column="4" Grid.Row="3" Style="{StaticResource CircleButton}" Content="ПТ"
+                                Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
+
+                        <Grid Row="0" RowSpan="2" Column="5" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                            <StackPanel Orientation="Vertical">
+                                <Button Margin="5,0,5,5"
+                                        Width="160" Height="35"
+                                        Style="{StaticResource Transparent}"
+                                        HorizontalAlignment="Right"
+                                        Click="ToMenuSetupPage">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="120" />
+                                            <ColumnDefinition Width="40" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="Настройки"
+                                                   Style="{StaticResource SmallDefaultText}"
+                                                   FontSize="21"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center" />
+                                        <materialDesign:PackIcon HorizontalAlignment="Center"
+                                                                 VerticalAlignment="Center"
+                                                                 Width="32"
+                                                                 Height="32"
+                                                                 Grid.Column="1"
+                                                                 Kind="CogOutline"
+                                                                 Foreground="{StaticResource DarkGrayBrush}">
+                                        </materialDesign:PackIcon>
+                                    </Grid>
+                                </Button>
+                                <TextBox Margin="5,0,5,10" Width="500" Height="45" Text="" TextWrapping="Wrap"
+                                         d:LayoutOverrides="Height"
+                                         Style="{DynamicResource TextBoxWithDescriptionInCanteenApp}"
+                                         ToolTip="Поиск блюд" Padding="20" />
+                            </StackPanel>
+
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid Row="2" Height="200" HorizontalAlignment="Left">
+                <Grid Row="2" Height="200" HorizontalAlignment="Left" Margin="20, 0">
                     <StackPanel Orientation="Horizontal">
                         <Button Name="BreakfastButton" Style="{StaticResource TypeMealButton}"
                                 Width="100" Height="150"
@@ -166,7 +197,245 @@
                         </Button>
                     </StackPanel>
                 </Grid>
-                
+                <Grid Row="3">
+                    <Grid>
+                        <TextBlock Name="Plug"
+                                   DockPanel.Dock="Top"
+                                   Visibility="Hidden"
+                                   Height="40"
+                                   Margin="0, 40"
+                                   Text="Выберите в настройках начало и конец четверти"
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource Medium30Text}" />
+
+                        <DockPanel>
+
+
+                            <ItemsControl DockPanel.Dock="Top" ItemsSource="{Binding DishInMenu}"
+                                          Margin="0, 0, 0, 0">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+
+                                        <Grid Height="225" Width="400"
+                                              Margin="15">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="54" />
+                                                <ColumnDefinition Width="76" />
+                                                <ColumnDefinition Width="177" />
+                                                <ColumnDefinition Width="38" />
+                                                <ColumnDefinition Width="33" />
+                                                <ColumnDefinition Width="22" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="14" />
+                                                <RowDefinition Height="20" />
+                                                <RowDefinition Height="32" />
+                                                <RowDefinition Height="54" />
+                                                <RowDefinition Height="33" />
+                                                <RowDefinition Height="72" />
+                                            </Grid.RowDefinitions>
+
+                                            <Rectangle Grid.Row="1" Grid.Column="1"
+                                                       Grid.RowSpan="5" Grid.ColumnSpan="5"
+                                                       Fill="{StaticResource GreenBrush}"
+                                                       RadiusX="20" RadiusY="20" />
+
+                                            <Viewbox Grid.Row="0" Grid.Column="0"
+                                                     Grid.RowSpan="4" Grid.ColumnSpan="2">
+                                                <Ellipse Fill="Wheat" Height="130" Width="130" />
+                                            </Viewbox>
+
+                                            <TextBlock Grid.Row="2" Grid.Column="2"
+                                                       Grid.ColumnSpan="2"
+                                                       VerticalAlignment="Center"
+                                                       TextWrapping="Wrap"
+                                                       Padding="14, 0, 0, 0"
+                                                       Text="{Binding Name}"
+                                                       FontSize="18" FontWeight="SemiBold"
+                                                       Foreground="{StaticResource LightTextBrush}" />
+
+                                            <Button Grid.Row="2" Grid.Column="4"
+                                                    Style="{StaticResource Transparent}">
+                                                <materialDesign:PackIcon Kind="PencilOutline"
+                                                                         Height="20" Width="20"
+                                                                         Foreground="{StaticResource LightTextBrush}" />
+                                            </Button>
+
+                                            <TextBlock Grid.Row="3" Grid.Column="2"
+                                                       Grid.ColumnSpan="2"
+                                                       TextWrapping="Wrap"
+                                                       VerticalAlignment="Center"
+                                                       Padding="14, 0, 0, 0"
+                                                       Text="{Binding Discription}"
+                                                       ToolTip="Описание блюда"
+                                                       FontSize="16" FontWeight="Normal"
+                                                       Foreground="{StaticResource LightTextBrush}" />
+
+                                            <StackPanel Orientation="Horizontal"
+                                                        Grid.Row="4" Grid.Column="2"
+                                                        HorizontalAlignment="Left" VerticalAlignment="Center">
+                                                <TextBlock TextWrapping="Wrap"
+                                                           VerticalAlignment="Center"
+                                                           Padding="14, 0, 0, 0"
+                                                           Text="{Binding Weight}"
+                                                           FontSize="16" FontWeight="Normal"
+                                                           Foreground="{StaticResource LightTextBrush}" />
+                                                <TextBlock TextWrapping="Wrap"
+                                                           VerticalAlignment="Center"
+                                                           Padding="5, 0, 0, 0"
+                                                           Text="г"
+                                                           FontSize="16" FontWeight="Normal"
+                                                           Foreground="{StaticResource LightTextBrush}" />
+                                            </StackPanel>
+
+
+                                            <StackPanel Orientation="Horizontal"
+                                                        Grid.Row="5" Grid.Column="1"
+                                                        Grid.ColumnSpan="2"
+                                                        HorizontalAlignment="Left" VerticalAlignment="Center">
+                                                <TextBlock TextWrapping="Wrap"
+                                                           VerticalAlignment="Center"
+                                                           Padding="30, 0, 0, 0"
+                                                           Text="{Binding Cost}"
+                                                           FontSize="28" FontWeight="Normal"
+                                                           Foreground="{StaticResource LightTextBrush}" />
+                                                <TextBlock TextWrapping="Wrap"
+                                                           VerticalAlignment="Center"
+                                                           Padding="10, 0, 0, 0"
+                                                           Text="р"
+                                                           FontSize="28" FontWeight="Normal"
+                                                           Foreground="{StaticResource LightTextBrush}" />
+                                            </StackPanel>
+
+                                            <Button Grid.Row="5" Grid.Column="3" x:Name="DeleteDishFromMenu"
+                                                    Style="{StaticResource CircleDeleteDishButton}"
+                                                    Grid.ColumnSpan="3" Margin="0" Height="50" Width="50">
+                                            </Button>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+
+                            <ItemsControl ItemsSource="{Binding DishCanAddToMenu}"
+                                          Margin="0, 0, 0, 200">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+
+                                        <Grid Height="225" Width="400"
+                                              Margin="15">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="54" />
+                                                <ColumnDefinition Width="76" />
+                                                <ColumnDefinition Width="177" />
+                                                <ColumnDefinition Width="38" />
+                                                <ColumnDefinition Width="33" />
+                                                <ColumnDefinition Width="22" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="14" />
+                                                <RowDefinition Height="20" />
+                                                <RowDefinition Height="32" />
+                                                <RowDefinition Height="54" />
+                                                <RowDefinition Height="33" />
+                                                <RowDefinition Height="72" />
+                                            </Grid.RowDefinitions>
+
+                                            <Rectangle Grid.Row="1" Grid.Column="1"
+                                                       Grid.RowSpan="5" Grid.ColumnSpan="5"
+                                                       Fill="{StaticResource GreenBrush}"
+                                                       RadiusX="20" RadiusY="20" />
+
+                                            <Viewbox Grid.Row="0" Grid.Column="0"
+                                                     Grid.RowSpan="4" Grid.ColumnSpan="2">
+                                                <Ellipse Fill="Wheat" Height="130" Width="130" />
+                                            </Viewbox>
+
+                                            <TextBlock Grid.Row="2" Grid.Column="2"
+                                                       Grid.ColumnSpan="2"
+                                                       VerticalAlignment="Center"
+                                                       TextWrapping="Wrap"
+                                                       Padding="14, 0, 0, 0"
+                                                       Text="{Binding Name}"
+                                                       FontSize="18" FontWeight="SemiBold"
+                                                       Foreground="{StaticResource LightTextBrush}" />
+
+                                            <Button Grid.Row="2" Grid.Column="4"
+                                                    Style="{StaticResource Transparent}">
+                                                <materialDesign:PackIcon Kind="PencilOutline"
+                                                                         Height="20" Width="20"
+                                                                         Foreground="{StaticResource LightTextBrush}" />
+                                            </Button>
+
+                                            <TextBlock Grid.Row="3" Grid.Column="2"
+                                                       Grid.ColumnSpan="2"
+                                                       TextWrapping="Wrap"
+                                                       VerticalAlignment="Center"
+                                                       Padding="14, 0, 0, 0"
+                                                       Text="{Binding Discription}"
+                                                       ToolTip="Описание блюда"
+                                                       FontSize="16" FontWeight="Normal"
+                                                       Foreground="{StaticResource LightTextBrush}" />
+
+                                            <StackPanel Orientation="Horizontal"
+                                                        Grid.Row="4" Grid.Column="2"
+                                                        HorizontalAlignment="Left" VerticalAlignment="Center">
+                                                <TextBlock TextWrapping="Wrap"
+                                                           VerticalAlignment="Center"
+                                                           Padding="14, 0, 0, 0"
+                                                           Text="{Binding Weight}"
+                                                           FontSize="16" FontWeight="Normal"
+                                                           Foreground="{StaticResource LightTextBrush}" />
+                                                <TextBlock TextWrapping="Wrap"
+                                                           VerticalAlignment="Center"
+                                                           Padding="5, 0, 0, 0"
+                                                           Text="г"
+                                                           FontSize="16" FontWeight="Normal"
+                                                           Foreground="{StaticResource LightTextBrush}" />
+                                            </StackPanel>
+
+
+                                            <StackPanel Orientation="Horizontal"
+                                                        Grid.Row="5" Grid.Column="1"
+                                                        Grid.ColumnSpan="2"
+                                                        HorizontalAlignment="Left" VerticalAlignment="Center">
+                                                <TextBlock TextWrapping="Wrap"
+                                                           VerticalAlignment="Center"
+                                                           Padding="30, 0, 0, 0"
+                                                           Text="{Binding Cost}"
+                                                           FontSize="28" FontWeight="Normal"
+                                                           Foreground="{StaticResource LightTextBrush}" />
+                                                <TextBlock TextWrapping="Wrap"
+                                                           VerticalAlignment="Center"
+                                                           Padding="10, 0, 0, 0"
+                                                           Text="р"
+                                                           FontSize="28" FontWeight="Normal"
+                                                           Foreground="{StaticResource LightTextBrush}" />
+                                            </StackPanel>
+
+                                            <Button Grid.Row="5" Grid.Column="3" x:Name="AddDishToMenuButton"
+                                                    Style="{StaticResource CircleAddToMenuDishButton}"
+                                                    Grid.ColumnSpan="3" Margin="0" Height="50" Width="50">
+                                            </Button>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                        </DockPanel>
+
+                    </Grid>
+                </Grid>
             </Grid>
         </Grid>
     </ScrollViewer>

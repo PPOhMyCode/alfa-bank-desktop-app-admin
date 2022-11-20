@@ -139,10 +139,19 @@
                                       SelectedItem="{Binding SelectedIngredient}"
                                       Background="{StaticResource LightBackgroundBrush}"
                                       ToolTip="Выберите продукт и граммовку" />
-                            <Button Name="AddNewIngredientButton" Style="{StaticResource CircleButton}" Content="+"
-                                    Foreground="{StaticResource DarkGrayBrush}" IsEnabled="False"
+                            <Button Name="AddNewIngredientButton" Style="{StaticResource BaseButton}"
+                                    IsEnabled="False" Background="Transparent"
                                     Command="{Binding AddIngredientCommand}"
-                                    Margin="10, 0, 0, 0" />
+                                    Margin="10, 0, 0, 0" >
+                                <Grid>
+                                <Ellipse Margin="0, 0"
+                                         Height="30" Width="30" Fill="{StaticResource LightPlusCircleButtonBackgroundBrush}" 
+                                         HorizontalAlignment="Left"/>
+                                <materialDesign:PackIcon Kind="Plus" VerticalAlignment="Center"
+                                                         Margin="2.5, 0"
+                                                         Height="25" Width="25" Foreground="{StaticResource DarkGrayBrush}"/>
+                                </Grid>
+                            </Button>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="140, 5, 20, 0" Height="0" Width="420"

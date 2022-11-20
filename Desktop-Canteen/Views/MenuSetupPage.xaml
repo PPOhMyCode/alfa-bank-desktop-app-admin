@@ -1,0 +1,105 @@
+﻿<Page x:Class="Desktop_Canteen.Views.MenuSetup"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Desktop_Canteen.Views"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d"
+      Title="MenuSetup">
+    <ScrollViewer>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*" />
+                <RowDefinition Height="0.8*" />
+                <RowDefinition Height="0.1*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+            <Rectangle Grid.RowSpan="2" Grid.ColumnSpan="2">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="{StaticResource BackgroundColor}" Offset="0" />
+                        <GradientStop Color="{StaticResource LightBackgroundColor}" Offset="0.5" />
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Grid Grid.ColumnSpan="2">
+                <DockPanel Margin="30, 20, 30 , 0">
+                    <Button Width="180" Margin="0, 0, 10, 0" Style="{StaticResource Transparent}">
+                        <Viewbox>
+                            <Image Source="/Resources/AppIcon.png" Stretch="Uniform" />
+                        </Viewbox>
+                    </Button>
+                    <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Меню"
+                            Click="ToMenuButtonClick" />
+                    <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Все блюда"
+                            Click="ToAllDishesButtonClick" />
+                    <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Заказ продуктов"
+                            Click="ToOrderingIngredientsButtonClick" />
+                    <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Расписание" 
+                            Click="ToScheduleButtonClick"/>
+                    <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Школьники"
+                            Click="ToChildrensButtonClick" />
+
+                    <Button DockPanel.Dock="Right" Style="{StaticResource Transparent}" HorizontalAlignment="Right"
+                            Height="60" Width="60" Margin="0,0,10,0">
+                        <materialDesign:PackIcon Kind="Circle" Height="60" Width="60" />
+                    </Button>
+
+                    <Button DockPanel.Dock="Right" Style="{StaticResource Transparent}" HorizontalAlignment="Right"
+                            Height="60" Width="60" Margin="0,0,15,0">
+                        <materialDesign:PackIcon Kind="BellOutline" Height="30" Width="30" />
+                    </Button>
+                </DockPanel>
+            </Grid>
+
+            <Grid Row="1" Column="0" Margin="40, 50">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Right">
+                    <TextBlock Style="{StaticResource BaseText}" Text="Выберите начало четверти"
+                               Width="430" TextAlignment="Right"/>
+                    <DatePicker HorizontalAlignment="Right"
+                                Margin="0, 20"
+                                Width="312"
+                                BorderBrush="{StaticResource MediumGreenBrush}"
+                                materialDesign:DatePickerAssist.OutlinedBorderActiveThickness="3"
+                                materialDesign:DatePickerAssist.OutlinedBorderInactiveThickness="3"
+                                materialDesign:HintAssist.HelperText="MM/DD/YYYY"
+                                materialDesign:HintAssist.Hint="Дата"
+                                materialDesign:HintAssist.Foreground="{StaticResource MediumGreenBrush}"
+                                Style="{StaticResource MaterialDesignOutlinedDatePicker}" >
+                    </DatePicker>
+                </StackPanel>
+            </Grid>
+            <Grid Row="1" Column="1" Margin="40, 50">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                    <TextBlock Style="{StaticResource BaseText}" Text="Выберите конец четверти"
+                               Width="430"/>
+                    <DatePicker HorizontalAlignment="Left"
+                                Margin="0, 20"
+                                Width="312"
+                                BorderBrush="{StaticResource MediumGreenBrush}"
+                                materialDesign:DatePickerAssist.OutlinedBorderActiveThickness="3"
+                                materialDesign:DatePickerAssist.OutlinedBorderInactiveThickness="3"
+                                materialDesign:HintAssist.HelperText="MM/DD/YYYY"
+                                materialDesign:HintAssist.Hint="Дата"
+                                materialDesign:HintAssist.Foreground="{StaticResource MediumGreenBrush}"
+                                Style="{StaticResource MaterialDesignOutlinedDatePicker}" >
+                    </DatePicker>
+                </StackPanel>
+            </Grid>
+            <Grid Row="2" Column="1">
+                <Button HorizontalAlignment="Right" 
+                        Width="150" Height="57"
+                        Content="Сохранить"
+                        FontSize="21"
+                        Style="{StaticResource DefaultLightButton}"
+                        Margin="0, 20, 60, 60"
+                        Click="Save"
+                    />
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Page>
