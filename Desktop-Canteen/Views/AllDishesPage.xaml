@@ -178,7 +178,10 @@
                                 </StackPanel>
 
                                 <Button Grid.Row="5" Grid.Column="3" Style="{StaticResource CircleDeleteDishButton}"
-                                        Grid.ColumnSpan="3" Margin="0" Height="50" Width="50">
+                                        Grid.ColumnSpan="3" Margin="0" Height="50" Width="50"
+                                        CommandParameter="{Binding Id}"
+                                        Command="{Binding RelativeSource={RelativeSource AncestorType={x:TypeExtension ItemsControl}}, Path=DataContext.DeleteDishCommand}">
+                                        
                                 </Button>
                             </Grid>
                         </DataTemplate>

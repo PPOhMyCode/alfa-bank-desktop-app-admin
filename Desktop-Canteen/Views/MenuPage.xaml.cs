@@ -7,14 +7,12 @@ namespace Desktop_Canteen.Views
 {
     public partial class MenuPage : Page
     {
-        private MakeMenuVM _makeMenuVm;
+        private MenuVM _menuVm;
         public MenuPage()
         {
             InitializeComponent();
-            _makeMenuVm = new MakeMenuVM();
-            DataContext = _makeMenuVm;
-            _makeMenuVm.PlugTextBlock = this.Plug;
-
+            _menuVm = new MenuVM();
+            DataContext = _menuVm;
         }
     
         public void ToMenuButtonClick(object sender, RoutedEventArgs e)

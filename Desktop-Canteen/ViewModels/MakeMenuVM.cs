@@ -20,12 +20,14 @@ public class MakeMenuVM: BaseVM
     public TextBlock PlugTextBlock;
     private ObservableCollection<Dish> AllDishes { get; set; }
     private ObservableCollection<MenuView> Menu { get; set; }
-    
     public ObservableCollection<Dish> DishInMenu { get; set; }
     public ObservableCollection<Dish> DishCanAddToMenu { get; set; }
     public RelayCommand GetMenuDateCommand { protected set; get; }
     public RelayCommand AddMenuDateCommand { protected set; get; }
     public RelayCommand DeleteMenuDateCommand { protected set; get; }
+    
+    public RelayCommand SelectDayCommand { protected set; get; }
+    public RelayCommand SelectTypeCommand { protected set; get; }
 
     public MakeMenuVM()
     {

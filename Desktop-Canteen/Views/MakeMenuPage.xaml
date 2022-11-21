@@ -36,7 +36,7 @@
                             </Viewbox>
                         </Button>
                         <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Меню"
-                                Click="ToMenuSetupPage" />
+                                Click="ToMenuPage" />
                         <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Все блюда"
                                 Click="ToAllDishesButtonClick" />
                         <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Заказ продуктов"
