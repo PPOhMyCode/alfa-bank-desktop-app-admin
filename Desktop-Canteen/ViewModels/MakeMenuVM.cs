@@ -38,10 +38,24 @@ public class MakeMenuVM: BaseVM
         this.GetMenuDateCommand = new RelayCommand(GetMenu);
         this.AddMenuDateCommand = new RelayCommand(AddDishToMenu);
         this.DeleteMenuDateCommand = new RelayCommand(DeleteDishToMenu);
+        SelectDayCommand = new RelayCommand(SelectDay);
+        SelectTypeCommand = new RelayCommand(SelectType);
         Date = DateTime.Today.Date;
         GetMenu();
         
         //если даты четверти не выбраны, то листы с блюдами заполнять пока не надо, а PlugTextBlock.Visability = Visible
+    }
+    
+    public void SelectDay(object param)
+    {
+        Date = (DateTime)param;
+        GetMenu();
+    }
+    
+    public void SelectType(object param)
+    {
+        TypeMeal = int.Parse((string)param);
+        GetMenu();
     }
     
     /// <summary>
@@ -54,8 +68,7 @@ public class MakeMenuVM: BaseVM
         {
             Date = (DateTime) Date,
             DishId = (int) param,
-            //TypeMealId = (int) TypeMeal
-            TypeMealId = 1
+            TypeMealId = (int) TypeMeal
         };
         var responce = ApiServer.Post(menu, "Menu");
         GetMenu();
@@ -86,7 +99,7 @@ public class MakeMenuVM: BaseVM
         //var  = new ObservableCollection<Menu>(ApiServer.Get<List<Menu>>("Menu"));
         if (menuDate != null)
         {
-            foreach (var a in menuDate)
+            foreach (var a in menuDate.Where(x=>x.TypeMealId==TypeMeal))
             {
                 var dish = ApiServer.Get<Dish>("Dish/" + a.DishId);
                 Menu.Add(new MenuView()

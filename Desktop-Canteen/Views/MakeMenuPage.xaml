@@ -254,6 +254,8 @@
                                 <Button Name="BreakfastButton" Style="{StaticResource TypeMealButton}"
                                         Width="100" Height="150"
                                         Click="BreakfastButtonClick"
+                                        Command="{Binding SelectTypeCommand}"
+                                        CommandParameter="1"
                                         Margin="0, 10, 10, 0">
                                     <Grid VerticalAlignment="Top">
                                         <Grid.RowDefinitions>
@@ -269,6 +271,8 @@
                                 <Button Name="DinnerButton" Style="{StaticResource TypeMealButton}"
                                         Width="100" Height="150"
                                         Click="DinnerButtonClick"
+                                        Command="{Binding SelectTypeCommand}"
+                                        CommandParameter="2"
                                         Margin="20, 10, 10, 0">
                                     <Grid VerticalAlignment="Top">
                                         <Grid.RowDefinitions>
@@ -284,6 +288,8 @@
                                 <Button Name="AfternoonSnackButton" Style="{StaticResource TypeMealButton}"
                                         Width="100" Height="150"
                                         Click="AfternoonSnackButtonClick"
+                                        Command="{Binding SelectTypeCommand}"
+                                        CommandParameter="3"
                                         Margin="20, 10, 10, 0">
                                     <Grid VerticalAlignment="Top">
                                         <Grid.RowDefinitions>
