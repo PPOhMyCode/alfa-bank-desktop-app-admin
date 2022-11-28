@@ -41,6 +41,9 @@
     <SolidColorBrush x:Key="LightGreenBrush" Color="#BCE3C2"/>
     <Color x:Key="LightGreenColor">#BCE3C2</Color>
     
+    <SolidColorBrush x:Key="DishCardBackgroundBrush" Color="#D4EFD9"/>
+    <Color x:Key="DishCardBackgroundColor">#D4EFD9</Color>
+    
     <SolidColorBrush x:Key="GreenBrush" Color="#A7D7AF"/>
     <Color x:Key="GreenColor">#A7D7AF</Color>
    
@@ -61,6 +64,9 @@
     
     <SolidColorBrush x:Key="LightTextBrush" Color="#FBFFF9"/>
     <Color x:Key="LightTextColor">#FBFFF9</Color>
+    
+    <SolidColorBrush x:Key="GrayTextBrush" Color="#595959"/>
+    <Color x:Key="GrayTextColor">#595959</Color>
     
     <SolidColorBrush x:Key="ErrorTextBrush" Color="#D75757"/>
     <Color x:Key="ErrorTextColor">#D75757</Color>

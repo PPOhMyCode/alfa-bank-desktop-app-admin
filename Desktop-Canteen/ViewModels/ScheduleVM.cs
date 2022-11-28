@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using WPFLibrary;
 using WPFLibrary.JsonModels;
@@ -11,6 +13,7 @@ public class ScheduleVM:BaseVM
 {
     private List<SummaryOrderView> DayOrders { get; set; }
     public string SelectedData { get; set; }
+    public string TodayMonth { get; set; }
     public ObservableCollection<ScheduleItem> Data { get; set; }
 
     public ScheduleVM()
@@ -23,13 +26,16 @@ public class ScheduleVM:BaseVM
     public void GetData()
     {
         SelectedData = "11-19-2022";
+        var textInfo = new CultureInfo("ru-RU").TextInfo;
+        TodayMonth = textInfo.ToTitleCase(textInfo.ToLower(DateTime.Now.ToString("MMMM")));
         DayOrders = new List<SummaryOrderView>(ApiServer.Get<List<SummaryOrderView>>("Orders/Date/"+SelectedData));
         var Timings = DayOrders.Select(x=>x.Time).Distinct().ToList();
         foreach (var time in Timings)
         {
             var scheduleItem = new ScheduleItem(time);
             var grades = DayOrders.Where(x => x.Time == time).Select(x => x.Grade);
-             
+            //grades = new List<GradeView>(grades);
+            grades = grades.DistinctBy(x => x.Name);
             foreach (var grade in grades)
             {
                 var dishes = DayOrders

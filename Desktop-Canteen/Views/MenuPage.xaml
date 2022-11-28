@@ -260,7 +260,7 @@
 
                                             <Rectangle Grid.Row="1" Grid.Column="1"
                                                        Grid.RowSpan="5" Grid.ColumnSpan="5"
-                                                       Fill="{StaticResource GreenBrush}"
+                                                       Fill="{StaticResource DishCardBackgroundBrush}"
                                                        RadiusX="20" RadiusY="20" />
 
                                             <Viewbox Grid.Row="0" Grid.Column="0"
@@ -275,13 +275,13 @@
                                                        Padding="14, 0, 0, 0"
                                                        Text="{Binding Name}"
                                                        FontSize="18" FontWeight="SemiBold"
-                                                       Foreground="{StaticResource LightTextBrush}" />
+                                                       Foreground="{StaticResource GrayTextBrush}" />
 
                                             <Button Grid.Row="2" Grid.Column="4"
                                                     Style="{StaticResource TransparentButton}">
                                                 <materialDesign:PackIcon Kind="PencilOutline"
                                                                          Height="20" Width="20"
-                                                                         Foreground="{StaticResource LightTextBrush}" />
+                                                                         Foreground="{StaticResource GrayTextBrush}" />
                                             </Button>
 
                                             <TextBlock Grid.Row="3" Grid.Column="2"
@@ -292,7 +292,7 @@
                                                        Text="{Binding Discription}"
                                                        ToolTip="Описание блюда"
                                                        FontSize="16" FontWeight="Normal"
-                                                       Foreground="{StaticResource LightTextBrush}" />
+                                                       Foreground="{StaticResource GrayTextBrush}" />
 
                                             <StackPanel Orientation="Horizontal"
                                                         Grid.Row="4" Grid.Column="2"
@@ -302,13 +302,13 @@
                                                            Padding="14, 0, 0, 0"
                                                            Text="{Binding Weight}"
                                                            FontSize="16" FontWeight="Normal"
-                                                           Foreground="{StaticResource LightTextBrush}" />
+                                                           Foreground="{StaticResource GrayTextBrush}" />
                                                 <TextBlock TextWrapping="Wrap"
                                                            VerticalAlignment="Center"
                                                            Padding="5, 0, 0, 0"
                                                            Text="г"
                                                            FontSize="16" FontWeight="Normal"
-                                                           Foreground="{StaticResource LightTextBrush}" />
+                                                           Foreground="{StaticResource GrayTextBrush}" />
                                             </StackPanel>
 
 
@@ -321,13 +321,13 @@
                                                            Padding="30, 0, 0, 0"
                                                            Text="{Binding Cost}"
                                                            FontSize="28" FontWeight="Normal"
-                                                           Foreground="{StaticResource LightTextBrush}" />
+                                                           Foreground="{StaticResource GrayTextBrush}" />
                                                 <TextBlock TextWrapping="Wrap"
                                                            VerticalAlignment="Center"
                                                            Padding="10, 0, 0, 0"
                                                            Text="р"
                                                            FontSize="28" FontWeight="Normal"
-                                                           Foreground="{StaticResource LightTextBrush}" />
+                                                           Foreground="{StaticResource GrayTextBrush}" />
                                             </StackPanel>
 
                                         </Grid>

@@ -497,7 +497,7 @@
                             <Setter TargetName="TextBlock" Property="Foreground" Value="{StaticResource GreenBrush}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Ellipse" Property="Fill" Value="{StaticResource UltraLightGreenBrush}" />
+                            <Setter TargetName="Ellipse" Property="Fill" Value="{StaticResource LightGreenBrush}" />
                             <Setter TargetName="TextBlock" Property="Foreground" Value="{StaticResource DarkGreenBrush}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">

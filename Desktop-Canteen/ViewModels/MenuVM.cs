@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using Desktop_Admin.Models;
 using WPFLibrary;
@@ -30,7 +31,8 @@ public class MenuVM : BaseVM
         for (int i = 0; i < 5; i++)
             Days.Add(DateTime.Today.AddDays(i-today+1));
         TodayDate = DateTime.Now.ToString("dd.MM");
-        TodayMonth = DateTime.Now.ToString("MMMM");
+        var textInfo = new CultureInfo("ru-RU").TextInfo;
+        TodayMonth = textInfo.ToTitleCase(textInfo.ToLower(DateTime.Now.ToString("MMMM")));
         AllDishes = new ObservableCollection<Dish>(ApiServer.Get<List<Dish>>("Dish"));
         DishInMenu = new ObservableCollection<Dish>();
         Menu = new ObservableCollection<MenuView>();
