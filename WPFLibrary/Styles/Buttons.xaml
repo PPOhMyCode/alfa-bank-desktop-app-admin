@@ -4,11 +4,11 @@
 
     <Style x:Key="BaseButton" TargetType="Button">
         <Setter Property="Background" Value="{StaticResource GreenBrush}" />
-        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}" />
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Medium}" />
         <Setter Property="FontSize" Value="27" />
         <Setter Property="Padding" Value="0" />
+        <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Foreground" Value="Black" />
-        <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -36,7 +36,7 @@
                             <Setter Property="Background" Value="{StaticResource UltraLightGreenBrush}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" Value="{StaticResource DarkGreenBrush}" />
+                            <Setter Property="Background" Value="{StaticResource GrayBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -49,7 +49,6 @@
         <Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}" />
         <Setter Property="FontSize" Value="{StaticResource Regular}" />
         <Setter Property="Foreground" Value="Transparent" />
-        <Setter Property="FontWeight" Value="DemiBold" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -62,8 +61,6 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center" />
                     </Border>
-
-
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsDefaulted" Value="true">
                             <Setter Property="Background" Value="{StaticResource GreenBrush}" />
@@ -84,18 +81,46 @@
     </Style>
     
     <Style x:Key="Transparent" TargetType="Button">
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}" />
+        <Setter Property="FontSize" Value="{StaticResource Regular}" />
+        <Setter Property="Foreground" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        Name="brd"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="2">
+                        <ContentPresenter
+                            Margin="5"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefaulted" Value="true">
+                            <Setter Property="Background" Value="Transparent" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" Value="Transparent" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" Value="Transparent" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" Value="Transparent" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
     
     <Style x:Key="DefaultTransparentButton" TargetType="Button">
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="Foreground" Value="{StaticResource DarkGrayBrush}"/>
-        <Setter Property="FontWeight" Value="DemiBold"/>
         <Setter Property="FontSize" Value="19"/>
-        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Bold}"/>
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Margin" Value="15, 7, 15, 0"/>
         <Setter Property="Template">
@@ -129,9 +154,8 @@
     <Style x:Key="MainMenuButton" TargetType="Button">
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="Foreground" Value="{StaticResource DarkGrayBrush}"/>
-        <Setter Property="FontWeight" Value="DemiBold"/>
         <Setter Property="FontSize" Value="19"/>
-        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Bold}"/>
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Margin" Value="15, 7, 15, 0"/>
         <Setter Property="Template">
@@ -168,9 +192,8 @@
     <Style x:Key="SelectedMainMenuButton" TargetType="Button">
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="Foreground" Value="{StaticResource DarkGreenBrush}"/>
-        <Setter Property="FontWeight" Value="DemiBold"/>
         <Setter Property="FontSize" Value="19"/>
-        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Bold}"/>
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Margin" Value="15, 7, 15, 0"/>
         <Setter Property="Template">
@@ -208,8 +231,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="{StaticResource DarkGrayBrush}"/>
-        <Setter Property="FontWeight" Value="DemiBold"/>
-        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Bold}"/>
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}"/>
         <Setter Property="BorderBrush" Value="{StaticResource MediumGreenBrush}"/>
         <Setter Property="BorderThickness" Value="5,10,15,20"/>
         <Setter Property="Cursor" Value="Hand"/>
@@ -239,10 +261,9 @@
     <Style x:Key="DefaultLightButton" TargetType="Button">
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="Foreground" Value="{StaticResource DarkGrayBrush}"/>
-        <Setter Property="FontWeight" Value="Normal"/>
         <Setter Property="Background" Value="{StaticResource CircleButtonBackgroundBrush}"/>
         <Setter Property="FontSize" Value="19"/>
-        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Bold}"/>
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Medium}"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -260,16 +281,18 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsDefaulted" Value="True">
-                            <Setter Property="Background" Value="{StaticResource GreenBrush}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="brd" Property="Background" Value="{StaticResource UltraLightGreenBrush}" />
                             <Setter Property="Foreground" Value="{StaticResource UltraDarkGreenBrush}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
                             <Setter Property="Foreground" Value="{StaticResource DarkGreenBrush}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground" Value="{StaticResource UltraLightGreenBrush}" />
+                            <Setter TargetName="brd" Property="Background" Value="{StaticResource GrayBrush}" />
+                            <Setter Property="Foreground" Value="{StaticResource LightTextBrush}" />
+                            <Setter TargetName="brd" Property="BorderBrush" Value="{StaticResource DarkGrayBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -290,7 +313,7 @@
                                  StrokeThickness="1"/>
                         <Label Content="{TemplateBinding Content}" HorizontalAlignment="Center"
                                   VerticalAlignment="Center" Foreground="{StaticResource GreenBrush}"
-                                  FontWeight="DemiBold" FontSize="19" Padding="5"/>
+                                  FontFamily="{StaticResource Montserrat-Medium}" FontSize="19" Padding="5"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsDefaulted" Value="True">
@@ -326,7 +349,7 @@
                         <Label x:Name="Label" 
                                Content="{TemplateBinding Content}" HorizontalAlignment="Center"
                                VerticalAlignment="Center" Foreground="{StaticResource LightTextBrush}"
-                               FontWeight="DemiBold" FontSize="19" Padding="5"/>
+                               FontFamily="{StaticResource Montserrat-Medium}" FontSize="19" Padding="5"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsDefaulted" Value="True">
@@ -350,10 +373,9 @@
     <Style x:Key="TypeMealButton" TargetType="Button">
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="Foreground" Value="{StaticResource LightTextBrush}"/>
-        <Setter Property="FontWeight" Value="DemiBold"/>
         <Setter Property="Background" Value="{StaticResource GreenBrush}"/>
         <Setter Property="FontSize" Value="17"/>
-        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Bold}"/>
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -391,10 +413,9 @@
     <Style x:Key="SelectedTypeMealButton" TargetType="Button">
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="Foreground" Value="{StaticResource GreenBrush}"/>
-        <Setter Property="FontWeight" Value="DemiBold"/>
         <Setter Property="Background" Value="{StaticResource CircleButtonBackgroundBrush}"/>
         <Setter Property="FontSize" Value="17"/>
-        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Bold}"/>
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>

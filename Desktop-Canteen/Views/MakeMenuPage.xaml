@@ -15,7 +15,7 @@
         <Grid>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="95" />
+                    <RowDefinition Height="100" />
                     <RowDefinition Height="415" />
                     <!-- <RowDefinition Height="200" /> -->
                     <RowDefinition Height="Auto" />
@@ -134,7 +134,7 @@
                                          Style="{DynamicResource TextBoxWithDescriptionInCanteenApp}"
                                          ToolTip="Поиск блюд" Padding="20" />
                                 <Expander Margin="5,0,10,5"
-                                          Width="300" 
+                                          Width="320" 
                                           HorizontalAlignment="Right">
                                     <Expander.HeaderTemplate>
                                         <DataTemplate>
@@ -150,9 +150,11 @@
                                         Orientation="Vertical">
                                         <TextBlock Style="{StaticResource Medium15Text}" Text="Выберите начало четверти"
                                                    TextAlignment="Left"/>
-                                        <DatePicker HorizontalAlignment="Left"
+                                        <DatePicker x:Name="DatePicker1"
+                                                    HorizontalAlignment="Left"
                                                     Margin="0, 5, 0, 20"
                                                     Width="280"
+                                                    FontFamily="{StaticResource Montserrat-Regular}"
                                                     BorderBrush="{StaticResource MediumGreenBrush}"
                                                     materialDesign:DatePickerAssist.OutlinedBorderActiveThickness="3"
                                                     materialDesign:DatePickerAssist.OutlinedBorderInactiveThickness="3"
@@ -164,6 +166,7 @@
                                                 <Style TargetType="{x:Type Calendar}" BasedOn="{StaticResource MaterialDesignCalendarPortrait}">
                                                     <Setter Property="Background" Value="{StaticResource CalendarBackgroundBrush}" />
                                                     <Setter Property="Foreground" Value="{StaticResource DarkGrayBrush}"/>
+                                                    <Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}"/>
                                                     <Setter Property="materialDesign:CalendarAssist.IsHeaderVisible" Value="False"/>
                                                     <Setter Property="CalendarDayButtonStyle">
                                                         <Setter.Value>
@@ -185,9 +188,11 @@
                                         </DatePicker>
                                         <TextBlock Style="{StaticResource Medium15Text}" Text="Выберите конец четверти"
                                                    TextAlignment="Left"/>
-                                        <DatePicker HorizontalAlignment="Left"
+                                        <DatePicker x:Name="DatePicker2"
+                                                    HorizontalAlignment="Left"
                                                     Margin="0, 5, 0, 10"
                                                     Width="280"
+                                                    FontFamily="{StaticResource Montserrat-Regular}"
                                                     BorderBrush="{StaticResource MediumGreenBrush}"
                                                     materialDesign:DatePickerAssist.OutlinedBorderActiveThickness="3"
                                                     materialDesign:DatePickerAssist.OutlinedBorderInactiveThickness="3"
@@ -199,6 +204,7 @@
                                                 <Style TargetType="{x:Type Calendar}" BasedOn="{StaticResource MaterialDesignCalendarPortrait}">
                                                     <Setter Property="Background" Value="{StaticResource CalendarBackgroundBrush}" />
                                                     <Setter Property="Foreground" Value="{StaticResource DarkGrayBrush}"/>
+                                                    <Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}"/>
                                                     <Setter Property="materialDesign:CalendarAssist.IsHeaderVisible" Value="False"/>
                                                     <Setter Property="CalendarDayButtonStyle">
                                                         <Setter.Value>
@@ -364,7 +370,8 @@
                                                        TextWrapping="Wrap"
                                                        Padding="14, 0, 0, 0"
                                                        Text="{Binding Name}"
-                                                       FontSize="18" FontWeight="SemiBold"
+                                                       FontSize="18" 
+                                                       Style="{StaticResource SemiBoldText}"
                                                        Foreground="{StaticResource GrayTextBrush}" />
 
                                             <Button Grid.Row="2" Grid.Column="4"
@@ -381,7 +388,8 @@
                                                        Padding="14, 0, 0, 0"
                                                        Text="{Binding Discription}"
                                                        ToolTip="Описание блюда"
-                                                       FontSize="16" FontWeight="Normal"
+                                                       FontSize="16" 
+                                                       Style="{StaticResource MediumText}"
                                                        Foreground="{StaticResource GrayTextBrush}" />
 
                                             <StackPanel Orientation="Horizontal"
@@ -391,13 +399,15 @@
                                                            VerticalAlignment="Center"
                                                            Padding="14, 0, 0, 0"
                                                            Text="{Binding Weight}"
-                                                           FontSize="16" FontWeight="Normal"
+                                                           FontSize="16" 
+                                                           Style="{StaticResource MediumText}"
                                                            Foreground="{StaticResource GrayTextBrush}" />
                                                 <TextBlock TextWrapping="Wrap"
                                                            VerticalAlignment="Center"
                                                            Padding="5, 0, 0, 0"
                                                            Text="г"
-                                                           FontSize="16" FontWeight="Normal"
+                                                           FontSize="16" 
+                                                           Style="{StaticResource MediumText}"
                                                            Foreground="{StaticResource GrayTextBrush}" />
                                             </StackPanel>
 
@@ -410,13 +420,15 @@
                                                            VerticalAlignment="Center"
                                                            Padding="30, 0, 0, 0"
                                                            Text="{Binding Cost}"
-                                                           FontSize="28" FontWeight="Normal"
+                                                           FontSize="28" 
+                                                           Style="{StaticResource MediumText}"
                                                            Foreground="{StaticResource GrayTextBrush}" />
                                                 <TextBlock TextWrapping="Wrap"
                                                            VerticalAlignment="Center"
                                                            Padding="10, 0, 0, 0"
                                                            Text="р"
-                                                           FontSize="28" FontWeight="Normal"
+                                                           FontSize="28"
+                                                           Style="{StaticResource MediumText}"
                                                            Foreground="{StaticResource GrayTextBrush}" />
                                             </StackPanel>
 
@@ -477,7 +489,8 @@
                                                        TextWrapping="Wrap"
                                                        Padding="14, 0, 0, 0"
                                                        Text="{Binding Name}"
-                                                       FontSize="18" FontWeight="SemiBold"
+                                                       FontSize="18" 
+                                                       Style="{StaticResource SemiBoldText}"
                                                        Foreground="{StaticResource GrayTextBrush}" />
 
                                             <Button Grid.Row="2" Grid.Column="4"
@@ -494,7 +507,8 @@
                                                        Padding="14, 0, 0, 0"
                                                        Text="{Binding Discription}"
                                                        ToolTip="Описание блюда"
-                                                       FontSize="16" FontWeight="Normal"
+                                                       FontSize="16" 
+                                                       Style="{StaticResource MediumText}"
                                                        Foreground="{StaticResource GrayTextBrush}" />
 
                                             <StackPanel Orientation="Horizontal"
@@ -504,13 +518,15 @@
                                                            VerticalAlignment="Center"
                                                            Padding="14, 0, 0, 0"
                                                            Text="{Binding Weight}"
-                                                           FontSize="16" FontWeight="Normal"
+                                                           FontSize="16"
+                                                           Style="{StaticResource MediumText}"
                                                            Foreground="{StaticResource GrayTextBrush}" />
                                                 <TextBlock TextWrapping="Wrap"
                                                            VerticalAlignment="Center"
                                                            Padding="5, 0, 0, 0"
                                                            Text="г"
-                                                           FontSize="16" FontWeight="Normal"
+                                                           FontSize="16"
+                                                           Style="{StaticResource MediumText}"
                                                            Foreground="{StaticResource GrayTextBrush}" />
                                             </StackPanel>
 
@@ -523,13 +539,15 @@
                                                            VerticalAlignment="Center"
                                                            Padding="30, 0, 0, 0"
                                                            Text="{Binding Cost}"
-                                                           FontSize="28" FontWeight="Normal"
+                                                           FontSize="28"
+                                                           Style="{StaticResource MediumText}"
                                                            Foreground="{StaticResource GrayTextBrush}" />
                                                 <TextBlock TextWrapping="Wrap"
                                                            VerticalAlignment="Center"
                                                            Padding="10, 0, 0, 0"
                                                            Text="р"
-                                                           FontSize="28" FontWeight="Normal"
+                                                           FontSize="28" 
+                                                           Style="{StaticResource MediumText}"
                                                            Foreground="{StaticResource GrayTextBrush}" />
                                             </StackPanel>
 

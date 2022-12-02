@@ -15,7 +15,7 @@
         <Grid>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="95" />
+                    <RowDefinition Height="100" />
                     <RowDefinition Height="215" />
                     <RowDefinition Height="200" />
                     <RowDefinition Height="Auto" />
@@ -64,47 +64,50 @@
                             <RowDefinition Height="60" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.05*" />
-                            <ColumnDefinition Width="0.05*" />
-                            <ColumnDefinition Width="0.05*" />
-                            <ColumnDefinition Width="0.05*" />
-                            <ColumnDefinition Width="0.05*" />
-                            <ColumnDefinition Width="0.6*" />
+                            <ColumnDefinition Width="0.08*" />
+                            <ColumnDefinition Width="0.08*" />
+                            <ColumnDefinition Width="0.08*" />
+                            <ColumnDefinition Width="0.08*" />
+                            <ColumnDefinition Width="0.08*" />
+                            <ColumnDefinition Width="0.60*" />
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Row="0" Grid.ColumnSpan="5" Orientation="Horizontal">
-                            <TextBlock  Style="{StaticResource Medium23Text}"
-                                        TextAlignment="Center" Text="Сегодня" FontWeight="Medium"
+                            <TextBlock  Style="{StaticResource SemiBoldText}"
+                                        FontSize="23"
+                                        TextAlignment="Center" Text="Сегодня" FontWeight="SemiBold"
                                         Margin="2, 0, 0, 0" HorizontalAlignment="Left" />
-                            <TextBlock  Style="{StaticResource Medium23Text}"
-                                        TextAlignment="Center" Text="{Binding TodayDate}" FontWeight="Medium"
+                            <TextBlock  Style="{StaticResource SemiBoldText}"
+                                        FontSize="23"
+                                        TextAlignment="Center" Text="{Binding TodayDate}"
                                         Margin="10, 0, 0, 0" HorizontalAlignment="Left" />
                         </StackPanel>
                         
-
                         <TextBlock Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5"  Style="{StaticResource Medium23Text}"
                                    TextAlignment="Center" Text="{Binding TodayMonth}" VerticalAlignment="Bottom"
                                    Margin="2, 0, 0, 0" HorizontalAlignment="Left"/>
-
-                        <!-- <TextBlock Grid.Row="2" Grid.ColumnSpan="5" Style="{StaticResource Medium23Text}" -->
-                        <!--            TextAlignment="Center" Text="" -->
-                        <!--            Margin="2, 15, 0, 0" HorizontalAlignment="Left" /> -->
-                        <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource DefaultText}"
+                        
+                        <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource MediumText}"
+                                   FontSize="26"
                                    VerticalAlignment="Bottom"
                                    Width="35" TextAlignment="Center" Text="{Binding Days[0].Day}" Margin="2, 0, 0, 0"
                                    Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="2" Grid.Column="1" Style="{StaticResource DefaultText}"
+                        <TextBlock Grid.Row="2" Grid.Column="1" Style="{StaticResource MediumText}"
+                                   FontSize="26"
                                    VerticalAlignment="Bottom"
                                    Width="35" TextAlignment="Center" Text="{Binding Days[1].Day}" Margin="2, 0, 0, 0"
                                    Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="2" Grid.Column="2" Style="{StaticResource DefaultText}"
+                        <TextBlock Grid.Row="2" Grid.Column="2" Style="{StaticResource MediumText}"
+                                   FontSize="26"
                                    VerticalAlignment="Bottom"
                                    Width="35" TextAlignment="Center" Text="{Binding Days[2].Day}" Margin="2, 0, 0, 0"
                                    Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="2" Grid.Column="3" Style="{StaticResource DefaultText}"
+                        <TextBlock Grid.Row="2" Grid.Column="3" Style="{StaticResource MediumText}"
+                                   FontSize="26"
                                    VerticalAlignment="Bottom"
                                    Width="35" TextAlignment="Center" Text="{Binding Days[3].Day}" Margin="2, 0, 0, 0"
                                    Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="2" Grid.Column="4" Style="{StaticResource DefaultText}"
+                        <TextBlock Grid.Row="2" Grid.Column="4" Style="{StaticResource MediumText}"
+                                   FontSize="26"
                                    VerticalAlignment="Bottom"
                                    Width="35" TextAlignment="Center" Text="{Binding Days[4].Day}" Margin="2, 0, 0, 0"
                                    Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
@@ -114,7 +117,7 @@
                                    Height="3" Margin="0" VerticalAlignment="Center" Opacity="0.3" />
 
                         <Button Name="Monday" Grid.Column="0" Grid.Row="3" Style="{StaticResource CircleButton}" Content="ПН"
-                                Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton"
+                                Margin="0, 10, 20, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton"
                                 Command="{Binding SelectDayCommand}" CommandParameter="{Binding Days[0]}"/>
                         <Button Name="Tuesday" Grid.Column="1" Grid.Row="3" Style="{StaticResource CircleButton}" Content="ВТ"
                                 Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" 
@@ -132,13 +135,13 @@
                         <Grid Row="0" RowSpan="2" Column="5" VerticalAlignment="Bottom" HorizontalAlignment="Right">
                             <StackPanel Orientation="Vertical">
                                 <Button Margin="5,0,5,50"
-                                        Width="205" Height="35"
+                                        Width="225" Height="40"
                                         Style="{StaticResource DefaultTransparentButton}"
                                         HorizontalAlignment="Right"
                                         Click="ToMakeMenuPage">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="160" />
+                                            <ColumnDefinition Width="180" />
                                             <ColumnDefinition Width="40" />
                                         </Grid.ColumnDefinitions>
                                         <TextBlock Text="Выбрать меню"
@@ -272,7 +275,8 @@
                                                        TextWrapping="Wrap"
                                                        Padding="14, 0, 0, 0"
                                                        Text="{Binding Name}"
-                                                       FontSize="18" FontWeight="SemiBold"
+                                                       FontSize="18" 
+                                                       Style="{StaticResource SemiBoldText}"
                                                        Foreground="{StaticResource GrayTextBrush}" />
 
                                             <Button Grid.Row="2" Grid.Column="4"
@@ -289,7 +293,8 @@
                                                        Padding="14, 0, 0, 0"
                                                        Text="{Binding Discription}"
                                                        ToolTip="Описание блюда"
-                                                       FontSize="16" FontWeight="Normal"
+                                                       FontSize="16" 
+                                                       Style="{StaticResource MediumText}"
                                                        Foreground="{StaticResource GrayTextBrush}" />
 
                                             <StackPanel Orientation="Horizontal"
@@ -299,13 +304,15 @@
                                                            VerticalAlignment="Center"
                                                            Padding="14, 0, 0, 0"
                                                            Text="{Binding Weight}"
-                                                           FontSize="16" FontWeight="Normal"
+                                                           FontSize="16" 
+                                                           Style="{StaticResource MediumText}"
                                                            Foreground="{StaticResource GrayTextBrush}" />
                                                 <TextBlock TextWrapping="Wrap"
                                                            VerticalAlignment="Center"
                                                            Padding="5, 0, 0, 0"
                                                            Text="г"
-                                                           FontSize="16" FontWeight="Normal"
+                                                           FontSize="16" 
+                                                           Style="{StaticResource MediumText}"
                                                            Foreground="{StaticResource GrayTextBrush}" />
                                             </StackPanel>
 
@@ -318,13 +325,15 @@
                                                            VerticalAlignment="Center"
                                                            Padding="30, 0, 0, 0"
                                                            Text="{Binding Cost}"
-                                                           FontSize="28" FontWeight="Normal"
+                                                           FontSize="28" 
+                                                           Style="{StaticResource MediumText}"
                                                            Foreground="{StaticResource GrayTextBrush}" />
                                                 <TextBlock TextWrapping="Wrap"
                                                            VerticalAlignment="Center"
                                                            Padding="10, 0, 0, 0"
                                                            Text="р"
-                                                           FontSize="28" FontWeight="Normal"
+                                                           FontSize="28" 
+                                                           Style="{StaticResource MediumText}"
                                                            Foreground="{StaticResource GrayTextBrush}" />
                                             </StackPanel>
 

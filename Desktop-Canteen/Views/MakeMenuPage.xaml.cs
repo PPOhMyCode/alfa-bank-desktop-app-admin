@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Markup;
 using Desktop_Canteen.ViewModels;
 
 namespace Desktop_Canteen.Views;
@@ -13,7 +14,8 @@ public partial class MakeMenuPage : Page
             _makeMenuVm = new MakeMenuVM();
             DataContext = _makeMenuVm;
             _makeMenuVm.PlugTextBlock = this.Plug;
-
+            DatePicker1.Language = XmlLanguage.GetLanguage(System.Globalization.CultureInfo.CurrentCulture.IetfLanguageTag);
+            DatePicker2.Language = XmlLanguage.GetLanguage(System.Globalization.CultureInfo.CurrentCulture.IetfLanguageTag);
         }
     
         public void ToMenuPage(object sender, RoutedEventArgs e)

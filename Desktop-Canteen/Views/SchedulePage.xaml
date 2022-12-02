@@ -14,7 +14,7 @@
     <ScrollViewer>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.1*" />
+                <RowDefinition Height="100" />
                 <RowDefinition Height="0.25*" />
                 <RowDefinition Height="0.65*" />
             </Grid.RowDefinitions>
@@ -59,7 +59,7 @@
                 <Grid Margin="40, 30,30, 0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40" />
-                        <RowDefinition Height="25" />
+                        <RowDefinition Height="40" />
                         <RowDefinition Height="60" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -81,20 +81,25 @@
                         </Viewbox>
                     </StackPanel>
 
-                    <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource DefaultText}"
+                    <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource MediumText}" FontSize="26"
                                Width="35" TextAlignment="Center" Text="26" Margin="2, 0, 0, 0"
+                               VerticalAlignment="Bottom"
                                Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
-                    <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource DefaultText}"
+                    <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource MediumText}" FontSize="26"
                                Width="35" TextAlignment="Center" Text="27" Margin="2, 0, 0, 0"
+                               VerticalAlignment="Bottom"
                                Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
-                    <TextBlock Grid.Row="1" Grid.Column="2" Style="{StaticResource DefaultText}"
+                    <TextBlock Grid.Row="1" Grid.Column="2" Style="{StaticResource MediumText}" FontSize="26"
                                Width="35" TextAlignment="Center" Text="28" Margin="2, 0, 0, 0"
+                               VerticalAlignment="Bottom"
                                Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
-                    <TextBlock Grid.Row="1" Grid.Column="3" Style="{StaticResource DefaultText}"
+                    <TextBlock Grid.Row="1" Grid.Column="3" Style="{StaticResource MediumText}" FontSize="26"
                                Width="35" TextAlignment="Center" Text="29" Margin="2, 0, 0, 0"
+                               VerticalAlignment="Bottom"
                                Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
-                    <TextBlock Grid.Row="1" Grid.Column="4" Style="{StaticResource DefaultText}"
+                    <TextBlock Grid.Row="1" Grid.Column="4" Style="{StaticResource MediumText}" FontSize="26"
                                Width="35" TextAlignment="Center" Text="30" Margin="2, 0, 0, 0"
+                               VerticalAlignment="Bottom"
                                Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
 
                     <TextBlock Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4"
@@ -142,7 +147,7 @@
                                   Background="Transparent"
                                   Foreground="{StaticResource DarkGrayBrush}"
                                   FontSize="23"
-                                  FontWeight="SemiBold"
+                                  FontFamily="{StaticResource Montserrat-Regular}"
                                   GridLinesVisibility="None"
                                   CanUserAddRows="False"
                                   CanUserReorderColumns="False"
@@ -154,6 +159,7 @@
                                 <DataGridTemplateColumn Header="Перемена" Width="0.25*">
                                     <DataGridTemplateColumn.HeaderStyle>
                                         <Style TargetType="DataGridColumnHeader">
+                                            <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}"/>
                                             <Setter Property="HorizontalContentAlignment" Value="Center" />
                                             <Setter Property="Background" Value="Transparent" />
                                             <Setter Property="Margin" Value="0, 5, 0, 20" />
@@ -174,6 +180,7 @@
                                 <DataGridTemplateColumn Header="Класс" Width="0.25*">
                                     <DataGridTemplateColumn.HeaderStyle>
                                         <Style TargetType="DataGridColumnHeader">
+                                            <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}"/>
                                             <Setter Property="HorizontalContentAlignment" Value="Center" />
                                             <Setter Property="Background" Value="Transparent" />
                                             <Setter Property="Margin" Value="0, 5, 0, 20" />
@@ -218,6 +225,7 @@
                                 <DataGridTemplateColumn Header="Кол-во человек" Width="0.25*">
                                     <DataGridTemplateColumn.HeaderStyle>
                                         <Style TargetType="DataGridColumnHeader">
+                                            <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}"/>
                                             <Setter Property="HorizontalContentAlignment" Value="Center" />
                                             <Setter Property="Background" Value="Transparent" />
                                             <Setter Property="Margin" Value="0, 5, 0, 20" />
@@ -262,6 +270,7 @@
                                 <DataGridTemplateColumn Header="Заявка" Width="0.25*">
                                     <DataGridTemplateColumn.HeaderStyle>
                                         <Style TargetType="DataGridColumnHeader">
+                                            <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}"/>
                                             <Setter Property="HorizontalContentAlignment" Value="Center" />
                                             <Setter Property="Background" Value="Transparent" />
                                             <Setter Property="Margin" Value="0, 5, 0, 20" />
