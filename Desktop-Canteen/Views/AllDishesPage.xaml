@@ -40,8 +40,6 @@
                             Click="ToOrderingIngredientsButtonClick" />
                     <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Расписание"
                             Click="ToScheduleButtonClick" />
-                    <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Школьники"
-                            Click="ToChildrensButtonClick" />
 
                     <Button DockPanel.Dock="Right" Style="{StaticResource DefaultTransparentButton}" HorizontalAlignment="Right"
                             Height="70" Width="70" Margin="0,0,10,0">
@@ -82,7 +80,7 @@
                     </Button>
                 </Grid>
             </Grid>
-            <Grid Row="2">
+            <Grid Row="2" Margin="40, 30,30, 0">
                 <ItemsControl ItemsSource="{Binding Dishes}"
                               Margin="0, 0, 0, 200">
                     <ItemsControl.ItemsPanel>

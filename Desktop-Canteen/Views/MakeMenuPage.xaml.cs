@@ -34,11 +34,6 @@ public partial class MakeMenuPage : Page
         {
             NavigationService?.Navigate(new SchedulePage());
         }
-            
-        public void ToChildrensButtonClick(object sender, RoutedEventArgs e)
-        {
-            NavigationService?.Navigate(new ChildrensPage());
-        }
 
         public void BreakfastButtonClick(object sender, RoutedEventArgs e)
         {
@@ -63,6 +58,7 @@ public partial class MakeMenuPage : Page
 
         public void ChangeStyleCircleButton(object sender, RoutedEventArgs e)
         {
+            DefaultStyleToAllCircleButton();
             var isSelected = (sender as Button).Style.Equals(Application.Current.TryFindResource("SelectedCircleButton") as Style);
             if (isSelected)
             {
@@ -74,8 +70,17 @@ public partial class MakeMenuPage : Page
             }
         }
         
-        public void ToMenuSetupPage(object sender, RoutedEventArgs e)
+        private void DefaultStyleToAllCircleButton()
         {
-            NavigationService?.Navigate(new MenuSetup());
+            Monday1.Style = Application.Current.TryFindResource("CircleButton") as Style;
+            Tuesday1.Style = Application.Current.TryFindResource("CircleButton") as Style;
+            Wednesday1.Style = Application.Current.TryFindResource("CircleButton") as Style;
+            Thursday1.Style = Application.Current.TryFindResource("CircleButton") as Style;
+            Friday1.Style = Application.Current.TryFindResource("CircleButton") as Style;
+            Monday2.Style = Application.Current.TryFindResource("CircleButton") as Style;
+            Tuesday2.Style = Application.Current.TryFindResource("CircleButton") as Style;
+            Wednesday2.Style = Application.Current.TryFindResource("CircleButton") as Style;
+            Thursday2.Style = Application.Current.TryFindResource("CircleButton") as Style;
+            Friday2.Style = Application.Current.TryFindResource("CircleButton") as Style;
         }
 }

@@ -53,9 +53,4 @@ public partial class AddNewDishPage : Page
     {
         NavigationService?.Navigate(new SchedulePage());
     }
-            
-    public void ToChildrensButtonClick(object sender, RoutedEventArgs e)
-    {
-        NavigationService?.Navigate(new ChildrensPage());
-    }
 }

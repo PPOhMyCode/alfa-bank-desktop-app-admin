@@ -44,8 +44,6 @@
                             Click="ToOrderingIngredientsButtonClick" />
                     <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Расписание"
                             Click="ToScheduleButtonClick" />
-                    <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Школьники"
-                            Click="ToChildrensButtonClick" />
 
                     <Button DockPanel.Dock="Right" Style="{StaticResource DefaultTransparentButton}" HorizontalAlignment="Right"
                             Height="70" Width="70" Margin="0,0,10,0">
@@ -59,7 +57,7 @@
                 </DockPanel>
             </Grid>
 
-            <Grid Row="1" Margin="50, 40, 20, 0">
+            <Grid Row="1" Margin="50, 30,30, 0">
 
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal" Margin="0, 10" Height="40">
