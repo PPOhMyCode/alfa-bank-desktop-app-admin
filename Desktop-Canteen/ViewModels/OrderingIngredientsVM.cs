@@ -16,8 +16,8 @@ public class OrderingIngredientsVM : BaseVM
     public List<List<string>> Values { get; set; }
     public OrderingIngredientsVM()
     {
-        SelectedDate = "11-28-2022";
-        var data = ApiServer.Get<List<DishIngredientView>>("Orders/Date/" + SelectedDate + "/Ingredients");
+        SelectedDate = "2022-11-28";
+        var data = ApiServer.Get<List<DishIngredientView>>("order/date/" + SelectedDate + "/ingredients");
         SummaryOrderViews = new ObservableCollection<DishIngredientView>();
 
         Values = new List<List<string>>();

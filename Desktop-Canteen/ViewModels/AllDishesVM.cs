@@ -15,18 +15,19 @@ public class AllDishesPage : BaseVM
 
     public AllDishesPage()
     {
+        Dishes = new ObservableCollection<Dish>();
         DeleteDishCommand = new RelayCommand(DeleteDish);
         Refresh();
     }
 
     public void Refresh()
     {
-        Dishes = new ObservableCollection<Dish>(ApiServer.Get<List<Dish>>("Dish"));
+        Dishes = new ObservableCollection<Dish>(ApiServer.Get<List<Dish>>("dishes"));
     }
 
     public void DeleteDish(object param)
     {
-        ApiServer.Delete("Dish/" + param);
+        ApiServer.Delete("dishes/" + param);
         Refresh();
     }
 }

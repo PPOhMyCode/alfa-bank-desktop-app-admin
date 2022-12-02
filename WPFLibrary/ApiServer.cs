@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using Newtonsoft.Json;
 using RestSharp;
@@ -6,12 +7,15 @@ using WPFLibrary.JsonModels;
 
 namespace WPFLibrary;
 
+
+
 public class ApiServer
 {
+    private static string URL { get; set; }
+    
     public static JModel Get<JModel>(string req)
     {
-        string url = "https://localhost:5001/";
-        var client = new RestClient(url);
+        var client = new RestClient(URL);
         var request = new RestRequest(req, Method.Get);
         var response = client.Execute(request);
 
@@ -27,8 +31,7 @@ public class ApiServer
     
     public static RestResponse Delete(string req)
     {
-        string url = "https://localhost:5001/";
-        var client = new RestClient(url);
+        var client = new RestClient(URL);
         var request = new RestRequest(req, Method.Delete);
         var response = client.Execute(request);
 
@@ -39,11 +42,10 @@ public class ApiServer
 
         return response;
     }
-    
+
     public static RestResponse Post<JModel>(JModel model,string req)
     {
-        string url = "https://localhost:5001/";
-        var client = new RestClient(url);
+        var client = new RestClient(URL);
         var request = new RestRequest(req, Method.Post);
         request.AddHeader("Accept", "*/*");
         request.AddHeader("Content-Type", "application/json");
@@ -56,6 +58,25 @@ public class ApiServer
             System.Console.WriteLine(output);
         }
 
+        return response;
+    }
+    
+    public static RestResponse Autorization<JModel>(JModel model)
+    {
+        string url = "https://d5dr8ccmms8urkspiqc2.apigw.yandexcloud.net";
+        var client = new RestClient(url);
+        var request = new RestRequest("authorization", Method.Post);
+        request.AddHeader("Accept", "*/*");
+        request.AddHeader("Content-Type", "application/json");
+        var body = JsonConvert.SerializeObject(model);
+        request.AddJsonBody(body, "application/json");
+        RestResponse response = client.Execute(request);
+        if (response.StatusCode == HttpStatusCode.OK)
+        {
+            URL = response.Content.ToString();
+            System.Console.WriteLine(URL);
+        }
+            
         return response;
     }
 }

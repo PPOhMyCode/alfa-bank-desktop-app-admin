@@ -31,9 +31,10 @@ public class MenuVM : BaseVM
             Days.Add(DateTime.Today.AddDays(i-today+1));
         TodayDate = DateTime.Now.ToString("dd.MM");
         TodayMonth = DateTime.Now.ToString("MMMM");
-        AllDishes = new ObservableCollection<Dish>(ApiServer.Get<List<Dish>>("Dish"));
+        //AllDishes = new ObservableCollection<Dish>(ApiServer.Get<List<Dish>>("dishes"));
         DishInMenu = new ObservableCollection<Dish>();
         Menu = new ObservableCollection<MenuView>();
+        GetMenu();
         SelectDayCommand = new RelayCommand(SelectDay);
         SelectTypeCommand = new RelayCommand(SelectType);
     }
@@ -57,12 +58,12 @@ public class MenuVM : BaseVM
             Menu.Clear();
             DishInMenu.Clear();
             var b = Date.ToString("MM-dd-yyyy");
-            var menuDate = ApiServer.Get<List<Menu>>("Menu/Date/"+Date.ToString("MM-dd-yyyy"));
+            var menuDate = ApiServer.Get<List<Menu>>("menus");
             if (menuDate != null)
             {
                 foreach (var a in menuDate.Where(x=>x.TypeMealId==TypeMeal))
                 {
-                    var dish = ApiServer.Get<Dish>("Dish/" + a.DishId);
+                    var dish = ApiServer.Get<Dish>("dishes/" + a.DishId);
                     DishInMenu.Add(dish);
                 }
             }

@@ -1,7 +1,8 @@
 ﻿namespace WPFLibrary.JsonModels;
 
-public class Ingredient: BaseModel
+public class Ingredient
 {
+    public int IngredientId { get; set; }
     public string Name { set; get; }
     public double Quantity { set; get; }
     public string Measure { set; get; }
@@ -15,7 +16,7 @@ public class IngredientView:BaseModel
 
     public IngredientView(Ingredient ingredient)
     {
-        Id = ingredient.Id;
+        Id = ingredient.IngredientId;
         Name = ingredient.Name;
         Quantity = ingredient.Quantity;
         Measure = ingredient.Measure;

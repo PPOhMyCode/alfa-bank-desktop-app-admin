@@ -29,10 +29,10 @@ public class AddNewDishVM : BaseVM
     
     public string Discription
     {
-        get { return _dishView.Discription; }
+        get { return _dishView.Description; }
         set
         {
-            _dishView.Discription = value;
+            _dishView.Description = value;
             OnPropertyChanged("Discription");
         }
     }
@@ -102,7 +102,7 @@ public class AddNewDishVM : BaseVM
     public RelayCommand AddIngredientCommand { protected set; get; }
     public AddNewDishVM()
     {
-        Ingredients = new ObservableCollection<Ingredient>(ApiServer.Get<List<Ingredient>>("Ingredients"));
+        Ingredients = new ObservableCollection<Ingredient>(ApiServer.Get<List<Ingredient>>("ingredients"));
         InputIngredients = new List<IngredientCountInput>();
         SelectedIngredients = new List<Ingredient>();
         _dishView = new DishInput();
@@ -222,12 +222,15 @@ public class AddNewDishVM : BaseVM
              var count = Convert.ToDouble(((TextBox)grid.Children[1]).Text);
              InputIngredients.Add(new IngredientCountInput()
              {
-                 IngredientId = ingredient.Id,
+                 IngredientId = ingredient.IngredientId,
                  Count = count/ingredient.Quantity
              });
          }
-         ApiServer.Post(_dishView, "Dish");
-         var dish = ApiServer.Get<List<Dish>>("Dish").FirstOrDefault(x => x.Name == _dishView.Name);
-         ApiServer.Post(InputIngredients, "Dish/" + dish.Id + "/ingredients");
+         ApiServer.Post(_dishView, "dishes");
+         var dish = ApiServer.Get<List<Dish>>("dishes").FirstOrDefault(x => x.Name == _dishView.Name);
+         foreach (var inputIngredient in InputIngredients)
+         {
+             ApiServer.Post(inputIngredient, "dishes/" + dish.DishId + "/ingredients");
+         }
     }
 }

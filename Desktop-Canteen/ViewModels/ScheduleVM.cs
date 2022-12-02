@@ -23,7 +23,7 @@ public class ScheduleVM:BaseVM
     public void GetData()
     {
         SelectedData = "11-19-2022";
-        DayOrders = new List<SummaryOrderView>(ApiServer.Get<List<SummaryOrderView>>("Orders/Date/"+SelectedData));
+        DayOrders = new List<SummaryOrderView>(ApiServer.Get<List<SummaryOrderView>>("orders/date/"+SelectedData));
         var Timings = DayOrders.Select(x=>x.Time).Distinct().ToList();
         foreach (var time in Timings)
         {

@@ -3,8 +3,9 @@ using System.Runtime.InteropServices;
 
 namespace WPFLibrary.JsonModels;
 
-public class User: BaseModel
+public class User
 {
+    public int UserId { set; get; }
     public string Login { set; get; }
     public string Password { set; get; }
     public  string FirstName { set; get; }
@@ -19,8 +20,9 @@ public class UserAutorization
     public string Password { set; get; }
 }
 
-public class UserDataView: BaseModel
+public class UserDataView
 {
+    public string UserId { set; get; }
     public string Login { set; get; }
     public string Password { set; get; }
     public  string FirstName { set; get; }

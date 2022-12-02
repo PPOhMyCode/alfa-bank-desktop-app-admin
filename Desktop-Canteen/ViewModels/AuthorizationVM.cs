@@ -55,14 +55,14 @@ public class AuthorizationVM : BaseVM
 
     public bool ValidAuthorization()
     {
-        var response = ApiServer.Post(UserAutorization, "Autorization");
+        var response = ApiServer.Autorization(UserAutorization);
         //TODO: Переделать по нормальному 
         try
         {
-            var user = JsonConvert.DeserializeObject<UserDataView>(response.Content);
-            if (user.Id == 0)
+            var str = response.Content;
+            if (str == "System Error" || str == "Login or Password is incorrect")
                 AutorizationError = "Null Data";
-            return user.Id != 0;
+            return !(str == "System Error" || str == "Login or Password is incorrect");
         }
         catch (Exception e)
         {
