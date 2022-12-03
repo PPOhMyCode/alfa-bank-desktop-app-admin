@@ -58,7 +58,7 @@
                         <ColumnDefinition Width="0.7*"/>
                         <ColumnDefinition Width="0.3*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.ColumnSpan="2" Style="{StaticResource BaseButton}" Margin="10, 15, 20, 15"
+                    <Button Grid.ColumnSpan="2" Style="{StaticResource LightBaseButton}" Margin="10, 15, 20, 15"
                             Width="320" Height="50" HorizontalAlignment="Right" FontSize="22"
                             Click="ToAddNewDishButtonClick">
                         <Grid>

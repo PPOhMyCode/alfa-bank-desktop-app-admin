@@ -132,13 +132,14 @@
                             <TextBlock Style="{StaticResource SemiBoldText}" FontSize="25"
                                        Text="Продукты:" VerticalAlignment="Center"
                                        Margin="0,0,3,0" />
-                            <ComboBox
-                                materialDesign:HintAssist.Hint="Выберите продукт и граммовку"
+                            <ComboBox materialDesign:HintAssist.Hint="Выберите продукт и граммовку"
                                       Foreground="{StaticResource DarkGrayBrush}"
                                       FontSize="17"
                                       FontFamily="{StaticResource Montserrat-Medium}"
                                       Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                                      Margin="10,0,0,0" Padding="10" Text="" Width="425"
+                                      Margin="10,0,0,0" Padding="10" 
+                                      Text="" 
+                                      Width="425"
                                       ItemsSource="{Binding Ingredients}"
                                       DisplayMemberPath="Name"
                                       d:LayoutOverrides="Height"

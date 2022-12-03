@@ -1,0 +1,185 @@
+﻿<Page x:Class="Desktop_Admin.Views.MakeClassPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:viewModels="clr-namespace:Desktop_Admin.ViewModels"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:Desktop_Admin.Views"
+      mc:Ignorable="d"
+      Title="MakeClassPage">
+    <Page.DataContext>
+        <viewModels:MainViewModel />
+    </Page.DataContext>
+    <ScrollViewer>
+        <Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="80" />
+                    <RowDefinition Height="90" />
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Rectangle Grid.RowSpan="3">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Color="{StaticResource BackgroundColor}" Offset="0" />
+                            <GradientStop Color="{StaticResource LightBackgroundColor}" Offset="0.5" />
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                
+                <Grid>
+                    <DockPanel Margin="30, 20, 30 , 0">
+                        <Button Width="180" Margin="0, 0, 10, 0" Style="{StaticResource Transparent}">
+                            <Viewbox>
+                                <Image Source="/Resources/AppIcon.png" Stretch="Uniform" />
+                            </Viewbox>
+                        </Button>
+                        <Button Padding="10" Style="{StaticResource SelectedMainMenuButton}" Content="Создание класса" />
+                        <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Расписание"
+                                 />
+                        <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Школьники"
+                                 />
+
+                        <Button DockPanel.Dock="Right" Style="{StaticResource DefaultTransparentButton}" HorizontalAlignment="Right"
+                                Height="70" Width="70" Margin="0,0,10,0">
+                            <materialDesign:PackIcon Kind="Circle" Height="60" Width="60" />
+                        </Button>
+
+                        <Button DockPanel.Dock="Right" Style="{StaticResource DefaultTransparentButton}" HorizontalAlignment="Right"
+                                Height="60" Width="60" Margin="0,0,15,0">
+                            <materialDesign:PackIcon Kind="BellOutline" Height="30" Width="30" />
+                        </Button>
+                    </DockPanel>
+                </Grid>
+                
+                <Grid Row="1">
+                    <DockPanel Margin="40, 30, 30, 0">
+                        <TextBlock Style="{StaticResource Medium23Text}"
+                                   TextAlignment="Center" Text="Сортировка:" VerticalAlignment="Bottom"
+                                   Margin="2, 0, 0, 5" HorizontalAlignment="Left"/>
+                        
+                        <ComboBox Foreground="{StaticResource DarkGrayBrush}"
+                                  FontSize="16"
+                                  Text=""
+                                  VerticalAlignment="Bottom"
+                                  FontFamily="{StaticResource Montserrat-Medium}"
+                                  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                  Margin="10,0,0,0" Padding="10"
+                                  Height="40"
+                                  Width="205"
+                                  ItemsSource="{Binding Classes}"
+                                  d:LayoutOverrides="Height"
+                                  BorderThickness="1.5"
+                                  BorderBrush="{StaticResource GreenBrush}"
+                                  SelectedItem="{Binding SelectedClass}"
+                                  Background="{StaticResource LightBackgroundBrush}"
+                                  ToolTip="Выберите класс"
+                                  HorizontalAlignment="Left"/>
+                        
+                        <Button Style="{StaticResource LightBaseButton}"
+                                Width="293" Height="40"
+                                HorizontalAlignment="Right">
+                            <Grid Width="220">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.15*"/>
+                                    <ColumnDefinition Width="0.85*"/>
+                                </Grid.ColumnDefinitions>
+                                <materialDesign:PackIcon Kind="AccountAddOutline" VerticalAlignment="Center"
+                                                         Grid.Column="0" Margin="0"
+                                                         Height="30" Width="30" Foreground="{StaticResource DarkGrayBrush}"/>
+                                <TextBlock Grid.Column="1" Style="{StaticResource SmallDefaultText}" 
+                                           Text="Добавить" HorizontalAlignment="Center" Margin="10, 0, 0, 0"
+                                           VerticalAlignment="Center"/>
+                            </Grid>
+                        </Button>
+                    </DockPanel>
+                </Grid>
+                <Grid Row="2">
+                    <DockPanel Margin="40, 30, 30, 0">
+                        <TextBox Margin="5,0,5,10" Width="560" Height="45" Text="" TextWrapping="Wrap"
+                                 d:LayoutOverrides="Height"
+                                 Style="{DynamicResource TextBoxWithDescriptionInCanteenApp}"
+                                 ToolTip="Введите ФИО ученика" Padding="20" 
+                                 HorizontalAlignment="Left" />
+                        <Button Style="{StaticResource LightBaseButton}"
+                                Width="293" Height="40"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Right">
+                            <Grid Width="220">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.15*"/>
+                                    <ColumnDefinition Width="0.85*"/>
+                                </Grid.ColumnDefinitions>
+                                <materialDesign:PackIcon Kind="PeopleGroupOutline" VerticalAlignment="Center"
+                                                         Grid.Column="0" Margin="2, 0, 0, 0"
+                                                         Height="30" Width="30" Foreground="{StaticResource DarkGrayBrush}"/>
+                                <TextBlock Grid.Column="1" Style="{StaticResource SmallDefaultText}" 
+                                           Text="Создать класс" HorizontalAlignment="Center" Margin="10, 0, 0, 0"
+                                           VerticalAlignment="Center"/>
+                            </Grid>
+                        </Button>
+                    </DockPanel>
+                </Grid>
+                <Grid Row="3">
+                    <Button Style="{StaticResource LightBaseButton}"
+                            Width="400"
+                            HorizontalAlignment="Left"
+                            Margin="45, 20, 30, 0">
+                        <TextBlock Style="{StaticResource SmallDefaultText}" 
+                                   Text="Выгрузка логинов и паролей"/>
+                    </Button>
+                </Grid>
+            </Grid>
+        
+        <!-- <Grid.RowDefinitions> -->
+        <!--     <RowDefinition Height="100" /> -->
+        <!--     <RowDefinition Height="200" /> -->
+        <!--     <RowDefinition Height="Auto" /> -->
+        <!-- </Grid.RowDefinitions> -->
+        <!-- <Grid Name="Top" Grid.Row="0" Background="{DynamicResource TopBrush}"> -->
+        <!--     <DockPanel> -->
+        <!--         <TextBlock DockPanel.Dock="Left" HorizontalAlignment="Left" Margin="136 25 0 0" -->
+        <!--                    Width="309" TextWrapping="Wrap" Style="{StaticResource Heading}" -->
+        <!--                    Text="Автоматизация процесса питания в школах" /> -->
+        <!--         <Button DockPanel.Dock="Right" Style="{StaticResource TransparentButton}" HorizontalAlignment="Right" -->
+        <!--                 Height="40" Width="40" Margin="0,0,65,0"> -->
+        <!--             <ContentControl Content="{StaticResource HomeIcon}" /> -->
+        <!--         </Button> -->
+        <!--         <Button DockPanel.Dock="Right" Style="{StaticResource TransparentButton}" HorizontalAlignment="Right" -->
+        <!--                 Height="40" Width="40" Margin="0,0,25,0"> -->
+        <!--             <ContentControl Content="{StaticResource BellIcon}" /> -->
+        <!--         </Button> -->
+        <!--     </DockPanel> -->
+        <!-- </Grid> -->
+        <!-- <Grid Name="Tools" Grid.Row="1"> -->
+        <!--     <DockPanel LastChildFill="True" Margin="25"> -->
+        <!--         <StackPanel DockPanel.Dock="Left" Orientation="Vertical"> -->
+        <!--             <StackPanel Orientation="Horizontal"> -->
+        <!--                 <TextBlock Text="Сортировка:" Style="{DynamicResource Heading}"></TextBlock> -->
+        <!-- -->
+        <!--                 <ComboBox Margin="5,0,0,0" Name="CheckBox1" SelectedItem="{Binding SelectedClass}" Height="30" -->
+        <!--                           VerticalAlignment="Top" Width="190" ItemsSource="{Binding Classes}" /> -->
+        <!--             </StackPanel> -->
+        <!--             <StackPanel Orientation="Horizontal" Margin="0,10,0,0"> -->
+        <!--                 <TextBlock Text="Поиск:" Style="{DynamicResource Heading}"> </TextBlock> -->
+        <!--                 <TextBox Margin="5,0,0,0" Width="240" Height="30" Text="" TextWrapping="Wrap" -->
+        <!--                          d:LayoutOverrides="Height" Style="{DynamicResource TextBoxWithDescription}" -->
+        <!--                          ToolTip="Введите ФИО" /> -->
+        <!--             </StackPanel> -->
+        <!--             <Button Margin="0,10,0,0" Style="{StaticResource BaseButton}" Width="340" Height="50" -->
+        <!--                     Content="Выгрузка логинов и паролей"/> -->
+        <!--         </StackPanel> -->
+        <!--         <StackPanel DockPanel.Dock="Right" Orientation="Vertical"> -->
+        <!--             <Button Style="{StaticResource BaseButton }" Width="340" Height="50" Content="Добавить пользователя"></Button> -->
+        <!--             <Button Margin="5" Style="{StaticResource BaseButton}" Width="340" Height="50" -->
+        <!--                     Content="Создать класс"/> -->
+        <!--         </StackPanel> -->
+        <!--         <StackPanel/> -->
+        <!--     </DockPanel> -->
+        <!-- </Grid> -->
+        </Grid>
+    </ScrollViewer>
+</Page>

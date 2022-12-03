@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Desktop_Admin.ViewModels;
+using Desktop_Admin.Views;
 
 namespace Desktop_Admin
 {
@@ -24,7 +25,7 @@ namespace Desktop_Admin
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainViewModel();
+            MainFrame.Content = new AuthorizationPage();
         }
     }
 }

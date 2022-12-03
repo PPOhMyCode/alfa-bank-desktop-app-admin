@@ -44,10 +44,6 @@
       <Resource Include="Fonts\Montserrat-SemiBold.ttf" />
       <None Remove="Fonts\Montserrat-SemiBoldItalic.ttf" />
       <Resource Include="Fonts\Montserrat-SemiBoldItalic.ttf" />
-      <None Remove="Fonts\Montserrat-Thin.ttf" />
-      <Resource Include="Fonts\Montserrat-Thin.ttf" />
-      <None Remove="Fonts\Montserrat-ThinItalic.ttf" />
-      <Resource Include="Fonts\Montserrat-ThinItalic.ttf" />
     </ItemGroup>
 
 </Project>

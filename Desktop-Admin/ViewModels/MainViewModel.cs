@@ -29,6 +29,7 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
     {
         string[] strArray =
         {
+            "Все классы",
             "1A",
             "1Б",
             "1В",
@@ -46,5 +47,7 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
         Classes = new ObservableCollection<ComboBoxItem >();
         foreach (var item in LoadComboBoxData())
             Classes.Add(new ComboBoxItem  {Content = item, MinHeight = 20});
+        
+        SelectedClass = Classes[0];
     }
 }

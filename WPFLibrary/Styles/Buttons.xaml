@@ -43,6 +43,48 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
+    <Style x:Key="LightBaseButton" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource DishCardBackgroundBrush}" />
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Medium}" />
+        <Setter Property="FontSize" Value="27" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        Name="brd"
+                        BorderBrush="{TemplateBinding Background}"
+                        BorderThickness="1"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="10">
+                        <ContentPresenter
+                            Margin="5"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center" />
+                    </Border>
+
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefaulted" Value="true">
+                            <Setter Property="Background" Value="{StaticResource DishCardBackgroundBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" Value="{StaticResource LightGreenBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" Value="{StaticResource UltraLightGreenBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" Value="{StaticResource GrayBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
     <Style x:Key="TransparentButton" TargetType="Button">
         <Setter Property="Background" Value="Transparent" />
