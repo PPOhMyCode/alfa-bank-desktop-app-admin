@@ -149,7 +149,7 @@ public class AddNewDishVM : BaseVM
             FontSize = 19,
             FontWeight = FontWeights.Normal,
             VerticalAlignment = VerticalAlignment.Center,
-            Foreground = Application.Current.TryFindResource("DarkGrayBrush") as Brush //new SolidColorBrush(Color.FromRgb(65, 64, 64))
+            Foreground = Application.Current.TryFindResource("DarkGrayBrush") as Brush 
         };
         Grid.SetColumn(ingName, 0);
         Grid.SetRow(ingName, 0);

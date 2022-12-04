@@ -26,7 +26,6 @@
     <ItemGroup>
       <Resource Include="Resources\AppIcon.png" />
       <Resource Include="Resources\AppIconBig.png" />
-      <Resource Include="Resources\TrashCanOutline.png" />
     </ItemGroup>
 
 </Project>

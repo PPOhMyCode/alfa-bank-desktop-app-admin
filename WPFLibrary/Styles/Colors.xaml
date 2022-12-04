@@ -60,7 +60,13 @@
     <Color x:Key="DarkGreyColor">#504E4E</Color>
     
     <SolidColorBrush x:Key="GrayBrush" Color="#535151"/>
-    <Color x:Key="GreyColor">#535151</Color>
+    <Color x:Key="GrayColor">#535151</Color>
+    
+    <SolidColorBrush x:Key="LightGrayBrush" Color="#D9D9D9"/>
+    <Color x:Key="LightGrayColor">#D9D9D9</Color>
+    
+    <SolidColorBrush x:Key="DarkTextBrush" Color="#000000"/>
+    <Color x:Key="DarkTextColor">#000000</Color>
     
     <SolidColorBrush x:Key="LightTextBrush" Color="#FBFFF9"/>
     <Color x:Key="LightTextColor">#FBFFF9</Color>
@@ -97,4 +103,10 @@
     
     <SolidColorBrush x:Key="CalendarBackgroundBrush" Color="#E5F3E7"/>
     <Color x:Key="CalendarBackgroundColor">#E5F3E7</Color>
+    
+    <SolidColorBrush x:Key="LightYellowBrush" Color="#FDFF95"/>
+    <Color x:Key="LightYellowColor">#FDFF95</Color>
+    
+    <SolidColorBrush x:Key="GreenTagBrush" Color="#A4FF95"/>
+    <Color x:Key="GreenTagColor">#A4FF95</Color>
 </ResourceDictionary>

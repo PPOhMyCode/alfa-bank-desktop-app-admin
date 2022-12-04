@@ -225,31 +225,6 @@
                                         </DatePicker>
                                     </StackPanel>
                                 </Expander>
-                                <!-- <Button Margin="5,0,20,5" -->
-                                <!--         Width="270" Height="35" -->
-                                <!--         Style="{StaticResource Transparent}" -->
-                                <!--         HorizontalAlignment="Right" -->
-                                <!--         Click="ToMenuSetupPage"> -->
-                                <!--     <Grid> -->
-                                <!--         <Grid.ColumnDefinitions> -->
-                                <!--             <ColumnDefinition Width="230" /> -->
-                                <!--             <ColumnDefinition Width="40" /> -->
-                                <!--         </Grid.ColumnDefinitions> -->
-                                <!--         <TextBlock Text="Настройка четверти" -->
-                                <!--                    Style="{StaticResource SmallDefaultText}" -->
-                                <!--                    FontSize="21" -->
-                                <!--                    HorizontalAlignment="Center" -->
-                                <!--                    VerticalAlignment="Center" /> -->
-                                <!--         <materialDesign:PackIcon HorizontalAlignment="Center" -->
-                                <!--                                  VerticalAlignment="Center" -->
-                                <!--                                  Width="32" -->
-                                <!--                                  Height="32" -->
-                                <!--                                  Grid.Column="1" -->
-                                <!--                                  Kind="CogOutline" -->
-                                <!--                                  Foreground="{StaticResource DarkGrayBrush}"> -->
-                                <!--         </materialDesign:PackIcon> -->
-                                <!--     </Grid> -->
-                                <!-- </Button> -->
                             </StackPanel>
 
                         </Grid>
