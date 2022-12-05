@@ -8,11 +8,16 @@
       xmlns:local="clr-namespace:Desktop_Admin.Views"
       mc:Ignorable="d"
       Title="ChildrenPage">
+    <Page.DataContext>
+        <viewModels:ChildrenVM />
+    </Page.DataContext>
     <ScrollViewer>
         <Grid>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100" />
+                    <RowDefinition Height="215" />
+                    <RowDefinition Height="200" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Rectangle Grid.RowSpan="3">
@@ -51,6 +56,170 @@
                     </DockPanel>
                 </Grid>
                 
+                <Grid VerticalAlignment="Top" Row="1" Height="215" Margin="10, 0">
+                    <Grid Margin="40, 30,30, 0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="60" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.08*" />
+                            <ColumnDefinition Width="0.08*" />
+                            <ColumnDefinition Width="0.08*" />
+                            <ColumnDefinition Width="0.08*" />
+                            <ColumnDefinition Width="0.08*" />
+                            <ColumnDefinition Width="0.60*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Row="0" Grid.ColumnSpan="5" Orientation="Horizontal">
+                            <TextBlock  Style="{StaticResource SemiBoldText}"
+                                        FontSize="23"
+                                        TextAlignment="Center" Text="Сегодня" FontWeight="SemiBold"
+                                        Margin="2, 0, 0, 0" HorizontalAlignment="Left" />
+                            <TextBlock  Style="{StaticResource SemiBoldText}"
+                                        FontSize="23"
+                                        TextAlignment="Center" Text="{Binding TodayDate}"
+                                        Margin="10, 0, 0, 0" HorizontalAlignment="Left" />
+                        </StackPanel>
+                        
+                        <TextBlock Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5"  Style="{StaticResource Medium23Text}"
+                                   TextAlignment="Center" Text="{Binding TodayMonth}" VerticalAlignment="Bottom"
+                                   Margin="2, 0, 0, 0" HorizontalAlignment="Left"/>
+                        
+                        <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource MediumText}"
+                                   FontSize="26"
+                                   VerticalAlignment="Bottom"
+                                   Width="35" TextAlignment="Center" Text="{Binding Days[0].Day}" Margin="2, 0, 0, 0"
+                                   Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="2" Grid.Column="1" Style="{StaticResource MediumText}"
+                                   FontSize="26"
+                                   VerticalAlignment="Bottom"
+                                   Width="35" TextAlignment="Center" Text="{Binding Days[1].Day}" Margin="2, 0, 0, 0"
+                                   Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="2" Grid.Column="2" Style="{StaticResource MediumText}"
+                                   FontSize="26"
+                                   VerticalAlignment="Bottom"
+                                   Width="35" TextAlignment="Center" Text="{Binding Days[2].Day}" Margin="2, 0, 0, 0"
+                                   Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="2" Grid.Column="3" Style="{StaticResource MediumText}"
+                                   FontSize="26"
+                                   VerticalAlignment="Bottom"
+                                   Width="35" TextAlignment="Center" Text="{Binding Days[3].Day}" Margin="2, 0, 0, 0"
+                                   Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="2" Grid.Column="4" Style="{StaticResource MediumText}"
+                                   FontSize="26"
+                                   VerticalAlignment="Bottom"
+                                   Width="35" TextAlignment="Center" Text="{Binding Days[4].Day}" Margin="2, 0, 0, 0"
+                                   Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
+
+                        <TextBlock Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="4"
+                                   Background="{StaticResource GreenBrush}"
+                                   Height="3" Margin="0" VerticalAlignment="Center" Opacity="0.3" />
+
+                        <Button Name="Monday" Grid.Column="0" Grid.Row="3" Style="{StaticResource CircleButton}" Content="ПН"
+                                Margin="0, 10, 20, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton"
+                                Command="{Binding SelectDayCommand}" CommandParameter="{Binding Days[0]}"/>
+                        <Button Name="Tuesday" Grid.Column="1" Grid.Row="3" Style="{StaticResource CircleButton}" Content="ВТ"
+                                Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" 
+                                Command="{Binding SelectDayCommand}" CommandParameter="{Binding Days[1]}"/>
+                        <Button Name="Wednesday" Grid.Column="2" Grid.Row="3" Style="{StaticResource CircleButton}" Content="СР"
+                                Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" 
+                                Command="{Binding SelectDayCommand}" CommandParameter="{Binding Days[2]}"/>
+                        <Button Name="Thursday" Grid.Column="3" Grid.Row="3" Style="{StaticResource CircleButton}" Content="ЧТ"
+                                Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" 
+                                Command="{Binding SelectDayCommand}" CommandParameter="{Binding Days[3]}"/>
+                        <Button Name="Friday" Grid.Column="4" Grid.Row="3" Style="{StaticResource CircleButton}" Content="ПТ"
+                                Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" 
+                                Command="{Binding SelectDayCommand}" CommandParameter="{Binding Days[4]}"/>
+
+                        <Grid Row="0" RowSpan="3" Column="5" VerticalAlignment="Top" HorizontalAlignment="Right">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBlock Style="{StaticResource Medium23Text}"
+                                               TextAlignment="Center" Text="Классы:" VerticalAlignment="Bottom"
+                                               Margin="2, 0, 0, 5" HorizontalAlignment="Left" />
+
+                                    <ComboBox Foreground="{StaticResource DarkGrayBrush}"
+                                              FontSize="16"
+                                              Text=""
+                                              VerticalAlignment="Bottom"
+                                              FontFamily="{StaticResource Montserrat-Medium}"
+                                              Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                              Margin="10,0,0,0" Padding="10"
+                                              Height="40"
+                                              Width="205"
+                                              ItemsSource="{Binding Classes}"
+                                              d:LayoutOverrides="Height"
+                                              BorderThickness="1.5"
+                                              BorderBrush="{StaticResource GreenBrush}"
+                                              SelectedItem="{Binding SelectedClass}"
+                                              Background="{StaticResource LightBackgroundBrush}"
+                                              ToolTip="Выберите класс"
+                                              HorizontalAlignment="Left"/>
+                                </StackPanel>
+                                <TextBox Margin="5,15,0,10" Width="550" Height="45" Text="" TextWrapping="Wrap"
+                                         d:LayoutOverrides="Height"
+                                         Style="{DynamicResource TextBoxWithDescriptionInCanteenApp}"
+                                         ToolTip="Поиск блюд" Padding="20" />
+                            </StackPanel>
+
+                        </Grid>
+                    </Grid>
+                </Grid>
+                
+                <Grid Row="2" Height="200" HorizontalAlignment="Left" Margin="20, 0">
+                    <StackPanel Orientation="Horizontal">
+                        <Button Name="BreakfastButton" Style="{StaticResource TypeMealButton}"
+                                Width="100" Height="150"
+                                Click="BreakfastButtonClick"
+                                Command="{Binding SelectTypeCommand}" CommandParameter="1"
+                                Margin="20, 10, 10, 0">
+                            <Grid VerticalAlignment="Top">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.6*" />
+                                    <RowDefinition Height="0.4*" />
+                                </Grid.RowDefinitions>
+                                <Viewbox Margin="0, -20, 0, 0" Grid.Row="0" VerticalAlignment="Top">
+                                    <materialDesign:PackIcon Kind="Circle" Height="80" Width="80" />
+                                </Viewbox>
+                                <TextBlock Grid.Row="1" Text="Завтрак" HorizontalAlignment="Center" />
+                            </Grid>
+                        </Button>
+                        <Button Name="DinnerButton" Style="{StaticResource TypeMealButton}"
+                                Width="100" Height="150"
+                                Click="DinnerButtonClick"
+                                Command="{Binding SelectTypeCommand}" CommandParameter="2"
+                                Margin="20, 10, 10, 0">
+                            <Grid VerticalAlignment="Top">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.6*" />
+                                    <RowDefinition Height="0.4*" />
+                                </Grid.RowDefinitions>
+                                <Viewbox Margin="0, -20, 0, 0" Grid.Row="0" VerticalAlignment="Top">
+                                    <materialDesign:PackIcon Kind="Circle" Height="80" Width="80" />
+                                </Viewbox>
+                                <TextBlock Grid.Row="1" Text="Обед" HorizontalAlignment="Center" />
+                            </Grid>
+                        </Button>
+                        <Button Name="AfternoonSnackButton" Style="{StaticResource TypeMealButton}"
+                                Width="100" Height="150"
+                                Click="AfternoonSnackButtonClick"
+                                Command="{Binding SelectTypeCommand}" CommandParameter="3"
+                                Margin="20, 10, 10, 0">
+                            <Grid VerticalAlignment="Top">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.6*" />
+                                    <RowDefinition Height="0.4*" />
+                                </Grid.RowDefinitions>
+                                <Viewbox Margin="0, -20, 0, 0" Grid.Row="0" VerticalAlignment="Top">
+                                    <materialDesign:PackIcon Kind="Circle" Height="80" Width="80" />
+                                </Viewbox>
+                                <TextBlock Grid.Row="1" Text="Полдник" HorizontalAlignment="Center" />
+                            </Grid>
+                        </Button>
+                    </StackPanel>
+                </Grid>
             </Grid>
         </Grid>
     </ScrollViewer>
