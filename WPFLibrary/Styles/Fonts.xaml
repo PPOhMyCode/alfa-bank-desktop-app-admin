@@ -4,11 +4,34 @@
     xmlns:system="clr-namespace:System;assembly=mscorlib">
     
     
+    <FontFamily x:Key="Montserrat-Black">pack://application:,,,/WPFLibrary;component/Fonts/#Montserrat Black</FontFamily>
+    <FontFamily x:Key="Montserrat-BlackItalic">pack://application:,,,/WPFLibrary;component/Fonts/#Montserrat BlackItalic</FontFamily>
+    
     <FontFamily x:Key="Montserrat-Bold">pack://application:,,,/WPFLibrary;component/Fonts/#Montserrat Bold</FontFamily>
-    <FontFamily x:Key="Montserrat-Regular">pack://application:,,,/WPFLibrary;component/Fonts/#Montserrat Regular</FontFamily>
-    <FontFamily x:Key="Montserrat-Medium">pack://application:,,,/WPFLibrary;component/Fonts/#Montserrat Medium</FontFamily>
-    <FontFamily x:Key="Montserrat-Light">pack://application:,,,/WPFLibrary;component/Fonts/#Montserrat Light</FontFamily>
+    <FontFamily x:Key="Montserrat-BoldItalic">pack://application:,,,/WPFLibrary;component/Fonts/#Montserrat BoldItalic</FontFamily>
+    
+    <FontFamily x:Key="Montserrat-ExtraBold">pack://application:,,,/WPFLibrary;component/Fonts/#Montserrat ExtraBold</FontFamily>
+    <FontFamily x:Key="Montserrat-ExtraBoldItalic">pack://application:,,,/WPFLibrary;component/Fonts/#Montserrat ExtraBoldItalic</FontFamily>
+    
+    <FontFamily x:Key="Montserrat-ExtraLight">pack://application:,,,/WPFLibrary;component/Fonts/#Montserrat ExtraLight</FontFamily>
+    <FontFamily x:Key="Montserrat-ExtraLightItalic">pack://application:,,,/WPFLibrary;component/Fonts/#Montserrat ExtraLightItalic</FontFamily>
 
+    <FontFamily x:Key="Montserrat-Italic">pack://application:,,,/WPFLibrary;component/Fonts/#Montserrat Italic</FontFamily>
+    
+    <FontFamily x:Key="Montserrat-Light">pack://application:,,,/WPFLibrary;component/Fonts/#Montserrat Light</FontFamily>
+    <FontFamily x:Key="Montserrat-LightItalic">pack://application:,,,/WPFLibrary;component/Fonts/#Montserrat LightItalic</FontFamily>
+    
+    <FontFamily x:Key="Montserrat-Medium">pack://application:,,,/WPFLibrary;component/Fonts/#Montserrat Medium</FontFamily>
+    <FontFamily x:Key="Montserrat-MediumItalic">pack://application:,,,/WPFLibrary;component/Fonts/#Montserrat MediumItalic</FontFamily>
+    
+    <FontFamily x:Key="Montserrat-Regular">pack://application:,,,/WPFLibrary;component/Fonts/#Montserrat Regular</FontFamily>
+    
+    <FontFamily x:Key="Montserrat-SemiBold">pack://application:,,,/WPFLibrary;component/Fonts/#Montserrat SemiBold</FontFamily>
+    <FontFamily x:Key="Montserrat-SemiBoldItalic">pack://application:,,,/WPFLibrary;component/Fonts/#Montserrat SemiBoldItalic</FontFamily>
+    
+    <FontFamily x:Key="Montserrat-Thin">pack://application:,,,/WPFLibrary;component/Fonts/#Montserrat Thin</FontFamily>
+    <FontFamily x:Key="Montserrat-ThinItalic">pack://application:,,,/WPFLibrary;component/Fonts/#Montserrat ThinItalic</FontFamily>
+    
     <system:Double x:Key="Small">14</system:Double>
     <system:Double x:Key="Regular">18</system:Double>
     <system:Double x:Key="Big">24</system:Double>

@@ -54,51 +54,37 @@
         </Setter>
     </Style>
     <Style x:Key="TextBoxWithDescriptionInCanteenApp" BasedOn="{x:Null}" TargetType="{x:Type TextBox}">
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+        <Setter Property="Foreground" Value="{StaticResource DarkGrayBrush}" />
         <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
         <Setter Property="Padding" Value="10, 5, 10, 0" />
         <Setter Property="FontSize" Value="17"/>
-        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Italic}"/>
         <Setter Property="AllowDrop" Value="true" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
-                    <Border x:Name="Bd"
+                    <Border x:Name="Bd" Padding="10"
                             CornerRadius="10"
                             BorderBrush="{StaticResource GreenBrush}"
                             BorderThickness="2"
                             Background="{StaticResource LightBackgroundBrush}">
                         <Grid>
                             <TextBlock Visibility="Hidden" HorizontalAlignment="Left" x:Name="descriptionTextBlock"
-                                       VerticalAlignment="Top" FontStyle="Italic" Foreground="#FF7E7E7E"
+                                       VerticalAlignment="Center" FontStyle="Italic" Foreground="#FF9D9C9C"
                                        Text="{TemplateBinding ToolTip}" TextWrapping="Wrap"
-                                        Margin="15, 5, 10, 5"/>
+                                       Style="{StaticResource ItalicText}"
+                                       Margin="0"/>
                             <ScrollViewer x:Name="PART_ContentHost"
                                           Focusable="false"
                                           HorizontalScrollBarVisibility="Hidden"
                                           VerticalScrollBarVisibility="Hidden"/>
-                            <ContentControl Margin="0,0,0,2" HorizontalAlignment="Right" x:Name="image" Width="24" Height="24"
-                                Content="{DynamicResource SearchIcon}" />
+                            <ContentControl Margin="0,0,0,2" HorizontalAlignment="Right" 
+                                            VerticalAlignment="Center" x:Name="image" Width="24" Height="24"
+                                            Foreground="{StaticResource DarkGrayBrush}"
+                                            Content="{DynamicResource SearchIcon}" />
                         </Grid>
                     </Border>
-                    <!-- <themes:ListBoxChrome SnapsToDevicePixels="true" x:Name="Bd" -->
-                    <!--                       Background="{TemplateBinding Background}" -->
-                    <!--                       RenderFocused="{TemplateBinding IsKeyboardFocusWithin}" -->
-                    <!--                       RenderMouseOver="{TemplateBinding IsMouseOver}"> -->
-                    <!--     <Grid Width="Auto" Height="Auto" Margin="10,5,10,0"> -->
-                    <!--         <TextBlock Visibility="Hidden" HorizontalAlignment="Left" x:Name="descriptionTextBlock" -->
-                    <!--                    VerticalAlignment="Top" FontStyle="Italic" Foreground="#FF7E7E7E" -->
-                    <!--                    Text="{TemplateBinding ToolTip}" TextWrapping="Wrap" -->
-                    <!--                     /> -->
-                    <!--          -->
-                    <!--         <ScrollViewer SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" -->
-                    <!--                       x:Name="PART_ContentHost"/> -->
-                    <!--         <ContentControl Margin="0,0,0,2" HorizontalAlignment="Right" x:Name="image" Width="24" Height="24" -->
-                    <!--                         Content="{DynamicResource SearchIcon}" /> -->
-                    <!--     </Grid> -->
-                    <!-- </themes:ListBoxChrome> -->
-                    <!-- -->
                     <ControlTemplate.Triggers>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -120,27 +106,27 @@
     </Style>
     
     <Style x:Key="TextBoxInCanteenApp" BasedOn="{x:Null}" TargetType="{x:Type TextBox}">
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+        <Setter Property="Foreground" Value="{StaticResource DarkGrayBrush}" />
         <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
         <Setter Property="Padding" Value="10, 5, 10, 0" />
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Medium}"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="FontSize" Value="17"/>
-        <Setter Property="FontWeight" Value="Normal"/>
         <Setter Property="AllowDrop" Value="true" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
-                    <Border x:Name="Bd"
-                            CornerRadius="10"
+                    <Border x:Name="Bd" Padding="10, 7"
+                            CornerRadius="5"
                             BorderBrush="{StaticResource GreenBrush}"
                             BorderThickness="2"
                             Background="{StaticResource LightBackgroundBrush}">
                         <Grid>
                             <TextBlock Visibility="Hidden" HorizontalAlignment="Left" x:Name="descriptionTextBlock"
-                                       VerticalAlignment="Top" FontStyle="Italic" Foreground="#FF7E7E7E"
+                                       VerticalAlignment="Bottom" FontStyle="Italic" Foreground="#FF9D9C9C"
                                        Text="{TemplateBinding ToolTip}" TextWrapping="Wrap"
-                                        Margin="15, 5, 10, 5"/>
+                                       Style="{StaticResource MediumText}"/>
                             <ScrollViewer x:Name="PART_ContentHost"
                                           Focusable="false"
                                           HorizontalScrollBarVisibility="Hidden"

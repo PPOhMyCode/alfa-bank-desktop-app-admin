@@ -2,8 +2,9 @@
 
 namespace WPFLibrary.JsonModels;
 
-public class Children : BaseModel
+public class Children 
 {
+    public int ChildrenId { get; set; }
     public string FirstName { get; set; }
     public string SecondName { get; set; }
     public string Patronymic { get; set; }

@@ -15,7 +15,7 @@
         <Grid>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="95" />
+                    <RowDefinition Height="100" />
                     <RowDefinition Height="415" />
                     <!-- <RowDefinition Height="200" /> -->
                     <RowDefinition Height="Auto" />
@@ -43,8 +43,6 @@
                                 Click="ToOrderingIngredientsButtonClick" />
                         <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Расписание"
                                 Click="ToScheduleButtonClick" />
-                        <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Школьники"
-                                Click="ToChildrensButtonClick" />
 
                         <Button DockPanel.Dock="Right" Style="{StaticResource DefaultLightButton}"
                                 Click="ToMenuPage"
@@ -99,15 +97,15 @@
                                    Background="{StaticResource GreenBrush}"
                                    Height="3" Margin="0" VerticalAlignment="Center" Opacity="0.3" />
 
-                        <Button Grid.Column="0" Grid.Row="1" Style="{StaticResource CircleButton}" Content="ПН"
+                        <Button Name="Monday1" Grid.Column="0" Grid.Row="1" Style="{StaticResource CircleButton}" Content="ПН"
                                 Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
-                        <Button Grid.Column="1" Grid.Row="1" Style="{StaticResource CircleButton}" Content="ВТ"
+                        <Button Name="Tuesday1" Grid.Column="1" Grid.Row="1" Style="{StaticResource CircleButton}" Content="ВТ"
                                 Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
-                        <Button Grid.Column="2" Grid.Row="1" Style="{StaticResource CircleButton}" Content="СР"
+                        <Button Name="Wednesday1" Grid.Column="2" Grid.Row="1" Style="{StaticResource CircleButton}" Content="СР"
                                 Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
-                        <Button Grid.Column="3" Grid.Row="1" Style="{StaticResource CircleButton}" Content="ЧТ"
-                                Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
-                        <Button Grid.Column="4" Grid.Row="1" Style="{StaticResource CircleButton}" Content="ПТ"
+                        <Button Name="Thursday1" Grid.Column="3" Grid.Row="1" Style="{StaticResource CircleButton}" Content="ЧТ"
+                                               Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
+                        <Button Name="Friday1" Grid.Column="4" Grid.Row="1" Style="{StaticResource CircleButton}" Content="ПТ"
                                 Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
 
                         <TextBlock Grid.Row="2" Grid.ColumnSpan="5" Style="{StaticResource Medium23Text}"
@@ -118,15 +116,15 @@
                                    Background="{StaticResource GreenBrush}"
                                    Height="3" Margin="0" VerticalAlignment="Center" Opacity="0.3" />
 
-                        <Button Grid.Column="0" Grid.Row="3" Style="{StaticResource CircleButton}" Content="ПН"
+                        <Button Name="Monday2" Grid.Column="0" Grid.Row="3" Style="{StaticResource CircleButton}" Content="ПН"
                                 Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
-                        <Button Grid.Column="1" Grid.Row="3" Style="{StaticResource CircleButton}" Content="ВТ"
+                        <Button Name="Tuesday2" Grid.Column="1" Grid.Row="3" Style="{StaticResource CircleButton}" Content="ВТ"
                                 Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
-                        <Button Grid.Column="2" Grid.Row="3" Style="{StaticResource CircleButton}" Content="СР"
+                        <Button Name="Wednesday2" Grid.Column="2" Grid.Row="3" Style="{StaticResource CircleButton}" Content="СР"
                                 Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
-                        <Button Grid.Column="3" Grid.Row="3" Style="{StaticResource CircleButton}" Content="ЧТ"
+                        <Button Name="Thursday2" Grid.Column="3" Grid.Row="3" Style="{StaticResource CircleButton}" Content="ЧТ"
                                 Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
-                        <Button Grid.Column="4" Grid.Row="3" Style="{StaticResource CircleButton}" Content="ПТ"
+                        <Button Name="Friday2" Grid.Column="4" Grid.Row="3" Style="{StaticResource CircleButton}" Content="ПТ"
                                 Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
 
                         <Grid Row="0" RowSpan="5" Column="5" VerticalAlignment="Top" HorizontalAlignment="Right">
@@ -136,7 +134,7 @@
                                          Style="{DynamicResource TextBoxWithDescriptionInCanteenApp}"
                                          ToolTip="Поиск блюд" Padding="20" />
                                 <Expander Margin="5,0,10,5"
-                                          Width="300" 
+                                          Width="320" 
                                           HorizontalAlignment="Right">
                                     <Expander.HeaderTemplate>
                                         <DataTemplate>
@@ -152,9 +150,11 @@
                                         Orientation="Vertical">
                                         <TextBlock Style="{StaticResource Medium15Text}" Text="Выберите начало четверти"
                                                    TextAlignment="Left"/>
-                                        <DatePicker HorizontalAlignment="Left"
+                                        <DatePicker x:Name="DatePicker1"
+                                                    HorizontalAlignment="Left"
                                                     Margin="0, 5, 0, 20"
                                                     Width="280"
+                                                    FontFamily="{StaticResource Montserrat-Regular}"
                                                     BorderBrush="{StaticResource MediumGreenBrush}"
                                                     materialDesign:DatePickerAssist.OutlinedBorderActiveThickness="3"
                                                     materialDesign:DatePickerAssist.OutlinedBorderInactiveThickness="3"
@@ -166,6 +166,7 @@
                                                 <Style TargetType="{x:Type Calendar}" BasedOn="{StaticResource MaterialDesignCalendarPortrait}">
                                                     <Setter Property="Background" Value="{StaticResource CalendarBackgroundBrush}" />
                                                     <Setter Property="Foreground" Value="{StaticResource DarkGrayBrush}"/>
+                                                    <Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}"/>
                                                     <Setter Property="materialDesign:CalendarAssist.IsHeaderVisible" Value="False"/>
                                                     <Setter Property="CalendarDayButtonStyle">
                                                         <Setter.Value>
@@ -187,9 +188,11 @@
                                         </DatePicker>
                                         <TextBlock Style="{StaticResource Medium15Text}" Text="Выберите конец четверти"
                                                    TextAlignment="Left"/>
-                                        <DatePicker HorizontalAlignment="Left"
+                                        <DatePicker x:Name="DatePicker2"
+                                                    HorizontalAlignment="Left"
                                                     Margin="0, 5, 0, 10"
                                                     Width="280"
+                                                    FontFamily="{StaticResource Montserrat-Regular}"
                                                     BorderBrush="{StaticResource MediumGreenBrush}"
                                                     materialDesign:DatePickerAssist.OutlinedBorderActiveThickness="3"
                                                     materialDesign:DatePickerAssist.OutlinedBorderInactiveThickness="3"
@@ -201,6 +204,7 @@
                                                 <Style TargetType="{x:Type Calendar}" BasedOn="{StaticResource MaterialDesignCalendarPortrait}">
                                                     <Setter Property="Background" Value="{StaticResource CalendarBackgroundBrush}" />
                                                     <Setter Property="Foreground" Value="{StaticResource DarkGrayBrush}"/>
+                                                    <Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}"/>
                                                     <Setter Property="materialDesign:CalendarAssist.IsHeaderVisible" Value="False"/>
                                                     <Setter Property="CalendarDayButtonStyle">
                                                         <Setter.Value>
@@ -221,31 +225,6 @@
                                         </DatePicker>
                                     </StackPanel>
                                 </Expander>
-                                <!-- <Button Margin="5,0,20,5" -->
-                                <!--         Width="270" Height="35" -->
-                                <!--         Style="{StaticResource Transparent}" -->
-                                <!--         HorizontalAlignment="Right" -->
-                                <!--         Click="ToMenuSetupPage"> -->
-                                <!--     <Grid> -->
-                                <!--         <Grid.ColumnDefinitions> -->
-                                <!--             <ColumnDefinition Width="230" /> -->
-                                <!--             <ColumnDefinition Width="40" /> -->
-                                <!--         </Grid.ColumnDefinitions> -->
-                                <!--         <TextBlock Text="Настройка четверти" -->
-                                <!--                    Style="{StaticResource SmallDefaultText}" -->
-                                <!--                    FontSize="21" -->
-                                <!--                    HorizontalAlignment="Center" -->
-                                <!--                    VerticalAlignment="Center" /> -->
-                                <!--         <materialDesign:PackIcon HorizontalAlignment="Center" -->
-                                <!--                                  VerticalAlignment="Center" -->
-                                <!--                                  Width="32" -->
-                                <!--                                  Height="32" -->
-                                <!--                                  Grid.Column="1" -->
-                                <!--                                  Kind="CogOutline" -->
-                                <!--                                  Foreground="{StaticResource DarkGrayBrush}"> -->
-                                <!--         </materialDesign:PackIcon> -->
-                                <!--     </Grid> -->
-                                <!-- </Button> -->
                             </StackPanel>
 
                         </Grid>
@@ -352,7 +331,7 @@
 
                                             <Rectangle Grid.Row="1" Grid.Column="1"
                                                        Grid.RowSpan="5" Grid.ColumnSpan="5"
-                                                       Fill="{StaticResource GreenBrush}"
+                                                       Fill="{StaticResource DishCardBackgroundBrush}"
                                                        RadiusX="20" RadiusY="20" />
 
                                             <Viewbox Grid.Row="0" Grid.Column="0"
@@ -366,14 +345,15 @@
                                                        TextWrapping="Wrap"
                                                        Padding="14, 0, 0, 0"
                                                        Text="{Binding Name}"
-                                                       FontSize="18" FontWeight="SemiBold"
-                                                       Foreground="{StaticResource LightTextBrush}" />
+                                                       FontSize="18" 
+                                                       Style="{StaticResource SemiBoldText}"
+                                                       Foreground="{StaticResource GrayTextBrush}" />
 
                                             <Button Grid.Row="2" Grid.Column="4"
                                                     Style="{StaticResource TransparentButton}">
                                                 <materialDesign:PackIcon Kind="PencilOutline"
                                                                          Height="20" Width="20"
-                                                                         Foreground="{StaticResource LightTextBrush}" />
+                                                                         Foreground="{StaticResource GrayTextBrush}" />
                                             </Button>
 
                                             <TextBlock Grid.Row="3" Grid.Column="2"
@@ -383,8 +363,9 @@
                                                        Padding="14, 0, 0, 0"
                                                        Text="{Binding Description}"
                                                        ToolTip="Описание блюда"
-                                                       FontSize="16" FontWeight="Normal"
-                                                       Foreground="{StaticResource LightTextBrush}" />
+                                                       FontSize="16" 
+                                                       Style="{StaticResource MediumText}"
+                                                       Foreground="{StaticResource GrayTextBrush}" />
 
                                             <StackPanel Orientation="Horizontal"
                                                         Grid.Row="4" Grid.Column="2"
@@ -393,14 +374,16 @@
                                                            VerticalAlignment="Center"
                                                            Padding="14, 0, 0, 0"
                                                            Text="{Binding Weight}"
-                                                           FontSize="16" FontWeight="Normal"
-                                                           Foreground="{StaticResource LightTextBrush}" />
+                                                           FontSize="16" 
+                                                           Style="{StaticResource MediumText}"
+                                                           Foreground="{StaticResource GrayTextBrush}" />
                                                 <TextBlock TextWrapping="Wrap"
                                                            VerticalAlignment="Center"
                                                            Padding="5, 0, 0, 0"
                                                            Text="г"
-                                                           FontSize="16" FontWeight="Normal"
-                                                           Foreground="{StaticResource LightTextBrush}" />
+                                                           FontSize="16" 
+                                                           Style="{StaticResource MediumText}"
+                                                           Foreground="{StaticResource GrayTextBrush}" />
                                             </StackPanel>
 
 
@@ -412,14 +395,16 @@
                                                            VerticalAlignment="Center"
                                                            Padding="30, 0, 0, 0"
                                                            Text="{Binding Cost}"
-                                                           FontSize="28" FontWeight="Normal"
-                                                           Foreground="{StaticResource LightTextBrush}" />
+                                                           FontSize="28" 
+                                                           Style="{StaticResource MediumText}"
+                                                           Foreground="{StaticResource GrayTextBrush}" />
                                                 <TextBlock TextWrapping="Wrap"
                                                            VerticalAlignment="Center"
                                                            Padding="10, 0, 0, 0"
                                                            Text="р"
-                                                           FontSize="28" FontWeight="Normal"
-                                                           Foreground="{StaticResource LightTextBrush}" />
+                                                           FontSize="28"
+                                                           Style="{StaticResource MediumText}"
+                                                           Foreground="{StaticResource GrayTextBrush}" />
                                             </StackPanel>
 
                                             <Button Grid.Row="5" Grid.Column="3" x:Name="DeleteDishFromMenu"
@@ -435,7 +420,7 @@
 
 
                             <ItemsControl Name="CanAddItems" ItemsSource="{Binding DishCanAddToMenu}"
-                                          Margin="0, 0, 0, 200">
+                                          Margin="40, 0, 10, 200">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <WrapPanel Orientation="Horizontal" />
@@ -465,7 +450,7 @@
 
                                             <Rectangle Grid.Row="1" Grid.Column="1"
                                                        Grid.RowSpan="5" Grid.ColumnSpan="5"
-                                                       Fill="{StaticResource GreenBrush}"
+                                                       Fill="{StaticResource DishCardBackgroundBrush}"
                                                        RadiusX="20" RadiusY="20" />
 
                                             <Viewbox Grid.Row="0" Grid.Column="0"
@@ -479,14 +464,15 @@
                                                        TextWrapping="Wrap"
                                                        Padding="14, 0, 0, 0"
                                                        Text="{Binding Name}"
-                                                       FontSize="18" FontWeight="SemiBold"
-                                                       Foreground="{StaticResource LightTextBrush}" />
+                                                       FontSize="18" 
+                                                       Style="{StaticResource SemiBoldText}"
+                                                       Foreground="{StaticResource GrayTextBrush}" />
 
                                             <Button Grid.Row="2" Grid.Column="4"
                                                     Style="{StaticResource TransparentButton}">
                                                 <materialDesign:PackIcon Kind="PencilOutline"
                                                                          Height="20" Width="20"
-                                                                         Foreground="{StaticResource LightTextBrush}" />
+                                                                         Foreground="{StaticResource GrayTextBrush}" />
                                             </Button>
 
                                             <TextBlock Grid.Row="3" Grid.Column="2"
@@ -496,8 +482,9 @@
                                                        Padding="14, 0, 0, 0"
                                                        Text="{Binding Description}"
                                                        ToolTip="Описание блюда"
-                                                       FontSize="16" FontWeight="Normal"
-                                                       Foreground="{StaticResource LightTextBrush}" />
+                                                       FontSize="16" 
+                                                       Style="{StaticResource MediumText}"
+                                                       Foreground="{StaticResource GrayTextBrush}" />
 
                                             <StackPanel Orientation="Horizontal"
                                                         Grid.Row="4" Grid.Column="2"
@@ -506,14 +493,16 @@
                                                            VerticalAlignment="Center"
                                                            Padding="14, 0, 0, 0"
                                                            Text="{Binding Weight}"
-                                                           FontSize="16" FontWeight="Normal"
-                                                           Foreground="{StaticResource LightTextBrush}" />
+                                                           FontSize="16"
+                                                           Style="{StaticResource MediumText}"
+                                                           Foreground="{StaticResource GrayTextBrush}" />
                                                 <TextBlock TextWrapping="Wrap"
                                                            VerticalAlignment="Center"
                                                            Padding="5, 0, 0, 0"
                                                            Text="г"
-                                                           FontSize="16" FontWeight="Normal"
-                                                           Foreground="{StaticResource LightTextBrush}" />
+                                                           FontSize="16"
+                                                           Style="{StaticResource MediumText}"
+                                                           Foreground="{StaticResource GrayTextBrush}" />
                                             </StackPanel>
 
 
@@ -525,14 +514,16 @@
                                                            VerticalAlignment="Center"
                                                            Padding="30, 0, 0, 0"
                                                            Text="{Binding Cost}"
-                                                           FontSize="28" FontWeight="Normal"
-                                                           Foreground="{StaticResource LightTextBrush}" />
+                                                           FontSize="28"
+                                                           Style="{StaticResource MediumText}"
+                                                           Foreground="{StaticResource GrayTextBrush}" />
                                                 <TextBlock TextWrapping="Wrap"
                                                            VerticalAlignment="Center"
                                                            Padding="10, 0, 0, 0"
                                                            Text="р"
-                                                           FontSize="28" FontWeight="Normal"
-                                                           Foreground="{StaticResource LightTextBrush}" />
+                                                           FontSize="28" 
+                                                           Style="{StaticResource MediumText}"
+                                                           Foreground="{StaticResource GrayTextBrush}" />
                                             </StackPanel>
 
                                             <Button Grid.Row="5" Grid.Column="3" x:Name="AddDishToMenuButton"

@@ -89,7 +89,8 @@ public class ApiServer
         RestResponse response = client.Execute(request);
         if (response.StatusCode == HttpStatusCode.OK)
         {
-            URL = response.Content.ToString();
+            var a = JsonConvert.DeserializeObject<AuthData>(response.Content);
+            URL = a.url;
             System.Console.WriteLine(URL);
         }
             

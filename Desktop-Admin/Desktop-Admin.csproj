@@ -23,4 +23,9 @@
       <ProjectReference Include="..\WPFLibrary\WPFLibrary.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Resource Include="Resources\AppIcon.png" />
+      <Resource Include="Resources\AppIconBig.png" />
+    </ItemGroup>
+
 </Project>

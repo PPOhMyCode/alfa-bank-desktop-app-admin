@@ -27,12 +27,7 @@ public partial class AllDishesPage : Page
     {
         NavigationService?.Navigate(new SchedulePage());
     }
-            
-    public void ToChildrensButtonClick(object sender, RoutedEventArgs e)
-    {
-        NavigationService?.Navigate(new ChildrensPage());
-    }
-    
+
     public void ToAddNewDishButtonClick(object sender, RoutedEventArgs e)
     {
         NavigationService?.Navigate(new AddNewDishPage());

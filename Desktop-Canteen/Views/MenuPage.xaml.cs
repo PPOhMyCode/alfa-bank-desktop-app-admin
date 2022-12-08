@@ -33,11 +33,6 @@ namespace Desktop_Canteen.Views
         {
             NavigationService?.Navigate(new SchedulePage());
         }
-            
-        public void ToChildrensButtonClick(object sender, RoutedEventArgs e)
-        {
-            NavigationService?.Navigate(new ChildrensPage());
-        }
 
         public void BreakfastButtonClick(object sender, RoutedEventArgs e)
         {
@@ -62,6 +57,7 @@ namespace Desktop_Canteen.Views
 
         public void ChangeStyleCircleButton(object sender, RoutedEventArgs e)
         {
+            DefaultStyleToAllCircleButton();
             var isSelected = (sender as Button).Style.Equals(Application.Current.TryFindResource("SelectedCircleButton") as Style);
             if (isSelected)
             {
@@ -71,6 +67,15 @@ namespace Desktop_Canteen.Views
             {
                 (sender as Button).Style = Application.Current.TryFindResource("SelectedCircleButton") as Style;
             }
+        }
+
+        private void DefaultStyleToAllCircleButton()
+        {
+            Monday.Style = Application.Current.TryFindResource("CircleButton") as Style;
+            Tuesday.Style = Application.Current.TryFindResource("CircleButton") as Style;
+            Wednesday.Style = Application.Current.TryFindResource("CircleButton") as Style;
+            Thursday.Style = Application.Current.TryFindResource("CircleButton") as Style;
+            Friday.Style = Application.Current.TryFindResource("CircleButton") as Style;
         }
         
         public void ToMakeMenuPage(object sender, RoutedEventArgs e)

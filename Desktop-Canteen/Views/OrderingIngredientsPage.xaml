@@ -15,7 +15,7 @@
     <ScrollViewer>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.1*" />
+                <RowDefinition Height="100" />
                 <RowDefinition Height="0.25*" />
                 <RowDefinition Height="0.65*" />
             </Grid.RowDefinitions>
@@ -41,8 +41,6 @@
                     <Button Padding="10" Style="{StaticResource SelectedMainMenuButton}" Content="Заказ продуктов" />
                     <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Расписание"
                             Click="ToScheduleButtonClick" />
-                    <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Школьники"
-                            Click="ToChildrensButtonClick" />
 
                     <Button DockPanel.Dock="Right" Style="{StaticResource DefaultTransparentButton}" HorizontalAlignment="Right"
                             Height="70" Width="70" Margin="0,0,10,0">
@@ -56,11 +54,11 @@
                 </DockPanel>
             </Grid>
 
-            <Grid VerticalAlignment="Top" Row="1" Height="130" Margin="10, 0">
-                <Grid Margin="20, 10,10, 0">
+            <Grid VerticalAlignment="Top" Row="1" Height="160" Margin="10, 0">
+                <Grid Margin="40, 30,30, 0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40" />
-                        <RowDefinition Height="25" />
+                        <RowDefinition Height="40" />
                         <RowDefinition Height="60" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -71,99 +69,59 @@
                         <ColumnDefinition Width="0.08*" />
                         <ColumnDefinition Width="0.6*" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.ColumnSpan="2" Style="{StaticResource DefaultText}"
-                               Text="Сентябрь" HorizontalAlignment="Left" Margin="0, 0, 0, 10"
-                               Foreground="{StaticResource GrayBrush}" FontWeight="Normal" />
+                    <StackPanel Grid.ColumnSpan="5" Orientation="Horizontal">
+                        <TextBlock  Style="{StaticResource DefaultText}"
+                                    Text="{Binding TodayMonth}" HorizontalAlignment="Left" Margin="0, 0, 0, 10"
+                                    Foreground="{StaticResource GrayBrush}" FontWeight="Normal" />
 
-                    <Viewbox Grid.Row="0" Grid.Column="1" Margin="0, 0, 0, 0" HorizontalAlignment="Right"
-                             Height="30" Width="30" VerticalAlignment="Top">
-                        <materialDesign:PackIcon Kind="CalendarMonth" Foreground="{StaticResource DarkGreenBrush}" />
-                    </Viewbox>
+                        <Viewbox Margin="10, 0, 0, 0" HorizontalAlignment="Left"
+                                 Height="30" Width="30" VerticalAlignment="Top">
+                            <materialDesign:PackIcon Kind="CalendarMonth" Foreground="{StaticResource DarkGreenBrush}" />
+                        </Viewbox>
+                    </StackPanel>
 
-                    <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource DefaultText}"
+                    <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource MediumText}" FontSize="26"
                                Width="35" TextAlignment="Center" Text="26" Margin="2, 0, 0, 0"
+                               VerticalAlignment="Bottom"
                                Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
-                    <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource DefaultText}"
+                    <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource MediumText}" FontSize="26"
                                Width="35" TextAlignment="Center" Text="27" Margin="2, 0, 0, 0"
+                               VerticalAlignment="Bottom"
                                Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
-                    <TextBlock Grid.Row="1" Grid.Column="2" Style="{StaticResource DefaultText}"
+                    <TextBlock Grid.Row="1" Grid.Column="2" Style="{StaticResource MediumText}" FontSize="26"
                                Width="35" TextAlignment="Center" Text="28" Margin="2, 0, 0, 0"
+                               VerticalAlignment="Bottom"
                                Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
-                    <TextBlock Grid.Row="1" Grid.Column="3" Style="{StaticResource DefaultText}"
+                    <TextBlock Grid.Row="1" Grid.Column="3" Style="{StaticResource MediumText}" FontSize="26"
                                Width="35" TextAlignment="Center" Text="29" Margin="2, 0, 0, 0"
+                               VerticalAlignment="Bottom"
                                Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
-                    <TextBlock Grid.Row="1" Grid.Column="4" Style="{StaticResource DefaultText}"
+                    <TextBlock Grid.Row="1" Grid.Column="4" Style="{StaticResource MediumText}" FontSize="26"
                                Width="35" TextAlignment="Center" Text="30" Margin="2, 0, 0, 0"
+                               VerticalAlignment="Bottom"
                                Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
 
                     <TextBlock Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4"
                                Background="{StaticResource GreenBrush}"
                                Height="3" Margin="0" VerticalAlignment="Center" Opacity="0.3" />
 
-                    <Button Grid.Column="0" Grid.Row="2" Style="{StaticResource CircleButton}" Content="ПН"
+                    <Button Name="Monday" Grid.Column="0" Grid.Row="2" Style="{StaticResource CircleButton}" Content="ПН"
                             Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
-                    <Button Grid.Column="1" Grid.Row="2" Style="{StaticResource CircleButton}" Content="ВТ"
+                    <Button Name="Tuesday" Grid.Column="1" Grid.Row="2" Style="{StaticResource CircleButton}" Content="ВТ"
                             Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
-                    <Button Grid.Column="2" Grid.Row="2" Style="{StaticResource CircleButton}" Content="СР"
+                    <Button Name="Wednesday" Grid.Column="2" Grid.Row="2" Style="{StaticResource CircleButton}" Content="СР"
                             Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
-                    <Button Grid.Column="3" Grid.Row="2" Style="{StaticResource CircleButton}" Content="ЧТ"
+                    <Button Name="Thursday" Grid.Column="3" Grid.Row="2" Style="{StaticResource CircleButton}" Content="ЧТ"
                             Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
-                    <Button Grid.Column="4" Grid.Row="2" Style="{StaticResource CircleButton}" Content="ПТ"
+                    <Button Name="Friday" Grid.Column="4" Grid.Row="2" Style="{StaticResource CircleButton}" Content="ПТ"
                             Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
 
                 </Grid>
             </Grid>
 
-            <!-- <Grid Row="1"> -->
-
-            <!-- <Grid Margin="20, 10"> -->
-            <!--     <Grid.RowDefinitions> -->
-            <!--         <RowDefinition Height="0.2*" /> -->
-            <!--         <RowDefinition Height="0.3*" /> -->
-            <!--         <RowDefinition Height="0.5*" /> -->
-            <!--     </Grid.RowDefinitions> -->
-            <!--     <Grid.ColumnDefinitions> -->
-            <!--         <ColumnDefinition Width="0.5*" /> -->
-            <!--         <ColumnDefinition Width="0.5*" /> -->
-            <!--     </Grid.ColumnDefinitions> -->
-            <!--     <Grid> -->
-            <!--         <Button Style="{StaticResource Transparent}" Content="Сентябрь" HorizontalAlignment="Left" -->
-            <!--                 Foreground="{StaticResource GreenBrush}" FontWeight="Bold" /> -->
-            <!--     </Grid> -->
-            <!--     <Grid Row="1"> -->
-            <!--         <StackPanel Orientation="Horizontal" Margin="0, 10, 0, 0"> -->
-            <!--             <TextBlock Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="26" -->
-            <!--                        Foreground="{StaticResource GreenBrush}" /> -->
-            <!--             <TextBlock Width="45" FontWeight="DemiBold" TextAlignment="Center" Text="27" -->
-            <!--                        Foreground="{StaticResource GreenBrush}" /> -->
-            <!--             <TextBlock Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="28" -->
-            <!--                        Foreground="{StaticResource GreenBrush}" /> -->
-            <!--             <TextBlock Width="45" FontWeight="DemiBold" TextAlignment="Center" Text="29" -->
-            <!--                        Foreground="{StaticResource GreenBrush}" /> -->
-            <!--             <TextBlock Width="35" FontWeight="DemiBold" TextAlignment="Center" Text="30" -->
-            <!--                        Foreground="{StaticResource GreenBrush}" /> -->
-            <!--         </StackPanel> -->
-            <!--     </Grid> -->
-            <!--     <Grid Row="2" Margin="0"> -->
-            <!--         <StackPanel Orientation="Horizontal"> -->
-            <!--             <Button Style="{StaticResource CircleButton}" Content="ПН" -->
-            <!--                     Margin="0, 0, 5, 0" /> -->
-            <!--             <Button Style="{StaticResource CircleButton}" Content="ВТ" -->
-            <!--                     Margin="0, 0, 5, 0" /> -->
-            <!--             <Button Style="{StaticResource CircleButton}" Content="СР" -->
-            <!--                     Margin="0, 0, 5, 0" /> -->
-            <!--             <Button Style="{StaticResource CircleButton}" Content="ЧТ" -->
-            <!--                     Margin="0, 0, 5, 0" /> -->
-            <!--             <Button Style="{StaticResource CircleButton}" Content="ПТ" -->
-            <!--                     Margin="0" /> -->
-            <!--         </StackPanel> -->
-            <!--     </Grid> -->
-            <!-- -->
-            <!-- </Grid> -->
-            <!-- </Grid> -->
-            <Grid Row="2">
-                <ScrollViewer>
-                    <Grid Margin="25, 5">
+            <Grid Row="2" Margin="40, 10, 0, 0">
+                <ScrollViewer Margin="0, 0, 0, 200" VerticalScrollBarVisibility="Visible">
+                    <Grid Margin="0, 5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="0.2*" />
                             <ColumnDefinition Width="0.2*" />
@@ -188,7 +146,7 @@
                                   Background="Transparent"
                                   Foreground="{StaticResource DarkGrayBrush}"
                                   FontSize="23"
-                                  FontWeight="SemiBold"
+                                  FontFamily="{StaticResource Montserrat-Regular}"
                                   GridLinesVisibility="None"
                                   CanUserAddRows="False"
                                   CanUserReorderColumns="False"
@@ -200,6 +158,7 @@
                                 <DataGridTemplateColumn Header="Название" Width="0.25*">
                                     <DataGridTemplateColumn.HeaderStyle>
                                         <Style TargetType="DataGridColumnHeader">
+                                            <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}"/>
                                             <Setter Property="HorizontalContentAlignment" Value="Center"/>
                                             <Setter Property="Background" Value="Transparent"/>
                                             <Setter Property="Margin" Value="0, 5, 0, 20"/>
@@ -207,7 +166,7 @@
                                     </DataGridTemplateColumn.HeaderStyle>
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding SystemDish.Name}"
+                                            <TextBlock Text="{Binding Dish.Name}"
                                                        FontWeight="Regular"
                                                        FontSize="20"
                                                        Foreground="{StaticResource DarkGrayBrush}"
@@ -220,6 +179,7 @@
                                 <DataGridTemplateColumn Header="Заявки" Width="0.25*">
                                     <DataGridTemplateColumn.HeaderStyle>
                                         <Style TargetType="DataGridColumnHeader">
+                                            <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}"/>
                                             <Setter Property="HorizontalContentAlignment" Value="Center"/>
                                             <Setter Property="Background" Value="Transparent"/>
                                             <Setter Property="Margin" Value="0, 5, 0, 20"/>
@@ -240,6 +200,7 @@
                                 <DataGridTemplateColumn Header="Продукты" Width="0.25*">
                                     <DataGridTemplateColumn.HeaderStyle>
                                         <Style TargetType="DataGridColumnHeader">
+                                            <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}"/>
                                             <Setter Property="HorizontalContentAlignment" Value="Center"/>
                                             <Setter Property="Background" Value="Transparent"/>
                                             <Setter Property="Margin" Value="0, 5, 0, 20"/>
@@ -293,13 +254,14 @@
                                   ItemsSource="{Binding Values}"
                                   AutoGenerateColumns="False"
                                   FontSize="23"
-                                  FontWeight="SemiBold"
+                                  FontFamily="{StaticResource Montserrat-Regular}"
                                   IsReadOnly="True"
                                   HorizontalAlignment="Center">
                             <DataGrid.Columns>
                                 <DataGridTemplateColumn Header="Значение">
                                     <DataGridTemplateColumn.HeaderStyle>
                                         <Style TargetType="DataGridColumnHeader">
+                                            <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}"/>
                                             <Setter Property="HorizontalContentAlignment" Value="Center"/>
                                             <Setter Property="Background" Value="Transparent"/>
                                             <Setter Property="Margin" Value="0, 5, 0, 20"/>
