@@ -40,8 +40,8 @@
                         <Button Padding="10" Style="{StaticResource SelectedMainMenuButton}" Content="Создание класса" />
                         <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Расписание" 
                                 Click="ToScheduleButtonClick"/>
-                        <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Школьники" 
-                                Click="ToChildrenButtonClick"/>
+                        <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Квитанции" 
+                                Click="ToReceiptsButtonClick"/>
 
                         <Button DockPanel.Dock="Right" Style="{StaticResource DefaultTransparentButton}"
                                 HorizontalAlignment="Right"
@@ -80,7 +80,18 @@
                                   Background="{StaticResource LightBackgroundBrush}"
                                   ToolTip="Выберите класс"
                                   HorizontalAlignment="Left">
-
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" Width="380" 
+                                                HorizontalAlignment="Left">
+                                        <TextBlock Text="{Binding }"
+                                                   Width="285"
+                                                   Margin="30, 5, 0, 0"/>
+                                        <CheckBox 
+                                                  Width="50" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
                         </ComboBox>
 
                         <Button Style="{StaticResource LightBaseButton}"

@@ -68,6 +68,9 @@
     <SolidColorBrush x:Key="DarkTextBrush" Color="#000000"/>
     <Color x:Key="DarkTextColor">#000000</Color>
     
+    <SolidColorBrush x:Key="DarkGreenTextBrush" Color="#84AB8B"/>
+    <Color x:Key="DarkGreenTextColor">#84AB8B</Color>
+    
     <SolidColorBrush x:Key="LightTextBrush" Color="#FBFFF9"/>
     <Color x:Key="LightTextColor">#FBFFF9</Color>
     

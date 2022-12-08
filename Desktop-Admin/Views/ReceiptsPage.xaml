@@ -1,0 +1,114 @@
+﻿<Page x:Class="Desktop_Admin.Views.ReceiptsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:viewModels="clr-namespace:Desktop_Admin.ViewModels"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:Desktop_Admin.Views"
+      mc:Ignorable="d"
+      Title="ReceiptsPage">
+    <Page.DataContext>
+        <viewModels:ReceiptsVM />
+    </Page.DataContext>
+    <ScrollViewer>
+        <Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="80" />
+                    <RowDefinition Height="90" />
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Rectangle Grid.RowSpan="3">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Color="{StaticResource BackgroundColor}" Offset="0" />
+                            <GradientStop Color="{StaticResource LightBackgroundColor}" Offset="0.5" />
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+
+                <Grid>
+                    <DockPanel Margin="30, 20, 30 , 0">
+                        <Button Width="180" Margin="0, 0, 10, 0" Style="{StaticResource Transparent}">
+                            <Viewbox>
+                                <Image Source="/Resources/AppIcon.png" Stretch="Uniform" />
+                            </Viewbox>
+                        </Button>
+                        <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Создание класса" 
+                                Click="ToMakeClassButtonClick"/>
+                        <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Расписание" 
+                                Click="ToScheduleButtonClick"/>
+                        <Button Padding="10" Style="{StaticResource SelectedMainMenuButton}" Content="Квитанции" />
+
+                        <Button DockPanel.Dock="Right" Style="{StaticResource DefaultTransparentButton}"
+                                HorizontalAlignment="Right"
+                                Height="70" Width="70" Margin="0,0,10,0">
+                            <materialDesign:PackIcon Kind="Circle" Height="60" Width="60" />
+                        </Button>
+
+                        <Button DockPanel.Dock="Right" Style="{StaticResource DefaultTransparentButton}"
+                                HorizontalAlignment="Right"
+                                Height="60" Width="60" Margin="0,0,15,0">
+                            <materialDesign:PackIcon Kind="BellOutline" Height="30" Width="30" />
+                        </Button>
+                    </DockPanel>
+                </Grid>
+                
+                <Grid Row="1">
+                    <DockPanel Margin="40, 30, 30, 0">
+                        <TextBlock Style="{StaticResource Medium23Text}"
+                                   TextAlignment="Center" Text="Классы:" VerticalAlignment="Bottom"
+                                   Margin="2, 0, 0, 5" HorizontalAlignment="Left" />
+
+                        <ComboBox Foreground="{StaticResource DarkGrayBrush}"
+                                  FontSize="16"
+                                  Text=""
+                                  VerticalAlignment="Bottom"
+                                  FontFamily="{StaticResource Montserrat-Medium}"
+                                  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                  Margin="10,0,0,0" Padding="10"
+                                  Height="40"
+                                  Width="205"
+                                  ItemsSource="{Binding Classes}"
+                                  d:LayoutOverrides="Height"
+                                  BorderThickness="1.5"
+                                  BorderBrush="{StaticResource GreenBrush}"
+                                  SelectedItem="{Binding SelectedClass}"
+                                  Background="{StaticResource LightBackgroundBrush}"
+                                  ToolTip="Выберите класс"
+                                  HorizontalAlignment="Left">
+
+                        </ComboBox>
+
+                    </DockPanel>
+                </Grid>
+
+                <Grid Row="2">
+                    <DockPanel Margin="40, 30, 30, 0">
+                        <TextBox Margin="5,0,5,10" Width="560" Height="45" Text="" TextWrapping="Wrap"
+                                 d:LayoutOverrides="Height"
+                                 Style="{DynamicResource TextBoxWithDescriptionInCanteenApp}"
+                                 ToolTip="Введите ФИО ученика" Padding="20"
+                                 HorizontalAlignment="Left" />
+                       
+                    </DockPanel>
+                </Grid>
+
+                <Grid Row="3">
+                    <Button Style="{StaticResource DefaultLightButton}"
+                            Width="285"
+                            HorizontalAlignment="Left"
+                            Margin="45, 20, 30, 0">
+                        <TextBlock Style="{StaticResource SmallDefaultText}"
+                                   Text="Отправить квитанции"
+                                   Foreground="{StaticResource DarkGreenTextBrush}"/>
+                    </Button>
+                </Grid>
+                
+                </Grid>
+            </Grid>
+    </ScrollViewer>
+</Page>

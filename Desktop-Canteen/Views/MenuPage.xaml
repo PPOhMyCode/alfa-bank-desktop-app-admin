@@ -227,8 +227,7 @@
                                    HorizontalAlignment="Center"
                                    Style="{StaticResource Medium30Text}" />
 
-                        <DockPanel>
-
+                        <DockPanel Margin="20, 0">
 
                             <ItemsControl DockPanel.Dock="Top" ItemsSource="{Binding DishInMenu}"
                                           Margin="0, 0, 0, 0">

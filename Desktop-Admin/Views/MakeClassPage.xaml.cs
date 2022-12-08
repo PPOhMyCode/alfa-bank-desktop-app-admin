@@ -17,9 +17,9 @@ public partial class MakeClassPage : Page
         DataContext = _mainVM;
     }
     
-    public void ToChildrenButtonClick(object sender, RoutedEventArgs e)
+    public void ToReceiptsButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new ChildrenPage());
+        NavigationService?.Navigate(new ReceiptsPage());
     }
     
     public void ToScheduleButtonClick(object sender, RoutedEventArgs e)

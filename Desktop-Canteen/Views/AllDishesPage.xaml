@@ -80,7 +80,7 @@
                     </Button>
                 </Grid>
             </Grid>
-            <Grid Row="2" Margin="40, 30,30, 0">
+            <Grid Row="2" Margin="30, 30,30, 0">
                 <ItemsControl ItemsSource="{Binding Dishes}"
                               Margin="0, 0, 0, 200">
                     <ItemsControl.ItemsPanel>

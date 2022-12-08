@@ -9,13 +9,10 @@ using WPFLibrary.Models;
 
 namespace Desktop_Admin.ViewModels;
 
-public class ChildrenVM : BaseVM
+public class ReceiptsVM : BaseVM
 {
     private ComboBoxItem selectedItem;
     public DateTime Date { get; set; }
-    public List<DateTime> Days { get; set; }
-    public string TodayDate { get; set; }
-    public string TodayMonth { get; set; }
     public ObservableCollection<ComboBoxItem> Classes { get; private set; }
     public ObservableCollection<Children> ChildrenInSelectedClass { get; set; }
 
@@ -46,21 +43,16 @@ public class ChildrenVM : BaseVM
         return strArray;
     }
 
-    public ChildrenVM()
+    public ReceiptsVM()
     {
         //list всех классов
         var grades = ApiServer.Get<List<Grade>>("grades");
         
         var childrens = ApiServer.Get<List<Children>>("grades");
         
-        Days = new List<DateTime>();
         var today = (int)DateTime.Today.DayOfWeek;
         Date = DateTime.Today;
-        for (int i = 0; i < 5; i++)
-            Days.Add(DateTime.Today.AddDays(i - today + 1));
-        TodayDate = DateTime.Now.ToString("dd.MM");
-        var textInfo = new CultureInfo("ru-RU").TextInfo;
-        TodayMonth = textInfo.ToTitleCase(textInfo.ToLower(DateTime.Now.ToString("MMMM")));
+       
         
         Classes = new ObservableCollection<ComboBoxItem>();
         foreach (var item in LoadComboBoxData())
