@@ -1,23 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Globalization;
 using System.Windows.Controls;
 using WPFLibrary.JsonModels;
 using WPFLibrary.Models;
 
 namespace Desktop_Admin.ViewModels;
 
-public class ChildrenVM : BaseVM
+public class ScheduleVM : BaseVM
 {
     private ComboBoxItem selectedItem;
-    public DateTime Date { get; set; }
-    public List<DateTime> Days { get; set; }
-    public string TodayDate { get; set; }
-    public string TodayMonth { get; set; }
-    public ObservableCollection<ComboBoxItem> Classes { get; private set; }
-    public ObservableCollection<Children> ChildrenInSelectedClass { get; set; }
-
     public ComboBoxItem SelectedClass
     {
         get { return selectedItem; }
@@ -27,7 +18,9 @@ public class ChildrenVM : BaseVM
             OnPropertyChanged("SelectedClass");
         }
     }
-
+    public ObservableCollection<ComboBoxItem> Classes { get; private set; }
+    public ObservableCollection<string> Timings { get; private set; }
+    public ObservableCollection<Children> ChildrenInSelectedClass { get; set; }
     public string[] LoadComboBoxData()
     {
         string[] strArray =
@@ -40,28 +33,27 @@ public class ChildrenVM : BaseVM
             "2Б",
             "3А",
             "4А",
-            "5А"
+            "5А",
+            "5Б"
         };
         return strArray;
     }
 
-    public ChildrenVM()
+    public ScheduleVM()
     {
-        Days = new List<DateTime>();
-        var today = (int)DateTime.Today.DayOfWeek;
-        Date = DateTime.Today;
-        for (int i = 0; i < 5; i++)
-            Days.Add(DateTime.Today.AddDays(i - today + 1));
-        TodayDate = DateTime.Now.ToString("dd.MM");
-        var textInfo = new CultureInfo("ru-RU").TextInfo;
-        TodayMonth = textInfo.ToTitleCase(textInfo.ToLower(DateTime.Now.ToString("MMMM")));
-
         Classes = new ObservableCollection<ComboBoxItem>();
         foreach (var item in LoadComboBoxData())
             Classes.Add(new ComboBoxItem { Content = item, MinHeight = 20 });
 
         SelectedClass = Classes[1];
 
+        Timings = new ObservableCollection<string>()
+        {
+            "9:30 - 10:00",
+            "13:00 - 13:30",
+            "15:00 - 15:30"
+        };
+        
         ChildrenInSelectedClass = new ObservableCollection<Children>()
         {
             new()

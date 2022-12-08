@@ -8,11 +8,18 @@
       xmlns:local="clr-namespace:Desktop_Admin.Views"
       mc:Ignorable="d"
       Title="SchedulePage">
+    <Page.DataContext>
+        <viewModels:ScheduleVM />
+    </Page.DataContext>
     <ScrollViewer>
         <Grid>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100" />
+                    <RowDefinition Height="80" />
+                    <RowDefinition Height="200" />
+                    <RowDefinition Height="180" />
+                    <RowDefinition Height="180" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Rectangle Grid.RowSpan="3">
@@ -34,8 +41,8 @@
                         <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Создание класса" 
                                 Click="ToMakeClassButtonClick"/>
                         <Button Padding="10" Style="{StaticResource SelectedMainMenuButton}" Content="Расписание" />
-                        <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Школьники" 
-                                Click="ToChildrenClick"/>
+                        <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Квитанции" 
+                                Click="ToReceiptsButtonClick"/>
 
                         <Button DockPanel.Dock="Right" Style="{StaticResource DefaultTransparentButton}"
                                 HorizontalAlignment="Right"
@@ -51,6 +58,135 @@
                     </DockPanel>
                 </Grid>
                 
+                <Grid Row="1">
+                    <DockPanel Margin="40, 30, 30, 0">
+                        <TextBlock Style="{StaticResource Medium23Text}"
+                                   TextAlignment="Center" Text="Классы:" VerticalAlignment="Bottom"
+                                   Margin="2, 0, 0, 5" HorizontalAlignment="Left" />
+
+                        <ComboBox Foreground="{StaticResource DarkGrayBrush}"
+                                  FontSize="16"
+                                  Text=""
+                                  VerticalAlignment="Bottom"
+                                  FontFamily="{StaticResource Montserrat-Medium}"
+                                  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                  Margin="10,0,0,0" Padding="10"
+                                  Height="40"
+                                  Width="205"
+                                  ItemsSource="{Binding Classes}"
+                                  d:LayoutOverrides="Height"
+                                  BorderThickness="1.5"
+                                  BorderBrush="{StaticResource GreenBrush}"
+                                  SelectedItem="{Binding SelectedClass}"
+                                  Background="{StaticResource LightBackgroundBrush}"
+                                  ToolTip="Выберите класс"
+                                  HorizontalAlignment="Left">
+
+                        </ComboBox>
+
+                        <Button Style="{StaticResource LightBaseButton}"
+                                Width="353" Height="50"
+                                HorizontalAlignment="Right">
+                            <Grid Width="350">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.85*" />
+                                    <ColumnDefinition Width="0.15*" />
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Grid.Column="1"
+                                         Height="35" Width="35" Fill="{StaticResource CircleButtonBackgroundBrush}" 
+                                         HorizontalAlignment="Left"/>
+                                <materialDesign:PackIcon Kind="PencilOutline" VerticalAlignment="Center"
+                                                         Grid.Column="1" Margin="0"
+                                                         Height="25" Width="35"
+                                                         Foreground="{StaticResource DarkGrayBrush}" />
+                                <TextBlock Grid.Column="0" Style="{StaticResource SmallDefaultText}"
+                                           Text="Изменить расписание" HorizontalAlignment="Center" Margin="10, 0, 0, 0"
+                                           VerticalAlignment="Center" />
+                            </Grid>
+                        </Button>
+                    </DockPanel>
+                </Grid>
+                
+                <Grid Row="2" Margin="0, 20, 0, 0">
+                    <StackPanel Margin="40, 30, 30, 0" 
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Left">
+                        <Button Name="BreakfastButton" Style="{StaticResource SelectedTypeMealButton}"
+                                Width="100" Height="150"
+                                Margin="10, 0, 10, 0">
+                            <Grid VerticalAlignment="Top">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.6*" />
+                                    <RowDefinition Height="0.4*" />
+                                </Grid.RowDefinitions>
+                                <Viewbox Margin="0, -20, 0, 0" Grid.Row="0" VerticalAlignment="Top">
+                                    <materialDesign:PackIcon Kind="Circle" Height="80" Width="80" />
+                                </Viewbox>
+                                <TextBlock Grid.Row="1" Text="Завтрак" HorizontalAlignment="Center" />
+                            </Grid>
+                        </Button>
+                        
+                        <TextBlock HorizontalAlignment="Left" 
+                                   VerticalAlignment="Center" 
+                                   Style="{StaticResource Medium30Text}"
+                                   Text="{Binding Timings[0]}"
+                                   Margin="20, 0"/>
+                    </StackPanel>
+                </Grid>
+                
+                <Grid Row="3">
+                    <StackPanel Margin="40, 30, 30, 0" 
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Left">
+                        <Button Name="DinnerButton" Style="{StaticResource SelectedTypeMealButton}"
+                                Width="100" Height="150"
+                                Margin="10, 0, 10, 0">
+                            <Grid VerticalAlignment="Top">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.6*" />
+                                    <RowDefinition Height="0.4*" />
+                                </Grid.RowDefinitions>
+                                <Viewbox Margin="0, -20, 0, 0" Grid.Row="0" VerticalAlignment="Top">
+                                    <materialDesign:PackIcon Kind="Circle" Height="80" Width="80" />
+                                </Viewbox>
+                                <TextBlock Grid.Row="1" Text="Обед" HorizontalAlignment="Center" />
+                            </Grid>
+                        </Button>
+                        
+                        <TextBlock HorizontalAlignment="Left" 
+                                   VerticalAlignment="Center" 
+                                   Style="{StaticResource Medium30Text}"
+                                   Text="{Binding Timings[1]}"
+                                   Margin="20, 0"/>
+                    </StackPanel>
+                </Grid>
+                
+                <Grid Row="4">
+                    <StackPanel Margin="40, 30, 30, 0" 
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Left">
+                        <Button Name="AfternoonSnackButton" Style="{StaticResource SelectedTypeMealButton}"
+                                Width="100" Height="150"
+                                Margin="10, 0, 10, 0">
+                            <Grid VerticalAlignment="Top">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.6*" />
+                                    <RowDefinition Height="0.4*" />
+                                </Grid.RowDefinitions>
+                                <Viewbox Margin="0, -20, 0, 0" Grid.Row="0" VerticalAlignment="Top">
+                                    <materialDesign:PackIcon Kind="Circle" Height="80" Width="80" />
+                                </Viewbox>
+                                <TextBlock Grid.Row="1" Text="Полдник" HorizontalAlignment="Center" />
+                            </Grid>
+                        </Button>
+                        
+                        <TextBlock HorizontalAlignment="Left" 
+                                   VerticalAlignment="Center" 
+                                   Style="{StaticResource Medium30Text}"
+                                   Text="{Binding Timings[2]}"
+                                   Margin="20, 0"/>
+                    </StackPanel>
+                </Grid>
             </Grid>
         </Grid>
     </ScrollViewer>

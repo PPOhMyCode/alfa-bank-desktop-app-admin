@@ -38,6 +38,8 @@ public class MenuVM : BaseVM
         Menu = new ObservableCollection<MenuView>();
         SelectDayCommand = new RelayCommand(SelectDay);
         SelectTypeCommand = new RelayCommand(SelectType);
+        SelectDay(Days[0]);
+        SelectType("1");
     }
 
     public void SelectDay(object param)

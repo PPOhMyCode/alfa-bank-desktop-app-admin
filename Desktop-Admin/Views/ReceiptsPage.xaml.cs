@@ -4,23 +4,24 @@ using Desktop_Admin.ViewModels;
 
 namespace Desktop_Admin.Views;
 
-public partial class SchedulePage : Page
+public partial class ReceiptsPage : Page
 {
-    private ScheduleVM _scheduleVM;
-    public SchedulePage()
+    private ReceiptsVM _childrenVm;
+    public ReceiptsPage()
     {
         InitializeComponent();
-        _scheduleVM = new ScheduleVM();
-        DataContext = _scheduleVM;
+        _childrenVm = new ReceiptsVM();
+        DataContext = _childrenVm;
     }
-    
+
     public void ToMakeClassButtonClick(object sender, RoutedEventArgs e)
     {
         NavigationService?.Navigate(new MakeClassPage());
     }
     
-    public void ToReceiptsButtonClick(object sender, RoutedEventArgs e)
+    public void ToScheduleButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new ReceiptsPage());
+        NavigationService?.Navigate(new SchedulePage());
     }
+    
 }
