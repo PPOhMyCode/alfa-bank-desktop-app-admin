@@ -29,6 +29,22 @@ public class ApiServer
         return default;
     }
     
+    public static JModel GetImage<JModel>(string req)
+    {
+        var client = new RestClient("https://storage.yandexcloud.net/systemimg/");
+        var request = new RestRequest("pasta.png", Method.Get);
+        var response = client.Execute(request);
+
+        if (response.StatusCode == HttpStatusCode.OK)
+        {
+            string rawResponse = response.Content;
+            var result = JsonConvert.DeserializeObject<JModel>(response.Content);
+            return result;
+        }
+
+        return default;
+    }
+    
     public static RestResponse Delete(string req)
     {
         var client = new RestClient(URL);

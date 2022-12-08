@@ -9,22 +9,23 @@ namespace Desktop_Canteen.ViewModels;
 
 public class ScheduleVM:BaseVM
 {
-    private List<SummaryOrderView> DayOrders { get; set; }
+    private List<Order> DayOrders { get; set; }
     public string SelectedData { get; set; }
     public ObservableCollection<ScheduleItem> Data { get; set; }
 
     public ScheduleVM()
     {
         Data = new ObservableCollection<ScheduleItem>();
-        DayOrders = new List<SummaryOrderView>();
+        DayOrders = new List<Order>();
         GetData();
     }
 
     public void GetData()
     {
-        SelectedData = "11-19-2022";
-        DayOrders = new List<SummaryOrderView>(ApiServer.Get<List<SummaryOrderView>>("orders/date/"+SelectedData));
-        var Timings = DayOrders.Select(x=>x.Time).Distinct().ToList();
+        SelectedData = "2022-11-28";
+        DayOrders = new List<Order>(ApiServer.Get<List<Order>>("orders/date/"+SelectedData));
+        var Timings = new List<Timing>(ApiServer.Get<List<Timing>>("timings"));
+        /*
         foreach (var time in Timings)
         {
             var scheduleItem = new ScheduleItem(time);
@@ -46,5 +47,6 @@ public class ScheduleVM:BaseVM
             }
             Data.Add(scheduleItem);
         }
+        */
     }
 }

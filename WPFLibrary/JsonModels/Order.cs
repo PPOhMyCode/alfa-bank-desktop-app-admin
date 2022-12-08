@@ -1,13 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WPFLibrary.JsonModels;
 
-public class Order: BaseModel
-{
+public class Order
+{ 
+    public int OrderId { get; set; }
     public int ChildrenId { get; set; }
     public int DishId { get; set; }
     public int StatusId { get; set; }
     public int TypeId { get; set; }
+    public DateTime Date { get; set; }
 }
 
 

@@ -3,11 +3,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WPFLibrary.JsonModels;
 
-public class Timing : BaseModel
+public class Timing
 {
-    public TimeSpan Time { get; set; }
-    public int TypeId { get; set; }
-    public int GradleId { get; set; }
+    public int TimingId { get; set; }
+    public DateTime Time { get; set; }
+    public int TypeMelId { get; set; }
+    public int GradeId { get; set; }
 }
 
 public class TimingView
