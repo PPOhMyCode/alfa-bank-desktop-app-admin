@@ -249,7 +249,7 @@
                             </Grid>
 
                             <Grid Row="2">
-                                <ItemsControl ItemsSource="{Binding ChildrenInSelectedClass}">
+                                <ItemsControl Name="ItemsControl" ItemsSource="{Binding ChildrenInSelectedClass}">
                                     <ItemsControl.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <WrapPanel Orientation="Horizontal" />

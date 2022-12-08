@@ -143,7 +143,8 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
         teacherGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(120) });
         teacherGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(186) });
         teacherGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(57) });
-
+//спаси и сохрани
+        
         var teacher = new Border()
         {
             Background = Brushes.Transparent,
@@ -160,7 +161,7 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
         };
         Grid.SetColumn(teacher, 0);
         Grid.SetRow(teacher, 1);
-        mainGrid.Children.Add((teacher));
+        mainGrid.Children.Add(new Grid(){Children = { teacher }});
 
         //вместо фото аватарки пока просто прямоугольник
         var picture = new Rectangle()
@@ -255,7 +256,7 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
         Grid.SetColumn(pencil, 2);
         Grid.SetRow(pencil, 0);
         teacherGrid.Children.Add(pencil);
-
+        
         // string Xaml = "<DataTemplate>" +
         //                     "<Border Background=\"Transparent\"" +
         //                     "BorderThickness=\"2\"" +
@@ -324,10 +325,20 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
         //itemsControl.ItemTemplate = datatemplate;
         Grid.SetColumn(itemsControl, 0);
         Grid.SetRow(itemsControl, 2);
-        mainGrid.Children.Add(itemsControl);
+        
+        var wp = new WrapPanel() { Orientation = Orientation.Horizontal, DataContext = itemsControl };
+        var factory = new FrameworkElementFactory(typeof(WrapPanel));
+        factory.SetBinding(WrapPanel.OrientationProperty, new Binding("Orientation.Horizontal"));
+        factory.SetBinding(WrapPanel.DataContextProperty, new Binding("itemsControl"));
+        var dataTemplate = new DataTemplate();
+        dataTemplate.VisualTree = factory;
+        dataTemplate.Seal();
+        
+        itemsControl.ItemTemplate = dataTemplate;
+        
+        mainGrid.Children.Add(new Grid(){Children = { itemsControl }} );
 
-        var wp = new WrapPanel() { Orientation = Orientation.Horizontal };
-        itemsControl.ItemsPanel = (ItemsPanelTemplate)wp.DataContext;
+        
         
         var childGrid = new Grid()
         {
@@ -394,9 +405,19 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
         Grid.SetRow(childName, 0);
         childGrid.Children.Add(childName);
         
-        Grid.SetColumn(classNameInCard, 1);
-        Grid.SetRow(classNameInCard, 1);
-        childGrid.Children.Add(classNameInCard);
+        //TODO:дать нормальное название
+        var classNameInCard1 = new TextBlock()
+        {
+            Text = selectedItem.Content.ToString(),
+            Style = Application.Current.TryFindResource("RegularText") as Style,
+            Foreground = Application.Current.TryFindResource("DarkTextBrush") as Brush,
+            VerticalAlignment = VerticalAlignment.Bottom,
+            Margin = new Thickness(5, 0, 5, 0),
+            FontSize = 14
+        };
+        Grid.SetColumn(classNameInCard1, 1);
+        Grid.SetRow(classNameInCard1, 1);
+        childGrid.Children.Add(classNameInCard1);
         
         var tagChild = new Rectangle()
         {
@@ -428,9 +449,21 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
         Grid.SetRow(tagTextChild, 2);
         childGrid.Children.Add(tagTextChild);
         
-        Grid.SetColumn(pencil, 2);
-        Grid.SetRow(pencil, 0);
-        childGrid.Children.Add(pencil);
+        //TODO: Переименовать
+        var pencil1 = new Button()
+        {
+            Style = Application.Current.TryFindResource("TransparentButton") as Style,
+            Content = new PackIcon
+            {
+                Kind = PackIconKind.PencilOutline, 
+                Height = 20,
+                Width = 20,
+                Foreground = Application.Current.TryFindResource("DarkTextBrush") as Brush
+            }
+        };
+        Grid.SetColumn(pencil1, 2);
+        Grid.SetRow(pencil1, 0);
+        childGrid.Children.Add(pencil1);
         
         
         dockPanel.Children.Add(mainGrid);

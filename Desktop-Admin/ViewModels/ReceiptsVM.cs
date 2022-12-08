@@ -48,7 +48,7 @@ public class ReceiptsVM : BaseVM
         //list всех классов
         var grades = ApiServer.Get<List<Grade>>("grades");
         
-        var childrens = ApiServer.Get<List<Children>>("grades");
+        var childrens = ApiServer.Get<List<Children>>("grades/1/childrens");
         
         var today = (int)DateTime.Today.DayOfWeek;
         Date = DateTime.Today;

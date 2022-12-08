@@ -15,6 +15,7 @@ public partial class MakeClassPage : Page
             ClassesPanel = ClassesStackPanel
         };
         DataContext = _mainVM;
+        var a = ItemsControl;
     }
     
     public void ToReceiptsButtonClick(object sender, RoutedEventArgs e)
