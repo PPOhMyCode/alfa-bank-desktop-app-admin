@@ -12,10 +12,12 @@ public partial class MakeClassPage : Page
         InitializeComponent();
         _mainVM = new MainViewModel()
         {
-            ClassesPanel = ClassesStackPanel
+            ClassesPanel = ClassesStackPanel,
+            NoSelectedClassesTextBlock = NoSelectedClassesPlug
         };
         DataContext = _mainVM;
-        var a = ItemsControl;
+        _mainVM.CheckPlug();
+        //var a = ItemsControl;
     }
     
     public void ToReceiptsButtonClick(object sender, RoutedEventArgs e)

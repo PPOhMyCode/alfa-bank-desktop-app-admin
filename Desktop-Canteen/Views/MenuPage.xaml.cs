@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using Desktop_Canteen.ViewModels;
@@ -11,8 +12,14 @@ namespace Desktop_Canteen.Views
         public MenuPage()
         {
             InitializeComponent();
-            _menuVm = new MenuVM();
+            _menuVm = new MenuVM()
+            {
+                MenuPlugTextBlock = MenuPlug
+            };
+            _menuVm.GetMenu();
             DataContext = _menuVm;
+            Monday.Style = Application.Current.TryFindResource("SelectedCircleButton") as Style;
+            BreakfastButton.Style = Application.Current.TryFindResource("SelectedTypeMealButton") as Style;
         }
     
         public void ToMenuButtonClick(object sender, RoutedEventArgs e)
@@ -78,8 +85,9 @@ namespace Desktop_Canteen.Views
             Friday.Style = Application.Current.TryFindResource("CircleButton") as Style;
         }
         
-        public void ToMakeMenuPage(object sender, RoutedEventArgs e)
+        public async  void ToMakeMenuPage(object sender, RoutedEventArgs e)
         {
+            await Task.Delay(2000);
             NavigationService?.Navigate(new MakeMenuPage());
         }
     }

@@ -1,13 +1,22 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using Desktop_Canteen.ViewModels;
 
 namespace Desktop_Canteen.Views;
 
 public partial class OrderingIngredientsPage : Page
 {
+    private OrderingIngredientsVM _orderingIngredientsVm;
     public OrderingIngredientsPage()
     {
         InitializeComponent();
+        _orderingIngredientsVm = new OrderingIngredientsVM()
+        {
+            NoDataPlugTextBlock = NoDataPlug,
+            TableGrid = TableGrid
+        };
+        DataContext = _orderingIngredientsVm;
+        _orderingIngredientsVm.CheckPlug();
     }
     
     public void ToAllDishesButtonClick(object sender, RoutedEventArgs e)

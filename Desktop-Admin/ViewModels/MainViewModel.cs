@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,6 +23,7 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
 {
     private ComboBoxItem selectedItem;
     public StackPanel ClassesPanel;
+    public TextBlock NoSelectedClassesTextBlock;
     public ObservableCollection<ComboBoxItem> Classes { get; private set; }
     public ObservableCollection<Children> ChildrenInSelectedClass { get; set; }
 
@@ -33,6 +35,7 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
             selectedItem = value;
             OnPropertyChanged("SelectedClass");
             ChangeClassView();
+            CheckPlug();
         }
     }
 
@@ -58,9 +61,9 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
         Classes = new ObservableCollection<ComboBoxItem>();
         foreach (var item in LoadComboBoxData())
             Classes.Add(new ComboBoxItem { Content = item, MinHeight = 20 });
-
-        SelectedClass = Classes[1];
-
+        
+        //SelectedClass = Classes[1];
+        
         ChildrenInSelectedClass = new ObservableCollection<Children>()
         {
             new()
@@ -102,6 +105,25 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
         };
     }
 
+    public void CheckPlug()
+    {
+        try
+        {
+            if (ClassesPanel != null && ClassesPanel.Children.Count != 0)
+            {
+                NoSelectedClassesTextBlock.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                NoSelectedClassesTextBlock.Visibility = Visibility.Visible;
+            }
+        }
+        catch (Exception e)
+        {
+            
+        }
+    }
+    
     private void ChangeClassView()
     {
         if (ClassesPanel == null) 
@@ -143,7 +165,7 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
         teacherGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(120) });
         teacherGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(186) });
         teacherGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(57) });
-//спаси и сохрани
+
         
         var teacher = new Border()
         {
@@ -161,7 +183,7 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
         };
         Grid.SetColumn(teacher, 0);
         Grid.SetRow(teacher, 1);
-        mainGrid.Children.Add(new Grid(){Children = { teacher }});
+        mainGrid.Children.Add(teacher);
 
         //вместо фото аватарки пока просто прямоугольник
         var picture = new Rectangle()
@@ -322,21 +344,23 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
         {
             ItemsSource = ChildrenInSelectedClass
         };
-        //itemsControl.ItemTemplate = datatemplate;
-        Grid.SetColumn(itemsControl, 0);
-        Grid.SetRow(itemsControl, 2);
         
-        var wp = new WrapPanel() { Orientation = Orientation.Horizontal, DataContext = itemsControl };
+        
         var factory = new FrameworkElementFactory(typeof(WrapPanel));
         factory.SetBinding(WrapPanel.OrientationProperty, new Binding("Orientation.Horizontal"));
         factory.SetBinding(WrapPanel.DataContextProperty, new Binding("itemsControl"));
+        var cardHolder = new FrameworkElementFactory(typeof(TextBlock));
+        cardHolder.SetBinding(TextBlock.TextProperty, new Binding("BillToName"));
+        factory.AppendChild(cardHolder);
+        
         var dataTemplate = new DataTemplate();
         dataTemplate.VisualTree = factory;
         dataTemplate.Seal();
-        
+
         itemsControl.ItemTemplate = dataTemplate;
-        
-        mainGrid.Children.Add(new Grid(){Children = { itemsControl }} );
+        Grid.SetColumn(itemsControl, 0);
+        Grid.SetRow(itemsControl, 2);
+        mainGrid.Children.Add(itemsControl);
 
         
         
@@ -366,8 +390,8 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
             VerticalAlignment = VerticalAlignment.Center,
             Child = childGrid
         };
-        DataTemplate dt = new DataTemplate(typeof(ItemsControl));
-        itemsControl.ItemTemplate = dt;
+
+        
 
         //вместо фото аватарки пока просто прямоугольник
         var picture1 = new Rectangle()

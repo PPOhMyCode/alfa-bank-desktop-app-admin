@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Net.Mime;
 using System.Windows.Controls;
 using System.Globalization;
+using System.Windows;
 using System.Windows.Documents;
 using WPFLibrary;
 using WPFLibrary.JsonModels;
@@ -16,6 +17,8 @@ public class OrderingIngredientsVM : BaseVM
     public ObservableCollection<Order> SummaryOrderViews { get; set; }
     public string SelectedDate { get; set; }
     public string TodayMonth { get; set; }
+    public TextBlock NoDataPlugTextBlock;
+    public Grid TableGrid;
 
     public List<List<string>> Values { get; set; }
     public OrderingIngredientsVM()
@@ -27,6 +30,21 @@ public class OrderingIngredientsVM : BaseVM
         SummaryOrderViews = new ObservableCollection<Order>();
         var test = ApiServer.GetImage<Image>("https://storage.yandexcloud.net/systemimg/pasta.png");
 
+
         Values = new List<List<string>>();
+    }
+
+    public void CheckPlug()
+    {
+        if (SummaryOrderViews != null && SummaryOrderViews.Count > 0)
+        {
+            NoDataPlugTextBlock.Visibility = Visibility.Hidden;
+            TableGrid.Visibility = Visibility.Visible;
+        }
+        else
+        {
+            NoDataPlugTextBlock.Visibility = Visibility.Visible;
+            TableGrid.Visibility = Visibility.Hidden;
+        }
     }
 }

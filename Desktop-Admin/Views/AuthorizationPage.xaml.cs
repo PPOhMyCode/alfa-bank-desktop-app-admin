@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using Desktop_Admin.ViewModels;
 
 namespace Desktop_Admin.Views;
@@ -14,6 +15,14 @@ public partial class AuthorizationPage : Page
         DataContext  =_authorizationVm;
     }
 
+    public void OnKeyDownHandler(object sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Enter)
+        {
+            EnterButtonClick(null, null);
+        } 
+    }
+    
     public void EnterButtonClick(object sender, RoutedEventArgs e)
     {
         //проверка логина и пароля

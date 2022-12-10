@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
 using Desktop_Admin.Models;
 using WPFLibrary;
 using WPFLibrary.JsonModels;
 using WPFLibrary.Models;
+using Menu = WPFLibrary.JsonModels.Menu;
 
 namespace Desktop_Canteen.ViewModels;
 
 public class MenuVM : BaseVM
 {
+    public TextBlock MenuPlugTextBlock;
     public int TypeMeal { get; set; }
     public DateTime Date { get; set; }
     public List<DateTime> Days { get; set; }
@@ -71,6 +75,13 @@ public class MenuVM : BaseVM
                     DishInMenu.Add(dish);
                 }
             }
+
+            if (MenuPlugTextBlock != null)
+            {
+                if (DishInMenu.Count > 0) MenuPlugTextBlock.Visibility = Visibility.Hidden;
+                else MenuPlugTextBlock.Visibility = Visibility.Visible;
+            }
+            
         }
         catch (Exception e)
         {

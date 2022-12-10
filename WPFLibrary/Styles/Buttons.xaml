@@ -91,6 +91,7 @@
         <Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}" />
         <Setter Property="FontSize" Value="{StaticResource Regular}" />
         <Setter Property="Foreground" Value="Transparent" />
+        <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -105,16 +106,16 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsDefaulted" Value="true">
-                            <Setter Property="Background" Value="{StaticResource GreenBrush}" />
+                            <Setter Property="Background" Value="Transparent" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Background" Value="{StaticResource LightGreenBrush}" />
+                            <Setter Property="Background" Value="Transparent" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="Background" Value="{StaticResource UltraLightGreenBrush}" />
+                            <Setter Property="Background" Value="Transparent" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" Value="{StaticResource DarkGreenBrush}" />
+                            <Setter Property="Background" Value="Transparent" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

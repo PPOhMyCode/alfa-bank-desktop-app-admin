@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:Desktop_Admin.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" WindowState="Maximized"
+        Title="SchoolFood" WindowState="Maximized"
         WindowStyle="ToolWindow" Margin="0">
     <Frame Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
 </Window>
