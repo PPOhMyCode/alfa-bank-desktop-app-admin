@@ -11,6 +11,16 @@ namespace WPFLibrary;
 
 public class ApiServer
 {
+    public static string Base64Encode(string plainText) {
+        var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
+        return System.Convert.ToBase64String(plainTextBytes);
+    }
+    
+    public static string Base64Decode(string base64EncodedData) {
+        var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
+        return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
+    }
+    
     private static string URL { get; set; }
     
     public static JModel Get<JModel>(string req)
@@ -63,10 +73,11 @@ public class ApiServer
     {
         var client = new RestClient(URL);
         var request = new RestRequest(req, Method.Post);
+        
         request.AddHeader("Accept", "*/*");
         request.AddHeader("Content-Type", "application/json");
         var body = JsonConvert.SerializeObject(model);
-        request.AddJsonBody(body, "application/json");
+        request.AddJsonBody(Base64Encode(body), "application/json");
         RestResponse response = client.Execute(request);
         if (response.StatusCode == HttpStatusCode.OK)
         {
@@ -85,7 +96,7 @@ public class ApiServer
         request.AddHeader("Accept", "*/*");
         request.AddHeader("Content-Type", "application/json");
         var body = JsonConvert.SerializeObject(model);
-        request.AddJsonBody(body, "application/json");
+        request.AddJsonBody(Base64Encode(body), "application/json");
         RestResponse response = client.Execute(request);
         if (response.StatusCode == HttpStatusCode.OK)
         {

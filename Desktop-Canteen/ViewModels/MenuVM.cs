@@ -33,7 +33,7 @@ public class MenuVM : BaseVM
         TodayDate = DateTime.Now.ToString("dd.MM");
         var textInfo = new CultureInfo("ru-RU").TextInfo;
         TodayMonth = textInfo.ToTitleCase(textInfo.ToLower(DateTime.Now.ToString("MMMM")));
-        AllDishes = new ObservableCollection<Dish>(ApiServer.Get<List<Dish>>("Dish"));
+        AllDishes = new ObservableCollection<Dish>(ApiServer.Get<List<Dish>>("dishes"));
         DishInMenu = new ObservableCollection<Dish>();
         Menu = new ObservableCollection<MenuView>();
         GetMenu();
