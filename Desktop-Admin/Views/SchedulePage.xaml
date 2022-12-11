@@ -64,35 +64,66 @@
                                    TextAlignment="Center" Text="Классы:" VerticalAlignment="Bottom"
                                    Margin="2, 0, 0, 5" HorizontalAlignment="Left" />
 
-                        <ComboBox Foreground="{StaticResource DarkGrayBrush}"
-                                  FontSize="16"
-                                  Text=""
-                                  VerticalAlignment="Bottom"
-                                  FontFamily="{StaticResource Montserrat-Medium}"
-                                  Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                                  Margin="10,0,0,0" Padding="10"
-                                  Height="40"
-                                  Width="205"
-                                  ItemsSource="{Binding Classes}"
-                                  d:LayoutOverrides="Height"
-                                  BorderThickness="1.5"
-                                  BorderBrush="{StaticResource GreenBrush}"
-                                  SelectedItem="{Binding SelectedClass}"
-                                  Background="{StaticResource LightBackgroundBrush}"
-                                  ToolTip="Выберите класс"
-                                  materialDesign:ComboBoxAssist.ShowSelectedItem="False"
-                                  HorizontalAlignment="Left">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding}" />
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                            <ComboBox.ItemContainerStyle>
-                                <Style>
-                                    <Setter Property="ComboBox.Background" Value="{StaticResource LightBackgroundBrush}" />
-                                </Style>
-                            </ComboBox.ItemContainerStyle>
-                        </ComboBox>
+                        <Button Name="SelectCategoriesButton"
+                                Click="SelectCategoriesButton_OnClick"
+                                Width="265"
+                                Style="{StaticResource DefaultButton}"
+                                Margin="10, 0"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Left">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Border BorderBrush="{StaticResource GreenBrush}"
+                                            Height="40"
+                                            Background="{StaticResource LightBackgroundBrush}"
+                                            BorderThickness="1.5"
+                                            CornerRadius="10">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Name = "SelectedCategoriesTextBlock" 
+                                                       Text="Выберите классы"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"
+                                                       Style="{StaticResource RegularText}"
+                                                       FontSize="19"
+                                                       Margin="25, 0, 15, 0"/>
+                                            <materialDesign:PackIcon Kind="ChevronDown" Height="25" Width="25"
+                                                                     HorizontalAlignment="Center"
+                                                                     VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                        
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <!-- <ComboBox Foreground="{StaticResource DarkGrayBrush}" -->
+                        <!--           FontSize="16" -->
+                        <!--           Text="" -->
+                        <!--           VerticalAlignment="Bottom" -->
+                        <!--           FontFamily="{StaticResource Montserrat-Medium}" -->
+                        <!--           Style="{StaticResource MaterialDesignOutlinedComboBox}" -->
+                        <!--           Margin="10,0,0,0" Padding="10" -->
+                        <!--           Height="40" -->
+                        <!--           Width="205" -->
+                        <!--           ItemsSource="{Binding Classes}" -->
+                        <!--           d:LayoutOverrides="Height" -->
+                        <!--           BorderThickness="1.5" -->
+                        <!--           BorderBrush="{StaticResource GreenBrush}" -->
+                        <!--           SelectedItem="{Binding SelectedClass}" -->
+                        <!--           Background="{StaticResource LightBackgroundBrush}" -->
+                        <!--           ToolTip="Выберите класс" -->
+                        <!--           materialDesign:ComboBoxAssist.ShowSelectedItem="False" -->
+                        <!--           HorizontalAlignment="Left"> -->
+                        <!--     <ComboBox.ItemTemplate> -->
+                        <!--         <DataTemplate> -->
+                        <!--             <TextBlock Text="{Binding}" /> -->
+                        <!--         </DataTemplate> -->
+                        <!--     </ComboBox.ItemTemplate> -->
+                        <!--     <ComboBox.ItemContainerStyle> -->
+                        <!--         <Style> -->
+                        <!--             <Setter Property="ComboBox.Background" Value="{StaticResource LightBackgroundBrush}" /> -->
+                        <!--         </Style> -->
+                        <!--     </ComboBox.ItemContainerStyle> -->
+                        <!-- </ComboBox> -->
 
                         <Button Style="{StaticResource LightBaseButton}"
                                 Width="353" Height="50"
@@ -197,6 +228,44 @@
                                    Margin="20, 0"/>
                     </StackPanel>
                 </Grid>
+                
+                <DockPanel Name="Categories" 
+                           Visibility="Hidden"
+                           Grid.Row="2"
+                           Grid.RowSpan="4"
+                           Height="400"
+                           Width="245"
+                           Margin="155, 0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           Background="{StaticResource Ultra2LightGreenBrush}">
+                    <Border BorderThickness="1"
+                            BorderBrush="{StaticResource GreenBrush}"
+                            CornerRadius="0, 0, 10, 10">
+                        <StackPanel>
+                            <ListView DockPanel.Dock="Top"
+                                      Width="245"
+                                      Height="350"
+                                      FontFamily="{StaticResource Montserrat-Regular}"
+                                      Margin="0" Padding="0"
+                                      HorizontalAlignment="Left"
+                                      Background="Transparent"
+                                      materialDesign:ListBoxItemAssist.ShowSelection="False"
+                                      ItemsSource="{Binding Classes}">
+                            </ListView>
+                            <Button Name="DoneButton"
+                                    Style="{StaticResource BaseButton}"
+                                    Height="30"
+                                    Content="Готово"
+                                    Width="100"
+                                    Click="DoneButton_OnClick"
+                                    DockPanel.Dock="Left"
+                                    HorizontalAlignment="Left"
+                                    Margin="10, 0, 0, 10"
+                                    FontSize="15"/>
+                        </StackPanel>
+                    </Border>
+                </DockPanel>
             </Grid>
         </Grid>
     </ScrollViewer>

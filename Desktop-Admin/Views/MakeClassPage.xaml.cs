@@ -46,9 +46,4 @@ public partial class MakeClassPage : Page
     {
         Categories.Visibility = Visibility.Hidden;
     }
-    
-    private void BackButton_OnClick(object sender, RoutedEventArgs e)
-    {
-        Categories.Visibility = Visibility.Hidden;
-    }
 }
