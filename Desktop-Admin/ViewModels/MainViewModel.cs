@@ -21,19 +21,31 @@ namespace Desktop_Admin.ViewModels;
 
 public class MainViewModel : BaseVM, INotifyPropertyChanged
 {
-    private ComboBoxItem selectedItem;
+    private ObservableCollection<string> selectedItems;
     public StackPanel ClassesPanel;
-    public TextBlock NoSelectedClassesTextBlock;
-    public ObservableCollection<ComboBoxItem> Classes { get; private set; }
-    public ObservableCollection<Children> ChildrenInSelectedClass { get; set; }
+    private bool isCheck;
 
-    public ComboBoxItem SelectedClass
+    public bool IsCheck
     {
-        get { return selectedItem; }
+        get => isCheck;
         set
         {
-            selectedItem = value;
-            OnPropertyChanged("SelectedClass");
+            isCheck = value;
+            OnPropertyChanged("IsCheck");
+        }
+    }
+    public TextBlock NoSelectedClassesTextBlock;
+    public ObservableCollection<ListViewItem> Classes { get; private set; }
+    public ObservableCollection<Children> ChildrenInSelectedClass { get; set; }
+    public RelayCommand SelectCategoryCommand { protected set; get; }
+
+    public ObservableCollection<string> SelectedCategories
+    {
+        get { return selectedItems; }
+        set
+        {
+            selectedItems = value;
+            OnPropertyChanged("SelectedCategories");
             ChangeClassView();
             CheckPlug();
         }
@@ -58,9 +70,28 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
 
     public MainViewModel()
     {
-        Classes = new ObservableCollection<ComboBoxItem>();
+        isCheck = false;
+        SelectCategoryCommand = new RelayCommand(SelectCategory);
+        Classes = new ObservableCollection<ListViewItem>();
         foreach (var item in LoadComboBoxData())
-            Classes.Add(new ComboBoxItem { Content = item, MinHeight = 20 });
+            Classes.Add(new ListViewItem
+            {
+                Content = new CheckBox()
+                {
+                    Content = item,
+                    IsChecked = isCheck,
+                    Background = Application.Current.TryFindResource("GreenBrush") as Brush,
+                    Style = Application.Current.TryFindResource("MaterialDesignFilterChipCheckBox") as Style,
+                    HorizontalAlignment = HorizontalAlignment.Left,
+                    HorizontalContentAlignment = HorizontalAlignment.Left,
+                    Margin = new Thickness(0, 0, 0, 0),
+                    Command = SelectCategoryCommand,
+                    CommandParameter = item
+                }, 
+                MinHeight = 25,
+                Margin = new Thickness(10, 5, 10, 0),
+                Padding = new Thickness(0)
+            });
         
         //SelectedClass = Classes[1];
         
@@ -105,6 +136,14 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
         };
     }
 
+    public void SelectCategory(object param)
+    {
+        if (IsCheck == true)
+        {
+            selectedItems.Add(param as string);
+        }
+    }
+    
     public void CheckPlug()
     {
         try
@@ -145,7 +184,7 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
 
         var className = new TextBlock()
         {
-            Text = selectedItem.Content.ToString(),
+            Text = selectedItems[0],
             Style = Application.Current.TryFindResource("Medium23Text") as Style,
             Foreground = Application.Current.TryFindResource("DarkTextBrush") as Brush,
             VerticalAlignment = VerticalAlignment.Center
@@ -223,7 +262,7 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
         
         var classNameInCard = new TextBlock()
         {
-            Text = selectedItem.Content.ToString(),
+            Text = selectedItems[0],
             Style = Application.Current.TryFindResource("RegularText") as Style,
             Foreground = Application.Current.TryFindResource("DarkTextBrush") as Brush,
             VerticalAlignment = VerticalAlignment.Bottom,
@@ -432,7 +471,7 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
         //TODO:дать нормальное название
         var classNameInCard1 = new TextBlock()
         {
-            Text = selectedItem.Content.ToString(),
+            Text = selectedItems[0],
             Style = Application.Current.TryFindResource("RegularText") as Style,
             Foreground = Application.Current.TryFindResource("DarkTextBrush") as Brush,
             VerticalAlignment = VerticalAlignment.Bottom,

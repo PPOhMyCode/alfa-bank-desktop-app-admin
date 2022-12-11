@@ -80,8 +80,18 @@
                                   SelectedItem="{Binding SelectedClass}"
                                   Background="{StaticResource LightBackgroundBrush}"
                                   ToolTip="Выберите класс"
+                                  materialDesign:ComboBoxAssist.ShowSelectedItem="False"
                                   HorizontalAlignment="Left">
-
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                            <ComboBox.ItemContainerStyle>
+                                <Style>
+                                    <Setter Property="ComboBox.Background" Value="{StaticResource LightBackgroundBrush}" />
+                                </Style>
+                            </ComboBox.ItemContainerStyle>
                         </ComboBox>
 
                         <Button Style="{StaticResource LightBaseButton}"

@@ -29,4 +29,26 @@ public partial class MakeClassPage : Page
     {
         NavigationService?.Navigate(new SchedulePage());
     }
+
+    private void SelectCategoriesButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (Categories.Visibility == Visibility.Visible)
+        {
+            Categories.Visibility = Visibility.Hidden;
+        }
+        else
+        {
+            Categories.Visibility = Visibility.Visible;
+        }
+    }
+
+    private void DoneButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        Categories.Visibility = Visibility.Hidden;
+    }
+    
+    private void BackButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        Categories.Visibility = Visibility.Hidden;
+    }
 }

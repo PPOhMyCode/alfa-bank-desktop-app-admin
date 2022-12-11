@@ -21,7 +21,7 @@
                     <RowDefinition Height="70" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Rectangle Grid.RowSpan="3">
+                <Rectangle Grid.RowSpan="4">
                     <Rectangle.Fill>
                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                             <GradientStop Color="{StaticResource BackgroundColor}" Offset="0" />
@@ -61,38 +61,59 @@
                     <DockPanel Margin="40, 30, 30, 0">
                         <TextBlock Style="{StaticResource Medium23Text}"
                                    TextAlignment="Center" Text="Сортировка:" VerticalAlignment="Bottom"
-                                   Margin="2, 0, 0, 5" HorizontalAlignment="Left" />
-
-                        <ComboBox Foreground="{StaticResource DarkGrayBrush}"
-                                  FontSize="16"
-                                  Text=""
-                                  VerticalAlignment="Bottom"
-                                  FontFamily="{StaticResource Montserrat-Medium}"
-                                  Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                                  Margin="10,0,0,0" Padding="10"
-                                  Height="40"
-                                  Width="205"
-                                  ItemsSource="{Binding Classes}"
-                                  d:LayoutOverrides="Height"
-                                  BorderThickness="1.5"
-                                  BorderBrush="{StaticResource GreenBrush}"
-                                  SelectedItem="{Binding SelectedClass}"
-                                  Background="{StaticResource LightBackgroundBrush}"
-                                  ToolTip="Выберите класс"
-                                  HorizontalAlignment="Left">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal" Width="380" 
-                                                HorizontalAlignment="Left">
-                                        <TextBlock Text="{Binding }"
-                                                   Width="285"
-                                                   Margin="30, 5, 0, 0"/>
-                                        <CheckBox 
-                                                  Width="50" />
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
+                                   Margin="2, 0, 0, 7" HorizontalAlignment="Left" />
+                        <Button Name="SelectCategoriesButton"
+                                Click="SelectCategoriesButton_OnClick"
+                                Width="300"
+                                Style="{StaticResource DefaultButton}"
+                                Margin="10, 0"
+                                VerticalAlignment="Bottom">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Border BorderBrush="{StaticResource GreenBrush}"
+                                            Height="40"
+                                            Background="{StaticResource LightBackgroundBrush}"
+                                            BorderThickness="1.5"
+                                            CornerRadius="10">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Name = "SelectedCategoriesTextBlock" 
+                                                       Text="Выберите категории"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"
+                                                       Style="{StaticResource RegularText}"
+                                                       FontSize="19"
+                                                       Margin="25, 0, 15, 0"/>
+                                            <materialDesign:PackIcon Kind="ChevronDown" Height="25" Width="25"
+                                                                     HorizontalAlignment="Center"
+                                                                     VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                        
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        
+                        <!-- <Expander Foreground="{StaticResource DarkGrayBrush}" -->
+                        <!--           FontSize="16" -->
+                        <!--           VerticalAlignment="Bottom" -->
+                        <!--           FontFamily="{StaticResource Montserrat-Medium}" -->
+                        <!--           Style="{StaticResource MaterialDesignExpander}" -->
+                        <!--           Margin="10,0,0,0" Padding="10" -->
+                        <!--           Height="30" -->
+                        <!--           BorderThickness="1.5" -->
+                        <!--           BorderBrush="{StaticResource GreenBrush}" -->
+                        <!--           d:LayoutOverrides="Height" -->
+                        <!--           HorizontalAlignment="Left"> -->
+                        <!--     <Expander.HeaderTemplate> -->
+                        <!--         <DataTemplate> -->
+                        <!--             <TextBlock Text="Выберите класс" -->
+                        <!--                        Style="{StaticResource RegularText}" -->
+                        <!--                        FontSize="21" -->
+                        <!--                        HorizontalAlignment="Center" -->
+                        <!--                        VerticalAlignment="Bottom" /> -->
+                        <!--         </DataTemplate> -->
+                        <!--     </Expander.HeaderTemplate> -->
+                        <!-- </Expander> -->
 
                         <Button Style="{StaticResource LightBaseButton}"
                                 Width="293" Height="40"
@@ -160,6 +181,7 @@
                            Text="Выберите категории для отображения"
                            Style="{StaticResource Medium30Text}"
                            Margin="0, 50"
+                           Height="200"
                            VerticalAlignment="Center"/>
                 <StackPanel Orientation="Vertical"
                             Grid.Row="4"
@@ -346,6 +368,48 @@
                     <!--     </Grid> -->
                     <!-- </DockPanel> -->
                 </StackPanel>
+                
+                <DockPanel Name="Categories" 
+                           Visibility="Hidden"
+                           Grid.Row="2"
+                           Grid.RowSpan="3"
+                           Height="400"
+                           Width="300"
+                           Margin="200, 0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           Background="{StaticResource Ultra2LightGreenBrush}">
+                    <ListView DockPanel.Dock="Top"
+                              Width="300"
+                              Height="350"
+                              FontFamily="{StaticResource Montserrat-Regular}"
+                              Margin="0" Padding="0"
+                              HorizontalAlignment="Left"
+                              Background="Transparent"
+                              materialDesign:ListBoxItemAssist.ShowSelection="False"
+                              ItemsSource="{Binding Classes}">
+                    </ListView>
+                    <Button Name="DoneButton"
+                        Style="{StaticResource BaseButton}"
+                            Height="30"
+                            Content="Готово"
+                            Width="100"
+                            Click="DoneButton_OnClick"
+                            DockPanel.Dock="Left"
+                            HorizontalAlignment="Left"
+                            Margin="10, 10, 0, 10"
+                            FontSize="15"/>
+                    <Button Name = "BackButton"
+                            Click="BackButton_OnClick"
+                            Style="{StaticResource BaseButton}"
+                            Height="30"
+                            Content="Отмена"
+                            Width="100"
+                            DockPanel.Dock="Left"
+                            HorizontalAlignment="Left"
+                            Margin="15, 10"
+                            FontSize="15"/>
+                </DockPanel>
             </Grid>
         </Grid>
     </ScrollViewer>

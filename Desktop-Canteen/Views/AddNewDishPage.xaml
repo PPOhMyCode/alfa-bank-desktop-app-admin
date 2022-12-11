@@ -147,7 +147,18 @@
                                       BorderBrush="{StaticResource GreenBrush}"
                                       SelectedItem="{Binding SelectedIngredient}"
                                       Background="{StaticResource LightBackgroundBrush}"
-                                      ToolTip="Выберите продукт и граммовку" />
+                                      ToolTip="Выберите продукт и граммовку" >
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                                <ComboBox.ItemContainerStyle>
+                                    <Style>
+                                        <Setter Property="ComboBox.Background" Value="{StaticResource LightBackgroundBrush}" />
+                                    </Style>
+                                </ComboBox.ItemContainerStyle>
+                            </ComboBox>
                             <Button Name="AddNewIngredientButton" Style="{StaticResource BaseButton}"
                                     IsEnabled="False" Background="Transparent"
                                     Command="{Binding AddIngredientCommand}"
@@ -177,8 +188,8 @@
                                 Content="Загрузить" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0, 20, 0, 100" Height="60">
-                        <Button Command="{Binding AddCommand}" Style="{StaticResource BaseButton}" Height="60"
-                                Width="200"
+                        <Button Click="SaveClick" Style="{StaticResource BaseButton}" Height="60"
+                                Width="200" 
                                 Content="Сохранить" FontSize="25" Foreground="{StaticResource DarkGrayBrush}" />
                     </StackPanel>
                 </StackPanel>
