@@ -14,7 +14,7 @@ public class ReceiptsVM : BaseVM
     private ComboBoxItem selectedItem;
     public DateTime Date { get; set; }
     public ObservableCollection<ComboBoxItem> Classes { get; private set; }
-    public ObservableCollection<Children> ChildrenInSelectedClass { get; set; }
+    public ObservableCollection<ChildrenView> ChildrenInSelectedClass { get; set; }
 
     public ComboBoxItem SelectedClass
     {
@@ -46,9 +46,9 @@ public class ReceiptsVM : BaseVM
     public ReceiptsVM()
     {
         //list всех классов
-        var grades = ApiServer.Get<List<Grade>>("grades");
+        //var grades = ApiServer.Get<List<Grade>>("grades");
         
-        var childrens = ApiServer.Get<List<Children>>("grades/1/childrens");
+        //var childrens = ApiServer.Get<List<Children>>("grades/1/childrens");
         
         var today = (int)DateTime.Today.DayOfWeek;
         Date = DateTime.Today;
@@ -60,43 +60,63 @@ public class ReceiptsVM : BaseVM
 
         SelectedClass = Classes[1];
 
-        ChildrenInSelectedClass = new ObservableCollection<Children>()
+        ChildrenInSelectedClass = new ObservableCollection<ChildrenView>()
         {
             new()
             {
                 FirstName = "Екатерина",
-                GradeID = 1,
-                ChildrenId = 1,
-                ParentID = 1,
                 Patronymic = "Вячеславовна",
-                SecondName = "Антонова"
+                SecondName = "Антонова",
+                Grade = new GradeView(){Name = "1А"}
             },
             new()
             {
                 FirstName = "Мария",
-                GradeID = 1,
-                ChildrenId = 2,
-                ParentID = 1,
                 Patronymic = "Вячеславовна",
-                SecondName = "Синицина"
+                SecondName = "Синицина",
+                Grade = new GradeView(){Name = "1А"}
             },
             new()
             {
                 FirstName = "Анастасия",
-                GradeID = 1,
-                ChildrenId = 3,
-                ParentID = 1,
                 Patronymic = "Вячеславовна",
-                SecondName = "Антонова"
+                SecondName = "Антонова",
+                Grade = new GradeView(){Name = "1А"}
             },
             new()
             {
                 FirstName = "Иван",
-                GradeID = 1,
-                ChildrenId = 4,
-                ParentID = 1,
                 Patronymic = "Вячеславовна",
-                SecondName = "Иванов"
+                SecondName = "Иванов",
+                Grade = new GradeView(){Name = "1А"}
+            },
+            new()
+            {
+                FirstName = "Екатерина",
+                Patronymic = "Вячеславовна",
+                SecondName = "Антонова",
+                Grade = new GradeView(){Name = "1А"}
+            },
+            new()
+            {
+                FirstName = "Мария",
+                Patronymic = "Вячеславовна",
+                SecondName = "Синицина",
+                Grade = new GradeView(){Name = "1А"}
+            },
+            new()
+            {
+                FirstName = "Анастасия",
+                Patronymic = "Вячеславовна",
+                SecondName = "Антонова",
+                Grade = new GradeView(){Name = "1А"}
+            },
+            new()
+            {
+                FirstName = "Иван",
+                Patronymic = "Вячеславовна",
+                SecondName = "Иванов",
+                Grade = new GradeView(){Name = "1А"}
             },
         };
     }

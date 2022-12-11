@@ -390,7 +390,7 @@
                               ItemsSource="{Binding Classes}">
                     </ListView>
                     <Button Name="DoneButton"
-                        Style="{StaticResource BaseButton}"
+                            Style="{StaticResource BaseButton}"
                             Height="30"
                             Content="Готово"
                             Width="100"
