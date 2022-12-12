@@ -9,7 +9,7 @@
       mc:Ignorable="d"
       Title="AllDishesPage">
     <Page.DataContext>
-        <viewModels:AllDishesPage />
+        <viewModels:AllDishesVM />
     </Page.DataContext>
     <ScrollViewer>
         <Grid>
@@ -81,6 +81,12 @@
                 </Grid>
             </Grid>
             <Grid Row="2" Margin="30, 30,30, 0">
+                <TextBlock Style="{StaticResource Medium30Text}"
+                           Name="Plug"
+                           Text="Добавьте блюда"
+                           Margin="0, 50,0, 0"
+                           Visibility="Hidden"
+                           HorizontalAlignment="Center"/>
                 <ItemsControl ItemsSource="{Binding Dishes}"
                               Margin="0, 0, 0, 200">
                     <ItemsControl.ItemsPanel>

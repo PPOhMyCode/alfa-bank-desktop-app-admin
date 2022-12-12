@@ -10,8 +10,13 @@ public partial class ReceiptsPage : Page
     public ReceiptsPage()
     {
         InitializeComponent();
-        _childrenVm = new ReceiptsVM();
+        _childrenVm = new ReceiptsVM()
+        {
+            ClassesPanel = ClassesStackPanel,
+            NoSelectedClassesTextBlock = NoSelectedClassesPlug
+        };
         DataContext = _childrenVm;
+        _childrenVm.CheckPlug();
     }
 
     public void ToMakeClassButtonClick(object sender, RoutedEventArgs e)
@@ -24,4 +29,20 @@ public partial class ReceiptsPage : Page
         NavigationService?.Navigate(new SchedulePage());
     }
     
+    private void SelectCategoriesButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (Categories.Visibility == Visibility.Visible)
+        {
+            Categories.Visibility = Visibility.Hidden;
+        }
+        else
+        {
+            Categories.Visibility = Visibility.Visible;
+        }
+    }
+    
+    private void DoneButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        Categories.Visibility = Visibility.Hidden;
+    }
 }

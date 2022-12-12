@@ -119,7 +119,17 @@
                 </Grid>
             </Grid>
 
-            <Grid Row="2" Margin="40, 10, 0, 0">
+            <TextBlock Grid.Row="2"
+                       Name="NoDataPlug"
+                       Visibility="Hidden"
+                       HorizontalAlignment="Center"
+                       Text="Нет активных заказов"
+                       Style="{StaticResource Medium30Text}"
+                       Margin="0, 40"
+                       VerticalAlignment="Center"/>
+            
+            <Grid Name="TableGrid"
+                  Row="2" Margin="40, 10, 0, 0">
                 <ScrollViewer Margin="0, 0, 0, 200" VerticalScrollBarVisibility="Visible">
                     <Grid Margin="0, 5">
                         <Grid.ColumnDefinitions>
