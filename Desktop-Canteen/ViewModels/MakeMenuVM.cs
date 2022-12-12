@@ -18,10 +18,10 @@ public class MakeMenuVM: BaseVM
     public DateTime Date;
     public int TypeMeal;
     public TextBlock PlugTextBlock;
-    private ObservableCollection<Dish> AllDishes { get; set; }
+    private ObservableCollection<DishWithPhoto> AllDishes { get; set; }
     private ObservableCollection<MenuView> Menu { get; set; }
-    public ObservableCollection<Dish> DishInMenu { get; set; }
-    public ObservableCollection<Dish> DishCanAddToMenu { get; set; }
+    public ObservableCollection<DishWithPhoto> DishInMenu { get; set; }
+    public ObservableCollection<DishWithPhoto> DishCanAddToMenu { get; set; }
     public RelayCommand GetMenuDateCommand { protected set; get; }
     public RelayCommand AddMenuDateCommand { protected set; get; }
     public RelayCommand DeleteMenuDateCommand { protected set; get; }
@@ -31,11 +31,16 @@ public class MakeMenuVM: BaseVM
 
     public MakeMenuVM()
     {
-        AllDishes = new ObservableCollection<Dish>(
-            ApiServer.Get<List<Dish>>("dishes") == null ? new List<Dish>():ApiServer.Get<List<Dish>>("dishes"));
+        
+        AllDishes = new ObservableCollection<DishWithPhoto>();
+        var dishes = ApiServer.Get<List<Dish>>("dishes") == null ? new List<Dish>():ApiServer.Get<List<Dish>>("dishes");
+        foreach (var dish in dishes)
+        {
+            AllDishes.Add(new DishWithPhoto(dish, ApiServer.GetImage(dish.DishId.ToString())));
+        }
         Menu = new ObservableCollection<MenuView>();
-        DishInMenu = new ObservableCollection<Dish>();
-        DishCanAddToMenu = new ObservableCollection<Dish>();
+        DishInMenu = new ObservableCollection<DishWithPhoto>();
+        DishCanAddToMenu = new ObservableCollection<DishWithPhoto>();
         this.GetMenuDateCommand = new RelayCommand(GetMenu);
         this.AddMenuDateCommand = new RelayCommand(AddDishToMenu);
         this.DeleteMenuDateCommand = new RelayCommand(DeleteDishToMenu);
@@ -110,7 +115,7 @@ public class MakeMenuVM: BaseVM
                     TypeMeal = ApiServer.Get<TypeMeal>("typeMeals/"+a.TypeMealId),
                     Id = a.Id
                 });
-                DishInMenu.Add(dish);
+                DishInMenu.Add(new DishWithPhoto(dish, ApiServer.GetImage(dish.DishId.ToString())));
             }
         }
         var valuesToExclude = DishInMenu.Select(x => x.DishId).ToArray();

@@ -18,8 +18,8 @@ public class MenuVM : BaseVM
     private ObservableCollection<MenuView> Menu { get; set; }
     public string TodayDate { get; set; }
     public string TodayMonth { get; set; }
-    private ObservableCollection<Dish> AllDishes { get; set; }
-    public ObservableCollection<Dish> DishInMenu { get; set; }
+    private ObservableCollection<DishWithPhoto> AllDishes { get; set; }
+    public ObservableCollection<DishWithPhoto> DishInMenu { get; set; }
     public RelayCommand SelectDayCommand { protected set; get; }
     public RelayCommand SelectTypeCommand { protected set; get; }
     
@@ -33,8 +33,13 @@ public class MenuVM : BaseVM
         TodayDate = DateTime.Now.ToString("dd.MM");
         var textInfo = new CultureInfo("ru-RU").TextInfo;
         TodayMonth = textInfo.ToTitleCase(textInfo.ToLower(DateTime.Now.ToString("MMMM")));
-        AllDishes = new ObservableCollection<Dish>(ApiServer.Get<List<Dish>>("dishes"));
-        DishInMenu = new ObservableCollection<Dish>();
+        var dishes = ApiServer.Get<List<Dish>>("dishes");
+        AllDishes = new ObservableCollection<DishWithPhoto>();
+        foreach (var dish in dishes)
+        {
+            AllDishes.Add(new DishWithPhoto(dish, ApiServer.GetImage(dish.DishId.ToString())));
+        }
+        DishInMenu = new ObservableCollection<DishWithPhoto>();
         Menu = new ObservableCollection<MenuView>();
         GetMenu();
         SelectDayCommand = new RelayCommand(SelectDay);
@@ -68,7 +73,7 @@ public class MenuVM : BaseVM
                 foreach (var a in menuDate.Where(x=>x.TypeMealId==TypeMeal))
                 {
                     var dish = ApiServer.Get<Dish>("dishes/" + a.DishId);
-                    DishInMenu.Add(dish);
+                    DishInMenu.Add(new DishWithPhoto(dish, ApiServer.GetImage(dish.DishId.ToString())));
                 }
             }
         }

@@ -216,7 +216,7 @@
                         </Button>
                     </StackPanel>
                 </Grid>
-                <Grid Row="3">
+                <Grid Name="Test" Row="3">
                     <Grid>
                         <TextBlock Name="Plug"
                                    DockPanel.Dock="Top"
@@ -265,7 +265,11 @@
 
                                             <Viewbox Grid.Row="0" Grid.Column="0"
                                                      Grid.RowSpan="4" Grid.ColumnSpan="2">
-                                                <Ellipse Fill="Wheat" Height="130" Width="130" />
+                                                <Ellipse Height="130" Width="130">
+                                                    <Ellipse.Fill>
+                                                        <ImageBrush ImageSource="{Binding Image}"/>
+                                                    </Ellipse.Fill>
+                                                </Ellipse>
                                             </Viewbox>
 
                                             <TextBlock Grid.Row="2" Grid.Column="2"

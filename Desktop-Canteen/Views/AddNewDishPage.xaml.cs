@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using Desktop_Canteen.ViewModels;
+using WPFLibrary;
 using WPFLibrary.JsonModels;
 
 namespace Desktop_Canteen.Views;
@@ -19,6 +20,7 @@ public partial class AddNewDishPage : Page
         DataContext  = _AddNewDishVm;
         _AddNewDishVm.IngredientsStackPanel = this.Ingredients;
         _AddNewDishVm.AddNewIngredientButton = this.AddNewIngredientButton;
+       
     }
     
     public void SaveClick(object sender, RoutedEventArgs e)

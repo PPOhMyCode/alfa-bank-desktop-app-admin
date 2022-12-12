@@ -16,6 +16,8 @@ public class OrderingIngredientsVM : BaseVM
     public ObservableCollection<Order> SummaryOrderViews { get; set; }
     public string SelectedDate { get; set; }
     public string TodayMonth { get; set; }
+    
+    public Image TestImage { get; set; }
 
     public List<List<string>> Values { get; set; }
     public OrderingIngredientsVM()
@@ -25,8 +27,8 @@ public class OrderingIngredientsVM : BaseVM
         TodayMonth = textInfo.ToTitleCase(textInfo.ToLower(DateTime.Now.ToString("MMMM")));
         var data = ApiServer.Get<List<Order>>("orders/date/" + SelectedDate);
         SummaryOrderViews = new ObservableCollection<Order>();
-        var test = ApiServer.GetImage<Image>("https://storage.yandexcloud.net/systemimg/pasta.png");
-
+        TestImage.Source = ApiServer.GetImage("https://storage.yandexcloud.net/systemimg/pasta.png");
+        
         Values = new List<List<string>>();
     }
 }

@@ -1,6 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Mime;
+using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 using Newtonsoft.Json;
 using RestSharp;
 using WPFLibrary.JsonModels;
@@ -39,20 +44,26 @@ public class ApiServer
         return default;
     }
     
-    public static JModel GetImage<JModel>(string req)
+    public static BitmapImage GetImage(string req)
     {
-        var client = new RestClient("https://storage.yandexcloud.net/systemimg/");
-        var request = new RestRequest("pasta.png", Method.Get);
-        var response = client.Execute(request);
-
-        if (response.StatusCode == HttpStatusCode.OK)
+        var c = new WebClient();
+        byte[] bytes;
+        try
         {
-            string rawResponse = response.Content;
-            var result = JsonConvert.DeserializeObject<JModel>(response.Content);
-            return result;
+            bytes = c.DownloadData("https://storage.yandexcloud.net/systemimg/"+ req +".png");
         }
-
-        return default;
+        catch
+        {
+            bytes = c.DownloadData("https://storage.yandexcloud.net/systemimg/-1.png");
+        }
+        var ms = new MemoryStream(bytes);
+        var image = new Image();
+        BitmapImage bitmap = new BitmapImage();
+        bitmap.BeginInit();
+        bitmap.StreamSource =ms;
+        bitmap.EndInit();
+        
+        return bitmap;
     }
     
     public static RestResponse Delete(string req)

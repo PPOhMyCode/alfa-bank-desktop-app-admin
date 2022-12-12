@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using Desktop_Canteen.ViewModels;
+using WPFLibrary;
 
 namespace Desktop_Canteen.Views
 {

@@ -10,19 +10,23 @@ namespace Desktop_Canteen.ViewModels;
 
 public class AllDishesPage : BaseVM
 {
-    public ObservableCollection<Dish> Dishes { get; set; }
+    public ObservableCollection<DishWithPhoto> Dishes { get; set; }
     public RelayCommand DeleteDishCommand { get; set; }
 
     public AllDishesPage()
     {
-        Dishes = new ObservableCollection<Dish>();
+        Dishes = new ObservableCollection<DishWithPhoto>();
         DeleteDishCommand = new RelayCommand(DeleteDish);
         Refresh();
     }
 
     public void Refresh()
     {
-        Dishes = new ObservableCollection<Dish>(ApiServer.Get<List<Dish>>("dishes"));
+        var dishes = new ObservableCollection<Dish>(ApiServer.Get<List<Dish>>("dishes"));
+        foreach (var dish in dishes)
+        {
+            Dishes.Add(new DishWithPhoto(dish, ApiServer.GetImage(dish.DishId.ToString())));
+        }
     }
 
     public void DeleteDish(object param)
