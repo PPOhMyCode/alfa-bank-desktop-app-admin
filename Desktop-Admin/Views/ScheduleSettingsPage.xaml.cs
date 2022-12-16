@@ -4,10 +4,10 @@ using Desktop_Admin.ViewModels;
 
 namespace Desktop_Admin.Views;
 
-public partial class SchedulePage : Page
+public partial class ScheduleSettingsPage : Page
 {
     private ScheduleVM _scheduleVM;
-    public SchedulePage()
+    public ScheduleSettingsPage()
     {
         InitializeComponent();
         _scheduleVM = new ScheduleVM();
@@ -22,6 +22,11 @@ public partial class SchedulePage : Page
     public void ToReceiptsButtonClick(object sender, RoutedEventArgs e)
     {
         NavigationService?.Navigate(new ReceiptsPage());
+    }
+
+    public void ToSheduleButtonClick(object sender, RoutedEventArgs e)
+    {
+        NavigationService?.Navigate(new SchedulePage());
     }
     
     private void SelectCategoriesButton_OnClick(object sender, RoutedEventArgs e)
@@ -41,8 +46,8 @@ public partial class SchedulePage : Page
         Categories.Visibility = Visibility.Hidden;
     }
 
-    private void ChangeScheduleButton_OnClick(object sender, RoutedEventArgs e)
+    private void SaveButton_OnClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new ScheduleSettingsPage());
+        NavigationService?.Navigate(new SchedulePage());
     }
 }

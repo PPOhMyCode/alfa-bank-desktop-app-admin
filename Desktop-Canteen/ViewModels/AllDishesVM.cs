@@ -26,6 +26,7 @@ public class AllDishesVM : BaseVM
     public void Refresh()
     {
         var dishes = new ObservableCollection<Dish>(ApiServer.Get<List<Dish>>("dishes"));
+        Dishes.Clear();
         foreach (var dish in dishes)
         {
             Dishes.Add(new DishWithPhoto(dish, ApiServer.GetImage(dish.DishId.ToString())));

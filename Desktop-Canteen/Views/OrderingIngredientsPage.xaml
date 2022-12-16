@@ -31,7 +31,7 @@
                 <DockPanel Margin="30, 20, 30 , 0">
                     <Button Width="180" Margin="0, 0, 10, 0" Style="{StaticResource Transparent}">
                         <Viewbox>
-                            <Image Source="{Binding TestImage}" Stretch="Uniform" />
+                            <Image Source="/Resources/AppIcon.png" Stretch="Uniform" />
                         </Viewbox>
                     </Button>
                     <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Меню"

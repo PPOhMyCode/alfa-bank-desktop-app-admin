@@ -67,54 +67,15 @@ public class ScheduleVM : BaseVM
                 Padding = new Thickness(0)
             });
 
-        SelectedClass = Classes[0].ToString();
-
+        SelectedClass = LoadComboBoxData()[0];
+        // TODO: заменить потом на выгрузку расписания для SelectedClass
         Timings = new ObservableCollection<string>()
         {
-            "9:30 - 10:00",
-            "13:00 - 13:30",
-            "15:00 - 15:30"
+            "9:30",
+            "10:30",
+            "14:30"
         };
         
-        ChildrenInSelectedClass = new ObservableCollection<Children>()
-        {
-            new()
-            {
-                FirstName = "Екатерина",
-                GradeID = 1,
-                ChildrenId = 1,
-                ParentID = 1,
-                Patronymic = "Вячеславовна",
-                SecondName = "Антонова"
-            },
-            new()
-            {
-                FirstName = "Мария",
-                GradeID = 1,
-                ChildrenId = 2,
-                ParentID = 1,
-                Patronymic = "Вячеславовна",
-                SecondName = "Синицина"
-            },
-            new()
-            {
-                FirstName = "Анастасия",
-                GradeID = 1,
-                ChildrenId = 3,
-                ParentID = 1,
-                Patronymic = "Вячеславовна",
-                SecondName = "Антонова"
-            },
-            new()
-            {
-                FirstName = "Иван",
-                GradeID = 1,
-                ChildrenId = 4,
-                ParentID = 1,
-                Patronymic = "Вячеславовна",
-                SecondName = "Иванов"
-            },
-        };
     }
     
     public void SelectCategory(object param)

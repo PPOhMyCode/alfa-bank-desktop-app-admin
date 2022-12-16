@@ -1,4 +1,4 @@
-﻿<Page x:Class="Desktop_Admin.Views.SchedulePage"
+﻿<Page x:Class="Desktop_Admin.Views.ScheduleSettingsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -7,7 +7,7 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:Desktop_Admin.Views"
       mc:Ignorable="d"
-      Title="SchedulePage">
+      Title="ScheduleSettingsPage">
     <Page.DataContext>
         <viewModels:ScheduleVM />
     </Page.DataContext>
@@ -95,57 +95,6 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        <!-- <ComboBox Foreground="{StaticResource DarkGrayBrush}" -->
-                        <!--           FontSize="16" -->
-                        <!--           Text="" -->
-                        <!--           VerticalAlignment="Bottom" -->
-                        <!--           FontFamily="{StaticResource Montserrat-Medium}" -->
-                        <!--           Style="{StaticResource MaterialDesignOutlinedComboBox}" -->
-                        <!--           Margin="10,0,0,0" Padding="10" -->
-                        <!--           Height="40" -->
-                        <!--           Width="205" -->
-                        <!--           ItemsSource="{Binding Classes}" -->
-                        <!--           d:LayoutOverrides="Height" -->
-                        <!--           BorderThickness="1.5" -->
-                        <!--           BorderBrush="{StaticResource GreenBrush}" -->
-                        <!--           SelectedItem="{Binding SelectedClass}" -->
-                        <!--           Background="{StaticResource LightBackgroundBrush}" -->
-                        <!--           ToolTip="Выберите класс" -->
-                        <!--           materialDesign:ComboBoxAssist.ShowSelectedItem="False" -->
-                        <!--           HorizontalAlignment="Left"> -->
-                        <!--     <ComboBox.ItemTemplate> -->
-                        <!--         <DataTemplate> -->
-                        <!--             <TextBlock Text="{Binding}" /> -->
-                        <!--         </DataTemplate> -->
-                        <!--     </ComboBox.ItemTemplate> -->
-                        <!--     <ComboBox.ItemContainerStyle> -->
-                        <!--         <Style> -->
-                        <!--             <Setter Property="ComboBox.Background" Value="{StaticResource LightBackgroundBrush}" /> -->
-                        <!--         </Style> -->
-                        <!--     </ComboBox.ItemContainerStyle> -->
-                        <!-- </ComboBox> -->
-
-                        <Button Style="{StaticResource LightBaseButton}"
-                                Width="353" Height="50"
-                                Click="ChangeScheduleButton_OnClick"
-                                HorizontalAlignment="Right">
-                            <Grid Width="350">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="0.85*" />
-                                    <ColumnDefinition Width="0.15*" />
-                                </Grid.ColumnDefinitions>
-                                <Ellipse Grid.Column="1"
-                                         Height="35" Width="35" Fill="{StaticResource CircleButtonBackgroundBrush}" 
-                                         HorizontalAlignment="Left"/>
-                                <materialDesign:PackIcon Kind="PencilOutline" VerticalAlignment="Center"
-                                                         Grid.Column="1" Margin="0"
-                                                         Height="25" Width="35"
-                                                         Foreground="{StaticResource DarkGrayBrush}" />
-                                <TextBlock Grid.Column="0" Style="{StaticResource SmallDefaultText}"
-                                           Text="Изменить расписание" HorizontalAlignment="Center" Margin="10, 0, 0, 0"
-                                           VerticalAlignment="Center" />
-                            </Grid>
-                        </Button>
                     </DockPanel>
                 </Grid>
                 
@@ -168,11 +117,31 @@
                             </Grid>
                         </Button>
                         
-                        <TextBlock HorizontalAlignment="Left" 
-                                   VerticalAlignment="Center" 
-                                   Style="{StaticResource Medium30Text}"
-                                   Text="{Binding Timings[0]}"
-                                   Margin="20, 0"/>
+                        <materialDesign:TimePicker 
+                            Width="180"
+                            Height="50"
+                            Padding="20, 0"
+                            FontSize="20"
+                            SelectedTime="{Binding Timings[0]}"
+                            Margin="20, 0"
+                            FontFamily="{StaticResource Montserrat-Medium}"
+                            materialDesign:TimePickerAssist.OutlinedBorderActiveThickness="2"
+                            materialDesign:TimePickerAssist.OutlinedBorderInactiveThickness="1.5"
+                            BorderBrush="{StaticResource DarkGreenBrush}"
+                            Is24Hours="True"
+                            Style="{StaticResource MaterialDesignOutlinedTimePicker}"
+                            Foreground="{StaticResource DarkTextBrush}">
+                            <materialDesign:TimePicker.ClockStyle>
+                                <Style TargetType="materialDesign:Clock" BasedOn="{StaticResource MaterialDesignClockHorizontal}">
+                                    <Setter Property="Background" Value="{StaticResource CalendarBackgroundBrush}"/>
+                                    <Setter Property="Foreground" Value="{StaticResource DarkTextBrush}"/>
+                                    <Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}"/>
+                                    <Setter Property="ToolTip" Value="Введите время начала перемены"/>
+                                    <Setter Property="CornerRadius" Value="15"/>
+                                    <Setter Property="IsHeaderVisible" Value="True"></Setter>
+                                </Style>
+                            </materialDesign:TimePicker.ClockStyle>
+                        </materialDesign:TimePicker>
                     </StackPanel>
                 </Grid>
                 
@@ -194,12 +163,31 @@
                                 <TextBlock Grid.Row="1" Text="Обед" HorizontalAlignment="Center" />
                             </Grid>
                         </Button>
-                        
-                        <TextBlock HorizontalAlignment="Left" 
-                                   VerticalAlignment="Center" 
-                                   Style="{StaticResource Medium30Text}"
-                                   Text="{Binding Timings[1]}"
-                                   Margin="20, 0"/>
+                        <materialDesign:TimePicker 
+                            Width="180"
+                            Height="50"
+                            Padding="20, 0"
+                            FontSize="20"
+                            SelectedTime="{Binding Timings[1]}"
+                            Margin="20, 0"
+                            FontFamily="{StaticResource Montserrat-Medium}"
+                            materialDesign:TimePickerAssist.OutlinedBorderActiveThickness="2"
+                            materialDesign:TimePickerAssist.OutlinedBorderInactiveThickness="1.5"
+                            BorderBrush="{StaticResource DarkGreenBrush}"
+                            Is24Hours="True"
+                            Style="{StaticResource MaterialDesignOutlinedTimePicker}"
+                            Foreground="{StaticResource DarkTextBrush}">
+                            <materialDesign:TimePicker.ClockStyle>
+                                <Style TargetType="materialDesign:Clock" BasedOn="{StaticResource MaterialDesignClockHorizontal}">
+                                    <Setter Property="Background" Value="{StaticResource CalendarBackgroundBrush}"/>
+                                    <Setter Property="Foreground" Value="{StaticResource DarkTextBrush}"/>
+                                    <Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}"/>
+                                    <Setter Property="ToolTip" Value="Введите время начала перемены"/>
+                                    <Setter Property="CornerRadius" Value="15"/>
+                                    <Setter Property="IsHeaderVisible" Value="True"></Setter>
+                                </Style>
+                            </materialDesign:TimePicker.ClockStyle>
+                        </materialDesign:TimePicker>
                     </StackPanel>
                 </Grid>
                 
@@ -222,11 +210,31 @@
                             </Grid>
                         </Button>
                         
-                        <TextBlock HorizontalAlignment="Left" 
-                                   VerticalAlignment="Center" 
-                                   Style="{StaticResource Medium30Text}"
-                                   Text="{Binding Timings[2]}"
-                                   Margin="20, 0"/>
+                        <materialDesign:TimePicker 
+                            Width="180"
+                            Height="50"
+                            Padding="20, 0"
+                            FontSize="20"
+                            SelectedTime="{Binding Timings[2]}"
+                            Margin="20, 0"
+                            FontFamily="{StaticResource Montserrat-Medium}"
+                            materialDesign:TimePickerAssist.OutlinedBorderActiveThickness="2"
+                            materialDesign:TimePickerAssist.OutlinedBorderInactiveThickness="1.5"
+                            BorderBrush="{StaticResource DarkGreenBrush}"
+                            Is24Hours="True"
+                            Style="{StaticResource MaterialDesignOutlinedTimePicker}"
+                            Foreground="{StaticResource DarkTextBrush}">
+                            <materialDesign:TimePicker.ClockStyle>
+                                <Style TargetType="materialDesign:Clock" BasedOn="{StaticResource MaterialDesignClockHorizontal}">
+                                    <Setter Property="Background" Value="{StaticResource CalendarBackgroundBrush}"/>
+                                    <Setter Property="Foreground" Value="{StaticResource DarkTextBrush}"/>
+                                    <Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}"/>
+                                    <Setter Property="ToolTip" Value="Введите время начала перемены"/>
+                                    <Setter Property="CornerRadius" Value="15"/>
+                                    <Setter Property="IsHeaderVisible" Value="True"></Setter>
+                                </Style>
+                            </materialDesign:TimePicker.ClockStyle>
+                        </materialDesign:TimePicker>
                     </StackPanel>
                 </Grid>
                 
@@ -267,6 +275,21 @@
                         </StackPanel>
                     </Border>
                 </DockPanel>
+                
+                <Grid Row="5">
+                    <Button HorizontalAlignment="Left"
+                            Margin="50, 40, 50, 100"
+                            Width="180"
+                            Height="65"
+                            Style="{StaticResource LightBaseButton}"
+                            Click="SaveButton_OnClick">
+                        <TextBlock Text="Сохранить"
+                                   Style="{StaticResource SemiBoldText}"
+                                   FontSize="22">
+                        </TextBlock>
+                    </Button>
+                </Grid>
+                
             </Grid>
         </Grid>
     </ScrollViewer>
