@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using Desktop_Admin.Models;
 using WPFLibrary;
 using WPFLibrary.JsonModels;
@@ -26,6 +27,7 @@ public class MenuVM : BaseVM
     public ObservableCollection<DishWithPhoto> DishInMenu { get; set; }
     public RelayCommand SelectDayCommand { protected set; get; }
     public RelayCommand SelectTypeCommand { protected set; get; }
+    public List<ImageSource> TypeMealImages { get; set; }
     
     public MenuVM()
     {
@@ -50,6 +52,12 @@ public class MenuVM : BaseVM
         SelectTypeCommand = new RelayCommand(SelectType);
         SelectDay(Days[0]);
         SelectType("1");
+        TypeMealImages = new List<ImageSource>()
+        {
+            ApiServer.GetImage("typeMealButtons/1"),
+            ApiServer.GetImage("typeMealButtons/2"),
+            ApiServer.GetImage("typeMealButtons/3")
+        };
     }
 
     public void SelectDay(object param)

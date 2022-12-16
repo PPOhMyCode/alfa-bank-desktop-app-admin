@@ -241,10 +241,12 @@
                                             <RowDefinition Height="0.6*" />
                                             <RowDefinition Height="0.4*" />
                                         </Grid.RowDefinitions>
-                                        <Viewbox Margin="0, -20, 0, 0" Grid.Row="0" VerticalAlignment="Top">
-                                            <materialDesign:PackIcon Kind="Circle" Height="80" Width="80" />
-                                        </Viewbox>
-                                        <TextBlock Grid.Row="1" Text="Завтрак" HorizontalAlignment="Center" />
+                                        <Ellipse Height="80" Width="80" Margin="0, -20, 0, 0" Grid.Row="0" VerticalAlignment="Top">
+                                            <Ellipse.Fill>
+                                                <ImageBrush ImageSource="{Binding TypeMealImages[0]}"/>
+                                            </Ellipse.Fill>
+                                        </Ellipse>
+                                        <TextBlock Grid.Row="1" Margin="0, 15, 0, 0" Text="Завтрак" HorizontalAlignment="Center" />
                                     </Grid>
                                 </Button>
                                 <Button Name="DinnerButton" Style="{StaticResource TypeMealButton}"
@@ -258,10 +260,12 @@
                                             <RowDefinition Height="0.6*" />
                                             <RowDefinition Height="0.4*" />
                                         </Grid.RowDefinitions>
-                                        <Viewbox Margin="0, -20, 0, 0" Grid.Row="0" VerticalAlignment="Top">
-                                            <materialDesign:PackIcon Kind="Circle" Height="80" Width="80" />
-                                        </Viewbox>
-                                        <TextBlock Grid.Row="1" Text="Обед" HorizontalAlignment="Center" />
+                                        <Ellipse Height="80" Width="80" Margin="0, -20, 0, 0" Grid.Row="0" VerticalAlignment="Top">
+                                            <Ellipse.Fill>
+                                                <ImageBrush ImageSource="{Binding TypeMealImages[1]}"/>
+                                            </Ellipse.Fill>
+                                        </Ellipse>
+                                        <TextBlock Grid.Row="1" Text="Обед" Margin="0, 15, 0, 0" HorizontalAlignment="Center" />
                                     </Grid>
                                 </Button>
                                 <Button Name="AfternoonSnackButton" Style="{StaticResource TypeMealButton}"
@@ -275,10 +279,12 @@
                                             <RowDefinition Height="0.6*" />
                                             <RowDefinition Height="0.4*" />
                                         </Grid.RowDefinitions>
-                                        <Viewbox Margin="0, -20, 0, 0" Grid.Row="0" VerticalAlignment="Top">
-                                            <materialDesign:PackIcon Kind="Circle" Height="80" Width="80" />
-                                        </Viewbox>
-                                        <TextBlock Grid.Row="1" Text="Полдник" HorizontalAlignment="Center" />
+                                        <Ellipse Height="80" Width="80" Margin="0, -20, 0, 0" Grid.Row="0" VerticalAlignment="Top">
+                                            <Ellipse.Fill>
+                                                <ImageBrush ImageSource="{Binding TypeMealImages[2]}"/>
+                                            </Ellipse.Fill>
+                                        </Ellipse>
+                                        <TextBlock Grid.Row="1" Text="Полдник" Margin="0, 15, 0, 0" HorizontalAlignment="Center" />
                                     </Grid>
                                 </Button>
                             </StackPanel>
@@ -459,8 +465,13 @@
 
                                             <Viewbox Grid.Row="0" Grid.Column="0"
                                                      Grid.RowSpan="4" Grid.ColumnSpan="2">
-                                                <Ellipse Fill="Wheat" Height="130" Width="130" />
+                                                <Ellipse Height="130" Width="130">
+                                                    <Ellipse.Fill>
+                                                        <ImageBrush ImageSource="{Binding Image}"/>
+                                                    </Ellipse.Fill>
+                                                </Ellipse>
                                             </Viewbox>
+                                            
 
                                             <TextBlock Grid.Row="2" Grid.Column="2"
                                                        Grid.ColumnSpan="2"

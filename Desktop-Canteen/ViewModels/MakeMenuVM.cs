@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Controls;
+using System.Windows.Media;
 using Desktop_Admin.Models;
 using DevExpress.Mvvm.Native;
 using RestSharp;
@@ -22,6 +23,7 @@ public class MakeMenuVM: BaseVM
     private ObservableCollection<MenuView> Menu { get; set; }
     public ObservableCollection<DishWithPhoto> DishInMenu { get; set; }
     public ObservableCollection<DishWithPhoto> DishCanAddToMenu { get; set; }
+    public List<ImageSource> TypeMealImages { get; set; }
     public RelayCommand GetMenuDateCommand { protected set; get; }
     public RelayCommand AddMenuDateCommand { protected set; get; }
     public RelayCommand DeleteMenuDateCommand { protected set; get; }
@@ -49,6 +51,12 @@ public class MakeMenuVM: BaseVM
         Date = DateTime.Today.Date;
         GetMenu();
         
+        TypeMealImages = new List<ImageSource>()
+        {
+            ApiServer.GetImage("typeMealButtons/1"),
+            ApiServer.GetImage("typeMealButtons/2"),
+            ApiServer.GetImage("typeMealButtons/3")
+        };
         //если даты четверти не выбраны, то листы с блюдами заполнять пока не надо, а PlugTextBlock.Visability = Visible
     }
     
