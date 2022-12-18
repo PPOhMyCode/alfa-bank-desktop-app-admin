@@ -15,16 +15,21 @@ public class AllDishesVM : BaseVM
     public ObservableCollection<DishWithPhoto> Dishes { get; set; }
     public RelayCommand DeleteDishCommand { get; set; }
     public TextBlock Plug { get; set; }
+    public ProgressBar ProgressBar { get; set; }
 
     public AllDishesVM()
     {
         Dishes = new ObservableCollection<DishWithPhoto>();
         DeleteDishCommand = new RelayCommand(DeleteDish);
-        Refresh();
+        //Refresh();
     }
 
     public void Refresh()
     {
+        if (ProgressBar != null)
+        {
+            ProgressBar.Visibility = Visibility.Visible;
+        }
         var dishes = new ObservableCollection<Dish>(ApiServer.Get<List<Dish>>("dishes"));
         Dishes.Clear();
         foreach (var dish in dishes)
@@ -35,10 +40,12 @@ public class AllDishesVM : BaseVM
         if (Dishes.Count == 0)
         {
             Plug.Visibility = Visibility.Visible;
+            ProgressBar.Visibility = Visibility.Hidden;
         }
         else
         {
             Plug.Visibility = Visibility.Hidden;
+            ProgressBar.Visibility = Visibility.Hidden;
         }
     }
 

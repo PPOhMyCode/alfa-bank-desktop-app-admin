@@ -15,7 +15,8 @@ public partial class AllDishesPage : Page
         InitializeComponent();
         _allDishesVm = new AllDishesVM()
         {
-            Plug = this.Plug
+            Plug = Plug,
+            ProgressBar = ProgressBar
         };
         DataContext = _allDishesVm;
         _allDishesVm.Refresh();

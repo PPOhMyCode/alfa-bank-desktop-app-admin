@@ -46,4 +46,9 @@ public partial class MakeClassPage : Page
     {
         Categories.Visibility = Visibility.Hidden;
     }
+
+    private void AddNewUser_OnClick(object sender, RoutedEventArgs e)
+    {
+        NavigationService?.Navigate(new AddNewUserPage());
+    }
 }

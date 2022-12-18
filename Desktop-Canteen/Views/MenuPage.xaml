@@ -313,7 +313,7 @@
                                                        TextWrapping="Wrap"
                                                        VerticalAlignment="Center"
                                                        Padding="14, 0, 0, 0"
-                                                       Text="{Binding Discription}"
+                                                       Text="{Binding Description}"
                                                        ToolTip="Описание блюда"
                                                        FontSize="16" 
                                                        Style="{StaticResource MediumText}"

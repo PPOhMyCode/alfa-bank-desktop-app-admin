@@ -95,7 +95,8 @@
 
                         <Button Style="{StaticResource LightBaseButton}"
                                 Width="293" Height="40"
-                                HorizontalAlignment="Right">
+                                HorizontalAlignment="Right"
+                                Click="AddNewUser_OnClick">
                             <Grid Width="220">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="0.15*" />

@@ -26,6 +26,8 @@ public partial class AuthorizationPage : Page
     public void EnterButtonClick(object sender, RoutedEventArgs e)
     {
         //проверка логина и пароля
+        EnterButtonText.Visibility = Visibility.Hidden;
+        ProgressBar.Visibility = Visibility.Visible;
         if (_authorizationVm.ValidAuthorization())
         {
             ErrorAuthorizationBlock.Visibility = Visibility.Hidden;
@@ -33,9 +35,9 @@ public partial class AuthorizationPage : Page
         }
         else
         {
+            EnterButtonText.Visibility = Visibility.Visible;
+            ProgressBar.Visibility = Visibility.Hidden;
             ErrorAuthorizationBlock.Visibility = Visibility.Visible;
         }
-        
-        //NavigationService?.Navigate(new MenuPage());
     }
 }

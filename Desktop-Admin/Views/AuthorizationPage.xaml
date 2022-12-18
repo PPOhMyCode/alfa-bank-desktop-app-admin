@@ -78,8 +78,23 @@
             <TextBlock Name="ErrorAuthorizationBlock" Margin="0, 25, 0, 0" Height="20" Text="{Binding AutorizationError}"
                        HorizontalAlignment="Center" Visibility="Hidden"
                        Style="{StaticResource ErrorText}"/>
-            <Button Margin="0, 40, 0, 10" Style="{StaticResource BaseButton}" Width="220" Height="50" 
-                    Content="Войти" FontSize="19" Click="EnterButtonClick" HorizontalAlignment="Center"/>
+            <Grid>
+                <Button Margin="0, 40, 0, 10" Style="{StaticResource BaseButton}" Width="220" Height="50" 
+                        Click="EnterButtonClick" HorizontalAlignment="Center">
+                    <TextBlock Name="EnterButtonText"
+                               Visibility="Visible" Text="Войти" FontSize="19" FontFamily="{StaticResource Montserrat-Medium}"/>
+                </Button>
+                <ProgressBar
+                    Name="ProgressBar"
+                    Margin="0, 40, 0, 10"
+                    Visibility="Hidden"
+                    Height="30" Width="30"
+                    Foreground="{StaticResource Ultra2LightGreenBrush}"
+                    IsIndeterminate="True"
+                    Style="{StaticResource MaterialDesignCircularProgressBar}"
+                    Value="0" />
+            </Grid>
+            
         </StackPanel>
     </Grid>
     </Grid>

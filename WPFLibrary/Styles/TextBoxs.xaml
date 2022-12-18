@@ -152,4 +152,52 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
+    <Style x:Key="TextBoxInAdminApp" BasedOn="{x:Null}" TargetType="{x:Type TextBox}">
+        <Setter Property="Foreground" Value="{StaticResource DarkGrayBrush}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
+        <Setter Property="Padding" Value="10, 5, 10, 0" />
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Medium}"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="21"/>
+        <Setter Property="AllowDrop" Value="true" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border x:Name="Bd" Padding="25, 11"
+                            CornerRadius="10"
+                            BorderBrush="{StaticResource DarkGreenTextBrush}"
+                            BorderThickness="1.5"
+                            Background="{StaticResource LightBackgroundBrush}">
+                        <Grid>
+                            <TextBlock Visibility="Hidden" HorizontalAlignment="Left" x:Name="descriptionTextBlock"
+                                       VerticalAlignment="Bottom" FontStyle="Italic" Foreground="#FF9D9C9C"
+                                       Text="{TemplateBinding ToolTip}" TextWrapping="Wrap"
+                                       Style="{StaticResource MediumText}"/>
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          Focusable="false"
+                                          HorizontalScrollBarVisibility="Hidden"
+                                          VerticalScrollBarVisibility="Hidden"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Text" Value="" />
+                                <Condition Property="IsFocused" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Visibility" TargetName="descriptionTextBlock" Value="Visible" />
+                        </MultiTrigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" TargetName="Bd"
+                                    Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+                            <Setter Property="Foreground"
+                                    Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

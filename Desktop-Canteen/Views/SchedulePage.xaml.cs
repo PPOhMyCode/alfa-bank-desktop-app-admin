@@ -6,10 +6,17 @@ namespace Desktop_Canteen.Views;
 
 public partial class SchedulePage : Page
 {
+    private ScheduleVM _scheduleVm;
     public SchedulePage()
     {
         InitializeComponent();
-        DataContext = new ScheduleVM();
+        _scheduleVm = new ScheduleVM()
+        {
+            NoDataPlugTextBlock = NoDataPlug,
+            TableGrid = TableGrid
+        };
+        DataContext = _scheduleVm;
+        _scheduleVm.CheckPlug();
     }
     
     public void ToOrderingIngredientsButtonClick(object sender, RoutedEventArgs e)
