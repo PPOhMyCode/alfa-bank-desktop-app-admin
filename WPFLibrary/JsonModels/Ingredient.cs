@@ -25,7 +25,7 @@ public class IngredientView:BaseModel
 
 public class IngredientCount
 {
-    public Ingredient Ingredient { get; set; }
+    public string Name { get; set; }
     public double Count { set; get; }
 }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WPFLibrary.JsonModels;
@@ -23,9 +24,9 @@ public class SummaryOrderView: BaseModel
     public ChildrenInfo Children { get; set; }
 }
 
-public class SummaryOrderDateIngrediets
+public class OrderIngredient : BaseModel
 {
-    public DateTime Date { get; set; }
+    public Dish Dish { get; set; }
     public int Count { get; set; }
-    public  DishIngredientView DishIngredientView { get; set; }
+    public List<IngredientCount> Ingredients { get; set; }
 }

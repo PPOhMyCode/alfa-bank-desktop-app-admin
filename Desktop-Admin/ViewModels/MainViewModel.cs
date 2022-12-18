@@ -32,22 +32,16 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
     public ObservableCollection<Children> ChildrenInSelectedClass { get; set; }
     public RelayCommand SelectCategoryCommand { protected set; get; }
     
+    public List<string> GradeNameArray { get; set; }
 
-    public string[] LoadComboBoxData()
+    public List<Grade> Grades { get; set; }
+    public void LoadComboBoxData()
     {
-        string[] strArray =
+        GradeNameArray.Add("Все классы");
+        foreach (var grade in Grades)
         {
-            "Все классы",
-            "1A",
-            "1Б",
-            "1В",
-            "2А",
-            "2Б",
-            "3А",
-            "4А",
-            "5А"
-        };
-        return strArray;
+            GradeNameArray.Add(grade.Name);
+        }
     }
 
     public MainViewModel()
@@ -55,8 +49,11 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
         isCheck = false;
         SelectedItems = new ObservableCollection<string>();
         SelectCategoryCommand = new RelayCommand(SelectCategory);
+        GradeNameArray = new List<string>();
+        Grades = ApiServer.Get<List<Grade>>("grades");
+        LoadComboBoxData();
         Classes = new ObservableCollection<ListViewItem>();
-        foreach (var item in LoadComboBoxData())
+        foreach (var item in GradeNameArray)
             Classes.Add(new ListViewItem
             {
                 Content = new CheckBox()
@@ -76,45 +73,7 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
                 Padding = new Thickness(0)
             });
 
-        ChildrenInSelectedClass = new ObservableCollection<Children>()
-        {
-            new()
-            {
-                FirstName = "Екатерина",
-                GradeID = 1,
-                ChildrenId = 1,
-                ParentID = 1,
-                Patronymic = "Вячеславовна",
-                SecondName = "Антонова"
-            },
-            new()
-            {
-                FirstName = "Мария",
-                GradeID = 1,
-                ChildrenId = 2,
-                ParentID = 1,
-                Patronymic = "Вячеславовна",
-                SecondName = "Синицина"
-            },
-            new()
-            {
-                FirstName = "Анастасия",
-                GradeID = 1,
-                ChildrenId = 3,
-                ParentID = 1,
-                Patronymic = "Вячеславовна",
-                SecondName = "Антонова"
-            },
-            new()
-            {
-                FirstName = "Иван",
-                GradeID = 1,
-                ChildrenId = 4,
-                ParentID = 1,
-                Patronymic = "Вячеславовна",
-                SecondName = "Иванов"
-            },
-        };
+        ChildrenInSelectedClass = new ObservableCollection<Children>();
     }
 
     public void SelectCategory(object param)
@@ -123,7 +82,7 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
         if (item == "Все классы")
         {
             SelectedItems.Clear();
-            foreach (var clas in LoadComboBoxData())
+            foreach (var clas in GradeNameArray)
             {
                 if (clas == "Все классы" ) continue;
                 SelectedItems.Add(clas);
@@ -253,10 +212,11 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
             Grid.SetRow(avatar, 0);
             Grid.SetRowSpan(avatar, 3);
             teacherGrid.Children.Add(avatar);
-
+            var teacherUser = ApiServer.Get<User>("users/" + Grades
+                .FirstOrDefault(x => x.Name == selectedItem).TeacherID); 
             var teacherName = new TextBlock()
             {
-                Text = "Омарова Ольга Михайловна", // заглушка
+                Text = teacherUser.SecondName+ " " + teacherUser.FirstName + " " + teacherUser.Patronymic, 
                 Style = Application.Current.TryFindResource("RegularText") as Style,
                 Foreground = Application.Current.TryFindResource("DarkTextBrush") as Brush,
                 VerticalAlignment = VerticalAlignment.Top,
@@ -396,10 +356,13 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
 
             var dataTemplate = (DataTemplate)XamlReader.Load(sr, pc);
             var panelTemplate = (ItemsPanelTemplate)XamlReader.Load(sr1, pc);
-
+            var a = Grades.Where(x => x.Name == selectedItem);
+            var children = ApiServer.Get<List<Children>>("grades/" +
+                                                         Grades
+                                                             .FirstOrDefault(x => x.Name == selectedItem).GradeId + "/childrens");
             var itemsControl = new ItemsControl()
             {
-                ItemsSource = ChildrenInSelectedClass
+                ItemsSource = new ObservableCollection<Children>(children)
             };
 
             itemsControl.ItemTemplate = dataTemplate;

@@ -2,8 +2,9 @@
 
 namespace WPFLibrary.JsonModels;
 
-public class Grade: BaseModel
+public class Grade
 {
+    public int GradeId { get; set; }
     public string Name { get; set; }
     public int TeacherID { get; set; }
 }

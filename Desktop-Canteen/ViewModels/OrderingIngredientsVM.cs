@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Net.Mime;
 using System.Windows.Controls;
 using System.Globalization;
+using System.Linq;
 using System.Windows;
 using System.Windows.Documents;
 using WPFLibrary;
@@ -14,10 +15,12 @@ namespace Desktop_Canteen.ViewModels;
 
 public class OrderingIngredientsVM : BaseVM
 {
-    public ObservableCollection<Order> SummaryOrderViews { get; set; }
+    public ObservableCollection<OrderIngredient> SummaryOrderViews { get; set; }
     public string SelectedDate { get; set; }
     public string TodayMonth { get; set; }
-    
+
+    private List<Order> _orders { get; set; }
+
     public Image TestImage { get; set; }
     public TextBlock NoDataPlugTextBlock;
     public Grid TableGrid;
@@ -28,9 +31,34 @@ public class OrderingIngredientsVM : BaseVM
         SelectedDate = "2022-11-28";
         var textInfo = new CultureInfo("ru-RU").TextInfo;
         TodayMonth = textInfo.ToTitleCase(textInfo.ToLower(DateTime.Now.ToString("MMMM")));
-        var data = ApiServer.Get<List<Order>>("orders/date/" + SelectedDate);
-        SummaryOrderViews = new ObservableCollection<Order>();
-        Values = new List<List<string>>();
+        _orders = ApiServer.Get<List<Order>>("orders/date/" + SelectedDate);
+        SummaryOrderViews = new ObservableCollection<OrderIngredient>();
+        Refresh();
+    }
+
+    private void Refresh()
+    {
+        SummaryOrderViews.Clear();
+        var listId = new List<int>();
+        foreach (var order in _orders)
+        {
+            if (listId.Contains(order.DishId))
+            {
+                var a = SummaryOrderViews.Where(x => x.Dish.DishId == order.DishId).FirstOrDefault();
+                SummaryOrderViews.Remove(a);
+                a.Count += 1;
+                SummaryOrderViews.Add(a);
+            }
+            else
+            {
+                SummaryOrderViews.Add(new OrderIngredient()
+                {
+                    Count = 1,
+                    Dish = ApiServer.Get<Dish>("dishes/"+order.DishId),
+                    Ingredients = ApiServer.Get<List<IngredientCount>>("dishes/"+order.DishId+"/ingredients")
+                });
+            }
+        }
     }
 
     public void CheckPlug()

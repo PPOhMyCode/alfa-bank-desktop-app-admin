@@ -197,7 +197,7 @@
                                     </DataGridTemplateColumn.HeaderStyle>
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding CountOrders}"
+                                            <TextBlock Text="{Binding Count}"
                                                        FontWeight="Regular"
                                                        FontSize="20"
                                                        Foreground="{StaticResource DarkGrayBrush}"
@@ -243,7 +243,7 @@
                                                 </ListView.ItemContainerStyle>
                                                 <ListView.ItemTemplate>
                                                     <DataTemplate>
-                                                        <TextBlock Text="{Binding Ingredient.Name}" />
+                                                        <TextBlock Text="{Binding Name}" />
                                                     </DataTemplate>
                                                 </ListView.ItemTemplate>
                                             </ListView>
@@ -279,7 +279,7 @@
                                     </DataGridTemplateColumn.HeaderStyle>
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <ListView ItemsSource="{Binding }">
+                                            <ListView ItemsSource="{Binding Count}">
                                                 <ListView.ItemContainerStyle>
                                                     <Style TargetType="{x:Type ListViewItem}">
                                                         <Setter Property="Background" Value="Transparent"/>
