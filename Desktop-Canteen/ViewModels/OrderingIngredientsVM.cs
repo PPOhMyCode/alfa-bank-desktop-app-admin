@@ -33,6 +33,7 @@ public class OrderingIngredientsVM : BaseVM
         TodayMonth = textInfo.ToTitleCase(textInfo.ToLower(DateTime.Now.ToString("MMMM")));
         _orders = ApiServer.Get<List<Order>>("orders/date/" + SelectedDate);
         SummaryOrderViews = new ObservableCollection<OrderIngredient>();
+        Values = new List<List<string>>();
         Refresh();
     }
 
@@ -56,8 +57,22 @@ public class OrderingIngredientsVM : BaseVM
                     Count = 1,
                     Dish = ApiServer.Get<Dish>("dishes/"+order.DishId),
                     Ingredients = ApiServer.Get<List<IngredientCount>>("dishes/"+order.DishId+"/ingredients")
+                    //TODO: надо исправить выгрузку ингредиентов в виде класса, содержащего Count, Measure, Quantity
                 });
             }
+            
+        }
+        foreach (var summaryOrderView in SummaryOrderViews)
+        {
+            var countOrders = summaryOrderView.Count;
+            var resultList = new List<string>();
+            foreach (var ingredientCount in summaryOrderView.Ingredients)
+            {
+                //resultList.Add((ingredientCount.Count * ingredientCount.Ingredient.Quantity * countOrders).ToString() + " " +
+                //                ingredientCount.Ingredient.Measure);
+                resultList.Add(Math.Round(ingredientCount.Count * countOrders, 2).ToString());
+            }
+            Values.Add(resultList);
         }
     }
 

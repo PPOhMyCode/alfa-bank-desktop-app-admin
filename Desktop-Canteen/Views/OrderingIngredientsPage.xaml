@@ -279,7 +279,7 @@
                                     </DataGridTemplateColumn.HeaderStyle>
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <ListView ItemsSource="{Binding Count}">
+                                            <ListView ItemsSource="{Binding }">
                                                 <ListView.ItemContainerStyle>
                                                     <Style TargetType="{x:Type ListViewItem}">
                                                         <Setter Property="Background" Value="Transparent"/>
