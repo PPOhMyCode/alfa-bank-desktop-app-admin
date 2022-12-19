@@ -71,9 +71,10 @@ public class ScheduleVM:BaseVM
             var gradesId = Timings.Where(x => x.Time == time).Select(x => x.GradeId);
             foreach (var gradeId in gradesId)
             {
-                var test = Timings.Where(x => x.Time == time).Select(x => x.TimingId).FirstOrDefault();
+                var typeMealId = Timings.Where(x => x.Time == time).Select(x => x.TimingId).FirstOrDefault();
                 var orders = ApiServer.Get<List<Order>>("orders/date/" + Date.ToString("yyyy-MM-dd") + "/grades/" + gradeId + "/type/" +
-                                                        Timings.Where(x => x.Time == time).Select(x => x.TimingId).FirstOrDefault());
+                                                        typeMealId).Where(x => x.StatusId == 2).ToList();
+                
                 var dishesId = orders?.Select(x => x.DishId).Distinct().ToList();
                 List<(string, int)> DishCount = new List<(string, int)>();
                 if (dishesId == null)

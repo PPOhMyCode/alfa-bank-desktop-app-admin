@@ -26,6 +26,8 @@ public class IngredientView:BaseModel
 public class IngredientCount
 {
     public string Name { get; set; }
+    public double Quantity { set; get; }
+    public string Measure { set; get; }
     public double Count { set; get; }
 }
 
