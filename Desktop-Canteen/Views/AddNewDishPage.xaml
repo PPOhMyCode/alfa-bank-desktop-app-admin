@@ -141,7 +141,6 @@
                                       Text="" 
                                       Width="425"
                                       ItemsSource="{Binding Ingredients}"
-                                      DisplayMemberPath="Name"
                                       d:LayoutOverrides="Height"
                                       BorderThickness="1.5"
                                       BorderBrush="{StaticResource GreenBrush}"
@@ -150,7 +149,7 @@
                                       ToolTip="Выберите продукт и граммовку" >
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding}" />
+                                        <TextBlock Text="{Binding Name}" />
                                     </DataTemplate>
                                 </ComboBox.ItemTemplate>
                                 <ComboBox.ItemContainerStyle>

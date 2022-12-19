@@ -11,29 +11,29 @@ public class ScheduleItem
     public string Time { get; set; } 
     public List<ScheduleInTimeItem> Data { get; set; }
 
-    public ScheduleItem(TimeSpan time)
+    public ScheduleItem(DateTime time)
     {
-        Time = time.ToString();
+        Time = time.TimeOfDay.ToString();
         Data = new List<ScheduleInTimeItem>();
     }
 
-    public void AddScheduleInTimeItem(string gradeName, List<(string, int)> DishCount)
+    public void AddScheduleInTimeItem(string gradeName, int childrenCount, List<(string, int)> DishCount)
     {
-        Data.Add(new ScheduleInTimeItem(gradeName,DishCount));
+        Data.Add(new ScheduleInTimeItem(gradeName,childrenCount,DishCount));
     }
 }
 
 public class ScheduleInTimeItem
 {
     public string GradeName { get; set; }
-    public int AllCount { get; set; }
+    public int ChildrenCount { get; set; }
     public List<RequestsItem> RequestsItems { get; set; }
 
-    public ScheduleInTimeItem(string gradeName, List<(string, int)> DishCount)
+    public ScheduleInTimeItem(string gradeName, int childrenCount, List<(string, int)> DishCount)
     {
         GradeName = gradeName;
         RequestsItems = new List<RequestsItem>();
-        AllCount = DishCount.Sum(x => x.Item2);
+        ChildrenCount = childrenCount;
         foreach (var dTuple in DishCount)
         {
             RequestsItems.Add(new RequestsItem(dTuple.Item1, dTuple.Item2));

@@ -82,23 +82,23 @@
                     </StackPanel>
 
                     <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource MediumText}" FontSize="26"
-                               Width="35" TextAlignment="Center" Text="26" Margin="2, 0, 0, 0"
+                               Width="35" TextAlignment="Center" Text="{Binding Days[0].Day}" Margin="2, 0, 0, 0"
                                VerticalAlignment="Bottom"
                                Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
                     <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource MediumText}" FontSize="26"
-                               Width="35" TextAlignment="Center" Text="27" Margin="2, 0, 0, 0"
+                               Width="35" TextAlignment="Center" Text="{Binding Days[1].Day}" Margin="2, 0, 0, 0"
                                VerticalAlignment="Bottom"
                                Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
                     <TextBlock Grid.Row="1" Grid.Column="2" Style="{StaticResource MediumText}" FontSize="26"
-                               Width="35" TextAlignment="Center" Text="28" Margin="2, 0, 0, 0"
+                               Width="35" TextAlignment="Center" Text="{Binding Days[2].Day}" Margin="2, 0, 0, 0"
                                VerticalAlignment="Bottom"
                                Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
                     <TextBlock Grid.Row="1" Grid.Column="3" Style="{StaticResource MediumText}" FontSize="26"
-                               Width="35" TextAlignment="Center" Text="29" Margin="2, 0, 0, 0"
+                               Width="35" TextAlignment="Center" Text="{Binding Days[3].Day}" Margin="2, 0, 0, 0"
                                VerticalAlignment="Bottom"
                                Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
                     <TextBlock Grid.Row="1" Grid.Column="4" Style="{StaticResource MediumText}" FontSize="26"
-                               Width="35" TextAlignment="Center" Text="30" Margin="2, 0, 0, 0"
+                               Width="35" TextAlignment="Center" Text="{Binding Days[4].Day}" Margin="2, 0, 0, 0"
                                VerticalAlignment="Bottom"
                                Foreground="{StaticResource GreenBrush}" HorizontalAlignment="Left" />
 
@@ -107,14 +107,19 @@
                                Height="3" Margin="0" VerticalAlignment="Center" Opacity="0.3" />
 
                     <Button Name="Monday" Grid.Column="0" Grid.Row="2" Style="{StaticResource CircleButton}" Content="ПН"
+                            Command="{Binding SelectDayCommand}" CommandParameter="{Binding Days[0]}"
                             Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
                     <Button Name="Tuesday" Grid.Column="1" Grid.Row="2" Style="{StaticResource CircleButton}" Content="ВТ"
+                            Command="{Binding SelectDayCommand}" CommandParameter="{Binding Days[1]}"
                             Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
                     <Button Name="Wednesday" Grid.Column="2" Grid.Row="2" Style="{StaticResource CircleButton}" Content="СР"
+                            Command="{Binding SelectDayCommand}" CommandParameter="{Binding Days[2]}"
                             Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
                     <Button Name="Thursday" Grid.Column="3" Grid.Row="2" Style="{StaticResource CircleButton}" Content="ЧТ"
+                            Command="{Binding SelectDayCommand}" CommandParameter="{Binding Days[3]}"
                             Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
                     <Button Name="Friday" Grid.Column="4" Grid.Row="2" Style="{StaticResource CircleButton}" Content="ПТ"
+                            Command="{Binding SelectDayCommand}" CommandParameter="{Binding Days[4]}"
                             Margin="0, 10" HorizontalAlignment="Left" Click="ChangeStyleCircleButton" />
 
                 </Grid>
@@ -268,7 +273,7 @@
                                                 </ListView.ItemContainerStyle>
                                                 <ListView.ItemTemplate>
                                                     <DataTemplate>
-                                                        <TextBlock Text="{Binding AllCount}" />
+                                                        <TextBlock Text="{Binding ChildrenCount}" />
                                                     </DataTemplate>
                                                 </ListView.ItemTemplate>
                                             </ListView>
