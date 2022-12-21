@@ -68,7 +68,7 @@ public class OrderingIngredientsVM : BaseVM
             var resultList = new List<string>();
             foreach (var ingredientCount in summaryOrderView.Ingredients)
             {
-                resultList.Add((ingredientCount.Count * ingredientCount.Quantity * countOrders).ToString() + " " +
+                resultList.Add((Math.Round(ingredientCount.Count, 2) * Math.Round(ingredientCount.Quantity, 2) * countOrders).ToString() + " " +
                                ingredientCount.Measure);
             }
             Values.Add(resultList);
