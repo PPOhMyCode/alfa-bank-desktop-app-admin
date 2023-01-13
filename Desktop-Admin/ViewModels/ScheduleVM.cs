@@ -30,15 +30,9 @@ public class ScheduleVM : BaseVM
     {
         string[] strArray =
         {
-            "1A",
-            "1Б",
-            "1В",
-            "2А",
-            "2Б",
-            "3А",
-            "4А",
-            "5А",
-            "5Б"
+            "5Б",
+            "8А",
+            "11А"
         };
         return strArray;
     }

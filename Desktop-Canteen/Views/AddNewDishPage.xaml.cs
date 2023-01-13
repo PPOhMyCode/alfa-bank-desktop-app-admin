@@ -14,7 +14,6 @@ public partial class AddNewDishPage : Page
     public AddNewDishVM _AddNewDishVm;
     public AddNewDishPage()
     {
-        
         InitializeComponent();
         _AddNewDishVm = new AddNewDishVM();
         DataContext  = _AddNewDishVm;

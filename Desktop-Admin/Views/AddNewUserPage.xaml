@@ -8,6 +8,9 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d"
       Title="AddNewUserPage">
+    <Page.DataContext>
+        <viewModels:AddNewUserVM />
+    </Page.DataContext>
     <ScrollViewer>
         <Grid>
             <Grid>
@@ -31,12 +34,12 @@
                                 <Image Source="/Resources/AppIcon.png" Stretch="Uniform" />
                             </Viewbox>
                         </Button>
-                        <Button Padding="10" Style="{StaticResource SelectedMainMenuButton}" Content="Создание класса" 
-                                Click="ToMakeClassButtonClick"/>
-                        <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Расписание" 
-                                Click="ToScheduleButtonClick"/>
-                        <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Квитанции" 
-                                Click="ToReceiptsButtonClick"/>
+                        <Button Padding="10" Style="{StaticResource SelectedMainMenuButton}" Content="Создание класса"
+                                Click="ToMakeClassButtonClick" />
+                        <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Расписание"
+                                Click="ToScheduleButtonClick" />
+                        <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Квитанции"
+                                Click="ToReceiptsButtonClick" />
 
                         <Button DockPanel.Dock="Right" Style="{StaticResource DefaultTransparentButton}"
                                 HorizontalAlignment="Right"
@@ -51,11 +54,11 @@
                         </Button>
                     </DockPanel>
                 </Grid>
-                
+
                 <StackPanel Grid.Row="1" Orientation="Vertical"
                             Margin="50, 30, 30, 0">
                     <StackPanel Orientation="Horizontal" Margin="0, 10, 0, 14" Height="50">
-                        <TextBlock Style="{StaticResource Medium23Text}" 
+                        <TextBlock Style="{StaticResource Medium23Text}"
                                    Text="Фамилия:" VerticalAlignment="Center"
                                    Margin="0,0,7,0" />
                         <TextBox Margin="10,0,0,0" TextWrapping="Wrap" Width="414"
@@ -63,9 +66,9 @@
                                  Style="{DynamicResource TextBoxInAdminApp}"
                                  ToolTip="Введите фамилию" />
                     </StackPanel>
-                    
+
                     <StackPanel Orientation="Horizontal" Margin="0, 14" Height="50">
-                        <TextBlock Style="{StaticResource Medium23Text}" 
+                        <TextBlock Style="{StaticResource Medium23Text}"
                                    Text="Имя:" VerticalAlignment="Center"
                                    Margin="0,0,7,0" />
                         <TextBox Margin="10,0,0,0" TextWrapping="Wrap" Width="478"
@@ -73,9 +76,9 @@
                                  Style="{DynamicResource TextBoxInAdminApp}"
                                  ToolTip="Введите имя" />
                     </StackPanel>
-                    
+
                     <StackPanel Orientation="Horizontal" Margin="0, 14" Height="50">
-                        <TextBlock Style="{StaticResource Medium23Text}" 
+                        <TextBlock Style="{StaticResource Medium23Text}"
                                    Text="Отчество:" VerticalAlignment="Center"
                                    Margin="0,0,7,0" />
                         <TextBox Margin="10,0,0,0" TextWrapping="Wrap" Width="417"
@@ -83,13 +86,13 @@
                                  Style="{DynamicResource TextBoxInAdminApp}"
                                  ToolTip="Введите отчество" />
                     </StackPanel>
-                    
+
                     <StackPanel Orientation="Horizontal" Margin="0, 14" Height="50">
-                        <TextBlock Style="{StaticResource Medium23Text}" 
+                        <TextBlock Style="{StaticResource Medium23Text}"
                                    Text="Выберите группу:" VerticalAlignment="Center"
                                    Margin="0,0,7,0" />
                         <Button Name="SelectCategoriesButton"
-                                
+                                Click="SelectCategoriesButton_OnClick"
                                 Width="317"
                                 Style="{StaticResource DefaultButton}"
                                 Margin="10, 0"
@@ -102,70 +105,154 @@
                                             BorderThickness="1.5"
                                             CornerRadius="10">
                                         <StackPanel Orientation="Horizontal">
-                                            <TextBlock Name = "SelectedCategoriesTextBlock" 
-                                                       Text="Выберите категории"
+                                            <TextBlock Name="SelectedCategoriesTextBlock"
+                                                       Text="{Binding SelectedCategory}"
                                                        HorizontalAlignment="Center"
+                                                       Width="240"
                                                        VerticalAlignment="Center"
                                                        FontSize="21"
-                                                       Margin="25, 0, 15, 0"
-                                                       FontStyle="Italic" Foreground="#FF9D9C9C"
+                                                       Margin="25, 0, 10, 0"
+                                                       FontStyle="Italic" Foreground="{Binding CategoryBrush}"
                                                        TextWrapping="Wrap"
-                                                       Style="{StaticResource MediumText}"/>
+                                                       Style="{StaticResource MediumText}" />
                                             <materialDesign:PackIcon Kind="ChevronDown" Height="25" Width="25"
                                                                      HorizontalAlignment="Center"
-                                                                     VerticalAlignment="Center"/>
+                                                                     VerticalAlignment="Center" />
                                         </StackPanel>
-                                        
+
                                     </Border>
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
                     </StackPanel>
-                    <Grid Name="AdditionalInformationGrid" 
-                        Visibility="Hidden">
-                        <StackPanel Orientation="Horizontal" Margin="0, 14" Height="50">
-                            <TextBlock Style="{StaticResource Medium23Text}" 
-                                   Text="Выберите класс:" VerticalAlignment="Center"
-                                   Margin="0,0,7,0" />
-                            <Button Name="SelectClassButton"
-                                
-                                Width="333"
-                                Style="{StaticResource DefaultButton}"
-                                Margin="10, 0"
-                                VerticalAlignment="Bottom">
-                            <Button.Template>
-                                <ControlTemplate>
-                                    <Border BorderBrush="{StaticResource DarkGreenTextBrush}"
-                                            Height="50"
-                                            Background="{StaticResource LightBackgroundBrush}"
-                                            BorderThickness="1.5"
-                                            CornerRadius="10">
-                                        <DockPanel Width="333">
-                                            <TextBlock Name = "SelectedCategoriesTextBlock" 
-                                                       Text="Выберите класс"
-                                                       HorizontalAlignment="Center"
-                                                       VerticalAlignment="Center"
-                                                       FontSize="21"
-                                                       Margin="25, 0, 60, 0"
-                                                       FontStyle="Italic" Foreground="#FF9D9C9C"
-                                                       TextWrapping="Wrap"
-                                                       DockPanel.Dock="Left"
-                                                       Style="{StaticResource MediumText}"/>
-                                            <materialDesign:PackIcon Kind="ChevronDown" Height="25" Width="25"
-                                                                     HorizontalAlignment="Center"
-                                                                     DockPanel.Dock="Right"
-                                                                     VerticalAlignment="Center"/>
-                                        </DockPanel>
-                                        
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
-                        </StackPanel>
-                    </Grid>
-                    
+                    <Expander Width="583" HorizontalContentAlignment="Left"
+                              Name="AddInfoExpander"
+                              Foreground="{StaticResource DarkTextBrush}" 
+                              HorizontalAlignment="Left" Margin="-23, 0, 0, 0" Padding="0">
+                        <Expander.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Дополнительные сведения"
+                                           Margin="0" Padding="0"
+                                           Style="{StaticResource Medium23Text}"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center" />
+                            </DataTemplate>
+                        </Expander.HeaderTemplate>
+                        <Grid>
+                            <StackPanel Name="PlugAdditionalInformation" 
+                                        Orientation="Horizontal"
+                                        Visibility="Visible"
+                                        Margin="23, 14, 0, 14" Height="50"
+                                        DockPanel.Dock="Top">
+                                <TextBlock Style="{StaticResource Medium23Text}"
+                                           FontSize="20"
+                                           Foreground="#8C8C8C"
+                                           Text="Необходимо указать группу" VerticalAlignment="Center"
+                                           Margin="0,0,23,0" />
+                            </StackPanel>
+                            <StackPanel Name="NoNeedAdditionalInformation" 
+                                        Orientation="Horizontal"
+                                        Visibility="Hidden"
+                                        Margin="23, 14, 0, 14" Height="50"
+                                        DockPanel.Dock="Top">
+                                <TextBlock Style="{StaticResource Medium23Text}"
+                                           FontSize="20"
+                                           Foreground="#8C8C8C"
+                                           Text="Дополнительная информация не требуется" VerticalAlignment="Center"
+                                           Margin="0,0,23,0" />
+                            </StackPanel>
+                            <StackPanel Name="AdditionalInformationAboutChildren" 
+                                        DockPanel.Dock="Top"
+                                        Visibility="Hidden"
+                                        Orientation="Horizontal"
+                                        Margin="23, 14, 0, 14" Height="50">
+                                <TextBlock Style="{StaticResource Medium23Text}"
+                                           Text="Дети:" VerticalAlignment="Center"
+                                           Margin="0,0,23,0" />
+                                <Button Name="SelectChildrenButton"
+                                        Click="SelectChildrenButton_OnClick"
+                                        Width="455"
+                                        Style="{StaticResource DefaultButton}"
+                                        Margin="10, 0"
+                                        VerticalAlignment="Bottom">
+                                    <Button.Template>
+                                        <ControlTemplate>
+                                            <Border BorderBrush="{StaticResource DarkGreenTextBrush}"
+                                                    Height="50"
+                                                    Background="{StaticResource LightBackgroundBrush}"
+                                                    BorderThickness="1.5"
+                                                    CornerRadius="10">
+                                                <DockPanel Width="470">
+                                                    <TextBlock Name="SelectedCategoriesTextBlock"
+                                                               Text="Выберите детей"
+                                                               HorizontalAlignment="Center"
+                                                               VerticalAlignment="Center"
+                                                               FontSize="21"
+                                                               Width="378"
+                                                               Margin="25, 0, 10, 0"
+                                                               FontStyle="Italic" Foreground="#FF9D9C9C"
+                                                               TextWrapping="Wrap"
+                                                               DockPanel.Dock="Left"
+                                                               Style="{StaticResource MediumText}" />
+                                                    <materialDesign:PackIcon Kind="ChevronDown" Height="25" Width="25"
+                                                                             HorizontalAlignment="Left"
+                                                                             DockPanel.Dock="Right"
+                                                                             VerticalAlignment="Center" />
+                                                </DockPanel>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </StackPanel>
+                            <StackPanel Name="AdditionalInformationAboutClass"
+                                        DockPanel.Dock="Top"
+                                        Visibility="Hidden"
+                                        Orientation="Horizontal" Margin="23, 14, 0, 14" Height="50">
+                                <TextBlock Style="{StaticResource Medium23Text}"
+                                           Text="Выберите класс:" VerticalAlignment="Center"
+                                           Margin="0,0,23,0" />
+                                <Button Name="SelectClassButton"
+                                        Click="SelectClassButton_OnClick"
+                                        Width="317"
+                                        Style="{StaticResource DefaultButton}"
+                                        Margin="10, 0"
+                                        VerticalAlignment="Bottom">
+                                    <Button.Template>
+                                        <ControlTemplate>
+                                            <Border BorderBrush="{StaticResource DarkGreenTextBrush}"
+                                                    Height="50"
+                                                    Background="{StaticResource LightBackgroundBrush}"
+                                                    BorderThickness="1.5"
+                                                    CornerRadius="10">
+                                                <DockPanel Width="317">
+                                                    <TextBlock Name="SelectedCategoriesTextBlock"
+                                                               Text="Выберите класс"
+                                                               HorizontalAlignment="Center"
+                                                               VerticalAlignment="Center"
+                                                               FontSize="21"
+                                                               Width="240"
+                                                               Margin="25, 0, 10, 0"
+                                                               FontStyle="Italic" Foreground="#FF9D9C9C"
+                                                               TextWrapping="Wrap"
+                                                               DockPanel.Dock="Left"
+                                                               Style="{StaticResource MediumText}" />
+                                                    <materialDesign:PackIcon Kind="ChevronDown" Height="25" Width="25"
+                                                                             HorizontalAlignment="Left"
+                                                                             DockPanel.Dock="Right"
+                                                                             VerticalAlignment="Center" />
+                                                </DockPanel>
+
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                    </Expander>
+
+
                     <StackPanel Orientation="Horizontal" Margin="0, 40, 0, 14" Height="50">
-                        <TextBlock Style="{StaticResource Medium23Text}" 
+                        <TextBlock Style="{StaticResource Medium23Text}"
                                    Text="Логин:" VerticalAlignment="Center"
                                    Margin="0,0,7,0" />
                         <TextBox Margin="10,0,0,0" TextWrapping="Wrap" Width="334"
@@ -174,7 +261,7 @@
                                  ToolTip="Введите логин" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0, 14" Height="50">
-                        <TextBlock Style="{StaticResource Medium23Text}" 
+                        <TextBlock Style="{StaticResource Medium23Text}"
                                    Text="Пароль:" VerticalAlignment="Center"
                                    Margin="0,0,7,0" />
                         <TextBox Margin="10,0,0,0" TextWrapping="Wrap" Width="319"
@@ -182,7 +269,7 @@
                                  Style="{DynamicResource TextBoxInAdminApp}"
                                  ToolTip="Введите пароль" />
                     </StackPanel>
-                    
+
                     <StackPanel Orientation="Horizontal" Margin="0, 40, 0, 100" Height="60">
                         <Button Style="{StaticResource LightBaseButton}"
                                 Width="230" Height="50"
@@ -205,7 +292,93 @@
                         </Button>
                     </StackPanel>
                 </StackPanel>
+
+                <DockPanel Name="Categories"
+                           Visibility="Hidden"
+                           Grid.Row="1"
+                           Height="180"
+                           Width="293"
+                           Margin="297, 324, 210, 0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           Background="{StaticResource Ultra2LightGreenBrush}">
+                    <Border BorderThickness="1"
+                            BorderBrush="{StaticResource GreenBrush}"
+                            CornerRadius="0, 0, 10, 10">
+                        <StackPanel>
+                            <ListView DockPanel.Dock="Top"
+                                      Width="293"
+                                      Height="180"
+                                      FontFamily="{StaticResource Montserrat-Regular}"
+                                      Margin="0" Padding="0"
+                                      HorizontalAlignment="Left"
+                                      Background="Transparent"
+                                      materialDesign:ListBoxItemAssist.ShowSelection="False"
+                                      ItemsSource="{Binding Categories}">
+                            </ListView>
+                        </StackPanel>
+                    </Border>
+                </DockPanel>
                 
+                <DockPanel Name="Children"
+                           Visibility="Hidden"
+                           Grid.Row="1"
+                           Height="180"
+                           Width="430"
+                           Margin="160, 454, 210, 0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           Background="{StaticResource Ultra2LightGreenBrush}">
+                    <Border BorderThickness="1"
+                            BorderBrush="{StaticResource GreenBrush}"
+                            CornerRadius="0, 0, 10, 10">
+                        <StackPanel>
+                            <TextBox Margin="5,5,5,0" Width="415" Height="45" Text="" TextWrapping="Wrap"
+                                     d:LayoutOverrides="Height"
+                                     Style="{DynamicResource TextBoxWithDescriptionInCanteenApp}"
+                                     ToolTip="Введите ФИО ученика" Padding="20"
+                                     HorizontalAlignment="Left" />
+                            <ListView DockPanel.Dock="Top"
+                                      Width="430"
+                                      Height="120"
+                                      FontFamily="{StaticResource Montserrat-Regular}"
+                                      Margin="0, 0, 0, 0" Padding="0"
+                                      HorizontalAlignment="Left"
+                                      Background="Transparent"
+                                      materialDesign:ListBoxItemAssist.ShowSelection="False"
+                                      ItemsSource="{Binding Children}">
+                            </ListView>
+                        </StackPanel>
+                    </Border>
+                </DockPanel>
+                
+                <DockPanel Name="Classes"
+                           Visibility="Hidden"
+                           Grid.Row="1"
+                           Height="180"
+                           Width="293"
+                           Margin="297, 454, 210, 0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           Background="{StaticResource Ultra2LightGreenBrush}">
+                    <Border BorderThickness="1"
+                            BorderBrush="{StaticResource GreenBrush}"
+                            CornerRadius="0, 0, 10, 10">
+                        <StackPanel>
+                            <ListView DockPanel.Dock="Top"
+                                      Width="293"
+                                      Height="180"
+                                      FontFamily="{StaticResource Montserrat-Regular}"
+                                      Margin="0" Padding="0"
+                                      HorizontalAlignment="Left"
+                                      Background="Transparent"
+                                      ItemsSource="{Binding Classes}"
+                                      materialDesign:ListBoxItemAssist.ShowSelection="False">
+                            </ListView>
+                        </StackPanel>
+                    </Border>
+                </DockPanel>
+
             </Grid>
         </Grid>
     </ScrollViewer>
