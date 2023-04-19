@@ -1,0 +1,227 @@
+﻿<Page x:Class="Desktop_Canteen.Views.FirstOpenPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:viewModels="clr-namespace:Desktop_Canteen.ViewModels"
+      xmlns:local="clr-namespace:Desktop_Canteen.Views"
+      mc:Ignorable="d"
+      Title="FirstOpenPage">
+    <ScrollViewer>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="0.23*" />
+                <RowDefinition Height="0.35*" />
+                <RowDefinition Height="0.5*" />
+            </Grid.RowDefinitions>
+            <Rectangle Grid.RowSpan="4">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="{StaticResource BackgroundColor}" Offset="0" />
+                        <GradientStop Color="{StaticResource LightBackgroundColor}" Offset="0.5" />
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Grid>
+                <DockPanel Margin="30, 20, 30 , 0">
+                    <Button Width="180" Margin="0, 0, 10, 0" Style="{StaticResource Transparent}">
+                        <Viewbox>
+                            <Image Source="/Resources/AppIcon.png" Stretch="Uniform" />
+                        </Viewbox>
+                    </Button>
+                    <Button Padding="10" Style="{StaticResource SelectedMainMenuButton}" Content="Меню"
+                            IsEnabled="False" />
+                    <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Все блюда" 
+                            IsEnabled="False"/>
+                    <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Заказ продуктов"
+                            IsEnabled="False" />
+                    <Button Padding="10" Style="{StaticResource MainMenuButton}" Content="Расписание"
+                            IsEnabled="False" />
+
+                    <Button DockPanel.Dock="Right" Style="{StaticResource DefaultTransparentButton}" HorizontalAlignment="Right"
+                            Height="70" Width="70" Margin="0,0,10,0">
+                        <materialDesign:PackIcon Kind="Circle" Height="60" Width="60" />
+                    </Button>
+
+                    <Button DockPanel.Dock="Right" Style="{StaticResource DefaultTransparentButton}" HorizontalAlignment="Right"
+                            Height="60" Width="60" Margin="0,0,15,0">
+                        <materialDesign:PackIcon Kind="BellOutline" Height="30" Width="30" />
+                    </Button>
+                </DockPanel>
+            </Grid>
+            <Grid Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Name="InstructionsGrid" Visibility="Hidden">
+                <TextBlock Style="{StaticResource Medium23Text}"
+                           TextAlignment="Center"
+                           Name="TextBlock"
+                           Margin="0, 50,0, 0"
+                           HorizontalAlignment="Center">
+                    Сначала выберите даты четверти<LineBreak/>
+                    и периодичность, с которой будет<LineBreak/>
+                    повторяться меню
+                </TextBlock>
+            </Grid>
+            <Grid Row="2" Grid.RowSpan="2" HorizontalAlignment="Center" >
+                <StackPanel Name="DatesPanel"
+                            Visibility="Hidden"
+                        Margin="0,0,0,0"
+                        Orientation="Vertical">
+                            <TextBlock Style="{StaticResource Medium15Text}" Text="Начало четверти"
+                                   TextAlignment="Left" Margin="0, 5, 0, 10" Width="350" HorizontalAlignment="Center"/>
+                                        <DatePicker x:Name="DatePicker1"
+                                                    HorizontalAlignment="Center"
+                                                    Margin="0, 5, 0, 20"
+                                                    Width="350"
+                                                    FontFamily="{StaticResource Montserrat-Regular}"
+                                                    BorderBrush="{StaticResource MediumGreenBrush}"
+                                                    materialDesign:DatePickerAssist.OutlinedBorderActiveThickness="3"
+                                                    materialDesign:DatePickerAssist.OutlinedBorderInactiveThickness="3"
+                                                    materialDesign:HintAssist.HelperText="ДД.ММ.ГГГГ"
+                                                    materialDesign:HintAssist.Hint="Дата"
+                                                    materialDesign:HintAssist.Foreground="{StaticResource MediumGreenBrush}"
+                                                    Style="{StaticResource MaterialDesignOutlinedDatePicker}" >
+                                            <DatePicker.CalendarStyle>
+                                                <Style TargetType="{x:Type Calendar}" BasedOn="{StaticResource MaterialDesignCalendarPortrait}">
+                                                    <Setter Property="Background" Value="{StaticResource CalendarBackgroundBrush}" />
+                                                    <Setter Property="Foreground" Value="{StaticResource DarkGrayBrush}"/>
+                                                    <Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}"/>
+                                                    <Setter Property="materialDesign:CalendarAssist.IsHeaderVisible" Value="False"/>
+                                                    <Setter Property="CalendarDayButtonStyle">
+                                                        <Setter.Value>
+                                                            <Style
+                                                                TargetType="CalendarDayButton"
+                                                                BasedOn="{StaticResource MaterialDesignCalendarDayButton}">
+                                                                <Setter
+                                                                    Property="materialDesign:CalendarAssist.SelectionColor"
+                                                                    Value="{StaticResource GreenBrush}" />
+                                                                <Setter
+                                                                    Property="materialDesign:CalendarAssist.SelectionForegroundColor"
+                                                                    Value="{StaticResource LightTextBrush}" />
+                                                            </Style>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                                
+                                            </DatePicker.CalendarStyle>
+                                        </DatePicker>
+                                        <TextBlock Style="{StaticResource Medium15Text}" Text="Конец четверти"
+                                                   TextAlignment="Left" Margin="0, 15, 0, 10" Width="350" HorizontalAlignment="Center"/>
+                                        <DatePicker x:Name="DatePicker2"
+                                                    HorizontalAlignment="Center"
+                                                    Margin="0, 5, 0, 10"
+                                                    Width="350"
+                                                    FontFamily="{StaticResource Montserrat-Regular}"
+                                                    BorderBrush="{StaticResource MediumGreenBrush}"
+                                                    materialDesign:DatePickerAssist.OutlinedBorderActiveThickness="3"
+                                                    materialDesign:DatePickerAssist.OutlinedBorderInactiveThickness="3"
+                                                    materialDesign:HintAssist.HelperText="ДД.ММ.ГГГГ"
+                                                    materialDesign:HintAssist.Hint="Дата"
+                                                    materialDesign:HintAssist.Foreground="{StaticResource MediumGreenBrush}"
+                                                    Style="{StaticResource MaterialDesignOutlinedDatePicker}" >
+                                            <DatePicker.CalendarStyle>
+                                                <Style TargetType="{x:Type Calendar}" BasedOn="{StaticResource MaterialDesignCalendarPortrait}">
+                                                    <Setter Property="Background" Value="{StaticResource CalendarBackgroundBrush}" />
+                                                    <Setter Property="Foreground" Value="{StaticResource DarkGrayBrush}"/>
+                                                    <Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}"/>
+                                                    <Setter Property="materialDesign:CalendarAssist.IsHeaderVisible" Value="False"/>
+                                                    <Setter Property="CalendarDayButtonStyle">
+                                                        <Setter.Value>
+                                                            <Style
+                                                                TargetType="CalendarDayButton"
+                                                                BasedOn="{StaticResource MaterialDesignCalendarDayButton}">
+                                                                <Setter
+                                                                    Property="materialDesign:CalendarAssist.SelectionColor"
+                                                                    Value="{StaticResource GreenBrush}" />
+                                                                <Setter
+                                                                    Property="materialDesign:CalendarAssist.SelectionForegroundColor"
+                                                                    Value="{StaticResource LightTextBrush}" />
+                                                            </Style>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </DatePicker.CalendarStyle>
+                                        </DatePicker>
+                                    </StackPanel>
+                <StackPanel Name="PlugPanel" Visibility="Visible">
+                    <TextBlock Style="{StaticResource Medium30Text}"
+                               Text="Создайте меню, чтобы начать"
+                               Margin="0, 30,0, 0"
+                               HorizontalAlignment="Center"/>
+                    
+                    <Button Style="{StaticResource LightBaseButton}" Margin="10, 70, 20, 15"
+                            Width="336" Height="70" HorizontalAlignment="Center" FontSize="22" 
+                            Click="StartButtonClick">
+                        <Grid>
+                            <TextBlock Style="{StaticResource SmallDefaultText}" 
+                                       Text="Создать меню" HorizontalAlignment="Right" Margin="0, 0, 0, 0"
+                                       VerticalAlignment="Center"/>
+
+                        </Grid>
+                    </Button>
+                </StackPanel>
+            </Grid>
+            <Grid Row="3">
+                <StackPanel Name="PeriodPanel" Visibility="Hidden" HorizontalAlignment="Center" >
+                    <TextBlock Style="{StaticResource Medium23Text}" FontSize="17" Text="Периодичность"
+                               TextAlignment="Left" Margin="0, 25, 0, 10" Width="350" HorizontalAlignment="Center"/>
+                    <Grid Width="350" Height="50">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.25*"/>
+                            <ColumnDefinition Width="0.25*"/>
+                            <ColumnDefinition Width="0.25*"/>
+                            <ColumnDefinition Width="0.25*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Style="{StaticResource TypeMealButton}" 
+                                Width="70" Height="40"
+                                Margin="0, 10, 10, 0">
+                            <TextBlock Grid.Row="1" Text="1 нед" HorizontalAlignment="Center" />
+                        </Button>
+                        <Button Grid.Column="1" Style="{StaticResource TypeMealButton}" 
+                                Width="70" Height="40"
+                                Margin="0, 10, 10, 0">
+                            <TextBlock Grid.Row="1" Text="2 нед" HorizontalAlignment="Center" />
+                        </Button>
+                        <Button Grid.Column="2" Style="{StaticResource TypeMealButton}" 
+                                Width="70" Height="40"
+                                Margin="0, 10, 10, 0">
+                            <TextBlock Grid.Row="1" Text="3 нед" HorizontalAlignment="Center" />
+                        </Button>
+                        <Button Grid.Column="3" Style="{StaticResource TypeMealButton}" 
+                                Width="70" Height="40"
+                                Margin="0, 10, 10, 0">
+                            <TextBlock Grid.Row="1" Text="4 нед" HorizontalAlignment="Center" />
+                        </Button>
+                    </Grid>
+                    <Button DockPanel.Dock="Right" Style="{StaticResource DefaultLightButton}"
+                            HorizontalAlignment="Center" Padding="0"
+                            Height="50" Width="225" Margin="0,35,0,0"
+                            Click="SaveButtonClick">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="165" />
+                                <ColumnDefinition Width="60" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Сохранить"
+                                       Style="{StaticResource MediumText}"
+                                       FontSize="19"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center" />
+                            <materialDesign:PackIcon HorizontalAlignment="Center"
+                                                     VerticalAlignment="Center"
+                                                     Width="32"
+                                                     Height="32"
+                                                     Grid.Column="1"
+                                                     Kind="ContentSaveOutline"
+                                                     Foreground="{StaticResource DarkGrayBrush}">
+                            </materialDesign:PackIcon>
+                        </Grid>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Page>
