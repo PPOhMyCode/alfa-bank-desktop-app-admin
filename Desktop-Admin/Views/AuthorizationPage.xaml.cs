@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Desktop_Admin.ViewModels;
@@ -17,13 +18,13 @@ public partial class AuthorizationPage : Page
 
     public void OnKeyDownHandler(object sender, KeyEventArgs e)
     {
-        if (e.Key == Key.Enter)
-        {
-            EnterButtonClick(null, null);
-        } 
+        // if (e.Key == Key.Enter)
+        // {
+        //     EnterButtonClick(sender, null);
+        // } 
     }
     
-    public void EnterButtonClick(object sender, RoutedEventArgs e)
+    public void EnterButtonClick(object sender, EventArgs e)
     {
         //проверка логина и пароля
         EnterButtonText.Visibility = Visibility.Hidden;

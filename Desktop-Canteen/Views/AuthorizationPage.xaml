@@ -1,105 +1,175 @@
-﻿<Page x:Class="Desktop_Canteen.Views.AuthorizationPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
-      xmlns:viewModels="clr-namespace:Desktop_Canteen.ViewModels"
-      xmlns:local="clr-namespace:Desktop_Canteen.Views"
-      mc:Ignorable="d"
-      Title="AuthorizationPage" Margin="0">
+﻿<Page
+    Margin="0"
+    Title="AuthorizationPage"
+    mc:Ignorable="d"
+    x:Class="Desktop_Canteen.Views.AuthorizationPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Desktop_Canteen.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:viewModels="clr-namespace:Desktop_Canteen.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Page.DataContext>
         <viewModels:AuthorizationVM />
     </Page.DataContext>
     <Grid>
-        <Rectangle >
+        <Rectangle>
             <Rectangle.Fill>
-                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                    <GradientStop Color="{StaticResource BackgroundColor}" Offset="0"/>
-                    <GradientStop Color="{StaticResource LightBackgroundColor}" Offset="1"/>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="{StaticResource BackgroundColor}" Offset="0" />
+                    <GradientStop Color="{StaticResource LightBackgroundColor}" Offset="1" />
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-    
-    <Grid Margin="0, -30, 0, 0">
-        <!-- <Grid.RowDefinitions> -->
-        <!--     <RowDefinition Height="0.3*"/> -->
-        <!--     <RowDefinition Height="0.7*"/> -->
-        <!-- </Grid.RowDefinitions> -->
-        <StackPanel Grid.Row="0" Orientation="Vertical" Margin="100" Width="650" 
-                    VerticalAlignment="Top" HorizontalAlignment="Center" Height="750">
-            <Viewbox Grid.Row="0" Margin="0, 0, 0, 0" Width="650" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Image Source="pack://application:,,,/Desktop-Canteen;component/Resources/AppIconBig.png" Height="250" />
-            </Viewbox>
-        
-            <Grid Height="70" Width="530" Margin="0, 40, 0, 0"
-                  FocusManager.FocusedElement="{Binding ElementName=Box}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.3*"/>
-                    <RowDefinition Height="0.7*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="60"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Viewbox Grid.RowSpan="2" Margin="10, 10, 10, 5" VerticalAlignment="Bottom">
-                    <md:PackIcon Kind="AccountKeyOutline" />
+
+        <Grid Margin="0,-30,0,0">
+            <!-- <Grid.RowDefinitions> -->
+            <!--     <RowDefinition Height="0.3*"/> -->
+            <!--     <RowDefinition Height="0.7*"/> -->
+            <!-- </Grid.RowDefinitions> -->
+            <StackPanel
+                Grid.Row="0"
+                Height="750"
+                HorizontalAlignment="Center"
+                Margin="100"
+                Orientation="Vertical"
+                VerticalAlignment="Top"
+                Width="650">
+                <Viewbox
+                    Grid.Row="0"
+                    HorizontalAlignment="Center"
+                    Margin="0,0,0,0"
+                    VerticalAlignment="Center"
+                    Width="650">
+                    <Image Height="250" Source="pack://application:,,,/Desktop-Canteen;component/Resources/AppIconBig.png" />
                 </Viewbox>
-                <TextBlock Grid.Row="0" Grid.Column="1" Text="Логин" Margin="10, 0" 
-                           Style="{StaticResource DefaultText}" FontSize="19"
-                           VerticalAlignment="Top"/>
-                <TextBox Text="{Binding Login}" Grid.Row="1" Grid.Column="1"
-                         Width="455" Padding="5" FontSize="25"
-                         Name="Box"
-                         FontFamily="{StaticResource Montserrat-Medium}"/>
-                <TextBlock Grid.ColumnSpan="2" Grid.Row="1" Height="4" Background="{StaticResource GreenBrush}"
-                           VerticalAlignment="Bottom" Margin="0, 0, 0, -1"/>
-            </Grid>
-            
-            <Grid Height="70" Width="530" Margin="0, 30, 0, 0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.3*"/>
-                    <RowDefinition Height="0.7*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="60"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Viewbox Grid.RowSpan="2" Margin="10, 10, 10, 5" VerticalAlignment="Bottom">
-                    <md:PackIcon Kind="KeyOutline"/>
-                </Viewbox>
-                <TextBlock Grid.Row="0" Grid.Column="1" Text="Пароль" Margin="10, 0" 
-                           Style="{StaticResource DefaultText}" FontSize="19"
-                           VerticalAlignment="Top"/>
-                <PasswordBox md:PasswordBoxAssist.Password="{Binding Password, Mode=TwoWay}" Grid.Row="1" Grid.Column="1"
-                             Width="455" Padding="5" FontSize="25"
-                             FontFamily="{StaticResource Montserrat-Medium}"
-                             Style="{StaticResource MaterialDesignRevealPasswordBox}"
-                             KeyDown="OnKeyDownHandler"/>
-                <TextBlock Grid.ColumnSpan="2" Grid.Row="1" Height="4" Background="{StaticResource GreenBrush}"
-                           VerticalAlignment="Bottom" Margin="0, 0, 0, -1"/>
-            </Grid>
-            <TextBlock Name="ErrorAuthorizationBlock" Margin="0, 25, 0, 0" Height="20" Text="{Binding AutorizationError}"
-                       HorizontalAlignment="Center" Visibility="Hidden"
-                       Style="{StaticResource ErrorText}"/>
-            <Grid>
-                <Button Margin="0, 40, 0, 10" Style="{StaticResource BaseButton}" Width="220" Height="50"
-                        Click="EnterButtonClick" HorizontalAlignment="Center">
-                    <TextBlock Name="EnterButtonText"
-                               Visibility="Visible" Text="Войти" FontSize="19" FontFamily="{StaticResource Montserrat-Medium}"/>
-                </Button>
-                <ProgressBar
-                    Name="ProgressBar"
-                    Margin="0, 40, 0, 10"
-                    Visibility="Hidden"
-                    Height="30" Width="30"
-                    Foreground="{StaticResource Ultra2LightGreenBrush}"
-                    IsIndeterminate="True"
-                    Style="{StaticResource MaterialDesignCircularProgressBar}"
-                    Value="0" />
-            </Grid>
-            
-        </StackPanel>
-    </Grid>
+
+                <Grid
+                    FocusManager.FocusedElement="{Binding ElementName=Box}"
+                    Height="70"
+                    Margin="0,40,0,0"
+                    Width="530">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.3*" />
+                        <RowDefinition Height="0.7*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Viewbox
+                        Grid.RowSpan="2"
+                        Margin="10,10,10,5"
+                        VerticalAlignment="Bottom">
+                        <md:PackIcon Kind="AccountKeyOutline" />
+                    </Viewbox>
+                    <TextBlock
+                        FontSize="19"
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Margin="10,0"
+                        Style="{StaticResource DefaultText}"
+                        Text="Логин"
+                        VerticalAlignment="Top" />
+                    <TextBox
+                        FontFamily="{StaticResource Montserrat-Medium}"
+                        FontSize="25"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Name="Box"
+                        Padding="5"
+                        Text="{Binding Login}"
+                        Width="455" />
+                    <TextBlock
+                        Background="{StaticResource GreenBrush}"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="1"
+                        Height="4"
+                        Margin="0,0,0,-1"
+                        VerticalAlignment="Bottom" />
+                </Grid>
+
+                <Grid
+                    Height="70"
+                    Margin="0,30,0,0"
+                    Width="530">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.3*" />
+                        <RowDefinition Height="0.7*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Viewbox
+                        Grid.RowSpan="2"
+                        Margin="10,10,10,5"
+                        VerticalAlignment="Bottom">
+                        <md:PackIcon Kind="KeyOutline" />
+                    </Viewbox>
+                    <TextBlock
+                        FontSize="19"
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Margin="10,0"
+                        Style="{StaticResource DefaultText}"
+                        Text="Пароль"
+                        VerticalAlignment="Top" />
+                    <PasswordBox
+                        FontFamily="{StaticResource Montserrat-Medium}"
+                        FontSize="25"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        KeyDown="OnKeyDownHandler"
+                        Padding="5"
+                        Style="{StaticResource MaterialDesignRevealPasswordBox}"
+                        Width="455"
+                        md:PasswordBoxAssist.Password="{Binding Password, Mode=TwoWay}" />
+                    <TextBlock
+                        Background="{StaticResource GreenBrush}"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="1"
+                        Height="4"
+                        Margin="0,0,0,-1"
+                        VerticalAlignment="Bottom" />
+                </Grid>
+                <TextBlock
+                    Height="20"
+                    HorizontalAlignment="Center"
+                    Margin="0,25,0,0"
+                    Name="ErrorAuthorizationBlock"
+                    Style="{StaticResource ErrorText}"
+                    Text="{Binding AutorizationError}"
+                    Visibility="Hidden" />
+                <Grid>
+                    <Button
+                        Click="EnterButtonClick"
+                        Height="50"
+                        HorizontalAlignment="Center"
+                        Margin="0,40,0,10"
+                        Style="{StaticResource BaseButton}"
+                        Width="220">
+                        <TextBlock
+                            FontFamily="{StaticResource Montserrat-Medium}"
+                            FontSize="19"
+                            Name="EnterButtonText"
+                            Text="Войти"
+                            Visibility="Visible" />
+                    </Button>
+                    <ProgressBar
+                        Foreground="{StaticResource Ultra2LightGreenBrush}"
+                        Height="30"
+                        IsIndeterminate="True"
+                        Margin="0,40,0,10"
+                        Name="ProgressBar"
+                        Style="{StaticResource MaterialDesignCircularProgressBar}"
+                        Value="0"
+                        Visibility="Hidden"
+                        Width="30" />
+                </Grid>
+
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>
