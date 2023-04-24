@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,48 +20,84 @@ namespace Desktop_Canteen.Views
             };
             _menuVm.GetMenu();
             DataContext = _menuVm;
-            Monday.Style = Application.Current.TryFindResource("SelectedCircleButton") as Style;
-            BreakfastButton.Style = Application.Current.TryFindResource("SelectedTypeMealButton") as Style;
+            Thursday.Style = Application.Current.TryFindResource("SelectedCircleButton") as Style;
+            //BreakfastButton.Style = Application.Current.TryFindResource("SelectedTypeMealButton") as Style;
         }
     
         public void ToMenuButtonClick(object sender, RoutedEventArgs e)
         {
-            NavigationService?.Navigate(new MenuPage());
+            //NavigationService?.Navigate(new MenuPage());
         }
         
         public void ToOrderingIngredientsButtonClick(object sender, RoutedEventArgs e)
         {
-            NavigationService?.Navigate(new OrderingIngredientsPage());
+            NavigationService?.Navigate(MainWindow.DictionaryPages["Ingredients"]);
         }
             
         public void ToAllDishesButtonClick(object sender, RoutedEventArgs e)
         {
-            NavigationService?.Navigate(new AllDishesPage());
+            NavigationService?.Navigate(MainWindow.DictionaryPages["Dishes"]);
         }
         public void ToScheduleButtonClick(object sender, RoutedEventArgs e)
         {
-            NavigationService?.Navigate(new SchedulePage());
+            NavigationService?.Navigate(MainWindow.DictionaryPages["Schedule"]);
         }
 
         public void BreakfastButtonClick(object sender, RoutedEventArgs e)
         {
+            _menuVm.TypeMeal = 1;
+            ItemsControl1.ItemsSource = null;
+            BreakfastButton.IsEnabled = false;
+            DinnerButton.IsEnabled = true;
+            AfternoonSnackButton.IsEnabled = true;
             BreakfastButton.Style = Application.Current.TryFindResource("SelectedTypeMealButton") as Style;
             DinnerButton.Style = Application.Current.TryFindResource("TypeMealButton") as Style;
             AfternoonSnackButton.Style = Application.Current.TryFindResource("TypeMealButton") as Style;
+            this.Dispatcher.InvokeAsync(() =>
+                {
+                    _menuVm.DishInMenu.Clear();
+                    _menuVm.GetMenu();
+                }
+            );
+            ItemsControl1.ItemsSource = _menuVm.DishInMenu;
         }
         
-        public void DinnerButtonClick(object sender, RoutedEventArgs e)
+        public async void DinnerButtonClick(object sender, RoutedEventArgs e)
         {
+            _menuVm.TypeMeal = 2;
+            ItemsControl1.ItemsSource = null;
+            BreakfastButton.IsEnabled = true;
+            DinnerButton.IsEnabled = false;
+            AfternoonSnackButton.IsEnabled = true;
             DinnerButton.Style = Application.Current.TryFindResource("SelectedTypeMealButton") as Style;
             BreakfastButton.Style = Application.Current.TryFindResource("TypeMealButton") as Style;
             AfternoonSnackButton.Style = Application.Current.TryFindResource("TypeMealButton") as Style;
+            this.Dispatcher.Invoke(() =>
+                {
+                    _menuVm.DishInMenu.Clear();
+                    _menuVm.GetMenu();
+                }
+            );
+            ItemsControl1.ItemsSource = _menuVm.DishInMenu;
         }
         
         public void AfternoonSnackButtonClick(object sender, RoutedEventArgs e)
         {
+            _menuVm.TypeMeal = 2;
+            ItemsControl1.ItemsSource = null;
+            BreakfastButton.IsEnabled = true;
+            DinnerButton.IsEnabled = true;
+            AfternoonSnackButton.IsEnabled = false;
             AfternoonSnackButton.Style = Application.Current.TryFindResource("SelectedTypeMealButton") as Style;
             DinnerButton.Style = Application.Current.TryFindResource("TypeMealButton") as Style;
             BreakfastButton.Style = Application.Current.TryFindResource("TypeMealButton") as Style;
+            this.Dispatcher.Invoke(() =>
+                {
+                    _menuVm.DishInMenu.Clear();
+                    _menuVm.GetMenu();
+                }
+            );
+            ItemsControl1.ItemsSource = _menuVm.DishInMenu;
         }
 
         public void ChangeStyleCircleButton(object sender, RoutedEventArgs e)

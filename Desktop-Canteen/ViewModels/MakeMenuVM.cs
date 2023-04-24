@@ -80,7 +80,7 @@ public class MakeMenuVM: BaseVM
     {
         var menu = new MenuInput()
         {
-            Date = (DateTime) Date,
+            Date = Date.ToString("yyyy-MM-dd"),
             DishId = (int) param,
             TypeMealId = (int) TypeMeal
         };
@@ -108,8 +108,8 @@ public class MakeMenuVM: BaseVM
         Menu.Clear();
         DishInMenu.Clear();
         DishCanAddToMenu.Clear();
-        var b = Date.ToString("yyyy-mm-dd");
-        var menuDate = ApiServer.Get<List<Menu>>("menus/date/"+Date.ToString("yyyy-mm-dd"));
+        var b = Date.ToString("yyyy-MM-dd");
+        var menuDate = ApiServer.Get<List<Menu>>("menus/date/"+Date.ToString("yyyy-MM-dd"));
         //var  = new ObservableCollection<Menu>(ApiServer.Get<List<Menu>>("menus"));
         if (menuDate != null)
         {

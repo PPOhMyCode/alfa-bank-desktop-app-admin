@@ -28,7 +28,9 @@ public partial class AddNewDishPage : Page
         try
         {
             _AddNewDishVm.ExecuteAddDish();
-            NavigationService?.Navigate(new AllDishesPage());
+            var page = MainWindow.DictionaryPages["Dishes"] as AllDishesPage;
+            page.Refresh();
+            NavigationService?.Navigate(MainWindow.DictionaryPages["Dishes"]);
         }
         catch (Exception exception)
         {
@@ -39,20 +41,20 @@ public partial class AddNewDishPage : Page
 
     public void ToAllDishesButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new AllDishesPage());
+        NavigationService?.Navigate(MainWindow.DictionaryPages["Dishes"]);
     }
     
     public void ToOrderingIngredientsButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new OrderingIngredientsPage());
+        NavigationService?.Navigate(MainWindow.DictionaryPages["Ingredients"]);
     }
             
     public void ToMenuButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new MenuPage());
+        NavigationService?.Navigate(MainWindow.DictionaryPages["Menu"]);
     }
     public void ToScheduleButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new SchedulePage());
+        NavigationService?.Navigate(MainWindow.DictionaryPages["Schedule"]);
     }
 }

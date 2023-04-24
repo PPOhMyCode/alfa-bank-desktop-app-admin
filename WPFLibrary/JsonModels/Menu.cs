@@ -11,7 +11,7 @@ public class Menu : BaseModel
 
 public class MenuInput
 {
-    public DateTime Date { get; set; }
+    public string Date { get; set; }
     public int DishId { get; set; }
     public int TypeMealId { get; set; }
 }

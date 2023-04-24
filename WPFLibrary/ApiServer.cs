@@ -114,8 +114,9 @@ public class ApiServer
             var a = JsonConvert.DeserializeObject<AuthData>(response.Content);
             URL = a.url;
             System.Console.WriteLine(URL);
+            return response;
         }
             
-        return response;
+        return null;
     }
 }

@@ -21,19 +21,24 @@ public partial class AllDishesPage : Page
         DataContext = _allDishesVm;
         _allDishesVm.Refresh();
     }
+
+    public void Refresh()
+    {
+        _allDishesVm.Refresh();
+    }
     
     public void ToOrderingIngredientsButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new OrderingIngredientsPage());
+        NavigationService?.Navigate(MainWindow.DictionaryPages["Ingredients"]);
     }
             
     public void ToMenuButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new MenuPage());
+        NavigationService?.Navigate(MainWindow.DictionaryPages["Menu"]);
     }
     public void ToScheduleButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new SchedulePage());
+        NavigationService?.Navigate(MainWindow.DictionaryPages["Schedule"]);
     }
 
     public void ToAddNewDishButtonClick(object sender, RoutedEventArgs e)
