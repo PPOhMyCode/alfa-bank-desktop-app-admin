@@ -32,14 +32,9 @@ public class ReceiptsVM : BaseVM
         string[] strArray =
         {
             "Все классы",
-            "1A",
-            "1Б",
-            "1В",
-            "2А",
-            "2Б",
-            "3А",
-            "4А",
-            "5А"
+            "5Б",
+            "8А",
+            "11А"
         };
         return strArray;
     }
@@ -82,60 +77,25 @@ public class ReceiptsVM : BaseVM
         {
             new()
             {
-                FirstName = "Екатерина",
-                Patronymic = "Вячеславовна",
-                SecondName = "Антонова",
-                Grade = new GradeView(){Name = "1А"}
+                FirstName = "Иван",
+                Patronymic = "Иванов",
+                SecondName = "Иванов",
+                Grade = new GradeView(){Name = "5Б"}
+            },
+            new()
+            {
+                FirstName = "Аслан",
+                Patronymic = "Масуд оглы",
+                SecondName = "Рзаев",
+                Grade = new GradeView(){Name = "5Б"}
             },
             new()
             {
                 FirstName = "Мария",
-                Patronymic = "Вячеславовна",
+                Patronymic = "Александровна",
                 SecondName = "Синицина",
-                Grade = new GradeView(){Name = "1А"}
-            },
-            new()
-            {
-                FirstName = "Анастасия",
-                Patronymic = "Вячеславовна",
-                SecondName = "Антонова",
-                Grade = new GradeView(){Name = "1А"}
-            },
-            new()
-            {
-                FirstName = "Иван",
-                Patronymic = "Вячеславовна",
-                SecondName = "Иванов",
-                Grade = new GradeView(){Name = "1А"}
-            },
-            new()
-            {
-                FirstName = "Екатерина",
-                Patronymic = "Вячеславовна",
-                SecondName = "Антонова",
-                Grade = new GradeView(){Name = "1А"}
-            },
-            new()
-            {
-                FirstName = "Мария",
-                Patronymic = "Вячеславовна",
-                SecondName = "Синицина",
-                Grade = new GradeView(){Name = "1А"}
-            },
-            new()
-            {
-                FirstName = "Анастасия",
-                Patronymic = "Вячеславовна",
-                SecondName = "Антонова",
-                Grade = new GradeView(){Name = "1А"}
-            },
-            new()
-            {
-                FirstName = "Иван",
-                Patronymic = "Вячеславовна",
-                SecondName = "Иванов",
-                Grade = new GradeView(){Name = "1А"}
-            },
+                Grade = new GradeView(){Name = "5Б"}
+            }
         };
     }
     

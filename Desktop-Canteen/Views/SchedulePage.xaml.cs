@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using Desktop_Canteen.ViewModels;
 
@@ -16,6 +17,8 @@ public partial class SchedulePage : Page
             TableGrid = TableGrid
         };
         DataContext = _scheduleVm;
+        _scheduleVm.SelectDay(_scheduleVm.Days[0]);
+        ChangeStyleCircleButton(Monday, null);
         _scheduleVm.CheckPlug();
     }
     

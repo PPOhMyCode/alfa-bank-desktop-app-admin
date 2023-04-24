@@ -10,7 +10,15 @@ public partial class AddNewUserPage : Page
     public AddNewUserPage()
     {
         InitializeComponent();
-        _addNewUserVm = new AddNewUserVM();
+        _addNewUserVm = new AddNewUserVM()
+        {
+            CategoriesDockPanel = Categories,
+            PlugAdditionalInformation = PlugAdditionalInformation,
+            AdditionalInformationAboutChildren = AdditionalInformationAboutChildren,
+            AdditionalInformationAboutClass = AdditionalInformationAboutClass,
+            NoNeedAdditionalInformation = NoNeedAdditionalInformation,
+            AddInfoExpander = AddInfoExpander
+        };
         DataContext = _addNewUserVm;
     }
     
@@ -32,5 +40,41 @@ public partial class AddNewUserPage : Page
     private void AddNewUser_OnClick(object sender, RoutedEventArgs e)
     {
         NavigationService?.Navigate(new MakeClassPage());
+    }
+
+    private void SelectCategoriesButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (Categories.Visibility == Visibility.Visible)
+        {
+            Categories.Visibility = Visibility.Hidden;
+        }
+        else
+        {
+            Categories.Visibility = Visibility.Visible;
+        }
+    }
+
+    private void SelectChildrenButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (Children.Visibility == Visibility.Visible)
+        {
+            Children.Visibility = Visibility.Hidden;
+        }
+        else
+        {
+            Children.Visibility = Visibility.Visible;
+        }
+    }
+
+    private void SelectClassButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (Classes.Visibility == Visibility.Visible)
+        {
+            Classes.Visibility = Visibility.Hidden;
+        }
+        else
+        {
+            Classes.Visibility = Visibility.Visible;
+        }
     }
 }

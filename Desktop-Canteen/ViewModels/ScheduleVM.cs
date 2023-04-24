@@ -58,6 +58,7 @@ public class ScheduleVM:BaseVM
     
     public void GetData()
     {
+        Data.Clear();
         var a = Date.ToString("yyyy-MM-dd");
         DayOrders = new List<Order>(ApiServer.Get<List<Order>>("orders/date/"+Date.ToString("yyyy-MM-dd")));
         var Timings = new List<Timing>(ApiServer.Get<List<Timing>>("timings"));

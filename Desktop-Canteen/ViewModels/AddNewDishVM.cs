@@ -83,14 +83,6 @@ public class AddNewDishVM : BaseVM
             _prevSelectedItem = _selectedItem;
             _selectedItem = value;
             AddNewIngredientButton.IsEnabled = true;
-            // if (_prevSelectedItem.Name == _selectedItem.Name)
-            // {
-            //     AddNewIngredientButton.IsEnabled = false;
-            // }
-            // else
-            // {
-            //     AddNewIngredientButton.IsEnabled = true;
-            // }
             OnPropertyChanged("SelectedIngredient");
         }
     }
