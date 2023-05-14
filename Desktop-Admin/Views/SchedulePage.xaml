@@ -136,35 +136,6 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        <!--  <ComboBox Foreground="{StaticResource DarkGrayBrush}"  -->
-                        <!--  FontSize="16"  -->
-                        <!--  Text=""  -->
-                        <!--  VerticalAlignment="Bottom"  -->
-                        <!--  FontFamily="{StaticResource Montserrat-Medium}"  -->
-                        <!--  Style="{StaticResource MaterialDesignOutlinedComboBox}"  -->
-                        <!--  Margin="10,0,0,0" Padding="10"  -->
-                        <!--  Height="40"  -->
-                        <!--  Width="205"  -->
-                        <!--  ItemsSource="{Binding Classes}"  -->
-                        <!--  d:LayoutOverrides="Height"  -->
-                        <!--  BorderThickness="1.5"  -->
-                        <!--  BorderBrush="{StaticResource GreenBrush}"  -->
-                        <!--  SelectedItem="{Binding SelectedClass}"  -->
-                        <!--  Background="{StaticResource LightBackgroundBrush}"  -->
-                        <!--  ToolTip="Выберите класс"  -->
-                        <!--  materialDesign:ComboBoxAssist.ShowSelectedItem="False"  -->
-                        <!--  HorizontalAlignment="Left">  -->
-                        <!--     <ComboBox.ItemTemplate> -->
-                        <!--         <DataTemplate> -->
-                        <!--             <TextBlock Text="{Binding}" /> -->
-                        <!--         </DataTemplate> -->
-                        <!--     </ComboBox.ItemTemplate> -->
-                        <!--     <ComboBox.ItemContainerStyle> -->
-                        <!--         <Style> -->
-                        <!--             <Setter Property="ComboBox.Background" Value="{StaticResource LightBackgroundBrush}" /> -->
-                        <!--         </Style> -->
-                        <!--     </ComboBox.ItemContainerStyle> -->
-                        <!-- </ComboBox> -->
 
                         <Button
                             Click="ChangeScheduleButton_OnClick"
@@ -231,7 +202,7 @@
                                 <TextBlock
                                     Grid.Row="1"
                                     HorizontalAlignment="Center"
-                                    Text="Завтрак" />
+                                    Text="{Binding Schedule[0].TypeMeal}" />
                             </Grid>
                         </Button>
 
@@ -239,7 +210,7 @@
                             HorizontalAlignment="Left"
                             Margin="20,0"
                             Style="{StaticResource Medium30Text}"
-                            Text="{Binding Timings[0]}"
+                            Text="{Binding Schedule[0].Time}"
                             VerticalAlignment="Center" />
                     </StackPanel>
                 </Grid>
@@ -272,7 +243,7 @@
                                 <TextBlock
                                     Grid.Row="1"
                                     HorizontalAlignment="Center"
-                                    Text="Обед" />
+                                    Text="{Binding Schedule[1].TypeMeal}" />
                             </Grid>
                         </Button>
 
@@ -280,7 +251,7 @@
                             HorizontalAlignment="Left"
                             Margin="20,0"
                             Style="{StaticResource Medium30Text}"
-                            Text="{Binding Timings[1]}"
+                            Text="{Binding Schedule[1].Time}"
                             VerticalAlignment="Center" />
                     </StackPanel>
                 </Grid>
@@ -313,7 +284,7 @@
                                 <TextBlock
                                     Grid.Row="1"
                                     HorizontalAlignment="Center"
-                                    Text="Полдник" />
+                                    Text="{Binding Schedule[2].TypeMeal}" />
                             </Grid>
                         </Button>
 
@@ -321,7 +292,7 @@
                             HorizontalAlignment="Left"
                             Margin="20,0"
                             Style="{StaticResource Medium30Text}"
-                            Text="{Binding Timings[2]}"
+                            Text="{Binding Schedule[2].Time}"
                             VerticalAlignment="Center" />
                     </StackPanel>
                 </Grid>

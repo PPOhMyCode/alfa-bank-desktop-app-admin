@@ -13,7 +13,7 @@ public class Timing
 
 public class TimingView
 {
-    public TimeSpan Time { get; set; }
+    public string Time { get; set; }
     public string TypeMeal { get; set; }
     public GradeView Grade { get; set; }
 }
