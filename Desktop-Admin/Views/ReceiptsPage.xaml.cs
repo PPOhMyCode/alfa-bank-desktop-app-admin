@@ -29,6 +29,16 @@ public partial class ReceiptsPage : Page
         NavigationService?.Navigate(new SchedulePage());
     }
     
+    public void ToRefusalsButtonClick(object sender, RoutedEventArgs e)
+    {
+        NavigationService?.Navigate(new FoodRefusalsPage());
+    }
+    
+    public void ToRecalculationButtonClick(object sender, RoutedEventArgs e)
+    {
+        NavigationService?.Navigate(new RecalculationRequestsPage());
+    }
+    
     private void SelectCategoriesButton_OnClick(object sender, RoutedEventArgs e)
     {
         if (Categories.Visibility == Visibility.Visible)
