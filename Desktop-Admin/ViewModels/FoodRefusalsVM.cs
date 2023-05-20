@@ -9,6 +9,25 @@ public class FoodRefusalsVM : BaseVM
 {
     public ObservableCollection<FoodRefusal> FoodRefusals { get; set; }
     public int allRefusalsCount { get; set; }
+
+    public RefusalChildrenCard _selectedCard;
+    public RefusalChildrenCard SelectedCard
+    {
+        get { return _selectedCard; }
+        set { _selectedCard = value; }
+    }
+    public string _childrenNameMoreWindow;
+    public string ChildrenNameMoreWindow
+    {
+        get { return _childrenNameMoreWindow; }
+        set { _childrenNameMoreWindow = SelectedCard.ChildrenName; }
+    }
+    public string _causeMoreWindow;
+    public string CauseMoreWindow
+    {
+        get { return _causeMoreWindow; }
+        set { _causeMoreWindow = SelectedCard.Cause; }
+    }
     public FoodRefusalsVM()
     {
         FoodRefusals = new ObservableCollection<FoodRefusal>()
@@ -57,7 +76,7 @@ public class FoodRefusalsVM : BaseVM
                 {
                     new RefusalChildrenCard()
                     {
-                        Cause = "В связи с тем, что ребенок не употребляет пищу столовой",
+                        Cause = "В связи с тем, что ребенок не употребляет пищу столовой, В связи с тем, что ребенок не употребляет пищу столовой, В связи с тем, что ребенок не употребляет пищу столовой",
                         Class = "5Б",
                         ChildrenName = "Беляев Антон"
                     },
@@ -82,6 +101,12 @@ public class FoodRefusalsVM : BaseVM
                 }
             }
         };
-        
+
+        allRefusalsCount = 0;
+        for (var i = 0; i < FoodRefusals.Count; i++)
+        {
+            allRefusalsCount += FoodRefusals[i].ChildrenCards.Count;
+        }
+
     }
 }
