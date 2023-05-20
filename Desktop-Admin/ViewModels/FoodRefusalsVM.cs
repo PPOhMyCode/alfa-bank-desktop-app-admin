@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Controls;
 using WPFLibrary.JsonModels;
 using WPFLibrary.Models;
 
@@ -9,6 +11,7 @@ public class FoodRefusalsVM : BaseVM
 {
     public ObservableCollection<FoodRefusal> FoodRefusals { get; set; }
     public int allRefusalsCount { get; set; }
+    public TextBlock NoDataPlug { get; set; }
 
     public RefusalChildrenCard _selectedCard;
     public RefusalChildrenCard SelectedCard
@@ -103,10 +106,17 @@ public class FoodRefusalsVM : BaseVM
         };
 
         allRefusalsCount = 0;
-        for (var i = 0; i < FoodRefusals.Count; i++)
+        if (FoodRefusals != null || FoodRefusals != new ObservableCollection<FoodRefusal>())
         {
-            allRefusalsCount += FoodRefusals[i].ChildrenCards.Count;
+            for (var i = 0; i < FoodRefusals.Count; i++)
+            {
+                allRefusalsCount += FoodRefusals[i].ChildrenCards.Count;
+            }
         }
+    }
 
+    public void CheckPlug()
+    {
+        if (NoDataPlug != null && allRefusalsCount == 0) NoDataPlug.Visibility = Visibility.Visible; 
     }
 }

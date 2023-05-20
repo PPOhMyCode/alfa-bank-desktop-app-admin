@@ -11,8 +11,12 @@ public partial class FoodRefusalsPage : Page
     public FoodRefusalsPage()
     {
         InitializeComponent();
-        _refusalsVm = new FoodRefusalsVM();
+        _refusalsVm = new FoodRefusalsVM()
+        {
+            NoDataPlug = NoDataPlug
+        };
         DataContext = _refusalsVm;
+        _refusalsVm.CheckPlug();
     }
     
     public void ToMakeClassButtonClick(object sender, RoutedEventArgs e)
