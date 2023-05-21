@@ -16,17 +16,20 @@ public partial class ScheduleSettingsPage : Page
     
     public void ToMakeClassButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new MakeClassPage());
+        NavigationService?.GoBack();
+        NavigationService?.Navigate(MainWindow.DictionaryPages["MakeClassPage"]);
     }
     
     public void ToReceiptsButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new ReceiptsPage());
+        NavigationService?.GoBack();
+        NavigationService?.Navigate(MainWindow.DictionaryPages["ReceiptsPage"]);
     }
 
     public void ToSheduleButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new SchedulePage());
+        NavigationService?.GoBack();
+        NavigationService?.Navigate(MainWindow.DictionaryPages["SchedulePage"]);
     }
     
     private void SelectCategoriesButton_OnClick(object sender, RoutedEventArgs e)
@@ -48,6 +51,6 @@ public partial class ScheduleSettingsPage : Page
 
     private void SaveButton_OnClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new SchedulePage());
+        NavigationService?.GoBack();
     }
 }

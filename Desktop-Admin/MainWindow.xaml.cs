@@ -22,10 +22,16 @@ namespace Desktop_Admin
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static Dictionary<string, Page> DictionaryPages;
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Content = new AuthorizationPage();
+            DictionaryPages = new Dictionary<string, Page>()
+            {
+                {"Authorization",new AuthorizationPage()},
+            };
+            
+            MainFrame.Content = DictionaryPages["Authorization"];
         }
     }
 }

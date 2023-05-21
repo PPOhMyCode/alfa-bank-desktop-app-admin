@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Markup;
@@ -23,7 +24,7 @@ namespace Desktop_Admin.ViewModels;
 
 public class MainViewModel : BaseVM, INotifyPropertyChanged
 {
-    private ObservableCollection<string> SelectedItems { get; set; }
+    public ObservableCollection<string> SelectedItems { get; set; }
     public StackPanel ClassesPanel;
     private bool isCheck;
 
@@ -76,7 +77,7 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
         ChildrenInSelectedClass = new ObservableCollection<Children>();
     }
 
-    public void SelectCategory(object param)
+    public async void SelectCategory(object param)
     {
         var item = param as string;
         if (item == "Все классы")
@@ -104,15 +105,15 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
             }
         }
         
-        ChangeClassView();
-        CheckPlug();
+        //await Task.Run(()=>ChangeClassView());
+        //CheckPlug();
     }
     
     public void CheckPlug()
     {
         try
         {
-            if (ClassesPanel != null && ClassesPanel.Children.Count != 0)
+            if (SelectedItems.Count != 0)
             {
                 NoSelectedClassesTextBlock.Visibility = Visibility.Hidden;
             }
@@ -127,7 +128,7 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
         }
     }
     
-    private void ChangeClassView()
+    public async void ChangeClassView()
     {
         if (ClassesPanel == null) 
             return; 
@@ -357,9 +358,9 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
             var dataTemplate = (DataTemplate)XamlReader.Load(sr, pc);
             var panelTemplate = (ItemsPanelTemplate)XamlReader.Load(sr1, pc);
             var a = Grades.Where(x => x.Name == selectedItem);
-            var children = ApiServer.Get<List<Children>>("grades/" +
-                                                         Grades
-                                                             .FirstOrDefault(x => x.Name == selectedItem).GradeId + "/childrens");
+            var children = await Task.Run(()=> ApiServer.Get<List<Children>>("grades/" +
+                                                                             Grades
+                                                                                 .FirstOrDefault(x => x.Name == selectedItem).GradeId + "/childrens"));
             var itemsControl = new ItemsControl()
             {
                 ItemsSource = new ObservableCollection<Children>(children)

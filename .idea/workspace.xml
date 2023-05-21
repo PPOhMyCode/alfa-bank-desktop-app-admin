@@ -2,8 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb571a58-c22d-4db6-aa82-596f728af297" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Desktop-Admin/ViewModels/UploadUsersFileVM.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Desktop-Admin/Desktop-Admin.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Desktop-Admin/Desktop-Admin.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPFLibrary/Styles/Texts.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/WPFLibrary/Styles/Texts.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop-Admin/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Desktop-Admin/MainWindow.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop-Admin/ViewModels/MainViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Desktop-Admin/ViewModels/MainViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop-Admin/Views/AuthorizationPage.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Desktop-Admin/Views/AuthorizationPage.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop-Admin/Views/MakeClassPage.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Desktop-Admin/Views/MakeClassPage.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop-Admin/Views/ReceiptsPage.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Desktop-Admin/Views/ReceiptsPage.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop-Admin/Views/SchedulePage.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Desktop-Admin/Views/SchedulePage.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop-Admin/Views/ScheduleSettingsPage.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Desktop-Admin/Views/ScheduleSettingsPage.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop-Admin/Views/UploadUsersFilePage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Desktop-Admin/Views/UploadUsersFilePage.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop-Admin/Views/UploadUsersFilePage.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Desktop-Admin/Views/UploadUsersFilePage.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop-Canteen/Desktop-Canteen.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Desktop-Canteen/Desktop-Canteen.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPFLibrary/JsonModels/Timing.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPFLibrary/JsonModels/Timing.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPFLibrary/Models/ScheduleItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPFLibrary/Models/ScheduleItem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WPFLibrary/WPFLibrary.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WPFLibrary/WPFLibrary.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,6 +49,7 @@
       <option name="presentableId" value="Default" />
       <updated>1667551334596</updated>
       <workItem from="1667551360297" duration="37000" />
+      <workItem from="1682500386895" duration="68000" />
     </task>
     <servers />
   </component>

@@ -11,9 +11,9 @@ public class ScheduleItem
     public string Time { get; set; } 
     public List<ScheduleInTimeItem> Data { get; set; }
 
-    public ScheduleItem(DateTime time)
+    public ScheduleItem(string time)
     {
-        Time = time.TimeOfDay.ToString();
+        Time = time;
         Data = new List<ScheduleInTimeItem>();
     }
 

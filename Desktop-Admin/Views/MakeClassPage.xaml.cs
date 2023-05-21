@@ -22,12 +22,12 @@ public partial class MakeClassPage : Page
     
     public void ToReceiptsButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new ReceiptsPage());
+        NavigationService?.Navigate(MainWindow.DictionaryPages["ReceiptsPage"]);
     }
     
     public void ToScheduleButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new SchedulePage());
+        NavigationService?.Navigate(MainWindow.DictionaryPages["SchedulePage"]) ;
     }
 
     private void SelectCategoriesButton_OnClick(object sender, RoutedEventArgs e)
@@ -45,10 +45,16 @@ public partial class MakeClassPage : Page
     private void DoneButton_OnClick(object sender, RoutedEventArgs e)
     {
         Categories.Visibility = Visibility.Hidden;
+        this.Dispatcher.InvokeAsync(() =>
+            {
+                _mainVM.CheckPlug();
+                _mainVM.ChangeClassView();
+            }
+        );
     }
 
     private void AddNewUser_OnClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new UploadUsersFilePage());
+        NavigationService?.Navigate(MainWindow.DictionaryPages["UploadUsersFilePage"]);
     }
 }

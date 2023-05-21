@@ -9,6 +9,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModels="clr-namespace:Desktop_Admin.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Page.DataContext>
+        <viewModels:UploadUsersFileVM />
+    </Page.DataContext>
     <ScrollViewer>
         <Grid>
             <Grid>
@@ -126,6 +129,7 @@
                                 Grid.Row="2"
                                 Height="60"
                                 HorizontalAlignment="Left"
+                                Command="{Binding UploadUsersCommand}"
                                 Style="{StaticResource LightBaseButton}"
                                 Width="355">
                                 <Grid Width="300">
