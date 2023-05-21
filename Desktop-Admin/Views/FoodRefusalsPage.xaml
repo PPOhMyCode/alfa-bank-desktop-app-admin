@@ -284,13 +284,12 @@
                         BorderThickness="2"
                         CornerRadius="15"
                         Grid.Row="1"
-                        Height="200"
                         HorizontalAlignment="Center"
                         Padding="0"
                         VerticalAlignment="Top"
                         Width="555">
                         <Grid
-                            Height="150"
+                            Margin="0,30"
                             VerticalAlignment="Center"
                             Width="495">
                             <Grid.RowDefinitions>
@@ -309,17 +308,16 @@
                                 VerticalAlignment="Bottom"
                                 Width="450" />
 
-                            <ScrollViewer Grid.Row="1" Height="60">
-                                <TextBlock
-                                    FontSize="16"
-                                    Foreground="{StaticResource DarkTextBrush}"
-                                    HorizontalAlignment="Left"
-                                    Style="{StaticResource RegularText}"
-                                    Text="{Binding CauseMoreWindow}"
-                                    TextWrapping="Wrap"
-                                    VerticalAlignment="Top"
-                                    Width="470" />
-                            </ScrollViewer>
+                            <TextBlock
+                                FontSize="16"
+                                Foreground="{StaticResource DarkTextBrush}"
+                                Grid.Row="1"
+                                HorizontalAlignment="Left"
+                                Style="{StaticResource RegularText}"
+                                Text="{Binding CauseMoreWindow}"
+                                TextWrapping="Wrap"
+                                VerticalAlignment="Top"
+                                Width="470" />
 
                             <Button
                                 Click="CloseWindowButtonClick"
