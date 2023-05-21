@@ -25,7 +25,8 @@ namespace Desktop_Admin
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Content = new AuthorizationPage();
+            //MainFrame.Content = new AuthorizationPage();
+            MainFrame.Content = new RecalculationRequestsPage();
         }
     }
 }

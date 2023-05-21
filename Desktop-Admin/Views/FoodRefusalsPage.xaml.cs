@@ -28,6 +28,11 @@ public partial class FoodRefusalsPage : Page
     {
         NavigationService?.Navigate(new SchedulePage());
     }
+    
+    public void ToReceiptsButtonClick(object sender, RoutedEventArgs e)
+    {
+        NavigationService?.Navigate(new ReceiptsPage());
+    }
 
     public void MoreButtonClick(object sender, RoutedEventArgs e)
     {

@@ -3,14 +3,44 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using WPFLibrary.JsonModels;
+using WPFLibrary.Models;
 
 namespace Desktop_Admin.ViewModels;
 
-public class RecalculationRequestsVM
+public class RecalculationRequestsVM : BaseVM
 {
     public ObservableCollection<RecalculationRequest> Requests { get; set; }
     public int allRequestsCount { get; set; }
     public TextBlock NoDataPlug { get; set; }
+    public RecalculationRequestCard _selectedCard;
+    public RecalculationRequestCard SelectedCard 
+    {
+        get { return _selectedCard; }
+        set
+        {
+            _selectedCard = value;
+            OnPropertyChanged("SelectedCard");
+        }
+    }
+    // public string _childrenNameMoreWindow;
+    // public string ChildrenNameMoreWindow 
+    // {
+    //     get { return _childrenNameMoreWindow; }
+    //     set { _childrenNameMoreWindow = SelectedCard.ChildrenName; }
+    // }
+    //
+    // public List<string> _beforeMoreWindow;
+    // public List<string> BeforeMoreWindow 
+    // {
+    //     get { return _beforeMoreWindow; }
+    //     set { _beforeMoreWindow = SelectedCard.Before; }
+    // }
+    // public ObservableCollection<string> _afterMoreWindow;
+    // public ObservableCollection<string> AfterMoreWindow
+    // {
+    //     get { return _afterMoreWindow; }
+    //     set { _afterMoreWindow = new ObservableCollection<string>(SelectedCard.After); }
+    // }
 
     public RecalculationRequestsVM()
     {
@@ -25,8 +55,8 @@ public class RecalculationRequestsVM
                     {
                         Class = "1А",
                         ChildrenName = "Пик Елизавета",
-                        Before = new List<string>(){"Творожная запеканка", "Черный чай"},
-                        After = new List<string>(){"Творожная запеканка", "Черный чай"},
+                        Before = new List<string>(){"Творожная запеканка", "Черный чай", "Творожная запеканка", "Черный чай"},
+                        After = new List<string>(){"Творожная запеканка", "Черный чай", "Творожная запеканка", "Черный чай", "Творожная запеканка", "Черный чай", "Творожная запеканка"},
                         PriceDiff = "+67 р"
                     },
                     new RecalculationRequestCard()

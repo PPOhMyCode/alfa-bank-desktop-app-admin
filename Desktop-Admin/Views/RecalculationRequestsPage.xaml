@@ -221,6 +221,7 @@
                                                                 Margin="0,0,0,5"
                                                                 Style="{StaticResource RegularText}"
                                                                 Text="{Binding PriceDiff}"
+                                                                TextAlignment="Center"
                                                                 VerticalAlignment="Top"
                                                                 Width="120" />
 
@@ -232,6 +233,7 @@
                                                                 Margin="0,0,5,5"
                                                                 Style="{StaticResource Medium15Text}"
                                                                 Text="{Binding ChildrenName}"
+                                                                TextAlignment="Left"
                                                                 VerticalAlignment="Bottom"
                                                                 Width="220" />
                                                             <TextBlock
@@ -241,24 +243,85 @@
                                                                 Grid.Row="1"
                                                                 Style="{StaticResource RegularText}"
                                                                 Text="{Binding Class}"
+                                                                TextAlignment="Left"
                                                                 Width="220" />
-                                                            <TextBlock
-                                                                FontSize="15"
-                                                                Foreground="{StaticResource DarkTextBrush}"
+                                                            <StackPanel
                                                                 Grid.Column="1"
                                                                 Grid.Row="2"
-                                                                Height="60"
-                                                                Style="{StaticResource RegularText}"
-                                                                Text="{Binding Cause}"
-                                                                TextTrimming="CharacterEllipsis"
-                                                                TextWrapping="Wrap"
-                                                                VerticalAlignment="Top"
-                                                                Width="220" />
+                                                                Orientation="Vertical">
+                                                                <ItemsControl
+                                                                    ItemsSource="{Binding After}"
+                                                                    Margin="0,0,0,0"
+                                                                    MaxHeight="35"
+                                                                    Width="240">
+                                                                    <ItemsControl.ItemsPanel>
+                                                                        <ItemsPanelTemplate>
+                                                                            <WrapPanel Orientation="Horizontal" />
+                                                                        </ItemsPanelTemplate>
+                                                                    </ItemsControl.ItemsPanel>
+                                                                    <ItemsControl.ItemTemplate>
+                                                                        <DataTemplate>
+                                                                            <Grid>
+                                                                                <Grid.ColumnDefinitions>
+                                                                                    <ColumnDefinition Width="20" />
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                </Grid.ColumnDefinitions>
+                                                                                <TextBlock
+                                                                                    Foreground="{StaticResource ErrorTextBrush}"
+                                                                                    Style="{StaticResource Medium15Text}"
+                                                                                    Text="+"
+                                                                                    TextAlignment="Center"
+                                                                                    Width="20" />
+                                                                                <TextBlock
+                                                                                    FontSize="15"
+                                                                                    Grid.Column="1"
+                                                                                    Style="{StaticResource RegularText}"
+                                                                                    Text="{Binding}"
+                                                                                    TextAlignment="Left" />
+                                                                            </Grid>
+                                                                        </DataTemplate>
+                                                                    </ItemsControl.ItemTemplate>
+                                                                </ItemsControl>
+                                                                <ItemsControl
+                                                                    ItemsSource="{Binding Before}"
+                                                                    Margin="0,0,0,0"
+                                                                    MaxHeight="35"
+                                                                    Width="240">
+                                                                    <ItemsControl.ItemsPanel>
+                                                                        <ItemsPanelTemplate>
+                                                                            <WrapPanel Orientation="Horizontal" />
+                                                                        </ItemsPanelTemplate>
+                                                                    </ItemsControl.ItemsPanel>
+                                                                    <ItemsControl.ItemTemplate>
+                                                                        <DataTemplate>
+                                                                            <Grid>
+                                                                                <Grid.ColumnDefinitions>
+                                                                                    <ColumnDefinition Width="20" />
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                </Grid.ColumnDefinitions>
+                                                                                <TextBlock
+                                                                                    Foreground="{StaticResource ErrorTextBrush}"
+                                                                                    Style="{StaticResource Medium15Text}"
+                                                                                    Text="-"
+                                                                                    TextAlignment="Center"
+                                                                                    Width="20" />
+                                                                                <TextBlock
+                                                                                    FontSize="15"
+                                                                                    Grid.Column="1"
+                                                                                    Style="{StaticResource RegularText}"
+                                                                                    Text="{Binding}"
+                                                                                    TextAlignment="Left" />
+                                                                            </Grid>
+                                                                        </DataTemplate>
+                                                                    </ItemsControl.ItemTemplate>
+                                                                </ItemsControl>
+                                                            </StackPanel>
                                                             <Button
                                                                 Click="MoreButtonClick"
                                                                 Grid.Column="1"
                                                                 Grid.Row="3"
                                                                 HorizontalAlignment="Right"
+                                                                Margin="0,0,15,0"
                                                                 Style="{StaticResource TransparentButton}">
                                                                 <materialDesign:PackIcon
                                                                     Foreground="{StaticResource GrayTextBrush}"
@@ -335,6 +398,137 @@
                     VerticalAlignment="Center"
                     Visibility="Hidden" />
 
+                <Grid
+                    Grid.Row="0"
+                    Grid.RowSpan="3"
+                    Name="MoreWindow"
+                    Visibility="Hidden">
+                    <Grid.Background>
+                        <SolidColorBrush Color="{StaticResource GreenColor}" Opacity="0.15" />
+                    </Grid.Background>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="300" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Border
+                        Background="{StaticResource LightBackgroundBrush}"
+                        BorderBrush="{StaticResource LightGreenBrush}"
+                        BorderThickness="2"
+                        CornerRadius="15"
+                        Grid.Row="1"
+                        HorizontalAlignment="Center"
+                        Padding="0"
+                        VerticalAlignment="Top"
+                        Width="555">
+                        <Grid
+                            Margin="0,30"
+                            VerticalAlignment="Center"
+                            Width="495">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock
+                                FontSize="18"
+                                Foreground="{StaticResource DarkGreenTextBrush}"
+                                Grid.Row="0"
+                                HorizontalAlignment="Left"
+                                Margin="15,0,5,20"
+                                Style="{StaticResource Medium15Text}"
+                                Text="{Binding SelectedCard.ChildrenName}"
+                                VerticalAlignment="Bottom"
+                                Width="450" />
+
+                            <ScrollViewer
+                                Grid.Row="1"
+                                HorizontalAlignment="Left"
+                                Margin="15,0,0,0"
+                                VerticalScrollBarVisibility="Auto">
+                                <StackPanel Orientation="Vertical">
+                                    <ItemsControl
+                                        ItemsSource="{Binding SelectedCard.After}"
+                                        Margin="0,0,0,0"
+                                        Width="240">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <WrapPanel Orientation="Horizontal" />
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="20" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock
+                                                        Foreground="{StaticResource DarkTextBrush}"
+                                                        Style="{StaticResource Medium15Text}"
+                                                        Text="+"
+                                                        TextAlignment="Center"
+                                                        Width="20" />
+                                                    <TextBlock
+                                                        FontSize="15"
+                                                        Grid.Column="1"
+                                                        Style="{StaticResource RegularText}"
+                                                        Text="{Binding}"
+                                                        TextAlignment="Left" />
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                    <ItemsControl
+                                        ItemsSource="{Binding SelectedCard.Before}"
+                                        Margin="0,0,0,0"
+                                        Width="240">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <WrapPanel Orientation="Horizontal" />
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="20" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock
+                                                        Foreground="{StaticResource DarkTextBrush}"
+                                                        Style="{StaticResource Medium15Text}"
+                                                        Text="-"
+                                                        TextAlignment="Center"
+                                                        Width="20" />
+                                                    <TextBlock
+                                                        FontSize="15"
+                                                        Grid.Column="1"
+                                                        Style="{StaticResource RegularText}"
+                                                        Text="{Binding}"
+                                                        TextAlignment="Left" />
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
+                            </ScrollViewer>
+
+                            <Button
+                                Click="CloseWindowButtonClick"
+                                Grid.Row="0"
+                                HorizontalAlignment="Right"
+                                Margin="0,-10,0,0"
+                                Style="{StaticResource TransparentButton}"
+                                VerticalAlignment="Top">
+                                <materialDesign:PackIcon
+                                    Foreground="{StaticResource GrayTextBrush}"
+                                    Height="25"
+                                    Kind="WindowClose"
+                                    Width="25" />
+                            </Button>
+                        </Grid>
+                    </Border>
+                </Grid>
 
             </Grid>
         </Grid>

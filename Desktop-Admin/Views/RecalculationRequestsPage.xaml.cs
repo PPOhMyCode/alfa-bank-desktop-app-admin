@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using Desktop_Admin.ViewModels;
+using WPFLibrary.JsonModels;
 
 namespace Desktop_Admin.Views;
 
@@ -36,14 +37,12 @@ public partial class RecalculationRequestsPage : Page
     public void MoreButtonClick(object sender, RoutedEventArgs e)
     {
         var button = (Button)sender;
-        // MoreWindow.Visibility = Visibility.Visible;
-        // _refusalsVm._selectedCard = (RefusalChildrenCard) button.DataContext;
-        // _refusalsVm.CauseMoreWindow = _refusalsVm._selectedCard.Cause;
-        // _refusalsVm.ChildrenNameMoreWindow = _refusalsVm._selectedCard.ChildrenName;
+        MoreWindow.Visibility = Visibility.Visible;
+        _vm.SelectedCard = (RecalculationRequestCard) button.DataContext;
     }
     
     public void CloseWindowButtonClick(object sender, RoutedEventArgs e)
     {
-        // MoreWindow.Visibility = Visibility.Hidden;
+        MoreWindow.Visibility = Visibility.Hidden;
     }
 }

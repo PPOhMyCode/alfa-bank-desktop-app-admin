@@ -54,6 +54,7 @@
                             Padding="10"
                             Style="{StaticResource MainMenuButton}" />
                         <Button
+                            Click="ToReceiptsButtonClick"
                             Content="Квитанции"
                             Padding="10"
                             Style="{StaticResource SelectedMainMenuButton}" />
