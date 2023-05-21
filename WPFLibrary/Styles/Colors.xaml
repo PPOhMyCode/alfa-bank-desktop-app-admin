@@ -21,6 +21,15 @@
     <!--    -->
     <!-- <SolidColorBrush x:Key="TopBrush" Color="#D2D2D2" /> -->
     <!-- <Color x:Key="TopColor">#D2D2D2</Color> -->
+    <SolidColorBrush Color="#FFE3E1" x:Key="UltraLightRedButtonBackgroundBrush" />
+    <Color x:Key="UltraLightRedButtonBackgroundColor">#FFE3E1</Color>
+
+    <SolidColorBrush Color="#FFC3BF" x:Key="LightRedButtonBackgroundBrush" />
+    <Color x:Key="LightRedButtonBackgroundColor">#FFC3BF</Color>
+
+    <SolidColorBrush Color="#FE9C96" x:Key="LightRedButtonIsMouseOverBackgroundBrush" />
+    <Color x:Key="LightRedButtonIsMouseOverBackgroundColor">#FE9C96</Color>
+
     <SolidColorBrush Color="#F8FFF5" x:Key="BackgroundBrush" />
     <Color x:Key="BackgroundColor">#F8FFF5</Color>
 

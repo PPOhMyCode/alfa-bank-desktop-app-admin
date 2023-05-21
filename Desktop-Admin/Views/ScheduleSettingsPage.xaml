@@ -167,7 +167,7 @@
                                 <TextBlock
                                     Grid.Row="1"
                                     HorizontalAlignment="Center"
-                                    Text="Завтрак" />
+                                    Text="{Binding Schedule[0].TypeMeal}" />
                             </Grid>
                         </Button>
 
@@ -180,7 +180,7 @@
                             Is24Hours="True"
                             Margin="20,0"
                             Padding="20,0"
-                            SelectedTime="{Binding Timings[0]}"
+                            SelectedTime="{Binding Schedule[0].Time}"
                             Style="{StaticResource MaterialDesignOutlinedTimePicker}"
                             Width="180"
                             materialDesign:TimePickerAssist.OutlinedBorderActiveThickness="2"
@@ -227,7 +227,7 @@
                                 <TextBlock
                                     Grid.Row="1"
                                     HorizontalAlignment="Center"
-                                    Text="Обед" />
+                                    Text="{Binding Schedule[1].TypeMeal}" />
                             </Grid>
                         </Button>
                         <materialDesign:TimePicker
@@ -239,7 +239,7 @@
                             Is24Hours="True"
                             Margin="20,0"
                             Padding="20,0"
-                            SelectedTime="{Binding Timings[1]}"
+                            SelectedTime="{Binding Schedule[1].Time}"
                             Style="{StaticResource MaterialDesignOutlinedTimePicker}"
                             Width="180"
                             materialDesign:TimePickerAssist.OutlinedBorderActiveThickness="2"
@@ -286,7 +286,7 @@
                                 <TextBlock
                                     Grid.Row="1"
                                     HorizontalAlignment="Center"
-                                    Text="Полдник" />
+                                    Text="{Binding Schedule[2].TypeMeal}" />
                             </Grid>
                         </Button>
 
@@ -299,7 +299,7 @@
                             Is24Hours="True"
                             Margin="20,0"
                             Padding="20,0"
-                            SelectedTime="{Binding Timings[2]}"
+                            SelectedTime="{Binding Schedule[2].Time}"
                             Style="{StaticResource MaterialDesignOutlinedTimePicker}"
                             Width="180"
                             materialDesign:TimePickerAssist.OutlinedBorderActiveThickness="2"

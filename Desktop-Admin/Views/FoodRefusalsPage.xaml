@@ -1,0 +1,341 @@
+﻿<Page
+    Title="FoodRefusalsPage"
+    mc:Ignorable="d"
+    x:Class="Desktop_Admin.Views.FoodRefusalsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Desktop_Admin.Views"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:Desktop_Admin.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Page.DataContext>
+        <viewModels:FoodRefusalsVM />
+    </Page.DataContext>
+    <ScrollViewer>
+        <Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Rectangle Grid.RowSpan="7">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="{StaticResource BackgroundColor}" Offset="0" />
+                            <GradientStop Color="{StaticResource LightBackgroundColor}" Offset="0.5" />
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+
+                <Grid>
+                    <DockPanel Margin="30,20,30,0">
+                        <Button
+                            Margin="0,0,10,0"
+                            Style="{StaticResource Transparent}"
+                            Width="180">
+                            <Viewbox>
+                                <Image Source="/Resources/AppIcon.png" Stretch="Uniform" />
+                            </Viewbox>
+                        </Button>
+                        <Button
+                            Click="ToMakeClassButtonClick"
+                            Content="Классы"
+                            Padding="10"
+                            Style="{StaticResource MainMenuButton}" />
+                        <Button
+                            Content="Пользователи"
+                            Padding="10"
+                            Style="{StaticResource MainMenuButton}" />
+                        <Button
+                            Click="ToScheduleButtonClick"
+                            Content="Расписание"
+                            Padding="10"
+                            Style="{StaticResource MainMenuButton}" />
+                        <Button
+                            Click="ToReceiptsButtonClick"
+                            Content="Квитанции"
+                            Padding="10"
+                            Style="{StaticResource SelectedMainMenuButton}" />
+
+                        <Button
+                            DockPanel.Dock="Right"
+                            Height="70"
+                            HorizontalAlignment="Right"
+                            Margin="0,0,10,0"
+                            Style="{StaticResource DefaultTransparentButton}"
+                            Width="70">
+                            <materialDesign:PackIcon
+                                Height="60"
+                                Kind="Circle"
+                                Width="60" />
+                        </Button>
+
+                        <Button
+                            DockPanel.Dock="Right"
+                            Height="60"
+                            HorizontalAlignment="Right"
+                            Margin="0,0,15,0"
+                            Style="{StaticResource DefaultTransparentButton}"
+                            Width="60">
+                            <materialDesign:PackIcon
+                                Height="30"
+                                Kind="BellOutline"
+                                Width="30" />
+                        </Button>
+                    </DockPanel>
+                </Grid>
+
+                <Grid Margin="40,0,30,0" Row="1">
+                    <Button
+                        Height="50"
+                        HorizontalAlignment="Right"
+                        Margin="0,5"
+                        Padding="0"
+                        Style="{StaticResource LightRedBaseButton}"
+                        VerticalAlignment="Center"
+                        Width="300">
+                        <Grid
+                            Height="50"
+                            VerticalAlignment="Center"
+                            Width="290">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.85*" />
+                                <ColumnDefinition Width="0.15*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                Grid.Column="0"
+                                HorizontalAlignment="Center"
+                                Margin="10,0,0,0"
+                                Style="{StaticResource SmallDefaultText}"
+                                Text="Отказы от питания"
+                                VerticalAlignment="Center" />
+                            <Viewbox
+                                Grid.Column="1"
+                                Height="35"
+                                HorizontalAlignment="Left"
+                                Margin="0,0,0,0"
+                                VerticalAlignment="Center"
+                                Width="35">
+                                <Grid>
+                                    <Ellipse
+                                        Fill="{StaticResource LightBackgroundBrush}"
+                                        Height="35"
+                                        Width="35" />
+                                    <TextBlock
+                                        Foreground="{StaticResource ErrorTextBrush}"
+                                        HorizontalAlignment="Center"
+                                        Style="{StaticResource Medium23Text}"
+                                        Text="{Binding allRefusalsCount}"
+                                        VerticalAlignment="Center" />
+                                </Grid>
+
+                            </Viewbox>
+                        </Grid>
+                    </Button>
+                </Grid>
+
+                <Grid Margin="40,0,30,0" Row="2">
+                    <ItemsControl ItemsSource="{Binding FoodRefusals}" Margin="0,0,0,200">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="60" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock
+                                        Foreground="{StaticResource DarkTextBrush}"
+                                        Style="{StaticResource Medium23Text}"
+                                        Text="{Binding Grade}" />
+
+                                    <ItemsControl
+                                        Grid.Row="1"
+                                        ItemsSource="{Binding ChildrenCards}"
+                                        Margin="0,0,0,0">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <WrapPanel Orientation="Horizontal" />
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Border
+                                                        Background="Transparent"
+                                                        BorderBrush="{StaticResource LightGreenBrush}"
+                                                        BorderThickness="2"
+                                                        CornerRadius="15"
+                                                        Height="156"
+                                                        HorizontalAlignment="Left"
+                                                        Margin="0,0,50,30"
+                                                        Padding="0"
+                                                        VerticalAlignment="Center"
+                                                        Width="364">
+                                                        <Grid
+                                                            Height="156"
+                                                            VerticalAlignment="Center"
+                                                            Width="364">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="43" />
+                                                                <RowDefinition Height="20" />
+                                                                <RowDefinition Height="65" />
+                                                                <RowDefinition Height="Auto" />
+                                                            </Grid.RowDefinitions>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="120" />
+                                                                <ColumnDefinition Width="Auto" />
+                                                            </Grid.ColumnDefinitions>
+
+                                                            <Viewbox
+                                                                Grid.RowSpan="4"
+                                                                Height="84"
+                                                                HorizontalAlignment="Center"
+                                                                Margin="0,25,0,0"
+                                                                VerticalAlignment="Top"
+                                                                Width="84">
+                                                                <Ellipse
+                                                                    Fill="{StaticResource LightGrayBrush}"
+                                                                    Height="84"
+                                                                    Width="84" />
+                                                            </Viewbox>
+
+                                                            <TextBlock
+                                                                FontSize="16"
+                                                                Foreground="{StaticResource DarkGreenTextBrush}"
+                                                                Grid.Column="1"
+                                                                Grid.Row="0"
+                                                                Margin="0,0,5,5"
+                                                                Style="{StaticResource Medium15Text}"
+                                                                Text="{Binding ChildrenName}"
+                                                                VerticalAlignment="Bottom"
+                                                                Width="220" />
+                                                            <TextBlock
+                                                                FontSize="14"
+                                                                Foreground="{StaticResource DarkTextBrush}"
+                                                                Grid.Column="1"
+                                                                Grid.Row="1"
+                                                                Style="{StaticResource RegularText}"
+                                                                Text="{Binding Class}"
+                                                                Width="220" />
+                                                            <TextBlock
+                                                                FontSize="15"
+                                                                Foreground="{StaticResource DarkTextBrush}"
+                                                                Grid.Column="1"
+                                                                Grid.Row="2"
+                                                                Height="60"
+                                                                Style="{StaticResource RegularText}"
+                                                                Text="{Binding Cause}"
+                                                                TextTrimming="CharacterEllipsis"
+                                                                TextWrapping="Wrap"
+                                                                VerticalAlignment="Top"
+                                                                Width="220" />
+                                                            <Button
+                                                                Click="MoreButtonClick"
+                                                                Grid.Column="1"
+                                                                Grid.Row="3"
+                                                                HorizontalAlignment="Right"
+                                                                Style="{StaticResource TransparentButton}">
+                                                                <materialDesign:PackIcon
+                                                                    Foreground="{StaticResource GrayTextBrush}"
+                                                                    Height="15"
+                                                                    Kind="DotsHorizontal"
+                                                                    Width="15" />
+                                                            </Button>
+                                                        </Grid>
+                                                    </Border>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+
+                <TextBlock
+                    Grid.Row="2"
+                    Height="200"
+                    HorizontalAlignment="Center"
+                    Margin="0,50"
+                    Name="NoDataPlug"
+                    Style="{StaticResource Medium30Text}"
+                    Text="Отказов от питания пока нет"
+                    VerticalAlignment="Center"
+                    Visibility="Hidden" />
+
+                <Grid
+                    Grid.Row="0"
+                    Grid.RowSpan="3"
+                    Name="MoreWindow"
+                    Visibility="Hidden">
+                    <Grid.Background>
+                        <SolidColorBrush Color="{StaticResource GreenColor}" Opacity="0.15" />
+                    </Grid.Background>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="300" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Border
+                        Background="{StaticResource LightBackgroundBrush}"
+                        BorderBrush="{StaticResource LightGreenBrush}"
+                        BorderThickness="2"
+                        CornerRadius="15"
+                        Grid.Row="1"
+                        HorizontalAlignment="Center"
+                        Padding="0"
+                        VerticalAlignment="Top"
+                        Width="555">
+                        <Grid
+                            Margin="0,30"
+                            VerticalAlignment="Center"
+                            Width="495">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock
+                                FontSize="18"
+                                Foreground="{StaticResource DarkGreenTextBrush}"
+                                Grid.Row="0"
+                                HorizontalAlignment="Left"
+                                Margin="0,0,5,20"
+                                Style="{StaticResource Medium15Text}"
+                                Text="{Binding ChildrenNameMoreWindow}"
+                                VerticalAlignment="Bottom"
+                                Width="450" />
+
+                            <TextBlock
+                                FontSize="16"
+                                Foreground="{StaticResource DarkTextBrush}"
+                                Grid.Row="1"
+                                HorizontalAlignment="Left"
+                                Style="{StaticResource RegularText}"
+                                Text="{Binding CauseMoreWindow}"
+                                TextWrapping="Wrap"
+                                VerticalAlignment="Top"
+                                Width="470" />
+
+                            <Button
+                                Click="CloseWindowButtonClick"
+                                Grid.Row="0"
+                                HorizontalAlignment="Right"
+                                Margin="0,0,0,15"
+                                Style="{StaticResource TransparentButton}"
+                                VerticalAlignment="Bottom">
+                                <materialDesign:PackIcon
+                                    Foreground="{StaticResource GrayTextBrush}"
+                                    Height="25"
+                                    Kind="WindowClose"
+                                    Width="25" />
+                            </Button>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Page>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -23,8 +24,8 @@ public class ScheduleVM : BaseVM
         }
     }
     public ObservableCollection<ListViewItem> Classes { get; private set; }
-    public ObservableCollection<string> Timings { get; private set; }
-    public ObservableCollection<Children> ChildrenInSelectedClass { get; set; }
+    public ObservableCollection<TimingView> Schedule { get; private set; }
+    public ObservableCollection<Children> ChildrenInSelectedClass { get; set; } //зачем оно здесь?
     public RelayCommand SelectCategoryCommand { protected set; get; }
     public string[] LoadComboBoxData()
     {
@@ -63,13 +64,14 @@ public class ScheduleVM : BaseVM
 
         SelectedClass = LoadComboBoxData()[0];
         // TODO: заменить потом на выгрузку расписания для SelectedClass
-        Timings = new ObservableCollection<string>()
+        Schedule = new ObservableCollection<TimingView>()
         {
-            "9:30",
-            "10:30",
-            "14:30"
+            new TimingView() {Time = "10:15-10:30", TypeMeal = "Завтрак"},
+            new TimingView() {Time = "12:20-12:40", TypeMeal = "Обед"},
+            new TimingView() {Time = "14:15-14:30", TypeMeal = "Полдник"}
         };
-        
+        var x = Schedule[2].Time;
+
     }
     
     public void SelectCategory(object param)

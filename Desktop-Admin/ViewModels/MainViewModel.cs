@@ -139,7 +139,7 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
             // выгружать учителя и список детей
             var dockPanel = new DockPanel()
             {
-                Margin = new Thickness(40, 25, 30, 0)
+                Margin = new Thickness(50, 25, 30, 0)
             };
 
             var mainGrid = new Grid()
@@ -148,8 +148,59 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
             };
 
             mainGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(40) });
+            mainGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50) });
             mainGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(175) });
             mainGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+
+            var editButtonGrid = new Grid()
+            {
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+                Width = 335
+            };
+            editButtonGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(40)});
+            editButtonGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+            
+            var pen = new Button()
+            {
+                HorizontalAlignment = HorizontalAlignment.Right,
+                HorizontalContentAlignment = HorizontalAlignment.Right,
+                Style = Application.Current.TryFindResource("TransparentButton") as Style,
+                Content = new PackIcon
+                {
+                    Kind = PackIconKind.PencilOutline,
+                    Height = 20,
+                    Width = 20,
+                    Foreground = Application.Current.TryFindResource("DarkGrayBrush") as Brush
+                }
+            };
+            Grid.SetColumn(pen, 0);
+            Grid.SetRow(pen, 0);
+            editButtonGrid.Children.Add(pen);
+            
+            var editText = new TextBlock()
+            {
+                Text = "Редактировать список класса",
+                Style = Application.Current.TryFindResource("Medium23Text") as Style,
+                FontSize = 17,
+                Foreground = Application.Current.TryFindResource("DarkGrayBrush") as Brush,
+                VerticalAlignment = VerticalAlignment.Center
+            };
+            Grid.SetColumn(editText, 1);
+            Grid.SetRow(editText, 0);
+            editButtonGrid.Children.Add(editText);
+            
+            var editClassButton = new Button()
+            {
+                Width = 335,
+                Height = 40,
+                HorizontalAlignment = HorizontalAlignment.Left,
+                Style = Application.Current.TryFindResource("LightBaseButton") as Style,
+                Content = editButtonGrid
+            };
+            Grid.SetColumn(editClassButton, 0);
+            Grid.SetRow(editClassButton, 1);
+            mainGrid.Children.Add(editClassButton);
 
             var className = new TextBlock()
             {
@@ -189,7 +240,7 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
                 Child = teacherGrid
             };
             Grid.SetColumn(teacher, 0);
-            Grid.SetRow(teacher, 1);
+            Grid.SetRow(teacher, 2);
             mainGrid.Children.Add(teacher);
 
             //вместо фото аватарки пока просто прямоугольник
@@ -370,7 +421,7 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
             itemsControl.ItemsPanel = panelTemplate;
 
             Grid.SetColumn(itemsControl, 0);
-            Grid.SetRow(itemsControl, 2);
+            Grid.SetRow(itemsControl, 3);
             mainGrid.Children.Add(itemsControl);
 
             dockPanel.Children.Add(mainGrid);
