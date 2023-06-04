@@ -28,9 +28,11 @@ public class OrderingIngredientsVM : BaseVM
     public List<List<string>> Values { get; set; }
     public OrderingIngredientsVM()
     {
-        SelectedDate = "2022-11-28";
+        //TODO:Сделать новый запрос и по-человечески
+        SelectedDate = "test";
         var textInfo = new CultureInfo("ru-RU").TextInfo;
-        TodayMonth = textInfo.ToTitleCase(textInfo.ToLower(DateTime.Now.ToString("MMMM")));
+        //TodayMonth = textInfo.ToTitleCase(textInfo.ToLower(DateTime.Now.ToString("MMMM")));
+        TodayMonth = "Июнь";
         _orders = ApiServer.Get<List<Order>>("orders/date/" + SelectedDate);
         SummaryOrderViews = new ObservableCollection<OrderIngredient>();
         Values = new List<List<string>>();

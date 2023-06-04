@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -31,8 +32,15 @@ public partial class AuthorizationPage : Page
         ProgressBar.Visibility = Visibility.Visible;
         if (_authorizationVm.ValidAuthorization())
         {
+            MainWindow.DictionaryPages = new Dictionary<string, Page>()
+            {
+                {"MakeClassPage", new MakeClassPage()},
+                {"ReceiptsPage", new ReceiptsPage()},
+                {"SchedulePage", new SchedulePage()},
+                {"UploadUsersFilePage", new UploadUsersFilePage()},
+            };
             ErrorAuthorizationBlock.Visibility = Visibility.Hidden;
-            NavigationService?.Navigate(new MakeClassPage());
+            NavigationService?.Navigate(MainWindow.DictionaryPages["MakeClassPage"]);
         }
         else
         {

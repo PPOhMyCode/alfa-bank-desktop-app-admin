@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using Desktop_Admin.ViewModels;
 
@@ -12,21 +13,25 @@ public partial class ScheduleSettingsPage : Page
         InitializeComponent();
         _scheduleVM = new ScheduleVM();
         DataContext = _scheduleVM;
+        SaveButton.IsEnabled = false;
     }
     
     public void ToMakeClassButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new MakeClassPage());
+        NavigationService?.GoBack();
+        NavigationService?.Navigate(MainWindow.DictionaryPages["MakeClassPage"]);
     }
     
     public void ToReceiptsButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new ReceiptsPage());
+        NavigationService?.GoBack();
+        NavigationService?.Navigate(MainWindow.DictionaryPages["ReceiptsPage"]);
     }
 
     public void ToSheduleButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new SchedulePage());
+        NavigationService?.GoBack();
+        NavigationService?.Navigate(MainWindow.DictionaryPages["SchedulePage"]);
     }
     
     private void SelectCategoriesButton_OnClick(object sender, RoutedEventArgs e)
@@ -34,6 +39,10 @@ public partial class ScheduleSettingsPage : Page
         if (Categories.Visibility == Visibility.Visible)
         {
             Categories.Visibility = Visibility.Hidden;
+            if (_scheduleVM.SelectedClass != null)
+                SaveButton.IsEnabled = true;
+            else
+                SaveButton.IsEnabled = false;
         }
         else
         {
@@ -48,6 +57,6 @@ public partial class ScheduleSettingsPage : Page
 
     private void SaveButton_OnClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new SchedulePage());
+        NavigationService?.GoBack();
     }
 }

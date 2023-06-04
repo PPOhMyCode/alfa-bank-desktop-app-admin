@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Xps.Packaging;
 using Desktop_Admin.Models;
+using Desktop_Canteen.Views;
 using WPFLibrary;
 using WPFLibrary.JsonModels;
 using WPFLibrary.Models;
@@ -14,13 +16,17 @@ public class AllDishesVM : BaseVM
 {
     public ObservableCollection<DishWithPhoto> Dishes { get; set; }
     public RelayCommand DeleteDishCommand { get; set; }
+    public RelayCommand RefactorDishCommand { get; set; }
     public TextBlock Plug { get; set; }
     public ProgressBar ProgressBar { get; set; }
+    public Action ToRef;
 
+    public int selectId;
     public AllDishesVM()
     {
         Dishes = new ObservableCollection<DishWithPhoto>();
         DeleteDishCommand = new RelayCommand(DeleteDish);
+        RefactorDishCommand = new RelayCommand(RefactorDish);
         //Refresh();
     }
 
@@ -58,5 +64,11 @@ public class AllDishesVM : BaseVM
             ApiServer.Delete("dishes/" + param);
             Refresh();
         }
+    }
+
+    public void RefactorDish(object param)
+    {
+        selectId = (int)param;
+        ToRef();
     }
 }

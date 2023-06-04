@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using Desktop_Admin.Models;
+using Microsoft.Win32;
 using WPFLibrary;
 using WPFLibrary.JsonModels;
 using WPFLibrary.Models;
@@ -17,6 +18,15 @@ public class AddNewDishVM : BaseVM
     private DishInput _dishView;
 
     #region DishData
+    public int DishId
+    {
+        get { return _dishView.DishId; }
+        set
+        {
+            _dishView.DishId = value;
+            OnPropertyChanged("DishId");
+        }
+    }
     public string Name
     {
         get { return _dishView.Name; }
@@ -66,6 +76,35 @@ public class AddNewDishVM : BaseVM
             OnPropertyChanged("Cost");
         }
     }
+    
+    public double Proteins {
+        get { return _dishView.Proteins; }
+        set
+        {
+            _dishView.Proteins = value;
+            OnPropertyChanged("Proteins");
+        }
+    }
+
+    public double Fats
+    {
+        get { return _dishView.Fats; }
+        set
+        {
+            _dishView.Fats = value;
+            OnPropertyChanged("Fats");
+        }
+    }
+
+    public double Carbohydrates
+    {
+        get { return _dishView.Carbohydrates; }
+        set
+        {
+            _dishView.Carbohydrates = value;
+            OnPropertyChanged("Carbohydrates");
+        }
+    }
 
     #endregion
     
@@ -74,7 +113,7 @@ public class AddNewDishVM : BaseVM
     public Button AddNewIngredientButton { get; set; }
     
     private Ingredient _prevSelectedItem;
-    private Ingredient _selectedItem;
+    public Ingredient _selectedItem;
     public Ingredient SelectedIngredient
     {
         get { return _selectedItem; }
@@ -92,6 +131,7 @@ public class AddNewDishVM : BaseVM
     public RelayCommand AddCommand { protected set; get; }
     public RelayCommand DeleteIngredientCommand { protected set; get; }
     public RelayCommand AddIngredientCommand { protected set; get; }
+    public RelayCommand AddImageCommand { protected set; get; }
     public AddNewDishVM()
     {
         Ingredients = new ObservableCollection<Ingredient>(ApiServer.Get<List<Ingredient>>("ingredients"));
@@ -101,6 +141,7 @@ public class AddNewDishVM : BaseVM
         this.AddCommand = new RelayCommand(ExecuteAddDish);
         this.AddIngredientCommand = new RelayCommand(AddSelectedIngredient);
         this.DeleteIngredientCommand = new RelayCommand(DeleteIngredient);
+        this.AddImageCommand = new RelayCommand(AddImage);
         _selectedItem = null;
         _prevSelectedItem = null;
     }
@@ -115,6 +156,14 @@ public class AddNewDishVM : BaseVM
         Ingredients.Add(ingredient);
         SelectedIngredients.Remove(ingredient);
         
+    }
+
+    public void AddImage(object param)
+    {
+        OpenFileDialog openFileDialog = new OpenFileDialog();
+        openFileDialog.Filter = "*.png|*.jpg";
+        if(openFileDialog.ShowDialog()!=true)
+            return;
     }
 
     public void AddSelectedIngredient(object param)
@@ -152,6 +201,7 @@ public class AddNewDishVM : BaseVM
         {
             FontSize = 19,
             Padding = new Thickness(10, 5, 10, 5),
+            Text = param==null?"":param.ToString(),
             FontWeight = FontWeights.Normal,
             BorderBrush =  Application.Current.TryFindResource("MediumGreenBrush") as Brush,
             Foreground = Application.Current.TryFindResource("DarkGrayBrush") as Brush,

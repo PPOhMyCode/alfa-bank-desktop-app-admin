@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -47,11 +48,9 @@ public class MenuVM : BaseVM
         }
         DishInMenu = new ObservableCollection<DishWithPhoto>();
         Menu = new ObservableCollection<MenuView>();
-        GetMenu();
         SelectDayCommand = new RelayCommand(SelectDay);
         SelectTypeCommand = new RelayCommand(SelectType);
-        SelectDay(Days[0]);
-        SelectType("1");
+        TypeMeal = 1;
         TypeMealImages = new List<ImageSource>()
         {
             ApiServer.GetImage("typeMealButtons/1"),
@@ -62,29 +61,29 @@ public class MenuVM : BaseVM
 
     public void SelectDay(object param)
     {
-        Date = (DateTime)param;
-        GetMenu();
+        Date = (DateTime) param;
     }
     
-    public void SelectType(object param)
+    public async void SelectType(object param)
     {
-        TypeMeal = int.Parse((string)param);
-        GetMenu();
+        TypeMeal = int.Parse((string) param);
     }
     
-    public void GetMenu(object param = null)
+    public async void GetMenu(object param = null)
     {
         try
         {
+            MenuPlugTextBlock.Visibility = Visibility.Hidden;
             Menu.Clear();
             DishInMenu.Clear();
-            var b = Date.ToString("MM-dd-yyyy");
+            var b = Date.ToString("yyyy-MM-dd");
             var menuDate = ApiServer.Get<List<Menu>>("menus");
             if (menuDate != null)
             {
-                foreach (var a in menuDate.Where(x=>x.TypeMealId==TypeMeal))
+                foreach (var a in menuDate.Where(x=>x.TypeMealId==TypeMeal && x.Date == b))
                 {
-                    var dish = ApiServer.Get<Dish>("dishes/" + a.DishId);
+                    var date = a.Date;
+                    var dish = await Task.Run(()=>ApiServer.Get<Dish>("dishes/" + a.DishId));
                     DishInMenu.Add(new DishWithPhoto(dish, ApiServer.GetImage(dish.DishId.ToString())));
                 }
             }

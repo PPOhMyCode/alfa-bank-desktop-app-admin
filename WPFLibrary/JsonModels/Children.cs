@@ -28,3 +28,14 @@ public class ChildrenInfo : BaseModel
     public string Patronymic { get; set; }
 
 }
+
+public class ChildrenPost
+{
+    public string FirstName { get; set; }
+    public string SecondName { get; set; }
+    public string Patronymic { get; set; }
+    public string Grade { set; get; }
+    public string ParentFirstName { set; get; }
+    public string ParentSecondName { set; get; }
+    public string ParentPatronymic { set; get; }
+}

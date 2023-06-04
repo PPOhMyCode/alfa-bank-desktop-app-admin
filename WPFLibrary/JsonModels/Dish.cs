@@ -46,6 +46,7 @@ public class DishWithPhoto
 
 public class DishInput
 {
+    public int DishId { set; get; }
     public string Name { set; get; }
     public string Description { set; get; }
     public double Cost { set; get; }

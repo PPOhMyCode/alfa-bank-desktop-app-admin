@@ -21,12 +21,12 @@ public partial class ReceiptsPage : Page
 
     public void ToMakeClassButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new MakeClassPage());
+        NavigationService?.Navigate(MainWindow.DictionaryPages["MakeClassPage"]);
     }
     
     public void ToScheduleButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new SchedulePage());
+        NavigationService?.Navigate(MainWindow.DictionaryPages["SchedulePage"]);
     }
     
     public void ToRefusalsButtonClick(object sender, RoutedEventArgs e)

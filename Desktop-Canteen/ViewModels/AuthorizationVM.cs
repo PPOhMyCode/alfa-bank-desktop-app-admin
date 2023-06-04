@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using Desktop_Canteen.Views;
@@ -56,6 +57,11 @@ public class AuthorizationVM : BaseVM
     public bool ValidAuthorization()
     {
         var response = ApiServer.Autorization(UserAutorization);
+        if (response == null)
+        {
+            AutorizationError = "Null Data";
+            return false;
+        }
         //TODO: Переделать по нормальному 
         try
         {

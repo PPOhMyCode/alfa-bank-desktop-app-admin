@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using WPFLibrary;
 using WPFLibrary.JsonModels;
 using WPFLibrary.Models;
 
@@ -33,78 +34,21 @@ public class FoodRefusalsVM : BaseVM
     }
     public FoodRefusalsVM()
     {
-        FoodRefusals = new ObservableCollection<FoodRefusal>()
+        FoodRefusals = new ObservableCollection<FoodRefusal>();
+        var Grades = ApiServer.Get<List<Grade>>("grades");
+        foreach (var grade in Grades)
         {
-            new FoodRefusal()
+            var refusals = ApiServer.Get<List<RefusalChildrensGet>>("/refusal/grade/" + grade.GradeId);
+            if (refusals.Count > 0)
             {
-                Grade = "1А",
-                ChildrenCards = new List<RefusalChildrenCard>()
+                var childrenCards = new List<RefusalChildrenCard>();
+                foreach (var refusal in refusals)
                 {
-                    new RefusalChildrenCard()
-                    {
-                        Cause = "В связи с тем, что ребенок не употребляет пищу столовой",
-                        Class = "1А",
-                        ChildrenName = "Пик Елизавета"
-                    },
-                    new RefusalChildrenCard()
-                    {
-                        Cause = "В связи с тем, что ребенок не употребляет пищу столовой",
-                        Class = "1А",
-                        ChildrenName = "Пик Елизавета"
-                    },
-                    new RefusalChildrenCard()
-                    {
-                        Cause = "В связи с тем, что ребенок не употребляет пищу столовой",
-                        Class = "1А",
-                        ChildrenName = "Пик Елизавета"
-                    },
-                    new RefusalChildrenCard()
-                    {
-                        Cause = "В связи с тем, что ребенок не употребляет пищу столовой",
-                        Class = "1А",
-                        ChildrenName = "Пик Елизавета"
-                    },
-                    new RefusalChildrenCard()
-                    {
-                        Cause = "Диета",
-                        Class = "1А",
-                        ChildrenName = "Антонова Екатерина"
-                    }
+                    childrenCards.Add(new RefusalChildrenCard(refusal, grade.Name));
                 }
-            },
-            new FoodRefusal()
-            {
-                Grade = "5Б",
-                ChildrenCards = new List<RefusalChildrenCard>()
-                {
-                    new RefusalChildrenCard()
-                    {
-                        Cause = "В связи с тем, что ребенок не употребляет пищу столовой, В связи с тем, что ребенок не употребляет пищу столовой, В связи с тем, что ребенок не употребляет пищу столовой",
-                        Class = "5Б",
-                        ChildrenName = "Беляев Антон"
-                    },
-                    new RefusalChildrenCard()
-                    {
-                        Cause = "Диета",
-                        Class = "5Б",
-                        ChildrenName = "Антонова Екатерина"
-                    },
-                    new RefusalChildrenCard()
-                    {
-                        Cause = "Диета",
-                        Class = "5Б",
-                        ChildrenName = "Антонова Екатерина"
-                    },
-                    new RefusalChildrenCard()
-                    {
-                        Cause = "Диета",
-                        Class = "5Б",
-                        ChildrenName = "Антонова Екатерина"
-                    }
-                }
+                FoodRefusals.Add(new FoodRefusal(){ChildrenCards = childrenCards, Grade = grade.Name});
             }
-        };
-
+        }
         allRefusalsCount = 0;
         if (FoodRefusals != null || FoodRefusals != new ObservableCollection<FoodRefusal>())
         {

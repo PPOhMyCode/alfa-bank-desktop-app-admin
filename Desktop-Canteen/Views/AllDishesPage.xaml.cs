@@ -16,28 +16,40 @@ public partial class AllDishesPage : Page
         _allDishesVm = new AllDishesVM()
         {
             Plug = Plug,
-            ProgressBar = ProgressBar
+            ProgressBar = ProgressBar,
+            ToRef = ToRefactorDishButtonClick()
         };
         DataContext = _allDishesVm;
+        _allDishesVm.Refresh();
+    }
+
+    public void Refresh()
+    {
         _allDishesVm.Refresh();
     }
     
     public void ToOrderingIngredientsButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new OrderingIngredientsPage());
+        NavigationService?.Navigate(MainWindow.DictionaryPages["Ingredients"]);
     }
             
     public void ToMenuButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new MenuPage());
+        NavigationService?.Navigate(MainWindow.DictionaryPages["Menu"]);
     }
     public void ToScheduleButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new SchedulePage());
+        NavigationService?.Navigate(MainWindow.DictionaryPages["Schedule"]);
     }
 
     public void ToAddNewDishButtonClick(object sender, RoutedEventArgs e)
     {
         NavigationService?.Navigate(new AddNewDishPage());
+    }
+    
+    public System.Action ToRefactorDishButtonClick()
+    {
+
+        return (() => NavigationService?.Navigate(new AddNewDishPage(_allDishesVm.selectId)));
     }
 }

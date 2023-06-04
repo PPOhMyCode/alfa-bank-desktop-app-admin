@@ -66,7 +66,7 @@ public class AuthorizationVM : BaseVM
         }
         catch (Exception e)
         {
-            AutorizationError = response.Content;
+            //AutorizationError = response.Content;
             return false;
         }
     }

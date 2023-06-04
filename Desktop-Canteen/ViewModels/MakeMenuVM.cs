@@ -48,7 +48,7 @@ public class MakeMenuVM: BaseVM
         this.DeleteMenuDateCommand = new RelayCommand(DeleteDishToMenu);
         SelectDayCommand = new RelayCommand(SelectDay);
         SelectTypeCommand = new RelayCommand(SelectType);
-        Date = DateTime.Today.Date;
+        Date = DateTime.Today.Date.AddDays(1);
         GetMenu();
         
         TypeMealImages = new List<ImageSource>()
@@ -80,7 +80,7 @@ public class MakeMenuVM: BaseVM
     {
         var menu = new MenuInput()
         {
-            Date = (DateTime) Date,
+            Date = Date.ToString("yyyy-MM-dd"),
             DishId = (int) param,
             TypeMealId = (int) TypeMeal
         };
@@ -108,8 +108,8 @@ public class MakeMenuVM: BaseVM
         Menu.Clear();
         DishInMenu.Clear();
         DishCanAddToMenu.Clear();
-        var b = Date.ToString("yyyy-mm-dd");
-        var menuDate = ApiServer.Get<List<Menu>>("menus/date/"+Date.ToString("yyyy-mm-dd"));
+        var b = Date.ToString("yyyy-MM-dd");
+        var menuDate = ApiServer.Get<List<Menu>>("menus/date/"+Date.ToString("yyyy-MM-dd"));
         //var  = new ObservableCollection<Menu>(ApiServer.Get<List<Menu>>("menus"));
         if (menuDate != null)
         {
@@ -121,7 +121,7 @@ public class MakeMenuVM: BaseVM
                     Date = a.Date,
                     Dish = dish,
                     TypeMeal = ApiServer.Get<TypeMeal>("typeMeals/"+a.TypeMealId),
-                    Id = a.Id
+                    Id = a.MenuId
                 });
                 DishInMenu.Add(new DishWithPhoto(dish, ApiServer.GetImage(dish.DishId.ToString())));
             }

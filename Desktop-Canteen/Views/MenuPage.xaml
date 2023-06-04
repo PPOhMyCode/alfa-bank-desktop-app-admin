@@ -420,19 +420,17 @@
                             Text="Данное меню еще не выбрано"
                             Visibility="Hidden" />
 
-                        <DockPanel Margin="20,0,20,100">
-                            <!--  <TextBlock Name="MenuPlug"  -->
-                            <!--  Margin="30, 40"  -->
-                            <!--  Visibility="Hidden"  -->
-                            <!--  Text="Данное меню еще не выбрано"  -->
-                            <!--  Style="{StaticResource Medium30Text}"  -->
-                            <!--  HorizontalAlignment="Center"  -->
-                            <!--  DockPanel.Dock="Top"  -->
-                            <!--  />  -->
-                            <ItemsControl
-                                DockPanel.Dock="Top"
-                                ItemsSource="{Binding DishInMenu}"
-                                Margin="0,0,0,0">
+                        <DockPanel Margin="20, 0, 20, 100">
+                            <!-- <TextBlock Name="MenuPlug" -->
+                            <!--            Margin="30, 40" -->
+                            <!--            Visibility="Hidden" -->
+                            <!--            Text="Данное меню еще не выбрано" -->
+                            <!--            Style="{StaticResource Medium30Text}" -->
+                            <!--            HorizontalAlignment="Center" -->
+                            <!--            DockPanel.Dock="Top" -->
+                            <!--     /> -->
+                            <ItemsControl Name= "ItemsControl1" DockPanel.Dock="Top" 
+                                          Margin="0, 0, 0, 0">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <WrapPanel Orientation="Horizontal" />

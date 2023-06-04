@@ -198,6 +198,7 @@
                             Style="{StaticResource TextBoxInCanteenApp}"
                             TextWrapping="Wrap"
                             ToolTip="Введите кол-во белка"
+                            Text="{Binding Proteins}"
                             Width="480"
                             d:LayoutOverrides="Height" />
                     </StackPanel>
@@ -215,6 +216,7 @@
                             Style="{StaticResource TextBoxInCanteenApp}"
                             TextWrapping="Wrap"
                             ToolTip="Введите кол-во жиров"
+                            Text="{Binding Fats}"
                             Width="481"
                             d:LayoutOverrides="Height" />
                     </StackPanel>
@@ -232,6 +234,7 @@
                             Style="{StaticResource TextBoxInCanteenApp}"
                             TextWrapping="Wrap"
                             ToolTip="Введите кол-во углеводов"
+                            Text="{Binding Carbohydrates}"
                             Width="432"
                             d:LayoutOverrides="Height" />
                     </StackPanel>
@@ -321,6 +324,7 @@
                         <Button
                             Content="Загрузить"
                             Height="35"
+                            Command="{Binding AddImageCommand}"
                             Margin="10,0,0,0"
                             Style="{StaticResource DefaultLightButton}"
                             Width="140" />

@@ -24,16 +24,16 @@ public partial class SchedulePage : Page
     
     public void ToOrderingIngredientsButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new OrderingIngredientsPage());
+        NavigationService?.Navigate(MainWindow.DictionaryPages["Ingredients"]);
     }
             
     public void ToAllDishesButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new AllDishesPage());
+        NavigationService?.Navigate(MainWindow.DictionaryPages["Dishes"]);
     }
     public void ToMenuButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new MenuPage());
+        NavigationService?.Navigate(MainWindow.DictionaryPages["Menu"]);
     }
 
     public void ChangeStyleCircleButton(object sender, RoutedEventArgs e)

@@ -16,12 +16,12 @@ public partial class SchedulePage : Page
     
     public void ToMakeClassButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new MakeClassPage());
+        NavigationService?.Navigate(MainWindow.DictionaryPages["MakeClassPage"]);
     }
     
     public void ToReceiptsButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new ReceiptsPage());
+        NavigationService?.Navigate(MainWindow.DictionaryPages["ReceiptsPage"]);
     }
     
     private void SelectCategoriesButton_OnClick(object sender, RoutedEventArgs e)
