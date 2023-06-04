@@ -59,8 +59,9 @@ public class ScheduleVM:BaseVM
     public void GetData()
     {
         Data.Clear();
-        var a = Date.ToString("yyyy-MM-dd");
-        DayOrders = new List<Order>(ApiServer.Get<List<Order>>("orders/date/"+Date.ToString("yyyy-MM-dd")));
+        //var a = Date.ToString("yyyy-MM-dd");
+        var test = "test";
+        DayOrders = new List<Order>(ApiServer.Get<List<Order>>("orders/date/"+test));
         var Timings = new List<Timing>(ApiServer.Get<List<Timing>>("timings"));
         var textInfo = new CultureInfo("ru-RU").TextInfo;
         TodayMonth = textInfo.ToTitleCase(textInfo.ToLower(DateTime.Now.ToString("MMMM")));
@@ -72,8 +73,8 @@ public class ScheduleVM:BaseVM
             var gradesId = Timings.Where(x => x.Time == time).Select(x => x.GradeId);
             foreach (var gradeId in gradesId)
             {
-                var typeMealId = Timings.Where(x => x.Time == time).Select(x => x.TimingId).FirstOrDefault();
-                var orders = ApiServer.Get<List<Order>>("orders/date/" + Date.ToString("yyyy-MM-dd") + "/grades/" + gradeId + "/type/" +
+                var typeMealId = Timings.Where(x => x.Time == time).Select(x => x.TypeMealId).FirstOrDefault();
+                var orders = ApiServer.Get<List<Order>>("orders/date/" + test + "/grades/" + gradeId + "/type/" +
                                                         typeMealId).Where(x => x.StatusId == 2).ToList();
                 
                 var dishesId = orders?.Select(x => x.DishId).Distinct().ToList();

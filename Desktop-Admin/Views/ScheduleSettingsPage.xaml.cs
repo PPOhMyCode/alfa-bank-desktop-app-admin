@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using Desktop_Admin.ViewModels;
 
@@ -12,6 +13,7 @@ public partial class ScheduleSettingsPage : Page
         InitializeComponent();
         _scheduleVM = new ScheduleVM();
         DataContext = _scheduleVM;
+        SaveButton.IsEnabled = false;
     }
     
     public void ToMakeClassButtonClick(object sender, RoutedEventArgs e)
@@ -37,6 +39,10 @@ public partial class ScheduleSettingsPage : Page
         if (Categories.Visibility == Visibility.Visible)
         {
             Categories.Visibility = Visibility.Hidden;
+            if (_scheduleVM.SelectedClass != null)
+                SaveButton.IsEnabled = true;
+            else
+                SaveButton.IsEnabled = false;
         }
         else
         {

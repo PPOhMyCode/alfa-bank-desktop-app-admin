@@ -12,6 +12,7 @@ public class RecalculationRequest
 public class RecalculationRequestCard
 {
     public string ChildrenName { get; set; }
+    public string Date { get; set; }
     public string Class { get; set; }
     public List<string> Before { get; set; }
     public List<string> After { get; set; }

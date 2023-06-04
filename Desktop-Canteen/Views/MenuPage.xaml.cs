@@ -20,7 +20,7 @@ namespace Desktop_Canteen.Views
             };
             _menuVm.GetMenu();
             DataContext = _menuVm;
-            Thursday.Style = Application.Current.TryFindResource("SelectedCircleButton") as Style;
+            //Thursday.Style = Application.Current.TryFindResource("SelectedCircleButton") as Style;
             //BreakfastButton.Style = Application.Current.TryFindResource("SelectedTypeMealButton") as Style;
         }
     

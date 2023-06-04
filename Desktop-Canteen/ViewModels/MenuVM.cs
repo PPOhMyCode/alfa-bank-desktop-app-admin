@@ -80,9 +80,9 @@ public class MenuVM : BaseVM
             var menuDate = ApiServer.Get<List<Menu>>("menus");
             if (menuDate != null)
             {
-                foreach (var a in menuDate.Where(x=>x.TypeMealId==TypeMeal && x.Date.ToString("yyyy-MM-dd") == b))
+                foreach (var a in menuDate.Where(x=>x.TypeMealId==TypeMeal && x.Date == b))
                 {
-                    var date = a.Date.ToString("yyyy-MM-dd");
+                    var date = a.Date;
                     var dish = await Task.Run(()=>ApiServer.Get<Dish>("dishes/" + a.DishId));
                     DishInMenu.Add(new DishWithPhoto(dish, ApiServer.GetImage(dish.DishId.ToString())));
                 }

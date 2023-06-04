@@ -16,7 +16,8 @@ public partial class AllDishesPage : Page
         _allDishesVm = new AllDishesVM()
         {
             Plug = Plug,
-            ProgressBar = ProgressBar
+            ProgressBar = ProgressBar,
+            ToRef = ToRefactorDishButtonClick()
         };
         DataContext = _allDishesVm;
         _allDishesVm.Refresh();
@@ -44,5 +45,11 @@ public partial class AllDishesPage : Page
     public void ToAddNewDishButtonClick(object sender, RoutedEventArgs e)
     {
         NavigationService?.Navigate(new AddNewDishPage());
+    }
+    
+    public System.Action ToRefactorDishButtonClick()
+    {
+
+        return (() => NavigationService?.Navigate(new AddNewDishPage(_allDishesVm.selectId)));
     }
 }

@@ -160,6 +160,7 @@
                                 Grid.Row="2"
                                 Height="60"
                                 HorizontalAlignment="Left"
+                                Command="{Binding UploadChildrensCommand}"
                                 Style="{StaticResource LightBaseButton}"
                                 Width="220">
                                 <Grid Width="165">

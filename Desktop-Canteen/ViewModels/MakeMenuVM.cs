@@ -48,7 +48,7 @@ public class MakeMenuVM: BaseVM
         this.DeleteMenuDateCommand = new RelayCommand(DeleteDishToMenu);
         SelectDayCommand = new RelayCommand(SelectDay);
         SelectTypeCommand = new RelayCommand(SelectType);
-        Date = DateTime.Today.Date;
+        Date = DateTime.Today.Date.AddDays(1);
         GetMenu();
         
         TypeMealImages = new List<ImageSource>()
@@ -121,7 +121,7 @@ public class MakeMenuVM: BaseVM
                     Date = a.Date,
                     Dish = dish,
                     TypeMeal = ApiServer.Get<TypeMeal>("typeMeals/"+a.TypeMealId),
-                    Id = a.Id
+                    Id = a.MenuId
                 });
                 DishInMenu.Add(new DishWithPhoto(dish, ApiServer.GetImage(dish.DishId.ToString())));
             }

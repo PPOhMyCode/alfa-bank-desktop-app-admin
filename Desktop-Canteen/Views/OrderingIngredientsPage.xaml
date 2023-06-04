@@ -132,7 +132,7 @@
                         HorizontalAlignment="Left"
                         Margin="2,0,0,0"
                         Style="{StaticResource MediumText}"
-                        Text="26"
+                        Text="5"
                         TextAlignment="Center"
                         VerticalAlignment="Bottom"
                         Width="35" />
@@ -144,7 +144,7 @@
                         HorizontalAlignment="Left"
                         Margin="2,0,0,0"
                         Style="{StaticResource MediumText}"
-                        Text="27"
+                        Text="6"
                         TextAlignment="Center"
                         VerticalAlignment="Bottom"
                         Width="35" />
@@ -156,7 +156,7 @@
                         HorizontalAlignment="Left"
                         Margin="2,0,0,0"
                         Style="{StaticResource MediumText}"
-                        Text="28"
+                        Text="7"
                         TextAlignment="Center"
                         VerticalAlignment="Bottom"
                         Width="35" />
@@ -168,7 +168,7 @@
                         HorizontalAlignment="Left"
                         Margin="2,0,0,0"
                         Style="{StaticResource MediumText}"
-                        Text="29"
+                        Text="8"
                         TextAlignment="Center"
                         VerticalAlignment="Bottom"
                         Width="35" />
@@ -180,7 +180,7 @@
                         HorizontalAlignment="Left"
                         Margin="2,0,0,0"
                         Style="{StaticResource MediumText}"
-                        Text="30"
+                        Text="9"
                         TextAlignment="Center"
                         VerticalAlignment="Bottom"
                         Width="35" />

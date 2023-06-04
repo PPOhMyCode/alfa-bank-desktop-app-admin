@@ -41,7 +41,7 @@ public partial class AuthorizationPage : Page
                     {"Schedule", new SchedulePage()},
                 };
                 ErrorAuthorizationBlock.Visibility = Visibility.Hidden;
-                NavigationService?.Navigate(MainWindow.DictionaryPages["Menu"]);
+                NavigationService?.Navigate( MainWindow.DictionaryPages["Menu"]);
             }
             else
             {

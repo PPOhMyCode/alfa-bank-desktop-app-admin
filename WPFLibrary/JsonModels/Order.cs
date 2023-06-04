@@ -9,8 +9,8 @@ public class Order
     public int ChildrenId { get; set; }
     public int DishId { get; set; }
     public int StatusId { get; set; }
-    public int TypeId { get; set; }
-    public DateTime Date { get; set; }
+    public int TypeMealId { get; set; }
+    public string Date { get; set; }
 }
 
 

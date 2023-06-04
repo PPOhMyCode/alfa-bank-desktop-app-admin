@@ -186,19 +186,17 @@
                                     Grid.RowSpan="5"
                                     RadiusX="20"
                                     RadiusY="20" />
-
                                 <Viewbox
-                                    Grid.Column="0"
-                                    Grid.ColumnSpan="2"
-                                    Grid.Row="0"
-                                    Grid.RowSpan="4">
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="2"
+                                        Grid.Row="0"
+                                        Grid.RowSpan="4">
                                     <Ellipse Height="130" Width="130">
                                         <Ellipse.Fill>
                                             <ImageBrush ImageSource="{Binding Image}" />
-                                        </Ellipse.Fill>
+                                        </Ellipse.Fill>  
                                     </Ellipse>
                                 </Viewbox>
-
                                 <TextBlock
                                     FontSize="18"
                                     Foreground="{StaticResource GrayTextBrush}"
@@ -214,7 +212,10 @@
                                 <Button
                                     Grid.Column="4"
                                     Grid.Row="2"
+                                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:TypeExtension ItemsControl}}, Path=DataContext.RefactorDishCommand}"
+                                    CommandParameter="{Binding DishId}"
                                     Style="{StaticResource TransparentButton}">
+                                    
                                     <materialDesign:PackIcon
                                         Foreground="{StaticResource GrayTextBrush}"
                                         Height="20"

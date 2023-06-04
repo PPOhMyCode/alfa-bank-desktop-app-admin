@@ -171,31 +171,17 @@
                             </Grid>
                         </Button>
 
-                        <materialDesign:TimePicker
+                        <TextBox
                             BorderBrush="{StaticResource DarkGreenBrush}"
                             FontFamily="{StaticResource Montserrat-Medium}"
                             FontSize="20"
                             Foreground="{StaticResource DarkTextBrush}"
                             Height="50"
-                            Is24Hours="True"
                             Margin="20,0"
                             Padding="20,0"
-                            SelectedTime="{Binding Schedule[0].Time}"
-                            Style="{StaticResource MaterialDesignOutlinedTimePicker}"
-                            Width="180"
-                            materialDesign:TimePickerAssist.OutlinedBorderActiveThickness="2"
-                            materialDesign:TimePickerAssist.OutlinedBorderInactiveThickness="1.5">
-                            <materialDesign:TimePicker.ClockStyle>
-                                <Style BasedOn="{StaticResource MaterialDesignClockHorizontal}" TargetType="materialDesign:Clock">
-                                    <Setter Property="Background" Value="{StaticResource CalendarBackgroundBrush}" />
-                                    <Setter Property="Foreground" Value="{StaticResource DarkTextBrush}" />
-                                    <Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}" />
-                                    <Setter Property="ToolTip" Value="Введите время начала перемены" />
-                                    <Setter Property="CornerRadius" Value="15" />
-                                    <Setter Property="IsHeaderVisible" Value="True" />
-                                </Style>
-                            </materialDesign:TimePicker.ClockStyle>
-                        </materialDesign:TimePicker>
+                            Text="{Binding Schedule[0].Time}"
+                            Width="180">
+                        </TextBox>
                     </StackPanel>
                 </Grid>
 
@@ -230,31 +216,17 @@
                                     Text="{Binding Schedule[1].TypeMeal}" />
                             </Grid>
                         </Button>
-                        <materialDesign:TimePicker
+                        <TextBox
                             BorderBrush="{StaticResource DarkGreenBrush}"
                             FontFamily="{StaticResource Montserrat-Medium}"
                             FontSize="20"
                             Foreground="{StaticResource DarkTextBrush}"
                             Height="50"
-                            Is24Hours="True"
                             Margin="20,0"
                             Padding="20,0"
-                            SelectedTime="{Binding Schedule[1].Time}"
-                            Style="{StaticResource MaterialDesignOutlinedTimePicker}"
-                            Width="180"
-                            materialDesign:TimePickerAssist.OutlinedBorderActiveThickness="2"
-                            materialDesign:TimePickerAssist.OutlinedBorderInactiveThickness="1.5">
-                            <materialDesign:TimePicker.ClockStyle>
-                                <Style BasedOn="{StaticResource MaterialDesignClockHorizontal}" TargetType="materialDesign:Clock">
-                                    <Setter Property="Background" Value="{StaticResource CalendarBackgroundBrush}" />
-                                    <Setter Property="Foreground" Value="{StaticResource DarkTextBrush}" />
-                                    <Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}" />
-                                    <Setter Property="ToolTip" Value="Введите время начала перемены" />
-                                    <Setter Property="CornerRadius" Value="15" />
-                                    <Setter Property="IsHeaderVisible" Value="True" />
-                                </Style>
-                            </materialDesign:TimePicker.ClockStyle>
-                        </materialDesign:TimePicker>
+                            Text="{Binding Schedule[1].Time}"
+                            Width="180">
+                        </TextBox>
                     </StackPanel>
                 </Grid>
 
@@ -290,31 +262,17 @@
                             </Grid>
                         </Button>
 
-                        <materialDesign:TimePicker
+                        <TextBox
                             BorderBrush="{StaticResource DarkGreenBrush}"
                             FontFamily="{StaticResource Montserrat-Medium}"
                             FontSize="20"
                             Foreground="{StaticResource DarkTextBrush}"
                             Height="50"
-                            Is24Hours="True"
                             Margin="20,0"
                             Padding="20,0"
-                            SelectedTime="{Binding Schedule[2].Time}"
-                            Style="{StaticResource MaterialDesignOutlinedTimePicker}"
-                            Width="180"
-                            materialDesign:TimePickerAssist.OutlinedBorderActiveThickness="2"
-                            materialDesign:TimePickerAssist.OutlinedBorderInactiveThickness="1.5">
-                            <materialDesign:TimePicker.ClockStyle>
-                                <Style BasedOn="{StaticResource MaterialDesignClockHorizontal}" TargetType="materialDesign:Clock">
-                                    <Setter Property="Background" Value="{StaticResource CalendarBackgroundBrush}" />
-                                    <Setter Property="Foreground" Value="{StaticResource DarkTextBrush}" />
-                                    <Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}" />
-                                    <Setter Property="ToolTip" Value="Введите время начала перемены" />
-                                    <Setter Property="CornerRadius" Value="15" />
-                                    <Setter Property="IsHeaderVisible" Value="True" />
-                                </Style>
-                            </materialDesign:TimePicker.ClockStyle>
-                        </materialDesign:TimePicker>
+                            Text="{Binding Schedule[2].Time}"
+                            Width="180">
+                        </TextBox>
                     </StackPanel>
                 </Grid>
 
@@ -362,6 +320,7 @@
 
                 <Grid Row="5">
                     <Button
+                        Name="SaveButton"
                         Click="SaveButton_OnClick"
                         Height="65"
                         HorizontalAlignment="Left"

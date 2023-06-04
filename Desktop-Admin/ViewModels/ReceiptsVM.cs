@@ -18,7 +18,7 @@ namespace Desktop_Admin.ViewModels;
 
 public class ReceiptsVM : BaseVM
 {
-    private ObservableCollection<string> SelectedItems { get; set; }
+    private ObservableCollection<string> SelectedClasses { get; set; }
     public StackPanel ClassesPanel;
     private bool isCheck;
     public TextBlock NoSelectedClassesTextBlock;
@@ -27,18 +27,20 @@ public class ReceiptsVM : BaseVM
     public ObservableCollection<ChildrenView> ChildrenInSelectedClass { get; set; }
     public RelayCommand SelectCategoryCommand { protected set; get; }
 
-    public string[] LoadComboBoxData()
-    {
-        string[] strArray =
-        {
-            "Все классы",
-            "5Б",
-            "8А",
-            "11А"
-        };
-        return strArray;
-    }
+    public List<string> GradeNameArray { get; set; }
 
+    public List<Grade> Grades { get; set; }
+    public void LoadComboBoxData()
+    {
+        GradeNameArray.Add("Все классы");
+        foreach (var grade in Grades)
+        {
+            GradeNameArray.Add(grade.Name);
+        }
+    }
+    
+    public ObservableCollection<int> Years { get; set; }
+    public ObservableCollection<string> Months { get; set; }
     public ReceiptsVM()
     {
         //list всех классов
@@ -46,14 +48,16 @@ public class ReceiptsVM : BaseVM
         
         //var childrens = ApiServer.Get<List<Children>>("grades/1/childrens");
         isCheck = false;
-        SelectedItems = new ObservableCollection<string>();
-        SelectCategoryCommand = new RelayCommand(SelectCategory);
-
+        SelectedClasses = new ObservableCollection<string>();
+        SelectCategoryCommand = new RelayCommand(SelectClass);
+        Years = new ObservableCollection<int>(ApiServer.Get<List<int>>("/receipts/years"));
         var today = (int)DateTime.Today.DayOfWeek;
         Date = DateTime.Today;
-
+        GradeNameArray = new List<string>();
+        Grades = ApiServer.Get<List<Grade>>("grades");
+        LoadComboBoxData();
         Classes = new ObservableCollection<ListViewItem>();
-        foreach (var item in LoadComboBoxData())
+        foreach (var item in GradeNameArray)
             Classes.Add(new ListViewItem
             {
                 Content = new CheckBox()
@@ -99,16 +103,16 @@ public class ReceiptsVM : BaseVM
         };
     }
     
-    public void SelectCategory(object param)
+    public void SelectClass(object param)
     {
         var item = param as string;
         if (item == "Все классы")
         {
-            SelectedItems.Clear();
-            foreach (var clas in LoadComboBoxData())
+            SelectedClasses.Clear();
+            foreach (var clas in GradeNameArray)
             {
                 if (clas == "Все классы" ) continue;
-                SelectedItems.Add(clas);
+                SelectedClasses.Add(clas);
                 var e = (from x in Classes
                     where (x.Content as CheckBox).Content.Equals(clas)
                     select (x.Content as CheckBox)).FirstOrDefault();
@@ -117,13 +121,13 @@ public class ReceiptsVM : BaseVM
         }
         else
         {
-            if (SelectedItems.Contains(item))
+            if (SelectedClasses.Contains(item))
             {
-                SelectedItems.Remove(item);
+                SelectedClasses.Remove(item);
             }
             else
             {
-                SelectedItems.Add(item);
+                SelectedClasses.Add(item);
             }
         }
         ChangeClassView();
@@ -154,7 +158,7 @@ public class ReceiptsVM : BaseVM
         if (ClassesPanel == null)
             return;
         ClassesPanel.Children.Clear();
-        foreach (var selectedItem in SelectedItems)
+        foreach (var selectedItem in SelectedClasses)
         {
             var dockPanel = new DockPanel()
             {

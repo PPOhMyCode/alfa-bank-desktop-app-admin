@@ -20,6 +20,6 @@ public partial class FirstOpenPage : Page
     
     public void SaveButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new MenuPage());
+        NavigationService?.Navigate(new MakeMenuPage());
     }
 }
