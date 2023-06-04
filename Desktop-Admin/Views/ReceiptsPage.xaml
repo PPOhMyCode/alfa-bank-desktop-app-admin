@@ -139,6 +139,7 @@
                         Margin="0"
                         Orientation="Vertical">
                         <Button
+                            Click="SelectYearButton_OnClick"
                             HorizontalAlignment="Left"
                             Margin="0,0,0,14"
                             Name="SelectYearButton"
@@ -176,6 +177,7 @@
                         </Button>
 
                         <Button
+                            Click="SelectMonthButton_OnClick"
                             HorizontalAlignment="Left"
                             Margin="0"
                             Name="SelectMonthButton"
@@ -386,6 +388,91 @@
                         </StackPanel>
                     </Border>
                 </DockPanel>
+
+                <DockPanel
+                    Background="{StaticResource Ultra2LightGreenBrush}"
+                    Grid.Row="2"
+                    Grid.RowSpan="5"
+                    Height="300"
+                    HorizontalAlignment="Left"
+                    Margin="50,108,100,0"
+                    Name="Month"
+                    VerticalAlignment="Top"
+                    Visibility="Hidden"
+                    Width="245">
+                    <Border
+                        BorderBrush="{StaticResource GreenBrush}"
+                        BorderThickness="1"
+                        CornerRadius="0, 0, 10, 10">
+                        <StackPanel>
+                            <ListView
+                                Background="Transparent"
+                                DockPanel.Dock="Top"
+                                FontFamily="{StaticResource Montserrat-Regular}"
+                                Height="250"
+                                HorizontalAlignment="Left"
+                                ItemsSource="{Binding Months}"
+                                Margin="0"
+                                Padding="0"
+                                Width="245"
+                                materialDesign:ListBoxItemAssist.ShowSelection="False" />
+                            <Button
+                                Click="DoneButton2_OnClick"
+                                Content="Готово"
+                                DockPanel.Dock="Left"
+                                FontSize="15"
+                                Height="30"
+                                HorizontalAlignment="Left"
+                                Margin="10,0,0,10"
+                                Name="DoneButton2"
+                                Style="{StaticResource BaseButton}"
+                                Width="100" />
+                        </StackPanel>
+                    </Border>
+                </DockPanel>
+
+                <DockPanel
+                    Background="{StaticResource Ultra2LightGreenBrush}"
+                    Grid.Row="2"
+                    Grid.RowSpan="5"
+                    Height="250"
+                    HorizontalAlignment="Left"
+                    Margin="50,55,100,0"
+                    Name="Years"
+                    VerticalAlignment="Top"
+                    Visibility="Hidden"
+                    Width="245">
+                    <Border
+                        BorderBrush="{StaticResource GreenBrush}"
+                        BorderThickness="1"
+                        CornerRadius="0, 0, 10, 10">
+                        <StackPanel>
+                            <ListView
+                                Background="Transparent"
+                                DockPanel.Dock="Top"
+                                FontFamily="{StaticResource Montserrat-Regular}"
+                                Height="200"
+                                HorizontalAlignment="Left"
+                                ItemsSource="{Binding Years}"
+                                Margin="0"
+                                Padding="0"
+                                Width="245"
+                                materialDesign:ListBoxItemAssist.ShowSelection="False" />
+                            <Button
+                                Click="DoneButton1_OnClick"
+                                Content="Готово"
+                                DockPanel.Dock="Left"
+                                FontSize="15"
+                                Height="30"
+                                HorizontalAlignment="Left"
+                                Margin="10,0,0,10"
+                                Name="DoneButton1"
+                                Style="{StaticResource BaseButton}"
+                                Width="100" />
+                        </StackPanel>
+                    </Border>
+                </DockPanel>
+
             </Grid>
         </Grid>
     </ScrollViewer>

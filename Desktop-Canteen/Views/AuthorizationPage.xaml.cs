@@ -31,7 +31,8 @@ public partial class AuthorizationPage : Page
         if (_authorizationVm.ValidAuthorization())
         {
             ErrorAuthorizationBlock.Visibility = Visibility.Hidden;
-            NavigationService?.Navigate(new MenuPage());
+            //NavigationService?.Navigate(new MenuPage());
+            NavigationService?.Navigate(new FirstOpenPage());
         }
         else
         {

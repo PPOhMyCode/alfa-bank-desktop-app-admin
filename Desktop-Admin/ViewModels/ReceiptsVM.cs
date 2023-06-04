@@ -24,6 +24,8 @@ public class ReceiptsVM : BaseVM
     public TextBlock NoSelectedClassesTextBlock;
     public DateTime Date { get; set; }
     public ObservableCollection<ListViewItem> Classes { get; private set; }
+    public ObservableCollection<ListViewItem> Years { get; private set; }
+    public ObservableCollection<ListViewItem> Months { get; private set; }
     public ObservableCollection<ChildrenView> ChildrenInSelectedClass { get; set; }
     public RelayCommand SelectCategoryCommand { protected set; get; }
 
@@ -35,6 +37,34 @@ public class ReceiptsVM : BaseVM
             "5Б",
             "8А",
             "11А"
+        };
+        return strArray;
+    }
+    
+    public string[] LoadYears()
+    {
+        string[] strArray =
+        {
+            "2023",
+            "2022",
+            "2021",
+            "2020"
+        };
+        return strArray;
+    }
+    
+    public string[] LoadMonths()
+    {
+        string[] strArray =
+        {
+            "Месяц",
+            "Месяц",
+            "Месяц",
+            "Месяц",
+            "Месяц",
+            "Месяц",
+            "Месяц",
+            "Месяц"
         };
         return strArray;
     }
@@ -55,6 +85,48 @@ public class ReceiptsVM : BaseVM
         Classes = new ObservableCollection<ListViewItem>();
         foreach (var item in LoadComboBoxData())
             Classes.Add(new ListViewItem
+            {
+                Content = new CheckBox()
+                {
+                    Content = item,
+                    IsChecked = isCheck,
+                    Background = Application.Current.TryFindResource("GreenBrush") as Brush,
+                    Style = Application.Current.TryFindResource("MaterialDesignFilterChipCheckBox") as Style,
+                    HorizontalAlignment = HorizontalAlignment.Left,
+                    HorizontalContentAlignment = HorizontalAlignment.Left,
+                    Margin = new Thickness(0, 0, 0, 0),
+                    Command = SelectCategoryCommand,
+                    CommandParameter = item
+                },
+                MinHeight = 25,
+                Margin = new Thickness(10, 5, 10, 0),
+                Padding = new Thickness(0)
+            });
+        
+        Years = new ObservableCollection<ListViewItem>();
+        foreach (var item in LoadYears())
+            Years.Add(new ListViewItem
+            {
+                Content = new CheckBox()
+                {
+                    Content = item,
+                    IsChecked = isCheck,
+                    Background = Application.Current.TryFindResource("GreenBrush") as Brush,
+                    Style = Application.Current.TryFindResource("MaterialDesignFilterChipCheckBox") as Style,
+                    HorizontalAlignment = HorizontalAlignment.Left,
+                    HorizontalContentAlignment = HorizontalAlignment.Left,
+                    Margin = new Thickness(0, 0, 0, 0),
+                    Command = SelectCategoryCommand,
+                    CommandParameter = item
+                },
+                MinHeight = 25,
+                Margin = new Thickness(10, 5, 10, 0),
+                Padding = new Thickness(0)
+            });
+        
+        Months = new ObservableCollection<ListViewItem>();
+        foreach (var item in LoadMonths())
+            Months.Add(new ListViewItem
             {
                 Content = new CheckBox()
                 {

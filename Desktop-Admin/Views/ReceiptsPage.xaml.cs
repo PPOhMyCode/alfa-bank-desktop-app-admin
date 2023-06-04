@@ -55,4 +55,38 @@ public partial class ReceiptsPage : Page
     {
         Categories.Visibility = Visibility.Hidden;
     }
+
+    private void SelectYearButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (Years.Visibility == Visibility.Visible)
+        {
+            Years.Visibility = Visibility.Hidden;
+        }
+        else
+        {
+            Years.Visibility = Visibility.Visible;
+        }
+    }
+    
+    private void DoneButton1_OnClick(object sender, RoutedEventArgs e)
+    {
+        Years.Visibility = Visibility.Hidden;
+    }
+    
+    private void SelectMonthButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (Month.Visibility == Visibility.Visible)
+        {
+            Month.Visibility = Visibility.Hidden;
+        }
+        else
+        {
+            Month.Visibility = Visibility.Visible;
+        }
+    }
+    
+    private void DoneButton2_OnClick(object sender, RoutedEventArgs e)
+    {
+        Month.Visibility = Visibility.Hidden;
+    }
 }
