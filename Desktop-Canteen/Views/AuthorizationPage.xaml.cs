@@ -18,10 +18,10 @@ public partial class AuthorizationPage : Page
     
     public void OnKeyDownHandler(object sender, KeyEventArgs e)
     {
-        if (e.Key == Key.Enter)
-        {
-            EnterButtonClick(null, null);
-        } 
+        // if (e.Key == Key.Enter)
+        // {
+        //     EnterButtonClick(null, null);
+        // } 
     }
 
     public void EnterButtonClick(object sender, RoutedEventArgs e)

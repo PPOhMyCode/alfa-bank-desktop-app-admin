@@ -22,4 +22,14 @@ public partial class FirstOpenPage : Page
     {
         NavigationService?.Navigate(new MakeMenuPage());
     }
+    
+    public void PeriodButtonClick(object sender, RoutedEventArgs e)
+    {
+        Period1.Style = Application.Current.TryFindResource("TypeMealButton") as Style;
+        Period2.Style = Application.Current.TryFindResource("TypeMealButton") as Style;
+        Period3.Style = Application.Current.TryFindResource("TypeMealButton") as Style;
+        Period4.Style = Application.Current.TryFindResource("TypeMealButton") as Style;
+        var selectedPeriodButton = sender as Button;
+        selectedPeriodButton.Style = Application.Current.TryFindResource("SelectedTypeMealButton") as Style;
+    }
 }
