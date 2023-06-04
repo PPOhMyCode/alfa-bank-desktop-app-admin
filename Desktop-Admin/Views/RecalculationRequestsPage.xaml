@@ -242,7 +242,7 @@
                                                                 Grid.Column="1"
                                                                 Grid.Row="1"
                                                                 Style="{StaticResource RegularText}"
-                                                                Text="{Binding Class}"
+                                                                Text="{Binding Date}"
                                                                 TextAlignment="Left"
                                                                 Width="220" />
                                                             <StackPanel

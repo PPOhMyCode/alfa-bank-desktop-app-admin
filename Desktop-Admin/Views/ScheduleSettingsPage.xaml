@@ -180,8 +180,7 @@
                             Margin="20,0"
                             Padding="20,0"
                             Text="{Binding Schedule[0].Time}"
-                            Width="180">
-                        </TextBox>
+                            Width="180" />
                     </StackPanel>
                 </Grid>
 
@@ -225,8 +224,7 @@
                             Margin="20,0"
                             Padding="20,0"
                             Text="{Binding Schedule[1].Time}"
-                            Width="180">
-                        </TextBox>
+                            Width="180" />
                     </StackPanel>
                 </Grid>
 
@@ -271,8 +269,7 @@
                             Margin="20,0"
                             Padding="20,0"
                             Text="{Binding Schedule[2].Time}"
-                            Width="180">
-                        </TextBox>
+                            Width="180" />
                     </StackPanel>
                 </Grid>
 
@@ -320,11 +317,11 @@
 
                 <Grid Row="5">
                     <Button
-                        Name="SaveButton"
                         Click="SaveButton_OnClick"
                         Height="65"
                         HorizontalAlignment="Left"
                         Margin="50,40,50,100"
+                        Name="SaveButton"
                         Style="{StaticResource LightBaseButton}"
                         Width="180">
                         <TextBlock

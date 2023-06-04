@@ -1,22 +1,23 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using Desktop_Admin.ViewModels;
+using WPFLibrary.JsonModels;
 
 namespace Desktop_Admin.Views;
 
 public partial class ReceiptsPage : Page
 {
-    private ReceiptsVM _childrenVm;
+    private ReceiptsVM _vm;
     public ReceiptsPage()
     {
         InitializeComponent();
-        _childrenVm = new ReceiptsVM()
+        _vm = new ReceiptsVM()
         {
-            ClassesPanel = ClassesStackPanel,
+            // ClassesPanel = ClassesStackPanel,
             NoSelectedClassesTextBlock = NoSelectedClassesPlug
         };
-        DataContext = _childrenVm;
-        _childrenVm.CheckPlug();
+        DataContext = _vm;
+        _vm.CheckPlug();
     }
 
     public void ToMakeClassButtonClick(object sender, RoutedEventArgs e)
@@ -88,5 +89,17 @@ public partial class ReceiptsPage : Page
     private void DoneButton2_OnClick(object sender, RoutedEventArgs e)
     {
         Month.Visibility = Visibility.Hidden;
+    }
+    
+    public void MoreButtonClick(object sender, RoutedEventArgs e)
+    {
+        var button = (Button)sender;
+        MoreWindow.Visibility = Visibility.Visible;
+        _vm.SelectedCard = (ReceiptCard) button.DataContext;
+    }
+    
+    public void CloseWindowButtonClick(object sender, RoutedEventArgs e)
+    {
+        MoreWindow.Visibility = Visibility.Hidden;
     }
 }

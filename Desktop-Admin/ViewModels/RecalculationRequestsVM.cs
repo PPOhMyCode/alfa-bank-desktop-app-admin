@@ -57,7 +57,8 @@ public class RecalculationRequestsVM : BaseVM
                         ChildrenName = "Пик Елизавета",
                         Before = new List<string>(){"Творожная запеканка", "Черный чай", "Творожная запеканка", "Черный чай"},
                         After = new List<string>(){"Творожная запеканка", "Черный чай", "Творожная запеканка", "Черный чай", "Творожная запеканка", "Черный чай", "Творожная запеканка"},
-                        PriceDiff = "+67 р"
+                        PriceDiff = "+67 р",
+                        Date = "20.06.2023"
                     },
                     new RecalculationRequestCard()
                     {
@@ -65,7 +66,8 @@ public class RecalculationRequestsVM : BaseVM
                         ChildrenName = "Пик Елизавета",
                         Before = new List<string>(){"Творожная запеканка", "Черный чай"},
                         After = new List<string>(){"Творожная запеканка", "Черный чай"},
-                        PriceDiff = "+67 р"
+                        PriceDiff = "+67 р",
+                        Date = "20.06.2023"
                     },
                     new RecalculationRequestCard()
                     {
@@ -73,7 +75,8 @@ public class RecalculationRequestsVM : BaseVM
                         ChildrenName = "Пик Елизавета",
                         Before = new List<string>(){"Творожная запеканка", "Черный чай"},
                         After = new List<string>(){"Творожная запеканка", "Черный чай"},
-                        PriceDiff = "+67 р"
+                        PriceDiff = "+67 р",
+                        Date = "20.06.2023"
                     },
                     new RecalculationRequestCard()
                     {
@@ -81,7 +84,8 @@ public class RecalculationRequestsVM : BaseVM
                         ChildrenName = "Пик Елизавета",
                         Before = new List<string>(){"Творожная запеканка", "Черный чай"},
                         After = new List<string>(){"Творожная запеканка", "Черный чай"},
-                        PriceDiff = "+67 р"
+                        PriceDiff = "+67 р",
+                        Date = "20.06.2023"
                     },
                     new RecalculationRequestCard()
                     {
@@ -89,7 +93,8 @@ public class RecalculationRequestsVM : BaseVM
                         ChildrenName = "Пик Елизавета",
                         Before = new List<string>(){"Творожная запеканка", "Черный чай"},
                         After = new List<string>(){"Творожная запеканка", "Черный чай"},
-                        PriceDiff = "+67 р"
+                        PriceDiff = "+67 р",
+                        Date = "20.06.2023"
                     }
                 }
             },
@@ -104,7 +109,8 @@ public class RecalculationRequestsVM : BaseVM
                         ChildrenName = "Беляев Антон",
                         Before = new List<string>(){"Творожная запеканка", "Черный чай"},
                         After = new List<string>(),
-                        PriceDiff = "-112 р"
+                        PriceDiff = "-112 р",
+                        Date = "20.06.2023"
                     },
                     new RecalculationRequestCard()
                     {
@@ -112,7 +118,8 @@ public class RecalculationRequestsVM : BaseVM
                         ChildrenName = "Беляев Антон",
                         Before = new List<string>(){"Творожная запеканка", "Черный чай"},
                         After = new List<string>(),
-                        PriceDiff = "-112 р"
+                        PriceDiff = "-112 р",
+                        Date = "20.06.2023"
                     },
                     new RecalculationRequestCard()
                     {
@@ -120,7 +127,8 @@ public class RecalculationRequestsVM : BaseVM
                         ChildrenName = "Беляев Антон",
                         Before = new List<string>(){"Творожная запеканка", "Черный чай"},
                         After = new List<string>(),
-                        PriceDiff = "-112 р"
+                        PriceDiff = "-112 р",
+                        Date = "20.06.2023"
                     },
                     new RecalculationRequestCard()
                     {
@@ -128,7 +136,8 @@ public class RecalculationRequestsVM : BaseVM
                         ChildrenName = "Беляев Антон",
                         Before = new List<string>(){"Творожная запеканка", "Черный чай"},
                         After = new List<string>(),
-                        PriceDiff = "-112 р"
+                        PriceDiff = "-112 р",
+                        Date = "20.06.2023"
                     }
                 }
             }
