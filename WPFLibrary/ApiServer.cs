@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Net.Mime;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -37,6 +39,10 @@ public class ApiServer
         if (response.StatusCode == HttpStatusCode.OK)
         {
             string rawResponse = response.Content;
+            var a = rawResponse;
+            var b = JsonConvert.SerializeObject(new ReceiptCardInput());
+            Console.WriteLine(b);
+            var m = b.Length;
             var result = JsonConvert.DeserializeObject<JModel>(response.Content);
             return result;
         }
@@ -79,7 +85,7 @@ public class ApiServer
 
         return response;
     }
-
+    
     public static RestResponse Post<JModel>(JModel model,string req)
     {
         var client = new RestClient(URL);

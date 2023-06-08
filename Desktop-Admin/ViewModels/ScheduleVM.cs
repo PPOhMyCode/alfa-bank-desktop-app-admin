@@ -42,6 +42,7 @@ public class ScheduleVM : BaseVM
     public ScheduleVM()
     {
         SelectCategoryCommand = new RelayCommand(SelectCategory);
+        PostTimingCommand = new RelayCommand(PostItems);
         Classes = new ObservableCollection<ListViewItem>();
         GradeNameArray = new List<string>();
         Grades = ApiServer.Get<List<Grade>>("grades");
@@ -78,6 +79,13 @@ public class ScheduleVM : BaseVM
 
     }
 
+    private Dictionary<string, int> typesData = new Dictionary<string, int>()
+    {
+        {"Завтрак",1},
+        {"Обед",2},
+        {"Полдник",3}
+    };
+
     private List<string> types = new List<string>()
     {
         "Завтрак",
@@ -98,16 +106,13 @@ public class ScheduleVM : BaseVM
 
         var arr = ApiServer.Get<List<TimingGet>>("/timings/grade/" + param);
         Schedule.Clear();
-        if(arr != null)
+        for(int i = 0;i<3;i++)
         {
-            for(int i = 0;i<3;i++)
-            {
-                if(arr.Count > i)
-                    Schedule.Add(new TimingView() {Time = arr[i].Time, TypeMeal = types[i]});
-                else
-                    Schedule.Add(new TimingView() {Time = "Не питаются", TypeMeal = types[i]});
-            }        
-        }
+            if(arr != null && arr.Count > i)
+                Schedule.Add(new TimingView() {Time = arr[i].Time, TypeMeal = types[i]});
+            else
+                Schedule.Add(new TimingView() {Time = "Не питаются", TypeMeal = types[i]});
+        }   
         foreach (var clas in GradeNameArray)
         {
             if (clas == item) continue;
@@ -116,14 +121,19 @@ public class ScheduleVM : BaseVM
                             select (x.Content as CheckBox)).FirstOrDefault();
             e.IsChecked = false;
         }
-        
-        //ChangeClassView();
-        //CheckPlug();
     }
 
-    public void PostItems()
+    public void PostItems(object param)
     {
-        //TODO: отправка
-        //ApiServer.Post();
+        foreach (var sView in Schedule)
+        {
+            var data = new Timing()
+            {
+                TypeMealId = typesData[sView.TypeMeal],
+                Time = sView.Time,
+                GradeId = Grades.FirstOrDefault(x => x.Name == selectedItem)!.GradeId
+            };
+            ApiServer.Post(data, "/timings");
+        }
     }
 }

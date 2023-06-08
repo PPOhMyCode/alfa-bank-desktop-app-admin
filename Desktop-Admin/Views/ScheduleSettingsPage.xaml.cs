@@ -57,6 +57,7 @@ public partial class ScheduleSettingsPage : Page
 
     private void SaveButton_OnClick(object sender, RoutedEventArgs e)
     {
+        _scheduleVM.PostItems(null);
         NavigationService?.GoBack();
     }
 }
