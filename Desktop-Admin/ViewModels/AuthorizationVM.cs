@@ -55,30 +55,8 @@ public class AuthorizationVM : BaseVM
     public AuthorizationVM()
     {
         UserAutorization = new UserAutorization();
-        //PostImage();
     }
 
-    public async void PostImage()
-    {
-        var address = "https://storage.yandexcloud.net/photo1/test.png";
-        var filenameWithPath = "C:/Users/alexs/Downloads/1.jpg";
-        var httpClient = new HttpClient();
-        using (var multipartFormContent = new MultipartFormDataContent())
-        {
-            //Load the file and set the file's Content-Type header
-            var fileStreamContent = new StreamContent(File.OpenRead(filenameWithPath));
-            fileStreamContent.Headers.ContentType = new MediaTypeHeaderValue("image/png");
-
-            //Add the file
-            multipartFormContent.Add(fileStreamContent, name: "file", fileName: "house.png");
-
-            //Send it
-            var response = await httpClient.PostAsync("https://storage.yandexcloud.net/photo1/test.png", multipartFormContent);
-            var a = response;
-            //return response.Result.Content.ReadAsStringAsync();
-        }
-    }
-    
     public bool ValidAuthorization()
     {
         var response = ApiServer.Autorization(UserAutorization);

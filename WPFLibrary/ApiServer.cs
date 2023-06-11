@@ -72,6 +72,23 @@ public class ApiServer
         return bitmap;
     }
     
+    public static RestResponse PostImage(string filenameWithPath, string folder,string name)
+    {
+        var client = new RestClient("https://d5d6f93kqr5chtpraoop.apigw.yandexcloud.net");
+        var request = new RestRequest("/image/" + folder + "/" + name, Method.Post);
+        request.AddHeader("Accept", "*/*");
+        byte[] imageArray = File.ReadAllBytes(filenameWithPath);
+        request.AddJsonBody(imageArray);
+        RestResponse response = client.Execute(request);
+        if (response.StatusCode == HttpStatusCode.OK)
+        {
+            var output = response.Content;
+            Console.WriteLine(output);
+        }
+
+        return response;
+    }
+    
     public static RestResponse Delete(string req)
     {
         var client = new RestClient(URL);
@@ -104,7 +121,7 @@ public class ApiServer
 
         return response;
     }
-    
+
     public static RestResponse Autorization<JModel>(JModel model)
     {
         string url = "https://d5dr8ccmms8urkspiqc2.apigw.yandexcloud.net";

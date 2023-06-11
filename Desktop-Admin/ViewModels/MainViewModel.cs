@@ -7,6 +7,7 @@ using Desktop_Admin.Models;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -77,6 +78,7 @@ public class MainViewModel : BaseVM, INotifyPropertyChanged
         ChildrenInSelectedClass = new ObservableCollection<Children>();
     }
 
+    
     public async void SelectCategory(object param)
     {
         var item = param as string;
