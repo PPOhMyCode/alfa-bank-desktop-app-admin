@@ -33,7 +33,6 @@ public class ScheduleVM : BaseVM
     public List<Grade> Grades { get; set; }
     public void LoadComboBoxData()
     {
-        GradeNameArray.Add("Все классы");
         foreach (var grade in Grades)
         {
             GradeNameArray.Add(grade.Name);
@@ -71,11 +70,11 @@ public class ScheduleVM : BaseVM
         // TODO: заменить потом на выгрузку расписания для SelectedClass
         Schedule = new ObservableCollection<TimingView>()
         {
-            new TimingView() {Time = "", TypeMeal = "Завтрак"},
-            new TimingView() {Time = "", TypeMeal = "Обед"},
-            new TimingView() {Time = "", TypeMeal = "Полдник"}
+            new TimingView() {Time = "Класс не выбран", TypeMeal = "Завтрак"},
+            new TimingView() {Time = "Класс не выбран", TypeMeal = "Обед"},
+            new TimingView() {Time = "Класс не выбран", TypeMeal = "Полдник"}
         };
-        var x = Schedule[2].Time;
+       
 
     }
 

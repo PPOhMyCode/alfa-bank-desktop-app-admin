@@ -211,7 +211,8 @@
                             Margin="20,0"
                             Style="{StaticResource Medium30Text}"
                             Text="{Binding Schedule[0].Time}"
-                            VerticalAlignment="Center" />
+                            VerticalAlignment="Center"
+                            materialDesign:HintAssist.Hint="Класс не выбран" />
                     </StackPanel>
                 </Grid>
 
@@ -252,7 +253,8 @@
                             Margin="20,0"
                             Style="{StaticResource Medium30Text}"
                             Text="{Binding Schedule[1].Time}"
-                            VerticalAlignment="Center" />
+                            VerticalAlignment="Center"
+                            materialDesign:HintAssist.Hint="Класс не выбран" />
                     </StackPanel>
                 </Grid>
 
@@ -293,7 +295,8 @@
                             Margin="20,0"
                             Style="{StaticResource Medium30Text}"
                             Text="{Binding Schedule[2].Time}"
-                            VerticalAlignment="Center" />
+                            VerticalAlignment="Center"
+                            materialDesign:HintAssist.Hint="Класс не выбран" />
                     </StackPanel>
                 </Grid>
 

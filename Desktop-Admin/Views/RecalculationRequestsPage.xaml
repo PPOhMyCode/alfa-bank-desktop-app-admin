@@ -400,7 +400,7 @@
 
                 <Grid
                     Grid.Row="0"
-                    Grid.RowSpan="3"
+                    Grid.RowSpan="4"
                     Name="MoreWindow"
                     Visibility="Hidden">
                     <Grid.Background>

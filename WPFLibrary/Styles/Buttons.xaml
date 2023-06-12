@@ -121,7 +121,8 @@
                             <Setter Property="Background" Value="{StaticResource UltraLightGreenBrush}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" Value="{StaticResource GrayBrush}" />
+                            <Setter Property="Foreground" Value="{StaticResource LightGrayBrush}" />
+                            <Setter Property="Background" Value="{StaticResource HelpGrayBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

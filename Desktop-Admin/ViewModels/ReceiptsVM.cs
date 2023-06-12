@@ -201,14 +201,14 @@ public class ReceiptsVM : BaseVM
     {
         try
         {
-            if (Receipts != null && Receipts.Count != 0)
-            {
-                NoSelectedClassesTextBlock.Visibility = Visibility.Hidden;
-            }
-            else
-            {
-                NoSelectedClassesTextBlock.Visibility = Visibility.Visible;
-            }
+            // if (Receipts != null && Receipts.Count != 0)
+            // {
+            //     NoSelectedClassesTextBlock.Visibility = Visibility.Hidden;
+            // }
+            // else
+            // {
+            //     NoSelectedClassesTextBlock.Visibility = Visibility.Visible;
+            // }
         }
         catch (Exception e)
         {

@@ -102,7 +102,7 @@ namespace Desktop_Canteen.Views
 
         public void ChangeStyleCircleButton(object sender, RoutedEventArgs e)
         {
-            DefaultStyleToAllCircleButton();
+            // DefaultStyleToAllCircleButton();
             var isSelected = (sender as Button).Style.Equals(Application.Current.TryFindResource("SelectedCircleButton") as Style);
             if (isSelected)
             {
@@ -113,20 +113,34 @@ namespace Desktop_Canteen.Views
                 (sender as Button).Style = Application.Current.TryFindResource("SelectedCircleButton") as Style;
             }
         }
-
-        private void DefaultStyleToAllCircleButton()
+        
+        public void EditButtonClick(object sender, RoutedEventArgs e)
         {
-            Monday.Style = Application.Current.TryFindResource("CircleButton") as Style;
-            Tuesday.Style = Application.Current.TryFindResource("CircleButton") as Style;
-            Wednesday.Style = Application.Current.TryFindResource("CircleButton") as Style;
-            Thursday.Style = Application.Current.TryFindResource("CircleButton") as Style;
-            Friday.Style = Application.Current.TryFindResource("CircleButton") as Style;
+            if (EditMenuBorder.Visibility == Visibility.Visible) EditMenuBorder.Visibility = Visibility.Hidden;
+            else EditMenuBorder.Visibility = Visibility.Visible;
         }
+
+        // private void DefaultStyleToAllCircleButton()
+        // {
+        //     Monday.Style = Application.Current.TryFindResource("CircleButton") as Style;
+        //     Tuesday.Style = Application.Current.TryFindResource("CircleButton") as Style;
+        //     Wednesday.Style = Application.Current.TryFindResource("CircleButton") as Style;
+        //     Thursday.Style = Application.Current.TryFindResource("CircleButton") as Style;
+        //     Friday.Style = Application.Current.TryFindResource("CircleButton") as Style;
+        // }
         
         public async  void ToMakeMenuPage(object sender, RoutedEventArgs e)
         {
             await Task.Delay(2000);
             NavigationService?.Navigate(new MakeMenuPage());
+        }
+        
+        public void MenuButtonClick(object sender, RoutedEventArgs e)
+        {
+            Menu.Style = Application.Current.TryFindResource("TypeMealButton") as Style;
+            DefaultMenu.Style = Application.Current.TryFindResource("TypeMealButton") as Style;
+            
+            (sender as Button).Style = Application.Current.TryFindResource("SelectedTypeMealButton") as Style;
         }
     }
 }

@@ -52,6 +52,7 @@
                             Padding="10"
                             Style="{StaticResource MainMenuButton}" />
                         <Button
+                            Click="ToReceiptsButtonClick"
                             Content="Расписание"
                             Padding="10"
                             Style="{StaticResource SelectedMainMenuButton}" />
@@ -180,7 +181,8 @@
                             Margin="20,0"
                             Padding="20,0"
                             Text="{Binding Schedule[0].Time}"
-                            Width="180" />
+                            Width="180"
+                            materialDesign:HintAssist.Hint="чч:мм - чч:мм" />
                     </StackPanel>
                 </Grid>
 
@@ -224,7 +226,8 @@
                             Margin="20,0"
                             Padding="20,0"
                             Text="{Binding Schedule[1].Time}"
-                            Width="180" />
+                            Width="180"
+                            materialDesign:HintAssist.Hint="чч:мм - чч:мм" />
                     </StackPanel>
                 </Grid>
 
@@ -269,7 +272,8 @@
                             Margin="20,0"
                             Padding="20,0"
                             Text="{Binding Schedule[2].Time}"
-                            Width="180" />
+                            Width="180"
+                            materialDesign:HintAssist.Hint="чч:мм - чч:мм" />
                     </StackPanel>
                 </Grid>
 
