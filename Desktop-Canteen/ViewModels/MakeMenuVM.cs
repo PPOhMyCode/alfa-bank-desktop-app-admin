@@ -18,11 +18,13 @@ public class MakeMenuVM: BaseVM
 {
     public DateTime Date;
     public int TypeMeal;
+    public int WeekPeriod;
     public TextBlock PlugTextBlock;
     private ObservableCollection<DishWithPhoto> AllDishes { get; set; }
     private ObservableCollection<MenuView> Menu { get; set; }
     public ObservableCollection<DishWithPhoto> DishInMenu { get; set; }
     public ObservableCollection<DishWithPhoto> DishCanAddToMenu { get; set; }
+    public ObservableCollection<WeekView> WeeksView { get; set; }
     public List<ImageSource> TypeMealImages { get; set; }
     public RelayCommand GetMenuDateCommand { protected set; get; }
     public RelayCommand AddMenuDateCommand { protected set; get; }
@@ -33,7 +35,6 @@ public class MakeMenuVM: BaseVM
 
     public MakeMenuVM()
     {
-        
         AllDishes = new ObservableCollection<DishWithPhoto>();
         var dishes = ApiServer.Get<List<Dish>>("dishes") == null ? new List<Dish>():ApiServer.Get<List<Dish>>("dishes");
         foreach (var dish in dishes)
@@ -58,6 +59,61 @@ public class MakeMenuVM: BaseVM
             ApiServer.GetImage("typeMealButtons/3")
         };
         //если даты четверти не выбраны, то листы с блюдами заполнять пока не надо, а PlugTextBlock.Visability = Visible
+        var daysName = new List<string>()
+        {
+            "ПН",
+            "ВТ",
+            "СР",
+            "ЧТ",
+            "ПТ"
+        };
+        WeeksView = new ObservableCollection<WeekView>();
+        for (var i = 1; i <= WeekPeriod; ++i)
+        {
+            WeeksView.Add(new WeekView(){Days = daysName, Name = i.ToString() + " неделя"});
+        }
+    }
+    
+    public MakeMenuVM(int weekPeriod)
+    {
+        WeekPeriod = weekPeriod;
+        AllDishes = new ObservableCollection<DishWithPhoto>();
+        var dishes = ApiServer.Get<List<Dish>>("dishes") == null ? new List<Dish>():ApiServer.Get<List<Dish>>("dishes");
+        foreach (var dish in dishes)
+        {
+            AllDishes.Add(new DishWithPhoto(dish, ApiServer.GetImage(dish.DishId.ToString())));
+        }
+        Menu = new ObservableCollection<MenuView>();
+        DishInMenu = new ObservableCollection<DishWithPhoto>();
+        DishCanAddToMenu = new ObservableCollection<DishWithPhoto>();
+        this.GetMenuDateCommand = new RelayCommand(GetMenu);
+        this.AddMenuDateCommand = new RelayCommand(AddDishToMenu);
+        this.DeleteMenuDateCommand = new RelayCommand(DeleteDishToMenu);
+        SelectDayCommand = new RelayCommand(SelectDay);
+        SelectTypeCommand = new RelayCommand(SelectType);
+        Date = DateTime.Today.Date.AddDays(1);
+        GetMenu();
+        
+        TypeMealImages = new List<ImageSource>()
+        {
+            ApiServer.GetImage("typeMealButtons/1"),
+            ApiServer.GetImage("typeMealButtons/2"),
+            ApiServer.GetImage("typeMealButtons/3")
+        };
+        //если даты четверти не выбраны, то листы с блюдами заполнять пока не надо, а PlugTextBlock.Visability = Visible
+        var daysName = new List<string>()
+        {
+            "ПН",
+            "ВТ",
+            "СР",
+            "ЧТ",
+            "ПТ"
+        };
+        WeeksView = new ObservableCollection<WeekView>();
+        for (var i = 1; i <= WeekPeriod; ++i)
+        {
+            WeeksView.Add(new WeekView(){Days = daysName, Name = i.ToString() + " неделя"});
+        }
     }
     
     public void SelectDay(object param)
@@ -129,4 +185,10 @@ public class MakeMenuVM: BaseVM
         var valuesToExclude = DishInMenu.Select(x => x.DishId).ToArray();
         DishCanAddToMenu = AllDishes.Where(x => !valuesToExclude.Contains(x.DishId)).ToObservableCollection();
     }
+}
+
+public class WeekView
+{
+    public string Name { get; set; }
+    public List<string> Days { get; set; }
 }

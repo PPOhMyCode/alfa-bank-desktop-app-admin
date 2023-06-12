@@ -1,13 +1,16 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Desktop_Canteen.Views;
 
 public partial class FirstOpenPage : Page
 {
+    public int selectedPeriod;
     public FirstOpenPage()
     {
         InitializeComponent();
+        selectedPeriod = 2;
     }
     
     public void StartButtonClick(object sender, RoutedEventArgs e)
@@ -20,7 +23,8 @@ public partial class FirstOpenPage : Page
     
     public void SaveButtonClick(object sender, RoutedEventArgs e)
     {
-        NavigationService?.Navigate(new MakeMenuPage());
+        NavigationService?.Navigate(new MakeMenuPage(selectedPeriod));
+        
     }
     
     public void PeriodButtonClick(object sender, RoutedEventArgs e)
@@ -31,5 +35,6 @@ public partial class FirstOpenPage : Page
         Period4.Style = Application.Current.TryFindResource("TypeMealButton") as Style;
         var selectedPeriodButton = sender as Button;
         selectedPeriodButton.Style = Application.Current.TryFindResource("SelectedTypeMealButton") as Style;
+        selectedPeriod = Convert.ToInt32(selectedPeriodButton.CommandParameter);
     }
 }

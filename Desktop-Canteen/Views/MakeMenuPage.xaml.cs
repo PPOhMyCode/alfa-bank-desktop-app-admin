@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Markup;
 using Desktop_Canteen.ViewModels;
 
@@ -8,6 +10,7 @@ namespace Desktop_Canteen.Views;
 public partial class MakeMenuPage : Page
 {
     private MakeMenuVM _makeMenuVm;
+    public int SelectedPeriod;
         public MakeMenuPage()
         {
             InitializeComponent();
@@ -18,6 +21,15 @@ public partial class MakeMenuPage : Page
             DatePicker2.Language = XmlLanguage.GetLanguage(System.Globalization.CultureInfo.CurrentCulture.IetfLanguageTag);
         }
     
+        public MakeMenuPage(int selectedPeriod)
+        {
+            InitializeComponent();
+            _makeMenuVm = new MakeMenuVM(selectedPeriod);
+            DataContext = _makeMenuVm;
+            _makeMenuVm.PlugTextBlock = this.Plug;
+            DatePicker1.Language = XmlLanguage.GetLanguage(System.Globalization.CultureInfo.CurrentCulture.IetfLanguageTag);
+            DatePicker2.Language = XmlLanguage.GetLanguage(System.Globalization.CultureInfo.CurrentCulture.IetfLanguageTag);
+        }
         public void ToMenuPage(object sender, RoutedEventArgs e)
         {
             NavigationService?.Navigate(new MenuPage());
@@ -58,9 +70,17 @@ public partial class MakeMenuPage : Page
             BreakfastButton.Style = Application.Current.TryFindResource("TypeMealButton") as Style;
         }
 
+        public void MenuButtonClick(object sender, RoutedEventArgs e)
+        {
+            Menu.Style = Application.Current.TryFindResource("TypeMealButton") as Style;
+            DefaultMenu.Style = Application.Current.TryFindResource("TypeMealButton") as Style;
+            
+            (sender as Button).Style = Application.Current.TryFindResource("SelectedTypeMealButton") as Style;
+        }
+        
         public void ChangeStyleCircleButton(object sender, RoutedEventArgs e)
         {
-            DefaultStyleToAllCircleButton();
+            // DefaultStyleToAllCircleButton();
             var isSelected = (sender as Button).Style.Equals(Application.Current.TryFindResource("SelectedCircleButton") as Style);
             if (isSelected)
             {
@@ -72,17 +92,12 @@ public partial class MakeMenuPage : Page
             }
         }
         
-        private void DefaultStyleToAllCircleButton()
-        {
-            Monday1.Style = Application.Current.TryFindResource("CircleButton") as Style;
-            Tuesday1.Style = Application.Current.TryFindResource("CircleButton") as Style;
-            Wednesday1.Style = Application.Current.TryFindResource("CircleButton") as Style;
-            Thursday1.Style = Application.Current.TryFindResource("CircleButton") as Style;
-            Friday1.Style = Application.Current.TryFindResource("CircleButton") as Style;
-            Monday2.Style = Application.Current.TryFindResource("CircleButton") as Style;
-            Tuesday2.Style = Application.Current.TryFindResource("CircleButton") as Style;
-            Wednesday2.Style = Application.Current.TryFindResource("CircleButton") as Style;
-            Thursday2.Style = Application.Current.TryFindResource("CircleButton") as Style;
-            Friday2.Style = Application.Current.TryFindResource("CircleButton") as Style;
-        }
+        // private void DefaultStyleToAllCircleButton()
+        // {
+        //     Monday.Style = Application.Current.TryFindResource("CircleButton") as Style;
+        //     Tuesday.Style = Application.Current.TryFindResource("CircleButton") as Style;
+        //     Wednesday.Style = Application.Current.TryFindResource("CircleButton") as Style;
+        //     Thursday.Style = Application.Current.TryFindResource("CircleButton") as Style;
+        //     Friday.Style = Application.Current.TryFindResource("CircleButton") as Style;
+        // }
 }
