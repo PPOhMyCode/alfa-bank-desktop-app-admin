@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using WPFLibrary;
 using WPFLibrary.JsonModels;
 using WPFLibrary.Models;
 
@@ -13,6 +15,8 @@ public class RecalculationRequestsVM : BaseVM
     public int allRequestsCount { get; set; }
     public TextBlock NoDataPlug { get; set; }
     public RecalculationRequestCard _selectedCard;
+    public List<Grade> Grades { get; set; }
+
     public RecalculationRequestCard SelectedCard 
     {
         get { return _selectedCard; }
@@ -44,104 +48,22 @@ public class RecalculationRequestsVM : BaseVM
 
     public RecalculationRequestsVM()
     {
-        Requests = new ObservableCollection<RecalculationRequest>()
+        Requests = new ObservableCollection<RecalculationRequest>();
+        Grades = ApiServer.Get<List<Grade>>("grades");
+        var requests = ApiServer.Get<List<RecalculationRequestCard>>("/recalculation");
+        foreach (var grade in Grades)
         {
-            new RecalculationRequest()
+            var items = requests.Where(x => x.Class == grade.Name).ToArray();
+            if (items.Length > 0)
             {
-                Grade = "1А",
-                ChildrenCards = new List<RecalculationRequestCard>()
+                var r = new RecalculationRequest() { Grade = grade.Name, ChildrenCards = new List<RecalculationRequestCard>()};
+                foreach (var item in items)
                 {
-                    new RecalculationRequestCard()
-                    {
-                        Class = "1А",
-                        ChildrenName = "Пик Елизавета",
-                        Before = new List<string>(){"Творожная запеканка", "Черный чай", "Творожная запеканка", "Черный чай"},
-                        After = new List<string>(){"Творожная запеканка", "Черный чай", "Творожная запеканка", "Черный чай", "Творожная запеканка", "Черный чай", "Творожная запеканка"},
-                        PriceDiff = "+67 р",
-                        Date = "20.06.2023"
-                    },
-                    new RecalculationRequestCard()
-                    {
-                        Class = "1А",
-                        ChildrenName = "Пик Елизавета",
-                        Before = new List<string>(){"Творожная запеканка", "Черный чай"},
-                        After = new List<string>(){"Творожная запеканка", "Черный чай"},
-                        PriceDiff = "+67 р",
-                        Date = "20.06.2023"
-                    },
-                    new RecalculationRequestCard()
-                    {
-                        Class = "1А",
-                        ChildrenName = "Пик Елизавета",
-                        Before = new List<string>(){"Творожная запеканка", "Черный чай"},
-                        After = new List<string>(){"Творожная запеканка", "Черный чай"},
-                        PriceDiff = "+67 р",
-                        Date = "20.06.2023"
-                    },
-                    new RecalculationRequestCard()
-                    {
-                        Class = "1А",
-                        ChildrenName = "Пик Елизавета",
-                        Before = new List<string>(){"Творожная запеканка", "Черный чай"},
-                        After = new List<string>(){"Творожная запеканка", "Черный чай"},
-                        PriceDiff = "+67 р",
-                        Date = "20.06.2023"
-                    },
-                    new RecalculationRequestCard()
-                    {
-                        Class = "1А",
-                        ChildrenName = "Пик Елизавета",
-                        Before = new List<string>(){"Творожная запеканка", "Черный чай"},
-                        After = new List<string>(){"Творожная запеканка", "Черный чай"},
-                        PriceDiff = "+67 р",
-                        Date = "20.06.2023"
-                    }
-                }
-            },
-            new RecalculationRequest()
-            {
-                Grade = "5Б",
-                ChildrenCards = new List<RecalculationRequestCard>()
-                {
-                    new RecalculationRequestCard()
-                    {
-                        Class = "5Б",
-                        ChildrenName = "Беляев Антон",
-                        Before = new List<string>(){"Творожная запеканка", "Черный чай"},
-                        After = new List<string>(),
-                        PriceDiff = "-112 р",
-                        Date = "20.06.2023"
-                    },
-                    new RecalculationRequestCard()
-                    {
-                        Class = "5Б",
-                        ChildrenName = "Беляев Антон",
-                        Before = new List<string>(){"Творожная запеканка", "Черный чай"},
-                        After = new List<string>(),
-                        PriceDiff = "-112 р",
-                        Date = "20.06.2023"
-                    },
-                    new RecalculationRequestCard()
-                    {
-                        Class = "5Б",
-                        ChildrenName = "Беляев Антон",
-                        Before = new List<string>(){"Творожная запеканка", "Черный чай"},
-                        After = new List<string>(),
-                        PriceDiff = "-112 р",
-                        Date = "20.06.2023"
-                    },
-                    new RecalculationRequestCard()
-                    {
-                        Class = "5Б",
-                        ChildrenName = "Беляев Антон",
-                        Before = new List<string>(){"Творожная запеканка", "Черный чай"},
-                        After = new List<string>(),
-                        PriceDiff = "-112 р",
-                        Date = "20.06.2023"
-                    }
-                }
+                    r.ChildrenCards.Add(item);
+                }   
+                Requests.Add(r);
             }
-        };
+        }
 
         allRequestsCount = 0;
         if (Requests != null || Requests != new ObservableCollection<RecalculationRequest>())
